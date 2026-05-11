@@ -1,0 +1,36 @@
+export type ProjectCategory =
+  | 'Product Design'
+  | 'Analytics'
+  | 'Healthcare'
+  | 'Fintech'
+  | 'Design Systems'
+  | 'Web'
+
+export type Project = {
+  title: string
+  domain: string
+  discipline: string
+  description: string
+  slug: string
+  year: string
+  featured: boolean
+  category: ProjectCategory
+  /** Optional path to cover image — e.g. /work/devrev/cover.jpg */
+  coverImage?: string
+  /** Link to Behance project if public */
+  behanceUrl?: string
+  /** True for the AI Workflow capability page — shows "Capability" badge instead of year */
+  isCapability?: boolean
+}
+
+export type ExpertiseTile = {
+  number: string
+  title: string
+  description: string
+}
+
+export type Differentiator = {
+  number: string
+  title: string
+  description: string
+}

@@ -14,6 +14,18 @@ export const PROJECTS: Project[] = [
     category: 'Product Design',
   },
   {
+    title: 'OriginChains — Climate Company Discovery',
+    domain: 'SaaS',
+    discipline: 'Product Design',
+    description:
+      'B2B web app for discovering climate-friendly companies — senior product work across IA, flows, trust-heavy company data, activity feed, admin & privacy modes, plus a Figma design system for engineering handoff (single-frame exports in the case study).',
+    slug: 'originchains',
+    year: '2025',
+    featured: true,
+    category: 'Product Design',
+    coverImage: '/work/originchains/cover.png',
+  },
+  {
     title: 'Spotify — Admin Enterprise Panel',
     domain: 'SaaS',
     discipline: 'Product Design',

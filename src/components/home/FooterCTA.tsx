@@ -6,8 +6,8 @@ import Container from '@/components/layout/Container'
  * Closing CTA — atomic.black's "We are ready to discuss your project" wall.
  *  - Inverted color block (bg-inverse) so the footer reads as a closing slab
  *    distinct from the dark page body above.
- *  - Massive editorial headline with the accent gradient (blue → cyan, from
- *    the wave-stripe palette) on the closing word.
+ *  - Massive editorial headline with the same accent gradient as the hero
+ *    (blue → cyan → violet via `.accent-gradient-text`).
  *  - Compact contact row + meta footer below with EST mark and GO TOP link.
  *
  * The wave stripe used to live here; it has moved to the home page (between
@@ -27,18 +27,17 @@ export default function FooterCTA() {
             Contacts / Availability
           </p>
 
-          <h2 className="display-mega max-w-5xl text-[clamp(56px,6vw,87px)] font-bold leading-[0.848] tracking-[-0.045em] text-inverse-foreground">
-            I&apos;m ready
-            <br />
-            to discuss
-            <br />
-            <span className="accent-gradient-text footer-accent-gradient-text">your project.</span>
+          <h2 className="display-mega flex max-w-5xl flex-col gap-[0.02em] pb-[0.12em] text-[32px] font-bold leading-none tracking-[-0.045em] text-inverse-foreground sm:text-[clamp(44px,6.4vw,82px)]">
+            <span className="block leading-[0.88]">I&apos;m ready</span>
+            <span className="block leading-[0.88]">to discuss</span>
+            <span className="accent-gradient-text block w-fit leading-[0.88]">
+              your project.
+            </span>
           </h2>
 
           <p className="max-w-3xl pt-2 text-[20px] leading-[1.7] text-inverse-muted">
-            Available for senior product design roles and design systems
-            consulting. If you&apos;re building something complex and need a
-            designer who reads the PR, let&apos;s talk.
+            If you&apos;re building something complex and need a designer who reads the PR
+            and stays close to implementation — let&apos;s talk.
           </p>
 
           <div className="flex flex-col items-start gap-6 pt-4 sm:flex-row sm:items-center">
@@ -68,11 +67,6 @@ export default function FooterCTA() {
               <span aria-hidden="true">↑</span>
             </a>
           </div>
-
-          <p className="mt-5 max-w-[515px] text-[11px] leading-[15.13px] text-inverse-muted">
-            Senior Product Designer — Product UX · Design Systems · AI Workflows ·
-            Figma-to-Code
-          </p>
         </div>
       </Container>
     </footer>

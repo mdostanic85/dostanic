@@ -141,7 +141,7 @@
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
+    filter: none;
   }
 }
 
@@ -154,7 +154,7 @@
   from {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
+    filter: none;
   }
   to {
     opacity: 0;
@@ -172,7 +172,7 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
+    filter: none;
   }
 }
 
@@ -394,36 +394,22 @@ html[data-theme="light"] {
     line-height: 1.075;
   }
 
-  /* Accent gradient text — the same blue → cyan pair sampled from the
-     wave-stripe gradient, applied as a clipped background on text. Use this
-     wherever the old solid `text-accent` highlight lived (mega headlines,
-     prominent accent words).
-
-     Deliberately uses a hard-coded deeper blue start (#1b67e8) instead of
-     `--color-accent` so the gradient retains its punch even after we
-     lightened the solo accent token by ~20% (the lightened tone reads
-     well on small UI elements but flattens the headline gradient — both
-     stops were too bright, so the colour stopped reading as "coloured").
-     The end stop still uses --color-accent-secondary so the gradient
-     auto-adapts in light mode (cyan → deep teal). */
+  /* Accent gradient text — single headline palette site-wide: same three stops
+     as WaveStripe (#1b67e8 → accent-hover cyan → #a78bf7). Hero, footer, case
+     studies, and strips all use this class only — no alternate overrides. */
   .accent-gradient-text {
     background-image: linear-gradient(
       90deg,
       #1b67e8 0%,
-      var(--color-accent-secondary) 100%
+      var(--color-accent-hover) 50%,
+      #a78bf7 100%
     );
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    /* Slight padding-bottom prevents descender clipping on some fonts. */
-    padding-bottom: 0.05em;
-  }
-
-  /* Footer heading sits on a very light inverse surface; use a deeper teal
-     endpoint so the full gradient stays at/above large-text WCAG contrast. */
-  .footer-accent-gradient-text {
-    background-image: linear-gradient(90deg, #1b67e8 0%, #00cecb 100%);
+    /* Room for descenders — background-clip:text can clip g/j/p/q/y without padding. */
+    padding-bottom: 0.14em;
   }
 
   /* (Earlier we tried to repaint the gradient on each .char-rise span

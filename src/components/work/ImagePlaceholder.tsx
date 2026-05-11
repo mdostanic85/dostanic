@@ -4,6 +4,11 @@ type ImagePlaceholderProps = {
   /** Aspect ratio class — defaults to 16/9. */
   aspectClass?: string
   className?: string
+  /**
+   * Second line under the label. Omit for default “Cover pending” path hint.
+   * Pass an empty string to hide the second line entirely.
+   */
+  footnote?: string
 }
 
 /**
@@ -16,7 +21,12 @@ export default function ImagePlaceholder({
   label,
   aspectClass = 'aspect-[16/9]',
   className = '',
+  footnote,
 }: ImagePlaceholderProps) {
+  const foot =
+    footnote === undefined
+      ? 'Cover pending — /public/work/[slug]/'
+      : footnote
   return (
     <div
       className={`${aspectClass} relative w-full overflow-hidden rounded-[10px] border border-stroke bg-surface ${className}`}
@@ -52,9 +62,11 @@ export default function ImagePlaceholder({
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60">
           {label}
         </p>
-        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted/70">
-          Cover pending — /public/work/[slug]/
-        </p>
+        {foot ? (
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted/70">
+            {foot}
+          </p>
+        ) : null}
       </div>
     </div>
   )

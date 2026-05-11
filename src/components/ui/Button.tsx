@@ -21,9 +21,11 @@ const variantClasses: Record<ButtonVariant, string> = {
     'bg-inverse-foreground text-foreground hover:bg-inverse-foreground/90 border border-inverse-foreground',
 }
 
-// P2 fix: transition-[...] instead of transition-all — avoids unnecessary full-property transitions
+// transition-colors + transition-transform (not transition-all) — covers hover
+// translate without animating unrelated properties. Avoids Tailwind v4 mis-parsing
+// comma-heavy arbitrary `transition-[…]` into invalid `transition-property:...`.
 const base =
-  'inline-flex h-10 items-center justify-center px-5 text-[14px] leading-5 font-medium rounded-[4px] transition-[color,background-color,border-color,transform] duration-150 hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 whitespace-nowrap'
+  'inline-flex h-10 items-center justify-center px-5 text-[14px] leading-5 font-medium rounded-[4px] transition-colors transition-transform duration-150 hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 whitespace-nowrap'
 
 export default function Button({
   variant = 'primary',

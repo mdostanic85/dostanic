@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { NAV_LINKS } from '@/lib/nav'
+import { usePathname } from 'next/navigation'
+import { NAV_LINKS, isNavActive } from '@/lib/nav'
 
 type MobileMenuProps = {
   open: boolean
@@ -10,6 +11,7 @@ type MobileMenuProps = {
 }
 
 export default function MobileMenu({ open, onClose }: MobileMenuProps) {
+  const pathname = usePathname()
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const lastFocusedRef = useRef<HTMLElement | null>(null)
@@ -89,7 +91,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       <div className="flex items-center justify-between px-5 sm:px-8 h-16">
         <Link
           href="/"
-          className="text-sm font-semibold text-foreground tracking-tight"
+          className="text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-muted"
         >
           Milos Dostanic
         </Link>
@@ -111,15 +113,24 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       </div>
 
       <nav className="flex-1 flex flex-col justify-center px-5 sm:px-8 gap-2">
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="text-4xl sm:text-5xl font-semibold text-foreground py-3 hover:text-muted transition-colors"
-          >
-            {link.label}
-          </Link>
-        ))}
+        {NAV_LINKS.map((link) => {
+          const active = isNavActive(pathname, link.href)
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={active ? 'page' : undefined}
+              className={[
+                'border-l-2 py-3 pl-4 text-4xl font-semibold transition-colors sm:text-5xl sm:pl-5',
+                active
+                  ? 'border-accent text-foreground'
+                  : 'border-transparent text-muted hover:border-stroke hover:text-foreground',
+              ].join(' ')}
+            >
+              {link.label}
+            </Link>
+          )
+        })}
       </nav>
 
       <div className="px-5 sm:px-8 pb-10 pt-6">

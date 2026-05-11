@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useScrolled } from '@/hooks/useScrolled'
 import Container from '@/components/layout/Container'
 import MobileMenu from './MobileMenu'
-import { NAV_LINKS } from '@/lib/nav'
+import { NAV_LINKS, isNavActive } from '@/lib/nav'
 
 export default function Nav() {
   const scrolled = useScrolled(80)
@@ -30,29 +30,42 @@ export default function Nav() {
         <Container size="wide" className="h-full flex items-center justify-between">
           <Link
             href="/"
-            className="text-foreground hover:text-muted transition-colors leading-[25.189px]"
+            className={[
+              'transition-colors leading-[25.189px]',
+              pathname === '/' ? 'text-foreground' : 'text-foreground hover:text-muted',
+            ].join(' ')}
             aria-label="Go to home page"
+            aria-current={pathname === '/' ? 'page' : undefined}
           >
             <span className="text-[24px] font-light">milos</span>
             <span className="text-[24px] font-bold">dostanic</span>
           </Link>
 
           <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-7">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={[
-                  'relative pb-px text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] text-muted hover:text-foreground transition-colors duration-150',
-                  'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',
-                  'after:origin-left after:scale-x-0 after:bg-accent',
-                  'after:transition-transform after:duration-200 hover:after:scale-x-100',
-                  "after:content-['']",
-                ].join(' ')}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const active = isNavActive(pathname, link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={[
+                    'text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] transition-colors duration-150',
+                    active
+                      ? 'text-foreground'
+                      : [
+                          'relative pb-px text-muted',
+                          'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',
+                          'after:origin-left after:bg-accent after:transition-transform after:duration-200',
+                          "after:content-['']",
+                          'after:scale-x-0 hover:text-foreground hover:after:scale-x-100',
+                        ].join(' '),
+                  ].join(' ')}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           <button

@@ -3,6 +3,14 @@ import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import PageHeader from '@/components/layout/PageHeader'
 import FooterCTA from '@/components/home/FooterCTA'
+import { cn } from '@/lib/utils'
+import {
+  sectionEyebrowForegroundBlockClassName,
+  sectionEyebrowMutedBlockClassName,
+  sectionEyebrowMonoClassName,
+  sectionHeadingClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
   title: 'Expertise — Milos Dostanic',
@@ -125,10 +133,10 @@ export default function ExpertisePage() {
         }
         aside={
           <nav aria-label="Jump to expertise area" className="hidden lg:block">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+            <p className={sectionEyebrowMutedBlockClassName}>
               On this page
             </p>
-            <ul className="space-y-3 border-l border-stroke pl-5">
+            <ul className="space-y-3">
               {EXPERTISE_AREAS.map((a) => (
                 <li key={a.id}>
                   <a
@@ -151,12 +159,12 @@ export default function ExpertisePage() {
       {/* ── Expertise areas — atomic-style large editorial rows ─────────── */}
       <Section padding="lg">
         <Container size="wide">
-          <ul className="border-t border-stroke">
+          <ul>
             {EXPERTISE_AREAS.map((area) => (
               <li
                 key={area.id}
                 id={area.id}
-                className="group relative scroll-mt-24 border-b border-stroke py-12 lg:py-20"
+                className="group relative scroll-mt-24 py-12 lg:py-20"
               >
                 <span
                   aria-hidden="true"
@@ -166,11 +174,18 @@ export default function ExpertisePage() {
                 <div className="grid grid-cols-12 gap-4 lg:gap-12">
                   {/* Number + title */}
                   <div className="col-span-12 lg:col-span-5">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                    <span
+                      className={cn(
+                        sectionEyebrowMonoClassName,
+                        'mb-5 block text-accent'
+                      )}
+                    >
                       / {area.number}
                     </span>
-                    <h2 className="display-tight mt-4 text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent sm:text-4xl lg:text-5xl">
-                      {area.title}
+                    <h2 className={sectionHeadingClassName}>
+                      {titleWithAccentGradient(area.title, {
+                        leadClassName: 'transition-colors duration-300 group-hover:text-accent',
+                      })}
                     </h2>
                   </div>
 
@@ -182,7 +197,7 @@ export default function ExpertisePage() {
 
                     <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8">
                       <div>
-                        <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground">
+                        <p className={sectionEyebrowForegroundBlockClassName}>
                           Useful when
                         </p>
                         <ul className="space-y-3">
@@ -201,7 +216,7 @@ export default function ExpertisePage() {
                       </div>
 
                       <div>
-                        <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground">
+                        <p className={sectionEyebrowForegroundBlockClassName}>
                           Typical outputs
                         </p>
                         <ul className="space-y-3">

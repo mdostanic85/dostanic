@@ -3,6 +3,23 @@ import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import PageHeader from '@/components/layout/PageHeader'
 import FooterCTA from '@/components/home/FooterCTA'
+import ArrowLink from '@/components/ui/ArrowLink'
+import {
+  LINKEDIN_PROFILE_URL,
+  STUDIO_EMPLOYMENT,
+  WORK_ENGAGEMENTS,
+} from '@/lib/data'
+import {
+  monoIndexAccentPaddedClassName,
+  monoKickerMutedClassName,
+  monoMetaMutedClassName,
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionLeadClassName,
+  sectionPrincipleTitleClassName,
+  sectionSubheadingClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
   title: 'About — Milos Dostanic',
@@ -30,33 +47,6 @@ const PRINCIPLES = [
     number: '04',
     title: 'Systems scale products',
     body: 'Design systems are operational infrastructure: tokens, components, rules, and documentation teams can use daily.',
-  },
-]
-
-const EXPERIENCE = [
-  {
-    role: 'Product Designer',
-    company: 'Polyrific',
-    period: 'Mar 2023 — Mar 2024',
-    note: 'Led product design for an AI platform: flows, UI, prototyping, and design system.',
-  },
-  {
-    role: 'Senior UI/UX Designer',
-    company: 'Quantox Technology',
-    period: 'Sep 2022 — Jun 2023',
-    note: 'Delivered complex product UX/UI in collaboration with product and engineering teams.',
-  },
-  {
-    role: 'Medior UI/UX Designer',
-    company: 'Quantox Technology',
-    period: 'Mar 2019 — Sep 2022',
-    note: 'Built and improved multiple digital products across long-term client engagements.',
-  },
-  {
-    role: 'Earlier roles',
-    company: 'Fantastic Machines · Promo Advertising · The HEINEKEN Company',
-    period: '2013 — 2017',
-    note: 'UI and visual design across web and campaigns for brands including Heineken and Carlsberg, including Belgrade 2013 Limited Edition can design.',
   },
 ]
 
@@ -89,17 +79,17 @@ export default function AboutPage() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 The story
               </p>
-              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+              <p className={monoKickerMutedClassName}>
                 Practising
                 <br />
                 <span className="text-foreground">since — 2003</span>
               </p>
             </div>
             <div className="lg:col-span-8">
-              <p className="display-tight text-xl font-medium leading-[1.35] text-foreground sm:text-2xl lg:text-[27px]">
+              <p className={sectionLeadClassName}>
                 20+ years in design, now focused on complex products where UX, system
                 quality, and implementation alignment matter more than visual polish alone.
               </p>
@@ -133,13 +123,13 @@ export default function AboutPage() {
         <Container size="wide">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:mb-20">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 How I think
               </p>
-              <h2 className="display-tight text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl">
+              <h2 className={sectionHeadingClassName}>
                 Four
                 <br />
-                principles.
+                <span className="text-accent block w-fit">principles.</span>
               </h2>
             </div>
             <p className="text-base leading-[1.7] text-muted lg:col-span-6 lg:col-start-7 lg:text-lg">
@@ -149,21 +139,23 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <ul className="border-t border-stroke">
+          <ul>
             {PRINCIPLES.map((p) => (
               <li
                 key={p.number}
-                className="group relative grid grid-cols-12 items-start gap-4 border-b border-stroke py-10 lg:py-14"
+                className="group relative grid grid-cols-12 items-start gap-4 py-10 lg:py-14"
               >
                 <span
                   aria-hidden="true"
                   className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
                 />
-                <span className="col-span-2 pt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:col-span-1">
+                <span className={monoIndexAccentPaddedClassName}>
                   {p.number}
                 </span>
-                <h3 className="display-tight col-span-10 text-2xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent sm:col-span-5 sm:text-3xl lg:text-[36px]">
-                  {p.title}
+                <h3 className={sectionPrincipleTitleClassName}>
+                  {titleWithAccentGradient(p.title, {
+                    leadClassName: 'transition-colors duration-300 group-hover:text-accent',
+                  })}
                 </h3>
                 <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
                   {p.body}
@@ -174,47 +166,87 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* ── Experience ────────────────────────────────────────────────── */}
+      {/* ── Where I have shipped ─────────────────────────────────────── */}
       <Section padding="lg" className="bg-surface/40">
         <Container size="wide">
-          <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:mb-16">
+          <div className="mb-12 grid grid-cols-1 gap-10 lg:mb-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                Experience
-              </p>
-              <h2 className="display-tight text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl">
+              <p className={sectionEyebrowAccentClassName}>Experience</p>
+              <h2 className={sectionHeadingClassName}>
                 Where
                 <br />
-                I have shipped.
+                <span className="text-accent block w-fit">I have shipped.</span>
               </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="text-base leading-[1.7] text-muted lg:text-lg">
+                Senior product designer operating at implementation depth — IA, dense
+                SaaS and internal tools, design systems, and handoff that survives contact
+                with real engineering schedules. The rows below are the organisations and
+                products where that responsibility sat; titles, timelines, and
+                client-specific depth that cannot sit on a public site live on LinkedIn.
+              </p>
+              <ArrowLink
+                href={LINKEDIN_PROFILE_URL}
+                className="mt-6 inline-flex text-foreground hover:text-accent"
+              >
+                Full professional record on LinkedIn
+              </ArrowLink>
             </div>
           </div>
 
           <ul className="border-t border-stroke">
-            {EXPERIENCE.map((e) => (
+            {WORK_ENGAGEMENTS.map((row) => (
               <li
-                key={`${e.role}-${e.company}`}
-                className="grid grid-cols-1 gap-4 border-b border-stroke py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
+                key={row.company}
+                className="grid grid-cols-1 gap-4 border-b border-stroke py-8 last:border-b-0 lg:grid-cols-12 lg:gap-8 lg:py-10"
               >
                 <div className="lg:col-span-3">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                    {e.period}
-                  </p>
+                  <p className={monoMetaMutedClassName}>{row.period}</p>
                 </div>
                 <div className="lg:col-span-9">
-                  <h3 className="display-tight text-xl font-semibold text-foreground sm:text-2xl">
-                    {e.role}
-                  </h3>
+                  <h3 className={sectionSubheadingClassName}>{row.company}</h3>
                   <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
-                    {e.company}
+                    {row.role}
                   </p>
                   <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
-                    {e.note}
+                    {row.summary}
                   </p>
                 </div>
               </li>
             ))}
           </ul>
+
+          <div className="mt-16 border-t border-stroke pt-14 lg:mt-20 lg:pt-16">
+            <p className={sectionEyebrowAccentClassName}>Studios & full-time roles</p>
+            <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">
+              The longer-running studio chapter before embedded agency and direct product
+              work at the scale above.
+            </p>
+            <ul className="mt-10 divide-y divide-stroke">
+              {STUDIO_EMPLOYMENT.map((e) => (
+                <li
+                  key={`${e.role}-${e.company}-${e.period}`}
+                  className="grid grid-cols-1 gap-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
+                >
+                  <div className="lg:col-span-3">
+                    <p className={monoMetaMutedClassName}>{e.period}</p>
+                  </div>
+                  <div className="lg:col-span-9">
+                    <h3 className={sectionSubheadingClassName}>
+                      {titleWithAccentGradient(e.role)}
+                    </h3>
+                    <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
+                      {e.company}
+                    </p>
+                    <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
+                      {e.note}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </Section>
 

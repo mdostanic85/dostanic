@@ -34,3 +34,11 @@ export type Differentiator = {
   title: string
   description: string
 }
+
+/** One row on the Work page — organization + how you operated there as a senior practitioner. */
+export type WorkEngagement = {
+  company: string
+  period: string
+  role: string
+  summary: string
+}

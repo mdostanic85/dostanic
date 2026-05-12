@@ -1,6 +1,13 @@
 import type { ReactNode } from 'react'
 import Container from '@/components/layout/Container'
 import SectionReveal from '@/components/layout/SectionReveal'
+import { cn } from '@/lib/utils'
+import {
+  pageHeadingClassName,
+  pageHeaderKickerAccentClassName,
+  pageHeaderMetaClassName,
+  pageIntroClassName,
+} from '@/lib/headings'
 
 type PageHeaderProps = {
   /** Mono caption shown above the headline — e.g. "About / Background". */
@@ -13,18 +20,19 @@ type PageHeaderProps = {
   /** Optional content rendered in the right column (sidebar, quick-nav,
    * contact card, etc.). When omitted, the headline column is full-width. */
   aside?: ReactNode
-  /** Right-side label in the top mark strip. Defaults to the current year token. */
+  /** Optional right-aligned mono label above the headline — year, count, or location. */
   topRightLabel?: string
+  /** Less bottom padding when the next block (e.g. filters) should sit closer. */
+  tightBottom?: boolean
 }
 
 /**
  * Shared atomic.black-style page header used across all subpages.
+ * Typography tokens: `@/lib/headings` (`pageHeadingClassName`, etc.).
  *
  * Structure:
  *   ┌──────────────────────────────────────────────────────────────┐
- *   │ EST. 2017 · <eyebrow> · <topRightLabel>                       │  top mark band
- *   ├──────────────────────────────────────────────────────────────┤
- *   │ <eyebrow caption>                                             │
+ *   │ <eyebrow>                                    <topRightLabel>  │
  *   │ <mega editorial title>                                        │
  *   │ <intro paragraph>                                             │
  *   │                                              <aside content>  │
@@ -32,7 +40,8 @@ type PageHeaderProps = {
  *
  * Headlines use display-tight tracking + responsive type ramp tuned to feel
  * editorial but stay readable on mobile. The aside collapses below on
- * narrower viewports.
+ * narrower viewports. The `h1` uses `.page-header-headline` so line rhythm and
+ * gradient spans match the home Hero without touching each route.
  */
 export default function PageHeader({
   eyebrow,
@@ -40,37 +49,29 @@ export default function PageHeader({
   intro,
   aside,
   topRightLabel = '2026 / Available',
+  tightBottom = false,
 }: PageHeaderProps) {
   return (
     <header className="grain relative overflow-hidden pt-16">
-      {/* Top mark band — mirrors the home Hero's EST/Available strip */}
-      <div className="border-b border-stroke">
-        <Container size="wide">
-          <div className="flex items-center justify-between py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-            <span className="hidden sm:inline">EST. 2017</span>
-            <span className="text-foreground">{eyebrow}</span>
-            <span>{topRightLabel}</span>
-          </div>
-        </Container>
-      </div>
-
       <Container size="wide">
         <SectionReveal>
-          <div className="grid grid-cols-1 gap-12 py-16 lg:grid-cols-12 lg:gap-12 lg:py-24">
+          <div
+            className={cn(
+              'grid grid-cols-1 gap-12 pt-16 lg:grid-cols-12 lg:gap-12 lg:pt-24',
+              tightBottom
+                ? 'pb-8 lg:pb-10'
+                : 'pb-16 lg:pb-24',
+            )}
+          >
             <div className={aside ? 'lg:col-span-8' : 'lg:col-span-12'}>
-              <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                {eyebrow}
-              </p>
+              <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <p className={pageHeaderKickerAccentClassName}>{eyebrow}</p>
+                <span className={pageHeaderMetaClassName}>{topRightLabel}</span>
+              </div>
 
-              <h1 className="display-tight text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl xl:text-[70px]">
-                {title}
-              </h1>
+              <h1 className={pageHeadingClassName}>{title}</h1>
 
-              {intro ? (
-                <p className="mt-8 max-w-2xl text-lg leading-[1.7] text-muted lg:text-xl">
-                  {intro}
-                </p>
-              ) : null}
+              {intro ? <p className={pageIntroClassName}>{intro}</p> : null}
             </div>
 
             {aside ? (

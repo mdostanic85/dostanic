@@ -3,7 +3,13 @@ import Link from 'next/link'
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
+import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/lib/data'
+import {
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionSubheadingClassName,
+} from '@/lib/headings'
 
 /**
  * "Best Cases" section in the spirit of atomic.black:
@@ -29,13 +35,13 @@ export default function SelectedWork() {
       <Container size="wide">
         <div className="mb-16 flex flex-col gap-8 sm:mb-20 sm:flex-row sm:items-end sm:justify-between lg:mb-24">
           <div>
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               Best Cases / Selected Work
             </p>
-            <h2 className="display-tight text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl">
+            <h2 className={sectionHeadingClassName}>
               The work,
               <br />
-              not the pitch.
+              <span className="text-accent block w-fit">not the pitch.</span>
             </h2>
           </div>
           <ArrowLink
@@ -103,7 +109,12 @@ export default function SelectedWork() {
                   {/* Caption */}
                   <div className="mt-6 flex items-start justify-between gap-6">
                     <div className="min-w-0">
-                      <h3 className="display-tight text-xl font-semibold leading-tight text-foreground transition-colors duration-200 group-hover:text-accent sm:text-2xl">
+                      <h3
+                        className={cn(
+                          sectionSubheadingClassName,
+                          'transition-colors duration-200 group-hover:text-accent'
+                        )}
+                      >
                         {project.title}
                       </h3>
                       <p className="mt-3 max-w-md text-sm leading-[1.7] text-muted">

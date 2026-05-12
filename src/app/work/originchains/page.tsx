@@ -8,6 +8,19 @@ import ArrowLink from '@/components/ui/ArrowLink'
 import CaseStudyMeta from '@/components/work/CaseStudyMeta'
 import ImagePlaceholder from '@/components/work/ImagePlaceholder'
 import FooterCTA from '@/components/home/FooterCTA'
+import { cn } from '@/lib/utils'
+import {
+  monoIndexAccentClassName,
+  monoIndexAccentPaddedClassName,
+  monoIndexGridClassName,
+  navBackLinkClassName,
+  navRelatedLinkClassName,
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionLeadClassName,
+  sectionSubheadingClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
   title: 'OriginChains — Climate Company Discovery · Milos Dostanic',
@@ -68,11 +81,11 @@ const OUTCOMES = [
 export default function OriginChainsCaseStudy() {
   return (
     <main>
-      <div className="border-b border-stroke pt-16">
+      <div className="pt-16">
         <Container size="wide">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+            className={navBackLinkClassName}
           >
             <span aria-hidden="true">←</span> Back to work
           </Link>
@@ -105,7 +118,7 @@ export default function OriginChainsCaseStudy() {
       <Section padding="sm">
         <Container size="wide">
           <CaseStudyMeta fields={META_FIELDS} className="mb-12" />
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] border border-stroke bg-surface">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-surface">
             <Image
               src="/work/originchains/cover.png"
               alt="OriginChains — landing page (single frame)"
@@ -115,7 +128,7 @@ export default function OriginChainsCaseStudy() {
               priority
             />
           </div>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+          <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
             Source file —{' '}
             <a
               href="https://www.figma.com/design/6IPIMKih4iNN63d9lmOIcF/OriginChains-Web-App?node-id=2807-2666"
@@ -133,11 +146,11 @@ export default function OriginChainsCaseStudy() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 What I owned
               </p>
-              <h2 className="mt-4 display-tight text-2xl font-semibold text-foreground sm:text-3xl">
-                Senior product designer scope
+              <h2 className={cn(sectionHeadingClassName, 'mt-4')}>
+                {titleWithAccentGradient('Senior product designer scope')}
               </h2>
             </div>
             <div className="lg:col-span-8">
@@ -148,7 +161,7 @@ export default function OriginChainsCaseStudy() {
                 legible, make scores and methodology feel grounded, and keep a growing web
                 app navigable while the team iterated toward launch.
               </p>
-              <ul className="mt-8 space-y-4 border-t border-stroke pt-8">
+              <ul className="mt-8 space-y-4 pt-8">
                 {ROLE_POINTS.map((item) => (
                   <li key={item} className="flex gap-4">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -166,13 +179,13 @@ export default function OriginChainsCaseStudy() {
       <Section padding="lg">
         <Container size="wide">
           <div className="mb-10 max-w-3xl">
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               Selected screens
             </p>
-            <h2 className="display-tight text-2xl font-semibold text-foreground sm:text-3xl">
-              Feed — and the densest surface as a placeholder
+            <h2 className={sectionHeadingClassName}>
+              {titleWithAccentGradient('Feed — and the densest surface as a placeholder')}
             </h2>
-            <p className="mt-4 text-base leading-[1.7] text-muted lg:text-lg">
+            <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
               The activity feed is a single exported frame. The heaviest layout — search
               with expanded cards, filters, and comparison — stays a placeholder here
               until a clean single-frame export is wired in (that artboard is the one most
@@ -182,7 +195,7 @@ export default function OriginChainsCaseStudy() {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
             <figure className="space-y-3">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-stroke bg-surface">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] bg-surface">
                 <Image
                   src="/work/originchains/screen-feed.png"
                   alt="OriginChains — activity feed (single frame)"
@@ -191,7 +204,7 @@ export default function OriginChainsCaseStudy() {
                   className="object-cover object-top"
                 />
               </div>
-              <figcaption className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+              <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
                 Activity feed / Activity — one frame
               </figcaption>
             </figure>
@@ -202,7 +215,7 @@ export default function OriginChainsCaseStudy() {
                 aspectClass="aspect-[4/3]"
                 footnote=""
               />
-              <figcaption className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+              <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
                 Highest-density UI — placeholder (multi-panel search grid)
               </figcaption>
             </figure>
@@ -214,12 +227,12 @@ export default function OriginChainsCaseStudy() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Project context
               </p>
             </div>
             <div className="lg:col-span-8">
-              <p className="display-tight text-xl font-medium leading-[1.35] text-foreground sm:text-2xl lg:text-[27px]">
+              <p className={sectionLeadClassName}>
                 Users want to act on climate, but only if they can trust the signal behind
                 each company.
               </p>
@@ -240,22 +253,22 @@ export default function OriginChainsCaseStudy() {
         <Container size="wide">
           <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 The challenge
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Trust,
                 <br />
-                <span className="accent-gradient-text">at a glance.</span>
+                <span className="text-accent">at a glance.</span>
               </h2>
             </div>
             <ul className="lg:col-span-7 lg:col-start-6 lg:pt-2">
               {CHALLENGES.map((item, idx) => (
                 <li
                   key={item}
-                  className="flex items-start gap-5 border-b border-stroke py-5 first:border-t"
+                  className="flex items-start gap-5 py-5"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  <span className={monoIndexAccentClassName}>
                     /{String(idx + 1).padStart(2, '0')}
                   </span>
                   <span className="text-base leading-[1.65] text-muted lg:text-lg">{item}</span>
@@ -270,27 +283,27 @@ export default function OriginChainsCaseStudy() {
         <Container size="wide">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Decisions
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Systemic,
                 <br />
-                not decorative.
+                <span className="text-accent block w-fit">not decorative.</span>
               </h2>
             </div>
           </div>
-          <ul className="border-t border-stroke">
+          <ul>
             {DECISIONS.map((d, idx) => (
               <li
                 key={d.title}
-                className="group grid grid-cols-12 gap-4 border-b border-stroke py-10 lg:gap-12 lg:py-14"
+                className="group grid grid-cols-12 gap-4 py-10 lg:gap-12 lg:py-14"
               >
-                <span className="col-span-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:col-span-1">
+                <span className={monoIndexGridClassName}>
                   /{String(idx + 1).padStart(2, '0')}
                 </span>
-                <h3 className="display-tight col-span-10 text-xl font-semibold leading-tight text-foreground sm:col-span-5 sm:text-2xl lg:text-3xl">
-                  {d.title}
+                <h3 className={cn(sectionSubheadingClassName, 'col-span-10 sm:col-span-5')}>
+                  {titleWithAccentGradient(d.title)}
                 </h3>
                 <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
                   {d.body}
@@ -305,13 +318,13 @@ export default function OriginChainsCaseStudy() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Outcome
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Ready for
                 <br />
-                <span className="accent-gradient-text">build &amp; iteration.</span>
+                <span className="text-accent">build &amp; iteration.</span>
               </h2>
               <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
                 The file is structured so design and engineering can iterate in lockstep —
@@ -323,7 +336,7 @@ export default function OriginChainsCaseStudy() {
               {OUTCOMES.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-4 border-b border-stroke pb-5"
+                  className="flex items-start gap-4 pb-5"
                 >
                   <span className="mt-[6px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                   <p className="text-base leading-[1.6] text-foreground lg:text-lg">{item}</p>
@@ -339,7 +352,7 @@ export default function OriginChainsCaseStudy() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+              className={navRelatedLinkClassName}
             >
               <span aria-hidden="true">←</span> All work
             </Link>

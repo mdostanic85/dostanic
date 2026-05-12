@@ -13,9 +13,9 @@ type ImagePlaceholderProps = {
 
 /**
  * Atomic-style placeholder block for case study images that have not been
- * sourced yet. Uses the same rounded-[10px] / stroke border / surface fill
- * vocabulary as the rest of the home + case study tiles, with a mono caption
- * under the icon.
+ * sourced yet. Uses the same rounded-[10px] / surface fill vocabulary as
+ * the rest of the home + case study tiles, with a mono caption under the
+ * icon.
  */
 export default function ImagePlaceholder({
   label,
@@ -29,7 +29,7 @@ export default function ImagePlaceholder({
       : footnote
   return (
     <div
-      className={`${aspectClass} relative w-full overflow-hidden rounded-[10px] border border-stroke bg-surface ${className}`}
+      className={`${aspectClass} relative w-full overflow-hidden rounded-[10px] bg-surface ${className}`}
       aria-label={`Image placeholder for ${label}`}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
@@ -63,7 +63,7 @@ export default function ImagePlaceholder({
           {label}
         </p>
         {foot ? (
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted/70">
+          <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-muted/70">
             {foot}
           </p>
         ) : null}

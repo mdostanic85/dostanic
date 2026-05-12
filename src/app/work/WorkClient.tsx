@@ -32,7 +32,7 @@ export default function WorkClient({ projects }: WorkClientProps) {
       <div
         role="tablist"
         aria-label="Filter projects by category"
-        className="mb-12 flex flex-wrap items-center gap-2 border-y border-stroke py-5 lg:mb-16"
+        className="mb-12 flex flex-wrap items-center gap-2 py-5 lg:mb-16"
       >
         <span className="mr-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
           Filter:

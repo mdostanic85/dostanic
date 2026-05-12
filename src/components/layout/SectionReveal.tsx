@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 
 type SectionRevealProps = {
   children: React.ReactNode
   /** Optional delay before the reveal animation starts, in milliseconds. */
   delayMs?: number
-  /** Threshold for the intersection observer. Defaults to 0.12. */
+  /** Used for the above-the-fold heuristic only (IntersectionObserver uses threshold 0). */
   threshold?: number
   /** Optional className passthrough — mainly so callers can adjust margins
    *  on the wrapper without needing an extra div. */
@@ -43,7 +43,7 @@ export default function SectionReveal({
   const [revealed, setRevealed] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (prefersReducedMotion) {
       setRevealed(true)
       return
@@ -70,7 +70,14 @@ export default function SectionReveal({
         setRevealed(true)
         observer.disconnect()
       },
-      { threshold }
+      {
+        /* `threshold: 0.12` alone missed short sections and some mobile
+         * layouts where the ratio stayed below 0.12 until late — content
+         * looked “stuck” blank. Any intersection + a generous rootMargin
+         * restores reliable reveals. */
+        threshold: 0,
+        rootMargin: '0px 0px 12% 0px',
+      }
     )
 
     observer.observe(node)

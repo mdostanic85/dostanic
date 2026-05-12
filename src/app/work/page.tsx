@@ -9,7 +9,7 @@ import { PROJECTS } from '@/lib/data'
 export const metadata: Metadata = {
   title: 'Work — Milos Dostanic',
   description:
-    'Selected product design work across enterprise SaaS, healthcare, analytics, fintech, and design systems.',
+    'Selected product design and systems work — enterprise SaaS, healthcare, analytics, fintech, and agency engagements — from a senior designer who ships.',
 }
 
 export default function WorkPage() {
@@ -30,9 +30,9 @@ export default function WorkPage() {
         }
         intro={
           <>
-            20+ years across product UX, design systems, analytics, healthcare, fintech,
-            and web. The selection below shows the kind of work I do and how I think —
-            edge cases included.
+            Twenty-plus years across product UX, design systems, analytics, healthcare,
+            fintech, and web. The selection below shows the kind of work I do and how I
+            think — edge cases included.
           </>
         }
         topRightLabel={`${total} cases`}
@@ -42,7 +42,7 @@ export default function WorkPage() {
         <Container size="wide">
           <WorkClient projects={PROJECTS} />
 
-          <p className="mt-20 max-w-2xl border-t border-stroke pt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+          <p className="mt-20 max-w-2xl pt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
             More projects available on request — including NDA-covered enterprise work
             and legacy projects not shown here.
           </p>

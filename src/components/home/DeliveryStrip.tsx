@@ -1,6 +1,7 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
+import { sectionEyebrowAccentClassName, sectionHeadingClassName } from '@/lib/headings'
 
 const STACK = [
   {
@@ -36,13 +37,13 @@ export default function DeliveryStrip() {
       <Container size="wide">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               Practice / Delivery stack
             </p>
-            <h2 className="display-tight mt-5 text-3xl font-semibold leading-[1.12] text-foreground sm:text-4xl lg:text-5xl">
+            <h2 className={sectionHeadingClassName}>
               Design is half the job.
               <br />
-              <span className="accent-gradient-text">Shipping is the rest.</span>
+              <span className="text-accent">Shipping is the rest.</span>
             </h2>
             <p className="mt-6 max-w-md text-base leading-[1.65] text-muted lg:text-lg">
               I am not a handoff-only designer. I work where product, systems, and
@@ -56,11 +57,11 @@ export default function DeliveryStrip() {
             </ArrowLink>
           </div>
 
-          <ul className="space-y-0 border-t border-stroke lg:col-span-6 lg:col-start-7">
+          <ul className="space-y-0 lg:col-span-6 lg:col-start-7">
             {STACK.map((row) => (
               <li
                 key={row.label}
-                className="grid grid-cols-1 gap-2 border-b border-stroke py-6 sm:grid-cols-[minmax(0,140px)_1fr] sm:gap-8 sm:py-7"
+                className="grid grid-cols-1 gap-2 py-6 sm:grid-cols-[minmax(0,140px)_1fr] sm:gap-8 sm:py-7"
               >
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground">
                   {row.label}

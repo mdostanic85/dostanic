@@ -1,6 +1,14 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import { DIFFERENTIATORS } from '@/lib/data'
+import {
+  sectionEyebrowAccentClassName,
+  sectionFeatureTitleClassName,
+  sectionHeadingClassName,
+  monoMarkAccentClassName,
+  monoKickerMutedClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 /**
  * "How I Work" / About Studio block, in the spirit of atomic.black's
@@ -13,15 +21,15 @@ export default function DifferentiatorSection() {
       <Container size="wide">
         <div className="mb-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               How I Work / About Studio
             </p>
-            <h2 className="display-tight text-5xl font-semibold text-foreground sm:text-6xl lg:text-7xl xl:text-[112px]">
+            <h2 className={sectionHeadingClassName}>
               Design that
               <br />
               survives the
               <br />
-              <span className="accent-gradient-text">handoff.</span>
+              <span className="text-accent">handoff.</span>
             </h2>
           </div>
           <div className="flex flex-col justify-end gap-6 lg:col-span-5">
@@ -30,13 +38,13 @@ export default function DifferentiatorSection() {
               equally comfortable in a Figma file and a GitHub PR. Most designers stop
               at handoff. The four principles below are why I don&apos;t.
             </p>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+            <p className={monoKickerMutedClassName}>
               EST. 2017 — Serbia · Remote
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-x-12 gap-y-12 border-t border-stroke pt-12 md:grid-cols-2 lg:gap-y-20 lg:pt-16">
+        <div className="grid grid-cols-1 gap-x-12 gap-y-12 pt-12 md:grid-cols-2 lg:gap-y-20 lg:pt-16">
           {DIFFERENTIATORS.map((item) => (
             <article
               key={item.number}
@@ -44,7 +52,7 @@ export default function DifferentiatorSection() {
             >
               {/* Number with growing accent rule */}
               <div className="mb-6 flex items-center gap-4">
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                <span className={monoMarkAccentClassName}>
                   / {item.number}
                 </span>
                 <span
@@ -52,10 +60,12 @@ export default function DifferentiatorSection() {
                   className="h-px flex-1 origin-left bg-stroke transition-transform duration-500 ease-out scale-x-100 group-hover:bg-accent"
                 />
               </div>
-              <h3 className="display-tight text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent sm:text-4xl lg:text-[40px]">
-                {item.title}
+              <h3 className={sectionFeatureTitleClassName}>
+                {titleWithAccentGradient(item.title, {
+                  leadClassName: 'transition-colors duration-300 group-hover:text-accent',
+                })}
               </h3>
-              <p className="mt-5 text-base leading-[1.7] text-muted lg:text-lg">
+              <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
                 {item.description}
               </p>
             </article>

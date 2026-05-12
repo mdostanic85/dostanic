@@ -1,6 +1,13 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import { EXPERTISE_TILES } from '@/lib/data'
+import {
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionTileTitleClassName,
+  monoIndexAccentExpertiseClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 /**
  * Atomic-style "What I Do" section:
@@ -17,13 +24,13 @@ export default function ExpertiseStrip() {
       <Container size="wide">
         <div className="mb-16 grid grid-cols-1 gap-10 sm:mb-20 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               What I Do / Types of Activities
             </p>
-            <h2 className="display-tight text-5xl font-semibold text-foreground sm:text-6xl lg:text-7xl">
+            <h2 className={sectionHeadingClassName}>
               Six disciplines.
               <br />
-              One delivery model.
+              <span className="text-accent block w-fit">One delivery model.</span>
             </h2>
           </div>
           <p className="text-base leading-[1.7] text-muted lg:col-span-6 lg:col-start-7 lg:text-lg">
@@ -34,11 +41,11 @@ export default function ExpertiseStrip() {
           </p>
         </div>
 
-        <ul className="border-t border-stroke">
+        <ul>
           {EXPERTISE_TILES.map((tile) => (
             <li
               key={tile.number}
-              className="group relative grid grid-cols-12 items-start gap-4 border-b border-stroke py-8 transition-colors duration-300 sm:py-10 lg:py-12"
+              className="group relative grid grid-cols-12 items-start gap-4 py-8 transition-colors duration-300 sm:py-10 lg:py-12"
             >
               {/* Hover sweep — accent fill from left */}
               <span
@@ -47,17 +54,19 @@ export default function ExpertiseStrip() {
               />
 
               {/* Number */}
-              <span className="col-span-2 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:col-span-1">
+              <span className={monoIndexAccentExpertiseClassName}>
                 {tile.number}
               </span>
 
               {/* Title + description */}
               <div className="col-span-10 sm:col-span-8 lg:col-span-7">
-                <h3 className="display-tight text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-6xl">
-                  {tile.title}
+                <h3 className={sectionTileTitleClassName}>
+                  {titleWithAccentGradient(tile.title, {
+                    leadClassName: 'transition-colors duration-300 group-hover:text-accent',
+                  })}
                 </h3>
                 <p
-                  className="mt-0 max-h-0 overflow-hidden text-base leading-[1.7] text-muted opacity-0 transition-all duration-500 ease-out group-hover:mt-5 group-hover:max-h-40 group-hover:opacity-100 lg:text-lg"
+                  className="mt-0 max-h-0 overflow-hidden text-base leading-[1.7] text-muted opacity-0 transition-all duration-500 ease-out group-hover:mt-6 group-hover:max-h-40 group-hover:opacity-100 lg:text-lg"
                 >
                   {tile.description}
                 </p>

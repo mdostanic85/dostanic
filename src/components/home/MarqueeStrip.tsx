@@ -1,4 +1,5 @@
 import Marquee from '@/components/ui/Marquee'
+import { marqueeItemClassName } from '@/lib/headings'
 
 /**
  * Tools & technologies I actually use day-to-day. Ordered by phase of work
@@ -40,7 +41,7 @@ const TOOLS = [
  */
 export default function MarqueeStrip() {
   return (
-    <div className="border-y border-stroke bg-surface/40">
+    <div className="bg-surface/40">
       <Marquee
         speed="medium"
         label="Tools and technologies — decorative banner"
@@ -49,7 +50,7 @@ export default function MarqueeStrip() {
         {TOOLS.map((tool, idx) => (
           <span
             key={`${tool}-${idx}`}
-            className="display-tight flex items-center gap-6 px-4 text-xl font-medium text-foreground sm:gap-8 sm:px-6 sm:text-2xl lg:text-3xl"
+            className={marqueeItemClassName}
           >
             {tool}
             <span

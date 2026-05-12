@@ -7,6 +7,18 @@ import PageHeader from '@/components/layout/PageHeader'
 import ArrowLink from '@/components/ui/ArrowLink'
 import CaseStudyMeta from '@/components/work/CaseStudyMeta'
 import FooterCTA from '@/components/home/FooterCTA'
+import { cn } from '@/lib/utils'
+import {
+  monoIndexAccentClassName,
+  monoIndexGridClassName,
+  navBackLinkClassName,
+  navRelatedLinkClassName,
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionLeadClassName,
+  sectionSubheadingClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
   title: 'SoundScope — Music Analytics Dashboard · Milos Dostanic',
@@ -56,11 +68,11 @@ export default function SoundScopeCaseStudy() {
   return (
     <main>
       {/* Back link band */}
-      <div className="border-b border-stroke pt-16">
+      <div className="pt-16">
         <Container size="wide">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+            className={navBackLinkClassName}
           >
             <span aria-hidden="true">←</span> Back to work
           </Link>
@@ -92,7 +104,7 @@ export default function SoundScopeCaseStudy() {
       <Section padding="sm">
         <Container size="wide">
           <CaseStudyMeta fields={META_FIELDS} className="mb-12" />
-          <div className="relative aspect-[16/9] overflow-hidden rounded-[10px] border border-stroke bg-surface">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-[10px] bg-surface">
             <Image
               src="/work/soundscope/cover.png"
               alt="SoundScope dashboard overview"
@@ -110,12 +122,12 @@ export default function SoundScopeCaseStudy() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Project context
               </p>
             </div>
             <div className="lg:col-span-8">
-              <p className="display-tight text-xl font-medium leading-[1.35] text-foreground sm:text-2xl lg:text-[27px]">
+              <p className={sectionLeadClassName}>
                 SoundScope was positioned as a decision layer for music teams overwhelmed
                 by fragmented reporting — slow decisions, low confidence in shared
                 metrics.
@@ -135,24 +147,24 @@ export default function SoundScopeCaseStudy() {
         <Container size="wide">
           <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 The challenge
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 What the
                 <br />
                 redesign had to
                 <br />
-                <span className="accent-gradient-text">solve.</span>
+                <span className="text-accent">solve.</span>
               </h2>
             </div>
             <ul className="lg:col-span-7 lg:col-start-6 lg:pt-2">
               {CHALLENGES.map((item, idx) => (
                 <li
                   key={item}
-                  className="flex items-start gap-5 border-b border-stroke py-5 first:border-t"
+                  className="flex items-start gap-5 py-5"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  <span className={monoIndexAccentClassName}>
                     /{String(idx + 1).padStart(2, '0')}
                   </span>
                   <span className="text-base leading-[1.65] text-muted lg:text-lg">
@@ -170,30 +182,30 @@ export default function SoundScopeCaseStudy() {
         <Container size="wide">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Decisions that mattered
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Three calls
                 <br />
                 that shaped
                 <br />
-                the system.
+                <span className="text-accent block w-fit">the system.</span>
               </h2>
             </div>
           </div>
 
-          <ul className="border-t border-stroke">
+          <ul>
             {DECISIONS.map((d, idx) => (
               <li
                 key={d.title}
-                className="group grid grid-cols-12 gap-4 border-b border-stroke py-10 lg:gap-12 lg:py-14"
+                className="group grid grid-cols-12 gap-4 py-10 lg:gap-12 lg:py-14"
               >
-                <span className="col-span-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:col-span-1">
+                <span className={monoIndexGridClassName}>
                   /{String(idx + 1).padStart(2, '0')}
                 </span>
-                <h3 className="display-tight col-span-10 text-xl font-semibold leading-tight text-foreground sm:col-span-5 sm:text-2xl lg:text-3xl">
-                  {d.title}
+                <h3 className={cn(sectionSubheadingClassName, 'col-span-10 sm:col-span-5')}>
+                  {titleWithAccentGradient(d.title)}
                 </h3>
                 <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
                   {d.body}
@@ -209,15 +221,15 @@ export default function SoundScopeCaseStudy() {
         <Container size="wide">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 Outcome
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Faster
                 <br />
                 decisions.
                 <br />
-                <span className="accent-gradient-text">Cleaner system.</span>
+                <span className="text-accent">Cleaner system.</span>
               </h2>
               <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
                 The redesigned SoundScope improved reporting clarity and shortened the
@@ -229,7 +241,7 @@ export default function SoundScopeCaseStudy() {
               {OUTCOMES.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-4 border-b border-stroke pb-5"
+                  className="flex items-start gap-4 pb-5"
                 >
                   <span className="mt-[6px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                   <p className="text-base leading-[1.6] text-foreground lg:text-lg">
@@ -248,7 +260,7 @@ export default function SoundScopeCaseStudy() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+              className={navRelatedLinkClassName}
             >
               <span aria-hidden="true">←</span> All work
             </Link>

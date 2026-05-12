@@ -5,6 +5,18 @@ import Section from '@/components/layout/Section'
 import PageHeader from '@/components/layout/PageHeader'
 import ArrowLink from '@/components/ui/ArrowLink'
 import FooterCTA from '@/components/home/FooterCTA'
+import { cn } from '@/lib/utils'
+import {
+  monoIndexAccentClassName,
+  monoIndexAccentPaddedClassName,
+  navBackLinkClassName,
+  navRelatedLinkClassName,
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionStatementClassName,
+  sectionSubheadingClassName,
+} from '@/lib/headings'
+import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
   title: 'AI-Connected Design System Workflow — Milos Dostanic',
@@ -68,11 +80,11 @@ const STEPS = [
 export default function AIWorkflowPage() {
   return (
     <main>
-      <div className="border-b border-stroke pt-16">
+      <div className="pt-16">
         <Container size="wide">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+            className={navBackLinkClassName}
           >
             <span aria-hidden="true">←</span> Back to work
           </Link>
@@ -105,15 +117,15 @@ export default function AIWorkflowPage() {
         <Container size="wide">
           <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 The problem
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Predictable
                 <br />
                 failure modes
                 <br />
-                <span className="accent-gradient-text">on every project.</span>
+                <span className="text-accent">on every project.</span>
               </h2>
               <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
                 AI does not fix these automatically. But used correctly, in the right
@@ -124,9 +136,9 @@ export default function AIWorkflowPage() {
               {PROBLEMS.map((item, idx) => (
                 <li
                   key={item}
-                  className="flex items-start gap-5 border-b border-stroke py-5 first:border-t"
+                  className="flex items-start gap-5 py-5"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  <span className={monoIndexAccentClassName}>
                     /{String(idx + 1).padStart(2, '0')}
                   </span>
                   <span className="text-base leading-[1.65] text-muted lg:text-lg">
@@ -144,33 +156,35 @@ export default function AIWorkflowPage() {
         <Container size="wide">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+              <p className={sectionEyebrowAccentClassName}>
                 The workflow
               </p>
-              <h2 className="display-tight text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className={sectionHeadingClassName}>
                 Six steps.
                 <br />
-                In order.
+                <span className="text-accent block w-fit">In order.</span>
               </h2>
             </div>
           </div>
 
-          <ul className="border-t border-stroke">
+          <ul>
             {STEPS.map((step) => (
               <li
                 key={step.number}
-                className="group relative grid grid-cols-12 gap-4 border-b border-stroke py-12 lg:gap-12 lg:py-16"
+                className="group relative grid grid-cols-12 gap-4 py-12 lg:gap-12 lg:py-16"
               >
                 <span
                   aria-hidden="true"
                   className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
                 />
-                <span className="col-span-2 pt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:col-span-1">
+                <span className={monoIndexAccentPaddedClassName}>
                   {step.number}
                 </span>
                 <div className="col-span-10 sm:col-span-5">
-                  <h3 className="display-tight text-xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl lg:text-3xl">
-                    {step.title}
+                  <h3 className={sectionSubheadingClassName}>
+                    {titleWithAccentGradient(step.title, {
+                      leadClassName: 'transition-colors duration-300 group-hover:text-accent',
+                    })}
                   </h3>
                 </div>
                 <div className="col-span-12 sm:col-span-6">
@@ -181,7 +195,7 @@ export default function AIWorkflowPage() {
                     {step.tools.map((t) => (
                       <span
                         key={t}
-                        className="inline-flex items-center rounded-full border border-stroke px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted"
+                        className="inline-flex items-center rounded-full bg-surface px-3 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-muted"
                       >
                         {t}
                       </span>
@@ -198,7 +212,7 @@ export default function AIWorkflowPage() {
       <Section padding="md" className="bg-surface/40">
         <Container size="wide">
           <blockquote className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <p className="display-tight lg:col-span-9 text-2xl font-medium leading-[1.2] text-foreground sm:text-3xl lg:text-4xl">
+            <p className={cn(sectionStatementClassName, 'lg:col-span-9')}>
               &ldquo;AI compresses the cost of exploration.{' '}
               <span className="text-accent">
                 Senior judgment is still the thing that determines what gets built.
@@ -217,7 +231,7 @@ export default function AIWorkflowPage() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
+              className={navRelatedLinkClassName}
             >
               <span aria-hidden="true">←</span> All work
             </Link>

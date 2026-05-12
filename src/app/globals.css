@@ -231,6 +231,11 @@ html[data-theme="light"] {
        the native CSS smooth-scroll on creates a double-easing where
        jump-to-anchor calls fight the Lenis interpolation. */
     -webkit-text-size-adjust: 100%;
+    /* Full-bleed stripes (`w-screen` / `100vw`) must not widen the document
+       past the layout viewport when a classic scrollbar is present — that
+       caused a horizontal rail and clipped edges on several breakpoints. */
+    overflow-x: hidden;
+    overflow-x: clip;
     /* Smooth theme transitions — skipped when prefers-reduced-motion is set (see below) */
     transition: background-color 200ms ease, color 200ms ease;
   }
@@ -394,6 +399,23 @@ html[data-theme="light"] {
     line-height: 1.075;
   }
 
+  /* Subpage masthead `h1` — line rhythm aligned with home Hero. Home hero uses
+     `.hero-title-tight` for the same `line-height` / `tracking` without inline
+     styles. Gradient phrase uses `.accent-gradient-text` + `block`/`w-fit`. */
+  .hero-title-tight {
+    line-height: 1.046;
+    letter-spacing: -0.042em;
+  }
+
+  .page-header-headline.display-tight {
+    letter-spacing: -0.042em;
+    line-height: 1.046;
+  }
+  .page-header-headline.display-tight .accent-gradient-text {
+    display: block;
+    width: fit-content;
+  }
+
   /* Accent gradient text — single headline palette site-wide: same three stops
      as WaveStripe (#1b67e8 → accent-hover cyan → #a78bf7). Hero, footer, case
      studies, and strips all use this class only — no alternate overrides. */
@@ -439,6 +461,16 @@ html[data-theme="light"] {
        trailing it visibly. */
   }
 
+  /* Light mode: cursor-follow wash is barely visible on pale backgrounds. */
+  html[data-theme="light"] .cursor-glow {
+    background-image: radial-gradient(
+      520px circle at var(--cursor-x, 50vw) var(--cursor-y, 50vh),
+      rgba(4, 7, 21, 0.028) 0%,
+      rgba(4, 7, 21, 0.01) 32%,
+      transparent 52%
+    );
+  }
+
   /* SectionReveal — the JS toggles `data-revealed="true"` on the wrapper
      when its IntersectionObserver fires. Until then, the wrapper holds
      the from-state inline (opacity:0, translated, blurred); on reveal,
@@ -453,6 +485,18 @@ html[data-theme="light"] {
   }
   .section-reveal-go {
     animation: section-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* No JavaScript: scroll reveals must not leave main content permanently
+     hidden (SSR still emitted the pre-reveal classes). */
+  @media (scripting: none) {
+    .section-reveal-pre,
+    .section-reveal-go {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      animation: none !important;
+    }
   }
 
   /* View Transitions API — drives the page-to-page animation. The

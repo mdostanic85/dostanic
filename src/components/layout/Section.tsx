@@ -4,7 +4,7 @@ type SectionProps = {
   children: React.ReactNode
   id?: string
   className?: string
-  padding?: 'sm' | 'md' | 'lg'
+  padding?: 'none' | 'sm' | 'md' | 'lg'
   as?: 'section' | 'div' | 'footer'
   /** Disable the scroll-triggered reveal animation for this Section.
    *  Useful for sections that already have their own entrance animation
@@ -17,6 +17,7 @@ type SectionProps = {
 }
 
 const paddingClasses = {
+  none: '',
   sm: 'py-16 lg:py-24',
   md: 'py-20 lg:py-[120px]',
   lg: 'py-24 lg:py-[140px]',

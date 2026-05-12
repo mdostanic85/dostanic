@@ -1,6 +1,6 @@
 import Button from '@/components/ui/Button'
-import ArrowLink from '@/components/ui/ArrowLink'
 import Container from '@/components/layout/Container'
+import { footerCtaHeadingClassName } from '@/lib/headings'
 
 /**
  * Closing CTA — atomic.black's "We are ready to discuss your project" wall.
@@ -27,7 +27,7 @@ export default function FooterCTA() {
             Contacts / Availability
           </p>
 
-          <h2 className="display-mega flex max-w-5xl flex-col gap-[0.02em] pb-[0.12em] text-[32px] font-bold leading-none tracking-[-0.045em] text-inverse-foreground sm:text-[clamp(44px,6.4vw,82px)]">
+          <h2 className={footerCtaHeadingClassName}>
             <span className="block leading-[0.88]">I&apos;m ready</span>
             <span className="block leading-[0.88]">to discuss</span>
             <span className="accent-gradient-text block w-fit leading-[0.88]">
@@ -40,22 +40,23 @@ export default function FooterCTA() {
             and stays close to implementation — let&apos;s talk.
           </p>
 
-          <div className="flex flex-col items-start gap-6 pt-4 sm:flex-row sm:items-center">
-            <Button variant="primary-inverse" href="/contact" className="text-[14px] leading-5">
-              Get in Touch
-            </Button>
-            <ArrowLink
+          <div className="flex flex-col items-start gap-3 pt-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] leading-[16.5px] text-inverse-muted">
+              Based in Serbia · working remote with teams worldwide
+            </p>
+            <Button
+              variant="primary-inverse"
               href="mailto:milos@dostanic.net"
-              className="text-[14px] leading-5 text-inverse-muted hover:text-inverse-foreground"
+              className="text-[14px] leading-5"
             >
-              milos@dostanic.net
-            </ArrowLink>
+              Send email
+            </Button>
           </div>
         </div>
 
         {/* Footer meta strip */}
-        <div className="border-t border-[var(--color-inverse-stroke)] py-8">
-          <div className="flex items-center justify-between">
+        <div className="py-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-mono text-[11px] uppercase leading-[16.5px] tracking-[0.2em] text-inverse-muted">
               © 2026 Milos Dostanic
             </p>

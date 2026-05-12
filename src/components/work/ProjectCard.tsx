@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 import type { Project } from '@/lib/types'
+import { sectionSubheadingClassName } from '@/lib/headings'
 
 type ProjectCardProps = {
   project: Project
@@ -60,7 +62,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Capability ribbon */}
           {project.isCapability ? (
-            <span className="absolute left-4 top-4 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-inverse-foreground">
+            <span className="absolute left-4 top-4 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-inverse-foreground">
               Capability
             </span>
           ) : null}
@@ -75,7 +77,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Caption */}
         <div className="mt-5 flex items-start justify-between gap-5">
           <div className="min-w-0">
-            <h3 className="display-tight text-xl font-semibold leading-tight text-foreground transition-colors duration-200 group-hover:text-accent sm:text-2xl">
+            <h3
+              className={cn(
+                sectionSubheadingClassName,
+                'transition-colors duration-200 group-hover:text-accent'
+              )}
+            >
               {project.title}
             </h3>
             <p className="mt-2 text-sm leading-[1.6] text-muted">

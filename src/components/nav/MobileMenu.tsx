@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS, isNavActive } from '@/lib/nav'
+import ThemeToggle from './ThemeToggle'
 
 type MobileMenuProps = {
   open: boolean
@@ -133,10 +134,11 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
         })}
       </nav>
 
-      <div className="px-5 sm:px-8 pb-10 pt-6">
+      <div className="flex flex-col gap-4 px-5 pb-10 pt-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <ThemeToggle />
         <a
           href="mailto:milos@dostanic.net"
-          className="text-sm text-muted hover:text-foreground transition-colors"
+          className="text-sm text-muted transition-colors hover:text-foreground"
         >
           milos@dostanic.net
         </a>

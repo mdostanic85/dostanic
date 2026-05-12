@@ -15,33 +15,43 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
  *  - When the pointer is idle, the packet drifts back to the strip
  *    centre after IDLE_RECENTER_MS so the wave sits still and reads
  *    as a calm horizontal line + bloom.
- *  - When the pointer moves, each path follows the cursor with its
- *    own per-path lerp factor — fast lerps catch up first (the
- *    "head" of the bundle), slower lerps trail behind (the "wake").
+ *  - When the pointer sits inside the SVG's screen rect, a smoothed
+ *    "hover" blend ramps up: faster phase travel, slightly higher
+ *    amplitudes, tighter ripples, and snappier packet lerps so the
+ *    bundle feels more alive without changing pointer-events on the
+ *    strip (hit-test uses the same bounding rect as cursor mapping).
  *
  * Implementation notes:
- *  - All animation is driven by direct DOM `setAttribute` inside a
+ *  - All motion is driven by direct DOM `setAttribute` inside a
  *    single `requestAnimationFrame` loop. Re-rendering React on every
- *    frame for ~6 path updates × 96 samples would be wasteful.
+ *    frame for ~6 path updates × many samples would be wasteful.
+ *    Each `<path>` still gets a static initial `d` (see INITIAL_PATH_DS)
+ *    so the first paint and SSR HTML show the full wave, not an empty
+ *    path that only fills in after `useEffect`.
  *  - The spine and paths use `vector-effect: non-scaling-stroke` so
  *    line weight stays constant regardless of how wide the SVG is
  *    rendered.
  *  - `prefers-reduced-motion` users get a single static frame at t=0
  *    with the packet pinned to the centre; no rAF loop runs and no
  *    pointer listener attaches.
+ *
+ * Full width: the root wrapper uses `w-screen` + `ml-[calc(50%-50vw)]`
+ * so the stripe spans the viewport even when nested inside a max-width
+ * container (e.g. home Hero).
  */
 
 const WIDTH = 1200
-const HEIGHT = 160
-const CENTER_Y = HEIGHT / 2
-const SAMPLES = 96
+const HEIGHT = 120
+const CENTER_Y = HEIGHT / 5
+// More points → smoother polylines (L segments) under preserveAspectRatio="none".
+const SAMPLES = 200
 const DEFAULT_PACKET_X = WIDTH / 2
 
 // Gaussian envelope width (sigma in viewBox units). ~190 keeps the
 // bloom slightly wider than 1/3 of the strip — wide enough that
 // near-edge cursor positions still produce a smooth taper to the
 // straight spine instead of a sharp cut-off.
-const ENVELOPE_SIGMA = 190
+const ENVELOPE_SIGMA = 240
 
 // After this much idle time, the packet target snaps back to the
 // strip's centre so the wave returns to its calm rest state.
@@ -76,7 +86,32 @@ const PATHS: WavePath[] = [
   { phase: 3.5, timeFreq: 1.45, spatialFreq: 0.0205, amp: 24, opacity: 0.65, lerp: 0.040 },
 ]
 
-function buildPathData(t: number, packetX: number, p: WavePath): string {
+// Spine sits at HEIGHT/5; sine peaks extend above it into negative y. Expand
+// the viewBox upward so those arcs are not clipped to a flat edge at y=0.
+const MAX_PATH_AMP = Math.max(...PATHS.map((p) => p.amp))
+const VIEW_TOP_PAD = Math.max(
+  8,
+  Math.ceil(MAX_PATH_AMP * (1 + 0.4) - CENTER_Y + 6)
+)
+
+type WaveDrawOpts = {
+  /** Multiplier on temporal frequency — >1 speeds phase travel. */
+  timeScale?: number
+  /** Multiplier on peak amplitude. */
+  ampScale?: number
+  /** Multiplier on spatial frequency — >1 tightens ripples along x. */
+  spatialScale?: number
+}
+
+function buildPathData(
+  t: number,
+  packetX: number,
+  p: WavePath,
+  opts?: WaveDrawOpts
+): string {
+  const timeScale = opts?.timeScale ?? 1
+  const ampScale = opts?.ampScale ?? 1
+  const spatialScale = opts?.spatialScale ?? 1
   let d = ''
   for (let i = 0; i <= SAMPLES; i++) {
     const x = (i / SAMPLES) * WIDTH
@@ -87,12 +122,23 @@ function buildPathData(t: number, packetX: number, p: WavePath): string {
     const y =
       CENTER_Y +
       p.amp *
+        ampScale *
         envelope *
-        Math.sin(p.phase + t * p.timeFreq + x * p.spatialFreq)
-    d += (i === 0 ? 'M' : ' L') + ' ' + x.toFixed(2) + ' ' + y.toFixed(2)
+        Math.sin(
+          p.phase +
+            t * p.timeFreq * timeScale +
+            x * p.spatialFreq * spatialScale
+        )
+    d += (i === 0 ? 'M' : ' L') + ' ' + x.toFixed(3) + ' ' + y.toFixed(3)
   }
   return d
 }
+
+/** First-frame path data — matches `useEffect`’s initial `setAttribute` so
+ *  the stripe looks correct on SSR and before the rAF loop mounts. */
+const INITIAL_PATH_DS = PATHS.map((p) =>
+  buildPathData(0, DEFAULT_PACKET_X, p)
+)
 
 export default function WaveStripe() {
   const svgRef = useRef<SVGSVGElement | null>(null)
@@ -107,14 +153,24 @@ export default function WaveStripe() {
       if (el) el.setAttribute('d', buildPathData(0, DEFAULT_PACKET_X, p))
     })
 
+    // 0 = calm, 1 = pointer inside stripe rect — smoothed each frame so
+    // hover ramps feel organic rather than binary.
+    let hoverTarget = 0
+    let hoverBlend = 0
+
     if (prefersReducedMotion) return
 
     // Per-path smoothed packet-X — each path lags behind the target by
     // its own lerp factor, producing a fanned-out wake when the
     // cursor sweeps across the strip.
     const perPathPacketX = PATHS.map(() => DEFAULT_PACKET_X)
+    /** Raw goal from pointer / idle; smoothed into `targetPacketX` each frame. */
+    let goalPacketX = DEFAULT_PACKET_X
     let targetPacketX = DEFAULT_PACKET_X
     let lastMoveAt = 0
+
+    /** Low-pass pointer X so fast moves don’t yank the envelope (reduces jerk). */
+    const GOAL_X_SMOOTH = 0.22
 
     const onPointerMove = (event: PointerEvent) => {
       const svg = svgRef.current
@@ -124,12 +180,22 @@ export default function WaveStripe() {
       // fraction sticks to the nearer edge so the packet drifts to
       // that side instead of jumping back to the centre.
       const rect = svg.getBoundingClientRect()
+      const w = rect.width || 1
       const fraction = Math.max(
         0,
-        Math.min(1, (event.clientX - rect.left) / rect.width)
+        Math.min(1, (event.clientX - rect.left) / w)
       )
-      targetPacketX = fraction * WIDTH
+      goalPacketX = fraction * WIDTH
       lastMoveAt = performance.now()
+
+      // Slightly padded vertical hit band so tiny Y noise doesn’t flip hover.
+      const padY = 6
+      const overStripe =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top - padY &&
+        event.clientY <= rect.bottom + padY
+      hoverTarget = overStripe ? 1 : 0
     }
 
     window.addEventListener('pointermove', onPointerMove, { passive: true })
@@ -142,15 +208,35 @@ export default function WaveStripe() {
 
       // Idle return-to-centre so the wave reads as calm at rest.
       if (now - lastMoveAt > IDLE_RECENTER_MS) {
-        targetPacketX = DEFAULT_PACKET_X
+        goalPacketX = DEFAULT_PACKET_X
+      }
+
+      targetPacketX += (goalPacketX - targetPacketX) * GOAL_X_SMOOTH
+
+      // Slower hover ramp avoids shimmer when spatial/time scales were tied to it.
+      hoverBlend += (hoverTarget - hoverBlend) * 0.065
+
+      const timeScale = 1 + hoverBlend * 0.22
+      const ampScale = 1 + hoverBlend * 0.52
+      // Changing spatial freq on hover shears the wave and reads as “broken”.
+      const spatialScale = 1
+      const lerpBoost = 1 + hoverBlend * 0.18
+
+      const drawOpts: WaveDrawOpts = {
+        timeScale,
+        ampScale,
+        spatialScale,
       }
 
       for (let i = 0; i < PATHS.length; i++) {
-        perPathPacketX[i] +=
-          (targetPacketX - perPathPacketX[i]) * PATHS[i].lerp
+        const lerp = Math.min(0.28, PATHS[i].lerp * lerpBoost)
+        perPathPacketX[i] += (targetPacketX - perPathPacketX[i]) * lerp
         const el = pathRefs.current[i]
         if (el)
-          el.setAttribute('d', buildPathData(t, perPathPacketX[i], PATHS[i]))
+          el.setAttribute(
+            'd',
+            buildPathData(t, perPathPacketX[i], PATHS[i], drawOpts)
+          )
       }
       raf = requestAnimationFrame(tick)
     }
@@ -165,13 +251,13 @@ export default function WaveStripe() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none relative w-full select-none"
+      className="pointer-events-none relative w-screen max-w-[100vw] select-none ml-[calc(50%-50vw)]"
     >
       <svg
         ref={svgRef}
-        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        viewBox={`0 ${-VIEW_TOP_PAD} ${WIDTH} ${HEIGHT + VIEW_TOP_PAD}`}
         preserveAspectRatio="none"
-        className="block h-[110px] w-full sm:h-[140px] lg:h-[160px]"
+        className="block h-[99px] w-full sm:h-[126px] lg:h-[144px]"
       >
         <defs>
           <linearGradient
@@ -202,6 +288,7 @@ export default function WaveStripe() {
         {PATHS.map((p, i) => (
           <path
             key={i}
+            d={INITIAL_PATH_DS[i]}
             ref={(el) => {
               pathRefs.current[i] = el
             }}
@@ -210,6 +297,8 @@ export default function WaveStripe() {
             strokeOpacity={p.opacity}
             strokeWidth="1.5"
             strokeLinecap="round"
+            strokeLinejoin="round"
+            shapeRendering="geometricPrecision"
             vectorEffect="non-scaling-stroke"
           />
         ))}

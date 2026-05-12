@@ -3,6 +3,11 @@ import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
 import Marquee from '@/components/ui/Marquee'
 import { TOOLS } from '@/lib/data'
+import {
+  sectionEyebrowAccentClassName,
+  sectionHeadingClassName,
+  sectionBlockquoteClassName,
+} from '@/lib/headings'
 
 /**
  * Toolchain — re-built as a two-part band:
@@ -17,19 +22,19 @@ export default function ToolchainSection() {
       <Container size="wide">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className={sectionEyebrowAccentClassName}>
               Built With / The Stack
             </p>
-            <h2 className="display-tight text-5xl font-semibold text-foreground sm:text-6xl lg:text-7xl">
+            <h2 className={sectionHeadingClassName}>
               The full
               <br />
-              stack.
+              <span className="text-accent block w-fit">stack.</span>
             </h2>
           </div>
 
           <div className="flex flex-col justify-center gap-8 lg:col-span-7">
             <blockquote className="border-l-2 border-accent pl-6">
-              <p className="display-tight text-2xl font-medium italic leading-[1.3] text-foreground sm:text-3xl lg:text-4xl">
+              <p className={sectionBlockquoteClassName}>
                 &ldquo;A design system only works if engineers ship from it and
                 designers maintain it. Everything else is a Figma file.&rdquo;
               </p>
@@ -48,7 +53,7 @@ export default function ToolchainSection() {
       </Container>
 
       {/* Tool marquee — full-bleed band below */}
-      <div className="mt-20 border-y border-stroke lg:mt-28">
+      <div className="mt-20 lg:mt-28">
         <Marquee
           speed="slow"
           reverse

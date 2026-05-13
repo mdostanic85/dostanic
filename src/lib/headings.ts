@@ -28,11 +28,11 @@ export const sectionEyebrowToTitleSpacingClassName = 'mb-5'
 
 /** `h2` — primary section title (home strips + inner pages). */
 export const sectionHeadingClassName =
-  'display-tight text-3xl font-semibold leading-[1.12] text-foreground sm:text-4xl lg:text-5xl'
+  'display-tight text-3xl font-semibold leading-[1.06] text-foreground sm:text-4xl sm:leading-[1.04] lg:text-5xl lg:leading-[1.02]'
 
 /** `h1` — subpage masthead (with `.page-header-headline` rules in globals). */
 export const pageHeadingClassName =
-  'page-header-headline display-tight text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl xl:text-[70px]'
+  'page-header-headline display-tight text-4xl font-extrabold leading-[0.92] text-foreground sm:text-5xl sm:leading-[0.86] lg:text-[80px] lg:leading-[80px] xl:text-[80px] xl:leading-[80px]'
 
 /** Inline mono accent mark (`/ 01`, PageHeader kicker). */
 export const monoMarkAccentClassName =
@@ -51,11 +51,11 @@ export const pageIntroClassName =
 
 /** `h1` — home hero stack (pair with `.hero-title-tight` in globals for rhythm). */
 export const heroHeadingClassName =
-  'display-tight flex max-w-[1240px] flex-col gap-0 text-[40px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(47px,6.84vw,92px)]'
+  'display-tight flex max-w-[1240px] flex-col gap-0 text-[44px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(52px,7.6vw,102px)]'
 
 /** Hero supporting paragraph under `h1`. */
 export const heroIntroClassName =
-  'mt-5 max-w-[838px] text-balance text-[13px] font-normal leading-[1.55] tracking-[-0.01em] text-muted animate-fade-in-up sm:mt-6 sm:text-[14px] lg:text-[16px] lg:leading-[1.6]'
+  'mt-5 max-w-[838px] text-balance text-[13px] font-normal leading-[1.55] tracking-[-0.01em] text-muted animate-fade-in-up sm:mt-6 sm:text-[14px] lg:text-[18px] lg:leading-[1.6]'
 
 /** `h2` — closing CTA masthead on inverse background. */
 export const footerCtaHeadingClassName =
@@ -65,9 +65,9 @@ export const footerCtaHeadingClassName =
 export const sectionLeadClassName =
   'display-tight text-xl font-medium leading-[1.35] text-foreground sm:text-2xl lg:text-[27px]'
 
-/** `h3` — case study steps, decisions, project / work cards. */
+/** `h3` — case study steps, decisions, project / work cards (flat 24px ramp). */
 export const sectionSubheadingClassName =
-  'display-tight text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl'
+  'display-tight text-2xl font-semibold leading-tight text-foreground'
 
 /** `h3` — principle rows on About (grid column span on the heading). */
 export const sectionPrincipleTitleClassName =

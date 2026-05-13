@@ -61,7 +61,7 @@ export default function AboutPage() {
             <br />
             Still getting closer to the
             <br />
-            <span className="accent-gradient-text">hard problems.</span>
+            <span className="accent-gradient-text leading-[0.88]">hard problems.</span>
           </>
         }
         intro={
@@ -121,7 +121,7 @@ export default function AboutPage() {
       {/* ── How I think ───────────────────────────────────────────────── */}
       <Section padding="lg">
         <Container size="wide">
-          <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:mb-20">
+          <div className="mb-12 grid grid-cols-1 gap-10 lg:mb-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
               <p className={sectionEyebrowAccentClassName}>
                 How I think
@@ -143,7 +143,7 @@ export default function AboutPage() {
             {PRINCIPLES.map((p) => (
               <li
                 key={p.number}
-                className="group relative grid grid-cols-12 items-start gap-4 py-10 lg:py-14"
+                className="group relative grid grid-cols-12 items-start gap-x-4 gap-y-2 py-6 sm:gap-y-2 lg:py-8"
               >
                 <span
                   aria-hidden="true"
@@ -180,17 +180,22 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-base leading-[1.7] text-muted lg:text-lg">
-                Senior product designer operating at implementation depth — IA, dense
-                SaaS and internal tools, design systems, and handoff that survives contact
-                with real engineering schedules. The rows below are the organisations and
-                products where that responsibility sat; titles, timelines, and
-                client-specific depth that cannot sit on a public site live on LinkedIn.
+                Employers and studios below are listed with the dates I was there and what
+                I actually owned in role — from current embedded studio work back through
+                agency and earlier graphic craft. Deeper product write-ups live on{' '}
+                <ArrowLink
+                  href="/work"
+                  className="inline-flex text-foreground hover:text-accent"
+                >
+                  Work
+                </ArrowLink>
+                ; the authoritative timeline and recommendations stay on LinkedIn.
               </p>
               <ArrowLink
                 href={LINKEDIN_PROFILE_URL}
                 className="mt-6 inline-flex text-foreground hover:text-accent"
               >
-                Full professional record on LinkedIn
+                Full experience on LinkedIn
               </ArrowLink>
             </div>
           </div>
@@ -217,36 +222,38 @@ export default function AboutPage() {
             ))}
           </ul>
 
-          <div className="mt-16 border-t border-stroke pt-14 lg:mt-20 lg:pt-16">
-            <p className={sectionEyebrowAccentClassName}>Studios & full-time roles</p>
-            <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">
-              The longer-running studio chapter before embedded agency and direct product
-              work at the scale above.
-            </p>
-            <ul className="mt-10 divide-y divide-stroke">
-              {STUDIO_EMPLOYMENT.map((e) => (
-                <li
-                  key={`${e.role}-${e.company}-${e.period}`}
-                  className="grid grid-cols-1 gap-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
-                >
-                  <div className="lg:col-span-3">
-                    <p className={monoMetaMutedClassName}>{e.period}</p>
-                  </div>
-                  <div className="lg:col-span-9">
-                    <h3 className={sectionSubheadingClassName}>
-                      {titleWithAccentGradient(e.role)}
-                    </h3>
-                    <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
-                      {e.company}
-                    </p>
-                    <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
-                      {e.note}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {STUDIO_EMPLOYMENT.length > 0 ? (
+            <div className="mt-16 border-t border-stroke pt-14 lg:mt-20 lg:pt-16">
+              <p className={sectionEyebrowAccentClassName}>Studios & full-time roles</p>
+              <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">
+                The longer-running studio chapter before embedded agency and direct product
+                work at the scale above.
+              </p>
+              <ul className="mt-10 divide-y divide-stroke">
+                {STUDIO_EMPLOYMENT.map((e) => (
+                  <li
+                    key={`${e.role}-${e.company}-${e.period}`}
+                    className="grid grid-cols-1 gap-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
+                  >
+                    <div className="lg:col-span-3">
+                      <p className={monoMetaMutedClassName}>{e.period}</p>
+                    </div>
+                    <div className="lg:col-span-9">
+                      <h3 className={sectionSubheadingClassName}>
+                        {titleWithAccentGradient(e.role)}
+                      </h3>
+                      <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
+                        {e.company}
+                      </p>
+                      <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
+                        {e.note}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </Container>
       </Section>
 

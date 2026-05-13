@@ -23,9 +23,8 @@ export default function WorkPage() {
           <>
             The work,
             <br />
-            not the
-            <br />
-            <span className="accent-gradient-text">pitch.</span>
+            not the{' '}
+            <span className="accent-gradient-text leading-[0.88]">pitch.</span>
           </>
         }
         intro={

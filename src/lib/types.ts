@@ -42,3 +42,11 @@ export type WorkEngagement = {
   role: string
   summary: string
 }
+
+/** Optional archive block on About (e.g. additional studio rows). */
+export type StudioEmployment = {
+  role: string
+  company: string
+  period: string
+  note: string
+}

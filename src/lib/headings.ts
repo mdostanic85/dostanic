@@ -51,11 +51,11 @@ export const pageIntroClassName =
 
 /** `h1` — home hero stack (pair with `.hero-title-tight` in globals for rhythm). */
 export const heroHeadingClassName =
-  'display-tight flex max-w-[1240px] flex-col gap-0 text-[40px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(47px,6.84vw,92px)]'
+  'display-tight flex max-w-[1240px] flex-col gap-0 text-[44px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(52px,7.6vw,102px)]'
 
 /** Hero supporting paragraph under `h1`. */
 export const heroIntroClassName =
-  'mt-5 max-w-[838px] text-balance text-[13px] font-normal leading-[1.55] tracking-[-0.01em] text-muted animate-fade-in-up sm:mt-6 sm:text-[14px] lg:text-[16px] lg:leading-[1.6]'
+  'mt-5 max-w-[838px] text-balance text-[13px] font-normal leading-[1.55] tracking-[-0.01em] text-muted animate-fade-in-up sm:mt-6 sm:text-[14px] lg:text-[18px] lg:leading-[1.6]'
 
 /** `h2` — closing CTA masthead on inverse background. */
 export const footerCtaHeadingClassName =

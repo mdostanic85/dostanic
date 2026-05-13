@@ -12,10 +12,10 @@ export default function Hero() {
   return (
     <section
       aria-label="Introduction"
-      className="grain relative overflow-x-hidden pt-16"
+      className="grain relative h-[1000px] overflow-x-hidden pt-[120px]"
     >
-      <Container size="wide">
-        <div className="py-8 sm:py-10 lg:py-12">
+      <Container size="wide" className="max-w-[1399px]">
+        <div className="py-20">
           <h1
             className={cn(heroHeadingClassName, 'hero-title-tight')}
             style={{
@@ -49,7 +49,7 @@ export default function Hero() {
           </div>
 
           <div
-            className="mt-6 animate-fade-in-up sm:mt-7 lg:mt-8"
+            className="mt-[104px] animate-fade-in-up sm:mt-[108px] lg:mt-28"
             style={{ animationDelay: '560ms' }}
           >
             <WaveStripe />

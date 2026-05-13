@@ -456,7 +456,7 @@ html[data-theme="light"] {
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    animation: accent-gradient-flow 6s ease-in-out infinite alternate;
+    animation: accent-gradient-flow 1.5s ease-in-out infinite alternate;
     /* Room for descenders — background-clip:text can clip g/j/p/q/y without padding. */
     padding-bottom: 0.14em;
   }

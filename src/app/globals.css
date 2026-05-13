@@ -68,6 +68,18 @@
   }
 }
 
+/* Gradient text — background-position pan (cf. “shifting gradient fill” /
+   CSS gradient text motion). Paired with oversized `background-size` on
+   `.accent-gradient-text`. */
+@keyframes accent-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 /* atomic.black-inspired motion primitives */
 @keyframes marquee {
   0%   { transform: translate3d(0, 0, 0); }
@@ -401,35 +413,50 @@ html[data-theme="light"] {
 
   /* Subpage masthead `h1` — line rhythm aligned with home Hero. Home hero uses
      `.hero-title-tight` for the same `line-height` / `tracking` without inline
-     styles. Gradient phrase uses `.accent-gradient-text` + `block`/`w-fit`. */
+     styles. Gradient phrase uses `.accent-gradient-text` + `w-fit` (often
+     `inline-block` under the masthead so run-in words stay on one line). */
   .hero-title-tight {
-    line-height: 1.046;
+    line-height: 0.98;
     letter-spacing: -0.042em;
   }
 
   .page-header-headline.display-tight {
     letter-spacing: -0.042em;
-    line-height: 1.046;
-  }
-  .page-header-headline.display-tight .accent-gradient-text {
-    display: block;
-    width: fit-content;
   }
 
-  /* Accent gradient text — single headline palette site-wide: same three stops
-     as WaveStripe (#1b67e8 → accent-hover cyan → #a78bf7). Hero, footer, case
-     studies, and strips all use this class only — no alternate overrides. */
+  /* Masthead uses `lg:text-[80px]`; `.display-tight` sets line-height 1.15 and
+     wins over single-class Tailwind utilities in this stylesheet, which computed
+     to ~92px. Lock display line-height to match the previewed rhythm. */
+  @media (min-width: 1024px) {
+    .page-header-headline.display-tight {
+      line-height: 80px;
+    }
+  }
+  .page-header-headline.display-tight .accent-gradient-text {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* Accent gradient text — single headline palette site-wide. Hero, footer, case
+     studies, and strips all use this class only — no alternate overrides.
+     Motion: wide background + horizontal pan (ease-in-out alternate), same
+     family as common “animated gradient text” / shimmer-fill examples. */
   .accent-gradient-text {
     background-image: linear-gradient(
       90deg,
-      #1b67e8 0%,
-      var(--color-accent-hover) 50%,
-      #a78bf7 100%
+      rgba(10, 100, 255, 1) 0%,
+      rgba(9, 215, 212, 1) 50%,
+      rgba(158, 122, 255, 1) 100%
     );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    animation: accent-gradient-flow 6s ease-in-out infinite alternate;
     /* Room for descenders — background-clip:text can clip g/j/p/q/y without padding. */
     padding-bottom: 0.14em;
   }
@@ -559,6 +586,11 @@ html[data-theme="light"] {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+  .accent-gradient-text {
+    animation: none !important;
+    background-size: 100% 100% !important;
+    background-position: 0% 50% !important;
   }
   /* Hide the rings entirely when motion is reduced — they would otherwise
      remain visible at their starting scale, which looks like a stray border. */

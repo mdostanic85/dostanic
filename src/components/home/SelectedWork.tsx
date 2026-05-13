@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
 import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/lib/data'
+import { getProjectCoverPlaceholderBackground } from '@/lib/projectCoverPlaceholder'
 import {
   sectionEyebrowAccentClassName,
   sectionHeadingClassName,
@@ -14,21 +13,16 @@ import {
 /**
  * "Best Cases" section in the spirit of atomic.black:
  *  - Big editorial section header on the left, view-all link on the right.
- *  - Two-column staggered grid of image-driven project tiles. The left column
- *    is offset down to mimic atomic's asymmetric "Top Phone / Back Phone"
- *    layout. On mobile, the offset collapses to a single stack.
- *  - Each tile shows a numeric mark, a year, the cover image, the tags and
- *    title, and an arrow link affordance.
- *  - On hover: the cover image scales up slightly, the title shifts to the
- *    accent color, and a thin accent line slides across the bottom of the
- *    image. Falls back gracefully without JS / on reduced-motion.
+ *  - Two-column staggered grid of project tiles. The left column is offset down
+ *    to mimic atomic's asymmetric layout. On mobile, the offset collapses to a
+ *    single stack.
+ *  - Each tile shows a numeric mark, a year, a colour placeholder cover, tags and
+ *    title, and an arrow affordance (display-only — no case-study link).
+ *  - On hover: the cover scales up slightly, the title shifts to the accent
+ *    colour, and a thin accent line slides across the bottom of the cover.
  */
 export default function SelectedWork() {
-  const featured = PROJECTS.filter((p) => p.featured && p.coverImage).slice(0, 4)
-  // If we only have 3 image-backed cases, pad with the highest-priority no-image
-  // featured ones so the grid still feels full.
-  const fallback = PROJECTS.filter((p) => p.featured && !p.coverImage)
-  const cases = (featured.length >= 4 ? featured : [...featured, ...fallback]).slice(0, 4)
+  const cases = PROJECTS.filter((p) => p.featured).slice(0, 4)
 
   return (
     <Section id="work" padding="lg">
@@ -63,10 +57,7 @@ export default function SelectedWork() {
                   isOffset ? 'sm:translate-y-20 lg:translate-y-28' : '',
                 ].join(' ')}
               >
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="block focus-visible:outline-none"
-                >
+                <div className="block cursor-default">
                   {/* Top mark row */}
                   <div className="mb-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
                     <span>
@@ -81,24 +72,18 @@ export default function SelectedWork() {
 
                   {/* Image block */}
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground">
-                    {project.coverImage ? (
-                      <Image
-                        src={project.coverImage}
-                        alt={`${project.title} cover`}
-                        fill
-                        sizes="(min-width: 1024px) 44vw, (min-width: 640px) 48vw, 100vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                      />
-                    ) : (
-                      <div
-                        aria-hidden="true"
-                        className="flex h-full w-full items-center justify-center text-foreground/40"
-                      >
-                        <span className="font-mono text-xs uppercase tracking-[0.2em]">
-                          Case Study
-                        </span>
-                      </div>
-                    )}
+                    <div
+                      aria-hidden="true"
+                      className="flex h-full w-full items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      style={{
+                        backgroundColor:
+                          getProjectCoverPlaceholderBackground(project.slug),
+                      }}
+                    >
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/75">
+                        {project.isCapability ? 'Capability' : 'Case study'}
+                      </span>
+                    </div>
                     {/* Accent line slide-in */}
                     <span
                       aria-hidden="true"
@@ -128,7 +113,7 @@ export default function SelectedWork() {
                       →
                     </span>
                   </div>
-                </Link>
+                </div>
               </article>
             )
           })}

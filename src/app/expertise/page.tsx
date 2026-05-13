@@ -122,7 +122,7 @@ export default function ExpertisePage() {
             <br />
             And when it
             <br />
-            <span className="accent-gradient-text">matters.</span>
+            <span className="accent-gradient-text leading-[0.88]">matters.</span>
           </>
         }
         intro={

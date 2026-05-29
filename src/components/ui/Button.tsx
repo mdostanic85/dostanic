@@ -1,12 +1,12 @@
 import * as React from 'react'
 import Link from 'next/link'
-import { Slot } from 'radix-ui'
+import * as SlotPrimitive from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
 
 /**
- * shadcn-style Button — architecture (cva + Slot + asChild), variants driven
+ * shadcn-style Button — architecture (cva + Radix Slot + asChild), variants driven
  * by the project's existing color tokens (`--color-foreground`,
  * `--color-inverse-foreground`, `--color-stroke`, `--color-accent`). Public
  * API stays backward-compatible with the prior `<Button variant href external>`
@@ -69,13 +69,13 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
 
   if (asChild) {
     return (
-      <Slot.Root
+      <SlotPrimitive.Root
         ref={ref as React.Ref<HTMLElement>}
         className={classes}
         {...(props as Record<string, unknown>)}
       >
         {children}
-      </Slot.Root>
+      </SlotPrimitive.Root>
     )
   }
 

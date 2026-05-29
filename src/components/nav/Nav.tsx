@@ -18,6 +18,11 @@ export default function Nav() {
     setMenuOpen(false)
   }, [pathname])
 
+  /* Site chrome covers embedded Sanity Studio (fixed full-viewport UI). */
+  if (pathname?.startsWith('/studio')) {
+    return null
+  }
+
   return (
     <>
       <header

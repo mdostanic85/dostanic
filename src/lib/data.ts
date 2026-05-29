@@ -18,6 +18,7 @@ export const PROJECTS: Project[] = [
     year: '2023',
     featured: true,
     category: 'Product Design',
+    coverImage: '/work/devrev/cover.png',
   },
   {
     title: 'OriginChains — Climate Company Discovery',
@@ -29,6 +30,7 @@ export const PROJECTS: Project[] = [
     year: '2025',
     featured: true,
     category: 'Product Design',
+    coverImage: '/work/originchains/cover.png',
   },
   {
     title: 'Spotify — Admin Enterprise Panel',
@@ -40,6 +42,7 @@ export const PROJECTS: Project[] = [
     year: '2022',
     featured: true,
     category: 'Product Design',
+    coverImage: '/work/spotify-admin-enterprise/cover.png',
   },
 
   // ─── Analytics & Data Dashboards ─────────────────────────────────────────
@@ -53,6 +56,7 @@ export const PROJECTS: Project[] = [
     year: '2025',
     featured: true,
     category: 'Analytics',
+    coverImage: '/work/soundscope/cover.png',
     behanceUrl: 'https://www.behance.net/gallery/235878795/SoundScope-Music-Analytics-Dashboard-Redesign',
   },
   {
@@ -79,6 +83,7 @@ export const PROJECTS: Project[] = [
     year: '2024',
     featured: true,
     category: 'Healthcare',
+    coverImage: '/work/healthcare-crm/cover.jpg',
   },
   {
     title: 'Galaxy Cash — Fintech Mobile App',

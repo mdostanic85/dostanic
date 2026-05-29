@@ -1,275 +1,131 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
-import ArrowLink from '@/components/ui/ArrowLink'
-import CaseStudyMeta from '@/components/work/CaseStudyMeta'
-import ImagePlaceholder from '@/components/work/ImagePlaceholder'
-import FooterCTA from '@/components/home/FooterCTA'
-import { cn } from '@/lib/utils'
-import {
-  monoIndexAccentClassName,
-  monoIndexGridClassName,
-  navBackLinkClassName,
-  navRelatedLinkClassName,
-  sectionEyebrowAccentClassName,
-  sectionHeadingClassName,
-  sectionLeadClassName,
-  sectionSubheadingClassName,
-} from '@/lib/headings'
+import CaseStudyContext from '@/components/work/case-study/CaseStudyContext'
+import ProblemSolution from '@/components/work/case-study/ProblemSolution'
+import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
+import CaseStudySystemNote from '@/components/work/case-study/CaseStudySystemNote'
+import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
+import CaseStudyShell, {
+  CaseStudyOutcome,
+  CaseStudySection,
+} from '@/components/work/case-study/CaseStudyShell'
+import { sectionEyebrowAccentClassName } from '@/lib/headings'
 import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
   title: 'Optronic — Website Redesign · Milos Dostanic',
   description:
-    'Full website redesign and rebuild for Optronic — multilingual EN/DE structure, 9 product pages, SEO content architecture, and Vercel-based delivery.',
+    'Optronic website redesign — multilingual IA, product discovery, design-to-build delivery on Next.js and Vercel.',
 }
 
-const META_FIELDS = [
+const nav = getCaseStudyNav('optronic')
+
+const META = [
   { label: 'Client', value: 'Optronic' },
   { label: 'Year', value: '2024' },
-  { label: 'Role', value: 'Design + Build' },
+  { label: 'Role', value: 'Design + build' },
   { label: 'Domain', value: 'Industrial / Web' },
-  { label: 'Tools', value: 'Figma · Next.js · Vercel' },
-  { label: 'Deliverable', value: 'Full redesign + build' },
-]
-
-const CHALLENGES = [
-  'A coherent EN/DE multilingual architecture with consistent navigation and SEO structure',
-  '9 product categories needing dedicated pages with appropriate technical depth',
-  'Hosted manuals and firmware previously scattered across third-party links',
-  'A scalable content model the client team could maintain without a developer',
-  'A live preview workflow allowing real-time review and annotation rather than static PDFs',
-]
-
-const DECISIONS = [
-  {
-    title: 'Multilingual-first navigation',
-    body: 'Designed from scratch with EN/DE parity as a constraint — consistent URL patterns, per-language meta, and a language toggle that does not disrupt the user\'s product context.',
-  },
-  {
-    title: 'Product discovery, not just listing',
-    body: 'IA structured for both users who know the product they want and users finding the right product by application — measurement type, precision range, or use case.',
-  },
-  {
-    title: 'Hosted downloads as a first-class feature',
-    body: 'Manuals and firmware brought into the product page structure directly — findable in context, versioned, consistently formatted.',
-  },
-  {
-    title: 'SEO-friendly content structure',
-    body: 'Each product page designed with proper heading hierarchy and structured metadata — supporting product-specific search intent, not generic brand SEO.',
-  },
-]
-
-const OUTCOMES = [
-  'Shipped to production with full EN/DE structure and all 9 product pages',
-  'Content-managed structure — routine updates without developer involvement',
-  'Live preview + annotation workflow reduced design-to-sign-off round-trip time',
-  'Component architecture built around maintainability, not bespoke layouts',
+  { label: 'Focus', value: 'IA · CMS · delivery' },
 ]
 
 export default function OptronicCaseStudy() {
   return (
-    <main>
-      <div className="pt-16">
-        <Container size="wide">
-          <Link
-            href="/work"
-            className={navBackLinkClassName}
-          >
-            <span aria-hidden="true">←</span> Back to work
-          </Link>
-        </Container>
-      </div>
+    <CaseStudyShell
+      meta={META}
+      eyebrow="Case Study / Web & Digital"
+      title={
+        <>
+          Optronic —
+          <br />
+          <span className="accent-gradient-text">website redesign.</span>
+        </>
+      }
+      intro={
+        <>
+          Full redesign and rebuild — multilingual structure, nine product families, SEO-aware
+          content hierarchy, and live preview delivery on Vercel.
+        </>
+      }
+      topRightLabel="2024"
+      previous={nav.previous}
+      next={nav.next}
+    >
+      <CaseStudySection alt>
+        <CaseStudyContext
+          lead="An industrial optics manufacturer needed a site that works in EN and DE, surfaces nine product lines clearly, and hosts manuals and firmware in context."
+          body="I led design and implementation — not a handoff-only engagement. The case study focuses on IA, multilingual constraints, and a maintainable component architecture the client team can extend."
+        />
+      </CaseStudySection>
 
-      <PageHeader
-        eyebrow="Case Study / Web & Digital"
-        title={
-          <>
-            Optronic —
-            <br />
-            Website
-            <br />
-            <span className="accent-gradient-text">Redesign.</span>
-          </>
-        }
-        intro={
-          <>
-            Complete redesign and rebuild of the Optronic website — from information
-            architecture and multilingual structure to implementation and live delivery
-            via Vercel.
-          </>
-        }
-        topRightLabel="2024"
-      />
+      <CaseStudySection>
+        <ProblemSolution
+          challengeTitle="Content sprawl, split languages"
+          responseTitle="Structured, maintainable site"
+          problems={[
+            'EN/DE parity required across navigation, URLs, and metadata',
+            'Nine product categories each needing appropriate technical depth',
+            'Manuals and firmware scattered on third-party links',
+            'Client team needed updates without a developer for routine content',
+          ]}
+          solutions={[
+            'Multilingual-first navigation and URL patterns with context-preserving language toggle',
+            'IA for known-product and discovery-by-application journeys',
+            'Downloads integrated into product pages — versioned and findable in context',
+            'Component-based Next.js structure with preview-based review workflow',
+          ]}
+        />
+      </CaseStudySection>
 
-      {/* Cover + meta */}
-      <Section padding="sm">
-        <Container size="wide">
-          <CaseStudyMeta fields={META_FIELDS} className="mb-12" />
-          <ImagePlaceholder
-            label="Optronic — Website Hero"
-            aspectClass="aspect-[16/8]"
-          />
-        </Container>
-      </Section>
+      <CaseStudySection alt>
+        <UXProcessFlow
+          title="From IA to production"
+          steps={buildProcessSteps([
+            'Audited existing content, product taxonomy, and EN/DE requirements.',
+            'Mapped navigation, product templates, and download paths.',
+            'Designed page templates and component set in Figma.',
+            'Built reusable layout and typography rules in code — not one-off pages.',
+            'Vercel previews for stakeholder review; iterative deploy to production.',
+          ])}
+        />
+      </CaseStudySection>
 
-      {/* Context */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4">
-              <p className={sectionEyebrowAccentClassName}>
-                Project context
-              </p>
-            </div>
-            <div className="lg:col-span-8">
-              <p className={sectionLeadClassName}>
-                Optronic is an industrial optics manufacturer offering precision
-                measurement products across European markets. Their existing site had
-                grown organically — inconsistent content, difficult product discovery,
-                no coherent multilingual structure.
-              </p>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                The project was a ground-up redesign and rebuild — not a reskin, but a
-                structural rethink of how the company presents products, communicates
-                technical specifications, and supports customers finding the right
-                product.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CaseStudySection>
+        <CaseStudySystemNote
+          title="Build-time system"
+          paragraphs={[
+            'Next.js layouts and shared components enforce heading hierarchy, spacing, and CTA patterns across product families.',
+            'Content structure supports SEO intent per product line rather than generic brand keywords only.',
+          ]}
+        />
+      </CaseStudySection>
 
-      {/* Challenge */}
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                The challenge
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Structural,
-                <br />
-                <span className="text-accent">not cosmetic.</span>
-              </h2>
-            </div>
-            <ul className="lg:col-span-7 lg:col-start-6 lg:pt-2">
-              {CHALLENGES.map((item, idx) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-5 py-5"
-                >
-                  <span className={monoIndexAccentClassName}>
-                    /{String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-base leading-[1.65] text-muted lg:text-lg">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
+      <CaseStudySection alt>
+        <div className="mb-10 max-w-2xl">
+          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
+            {titleWithAccentGradient('Design and build in one loop')}
+          </h2>
+        </div>
+        <CaseStudyAIWorkflow
+          intro={
+            <>
+              AI assisted copy structure, component scaffolding, and implementation notes —
+              I remained responsible for IA, visual design, and production quality.
+            </>
+          }
+          steps={DEFAULT_AI_STEPS}
+          tools={['Figma', 'Cursor', 'Next.js', 'Vercel']}
+        />
+      </CaseStudySection>
 
-      {/* Key decisions */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                IA & UX decisions
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Four calls
-                <br />
-                that shaped
-                <br />
-                <span className="text-accent block w-fit">the site.</span>
-              </h2>
-            </div>
-          </div>
-
-          <ul>
-            {DECISIONS.map((d, idx) => (
-              <li
-                key={d.title}
-                className="group grid grid-cols-12 gap-4 py-10 lg:gap-12 lg:py-14"
-              >
-                <span className={monoIndexGridClassName}>
-                  /{String(idx + 1).padStart(2, '0')}
-                </span>
-                <h3 className={cn(sectionSubheadingClassName, 'col-span-10 sm:col-span-5')}>
-                  {titleWithAccentGradient(d.title)}
-                </h3>
-                <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
-                  {d.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      {/* Outcome */}
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                Outcome
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Shipped.
-                <br />
-                <span className="text-accent">Maintained.</span>
-              </h2>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                Live with full multilingual structure, all 9 product pages, download
-                hosting, and a component architecture the client team can maintain
-                without developer involvement.
-              </p>
-            </div>
-            <ul className="space-y-5 lg:col-span-6 lg:col-start-7 lg:pt-2">
-              {OUTCOMES.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-4 pb-5"
-                >
-                  <span className="mt-[6px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <p className="text-base leading-[1.6] text-foreground lg:text-lg">
-                    {item}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
-
-      <Section padding="sm" className="bg-surface/40">
-        <Container size="wide">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <Link
-              href="/work"
-              className={navRelatedLinkClassName}
-            >
-              <span aria-hidden="true">←</span> All work
-            </Link>
-            <ArrowLink
-              href="/work/ai-design-system-workflow"
-              className="text-foreground hover:text-accent"
-            >
-              Next: AI Design System Workflow
-            </ArrowLink>
-          </div>
-        </Container>
-      </Section>
-
-      <FooterCTA />
-    </main>
+      <CaseStudySection>
+        <CaseStudyOutcome>
+          Shipped with full EN/DE structure and nine product pages, content-managed updates for
+          routine changes, and a maintainable component architecture — faster sign-off via live
+          preview than static PDF cycles.
+        </CaseStudyOutcome>
+      </CaseStudySection>
+    </CaseStudyShell>
   )
 }

@@ -1,7 +1,11 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import type { Project } from '@/lib/types'
-import { getProjectCoverPlaceholderBackground } from '@/lib/projectCoverPlaceholder'
+import ProjectCover from '@/components/work/ProjectCover'
 import { sectionSubheadingClassName } from '@/lib/headings'
+import CaseStudyTileLink from '@/components/work/CaseStudyTileLink'
+import { hasCaseStudyPage } from '@/lib/caseStudyRoutes'
 
 type ProjectCardProps = {
   project: Project
@@ -14,12 +18,17 @@ type ProjectCardProps = {
  * with mono caption marks in the top corners (index + year/domain), an arrow
  * circle on the right of the caption, and a hover scale on the cover. Mirrors
  * the home SelectedWork tile so the listing reads as one coherent editorial system.
- * Tiles are display-only (no case-study routes).
+ * Links to the case study route when one exists; display-only otherwise.
  */
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const linked = hasCaseStudyPage(project.slug)
   return (
     <article className="group">
-      <div className="block cursor-default">
+      <CaseStudyTileLink
+        slug={project.slug}
+        title={project.title}
+        className={cn('block', linked ? 'cursor-pointer' : 'cursor-default')}
+      >
         {/* Top mark row */}
         <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
           <span>
@@ -34,33 +43,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </span>
         </div>
 
-        {/* Cover image */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground">
-          <div
-            aria-hidden="true"
-            className="flex h-full w-full items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            style={{
-              backgroundColor: getProjectCoverPlaceholderBackground(project.slug),
-            }}
-          >
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/75">
-              {project.isCapability ? 'Capability' : 'Case study'}
-            </span>
-          </div>
-
-          {/* Capability ribbon */}
-          {project.isCapability ? (
-            <span className="absolute left-4 top-4 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-inverse-foreground">
-              Capability
-            </span>
-          ) : null}
-
-          {/* Accent line slide-in */}
-          <span
-            aria-hidden="true"
-            className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
-          />
-        </div>
+        <ProjectCover project={project} />
 
         {/* Caption */}
         <div className="mt-5 flex items-start justify-between gap-5">
@@ -84,7 +67,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             →
           </span>
         </div>
-      </div>
+      </CaseStudyTileLink>
     </article>
   )
 }

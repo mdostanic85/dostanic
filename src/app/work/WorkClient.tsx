@@ -1,3 +1,5 @@
+'use client'
+
 import ProjectCard from '@/components/work/ProjectCard'
 import type { Project } from '@/lib/types'
 

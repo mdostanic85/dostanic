@@ -3,7 +3,9 @@ import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
 import { sectionEyebrowAccentClassName, sectionHeadingClassName } from '@/lib/headings'
 
-const STACK = [
+type Row = { label: string; blurb: string }
+
+const DEFAULT_ROWS: Row[] = [
   {
     label: 'GitHub',
     blurb: 'PRs, diffs, and reviews — I speak the same workflow as engineering.',
@@ -20,13 +22,37 @@ const STACK = [
     label: 'Figma MCP',
     blurb: 'Design context pulled into the IDE — tighter design–system and handoff loops.',
   },
-] as const
+]
 
-/**
- * Compact home-only strip: positions you as an all-rounder (design + delivery
- * stack) without a long essay. Scannable rows + optional link to Expertise.
- */
-export default function DeliveryStrip() {
+const DEFAULTS = {
+  eyebrow: 'Practice / Delivery stack',
+  titleLine1: 'Design is half the job.',
+  titleAccentLine: 'Shipping is the rest.',
+  intro:
+    'I am not a handoff-only designer. I work where product, systems, and implementation meet — so decisions survive from Figma into production.',
+  link: { label: 'See how I work', href: '/expertise' },
+} as const
+
+type DeliveryStripProps = {
+  eyebrow?: string
+  titleLine1?: string
+  titleAccentLine?: string
+  intro?: string
+  link?: { label: string; href: string }
+  rows?: Row[]
+}
+
+export default function DeliveryStrip({
+  eyebrow,
+  titleLine1,
+  titleAccentLine,
+  intro,
+  link,
+  rows,
+}: DeliveryStripProps = {}) {
+  const activeRows = rows && rows.length > 0 ? rows : DEFAULT_ROWS
+  const activeLink = link ?? DEFAULTS.link
+
   return (
     <Section
       id="how-i-ship"
@@ -38,27 +64,28 @@ export default function DeliveryStrip() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className={sectionEyebrowAccentClassName}>
-              Practice / Delivery stack
+              {eyebrow ?? DEFAULTS.eyebrow}
             </p>
             <h2 className={sectionHeadingClassName}>
-              Design is half the job.
+              {titleLine1 ?? DEFAULTS.titleLine1}
               <br />
-              <span className="text-accent">Shipping is the rest.</span>
+              <span className="text-accent">
+                {titleAccentLine ?? DEFAULTS.titleAccentLine}
+              </span>
             </h2>
             <p className="mt-6 max-w-md text-base leading-[1.65] text-muted lg:text-lg">
-              I am not a handoff-only designer. I work where product, systems, and
-              implementation meet — so decisions survive from Figma into production.
+              {intro ?? DEFAULTS.intro}
             </p>
             <ArrowLink
-              href="/expertise"
+              href={activeLink.href}
               className="mt-8 inline-flex text-foreground hover:text-accent"
             >
-              See how I work
+              {activeLink.label}
             </ArrowLink>
           </div>
 
           <ul className="space-y-0 lg:col-span-6 lg:col-start-7">
-            {STACK.map((row) => (
+            {activeRows.map((row) => (
               <li
                 key={row.label}
                 className="grid grid-cols-1 gap-2 py-6 sm:grid-cols-[minmax(0,140px)_1fr] sm:gap-8 sm:py-7"

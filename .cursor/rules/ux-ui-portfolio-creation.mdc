@@ -1,0 +1,78 @@
+---
+description: Senior UX/UI portfolio and case study writing standards for this portfolio site
+globs: src/app/work/**,src/components/work/**,src/components/home/SelectedWork.tsx,src/lib/data.ts,scripts/seed-sanity.ts,src/sanity/schemaTypes/caseStudy.ts,ux-ui-portfolio-creation-rule.md
+alwaysApply: false
+---
+
+# UX/UI Portfolio Creation Rule
+
+**Full canonical rule:** `ux-ui-portfolio-creation-rule.md` (repo root, 766 lines). Read and follow it in full whenever creating or editing portfolio copy, case study pages, Sanity case study content, or work listing data.
+
+---
+
+## Repo-specific notes
+
+- Case study pages live at `src/app/work/[slug]/page.tsx`.
+- Use `src/app/work/devrev/page.tsx` as the **structural reference** for full-section case studies (role scope, challenge, process steps, design decisions, outcomes, reflection).
+- Do **not** model new case studies after `src/app/work/soundscope/page.tsx` — it contains invented outcome percentages that violate the no-fake-metrics rule.
+- Project data lives in `src/lib/data.ts`; which slugs have live routes is controlled by `src/lib/caseStudyRoutes.ts`.
+- Whenever you add a new case study page, also append its slug to `CASE_STUDY_SLUGS` in `src/lib/caseStudyRoutes.ts` so the tile becomes linkable.
+
+---
+
+## Always-enforce checklist (summary of canonical rule)
+
+Before shipping any case study page, Sanity document, or work listing copy, confirm every item:
+
+**Content integrity**
+- No fake metrics, fake percentages, or invented quantitative outcomes unless exact data is provided in source material
+- No fake user quotes, client testimonials, research findings, or business results
+- No fake validation claims ("validated with 100 users", "the client reported major revenue growth")
+- Inferred context labeled explicitly: "Based on the available screens…", "The design approach likely focused on…"
+- Every senior claim connects to a visible UX problem, design decision, system improvement, or handoff improvement
+
+**Case study structure**
+- 60-Second Summary at the top (Product / Problem / My role / Main UX challenge / Key design decision / System contribution / AI-dev collaboration / Outcome)
+- Project context, My role (specific — not "I worked on the design"), Challenge, Process, Design Decisions, Design System, AI/Dev Collaboration, Screens, Outcome, Reflection
+- Design decisions use Decision / Why / Result blocks
+- Outcome is qualitative unless exact numbers are provided
+- Reflection ends each case study: honest, forward-looking, not self-promotional
+
+**UX problem-solving**
+- Identify relevant problems: unclear entry points, weak hierarchy, inconsistent patterns, missing states, poor handoff, complex data, design system drift
+- Use design rationale phrasing, not proof phrasing ("the flow was structured to reduce ambiguity" not "reduced task time by 60%")
+- AI presented as workflow amplifier (requirements structuring, handoff notes, implementation alignment) — never as the designer
+
+**Visual evidence**
+- Screenshots are evidence, not decoration — each must answer: what does it show, why is it important, what decision does it support
+- Do not embed weak, outdated, or compressed images; rebuild as live portfolio components instead
+- Curate for storytelling; do not dump all available screens
+
+**UI consistency**
+- Same grid, type scale, spacing, color logic, card components, badges, CTAs, image framing across all pages
+- No one-off visual treatments per project
+- Portfolio reads as one coherent product
+
+**Writing style**
+- No: "crafted delightful experiences", "pixel-perfect magic", "passionate designer", empty buzzwords
+- Yes: clear reasoning, concrete examples, short paragraphs, business/user/design balance
+- Rewrite generics into specifics: "I restructured the dashboard around clearer information hierarchy…" not "I redesigned the dashboard."
+
+**Developer handoff (when relevant)**
+- Show implementation-aware decisions: component references, state logic, token usage, edge cases, Figma comments, implementation notes
+- Case studies prove design work does not stop at mockups
+
+**Developer collaboration section (when relevant)**
+- Explain how AI was used: structuring requirements, comparing design intent against implementation, preparing handoff notes, reducing ambiguity
+- Never write that AI made the design
+
+---
+
+## Future case studies queued
+
+| Slug | Assets available | Status |
+|------|-----------------|--------|
+| `healthcare-crm` | `public/work/healthcare-crm/` + Behance boards | Live at `/work/healthcare-crm` |
+| `galaxy-cash` | Behance URL in `data.ts` | No route yet |
+| `matchlink` | Behance URL in `data.ts` | No route yet |
+| `future-forbes` | Behance assets in `Portfolio/` | No route yet |

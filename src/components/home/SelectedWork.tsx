@@ -3,26 +3,46 @@ import Section from '@/components/layout/Section'
 import ArrowLink from '@/components/ui/ArrowLink'
 import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/lib/data'
-import { getProjectCoverPlaceholderBackground } from '@/lib/projectCoverPlaceholder'
+import ProjectCover from '@/components/work/ProjectCover'
 import {
   sectionEyebrowAccentClassName,
   sectionHeadingClassName,
   sectionSubheadingClassName,
 } from '@/lib/headings'
+import CaseStudyTileLink from '@/components/work/CaseStudyTileLink'
+import { hasCaseStudyPage } from '@/lib/caseStudyRoutes'
 
-/**
- * "Best Cases" section in the spirit of atomic.black:
- *  - Big editorial section header on the left, view-all link on the right.
- *  - Two-column staggered grid of project tiles. The left column is offset down
- *    to mimic atomic's asymmetric layout. On mobile, the offset collapses to a
- *    single stack.
- *  - Each tile shows a numeric mark, a year, a colour placeholder cover, tags and
- *    title, and an arrow affordance (display-only — no case-study link).
- *  - On hover: the cover scales up slightly, the title shifts to the accent
- *    colour, and a thin accent line slides across the bottom of the cover.
- */
-export default function SelectedWork() {
-  const cases = PROJECTS.filter((p) => p.featured).slice(0, 4)
+const DEFAULTS = {
+  eyebrow: 'Best Cases / Selected Work',
+  titleLine1: 'The work,',
+  titleAccentLine: 'not the pitch.',
+  viewAllLabel: 'View all work',
+} as const
+
+/** Homepage featured row — includes HealthCare CRM case study. */
+const HOMEPAGE_FEATURED_SLUGS = [
+  'devrev',
+  'originchains',
+  'healthcare-crm',
+  'soundscope',
+] as const
+
+type SelectedWorkProps = {
+  eyebrow?: string
+  titleLine1?: string
+  titleAccentLine?: string
+  viewAllLabel?: string
+}
+
+export default function SelectedWork({
+  eyebrow,
+  titleLine1,
+  titleAccentLine,
+  viewAllLabel,
+}: SelectedWorkProps = {}) {
+  const cases = HOMEPAGE_FEATURED_SLUGS.map((slug) =>
+    PROJECTS.find((p) => p.slug === slug),
+  ).filter((p): p is (typeof PROJECTS)[number] => Boolean(p))
 
   return (
     <Section id="work" padding="lg">
@@ -30,25 +50,28 @@ export default function SelectedWork() {
         <div className="mb-16 flex flex-col gap-8 sm:mb-20 sm:flex-row sm:items-end sm:justify-between lg:mb-24">
           <div>
             <p className={sectionEyebrowAccentClassName}>
-              Best Cases / Selected Work
+              {eyebrow ?? DEFAULTS.eyebrow}
             </p>
             <h2 className={sectionHeadingClassName}>
-              The work,
+              {titleLine1 ?? DEFAULTS.titleLine1}
               <br />
-              <span className="text-accent block w-fit">not the pitch.</span>
+              <span className="text-accent block w-fit">
+                {titleAccentLine ?? DEFAULTS.titleAccentLine}
+              </span>
             </h2>
           </div>
           <ArrowLink
             href="/work"
             className="text-foreground hover:text-accent shrink-0 self-start sm:self-end"
           >
-            View all work
+            {viewAllLabel ?? DEFAULTS.viewAllLabel}
           </ArrowLink>
         </div>
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 sm:gap-y-20 lg:gap-x-12 lg:gap-y-28">
           {cases.map((project, idx) => {
             const isOffset = idx % 2 === 1
+            const linked = hasCaseStudyPage(project.slug)
             return (
               <article
                 key={project.slug}
@@ -57,12 +80,14 @@ export default function SelectedWork() {
                   isOffset ? 'sm:translate-y-20 lg:translate-y-28' : '',
                 ].join(' ')}
               >
-                <div className="block cursor-default">
+                <CaseStudyTileLink
+                  slug={project.slug}
+                  title={project.title}
+                  className={cn('block', linked ? 'cursor-pointer' : 'cursor-default')}
+                >
                   {/* Top mark row */}
                   <div className="mb-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                    <span>
-                      / {String(idx + 1).padStart(2, '0')}
-                    </span>
+                    <span>/ {String(idx + 1).padStart(2, '0')}</span>
                     <span className="flex items-center gap-3">
                       <span>{project.domain}</span>
                       <span aria-hidden="true" className="h-px w-6 bg-stroke" />
@@ -70,26 +95,10 @@ export default function SelectedWork() {
                     </span>
                   </div>
 
-                  {/* Image block */}
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground">
-                    <div
-                      aria-hidden="true"
-                      className="flex h-full w-full items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                      style={{
-                        backgroundColor:
-                          getProjectCoverPlaceholderBackground(project.slug),
-                      }}
-                    >
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/75">
-                        {project.isCapability ? 'Capability' : 'Case study'}
-                      </span>
-                    </div>
-                    {/* Accent line slide-in */}
-                    <span
-                      aria-hidden="true"
-                      className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
-                    />
-                  </div>
+                  <ProjectCover
+                    project={project}
+                    labelClassName="text-xs"
+                  />
 
                   {/* Caption */}
                   <div className="mt-6 flex items-start justify-between gap-6">
@@ -97,7 +106,7 @@ export default function SelectedWork() {
                       <h3
                         className={cn(
                           sectionSubheadingClassName,
-                          'transition-colors duration-200 group-hover:text-accent'
+                          'transition-colors duration-200 group-hover:text-accent',
                         )}
                       >
                         {project.title}
@@ -113,7 +122,7 @@ export default function SelectedWork() {
                       →
                     </span>
                   </div>
-                </div>
+                </CaseStudyTileLink>
               </article>
             )
           })}

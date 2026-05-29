@@ -1,0 +1,13 @@
+diff --git a/node_modules/sanity/lib/index.js b/node_modules/sanity/lib/index.js
+index 814ebb9..1022a32 100644
+--- a/node_modules/sanity/lib/index.js
++++ b/node_modules/sanity/lib/index.js
+@@ -22454,7 +22454,7 @@ const Item = forwardRef(function(props2, ref) {
+     ...rest
+   } = props2, $[0] = props2, $[1] = rest, $[2] = sortable) : (rest = $[1], sortable = $[2]);
+   let t0;
+-  $[3] !== ref || $[4] !== rest || $[5] !== sortable ? (t0 = sortable ? /* @__PURE__ */ jsx(SortableListItem, { ref, ...rest }) : /* @__PURE__ */ jsx(ListItem$2, { ref, ...rest }), $[3] = ref, $[4] = rest, $[5] = sortable, $[6] = t0) : t0 = $[6];
++  $[3] !== ref || $[4] !== rest || $[5] !== sortable ? (t0 = sortable ? /* @__PURE__ */ jsx(SortableListItem, { ref, ...rest }) : /* @__PURE__ */ jsx(ListItem$2, { ref, ...(({ disableTransition: _dt, ..._r2 }) => _r2)(rest) }), $[3] = ref, $[4] = rest, $[5] = sortable, $[6] = t0) : t0 = $[6];
+   let t1;
+   return $[7] !== props2.id || $[8] !== t0 ? (t1 = /* @__PURE__ */ jsx(SortableItemIdContext.Provider, { value: props2.id, children: t0 }), $[7] = props2.id, $[8] = t0, $[9] = t1) : t1 = $[9], t1;
+ });

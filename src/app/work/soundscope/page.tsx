@@ -1,280 +1,148 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
-import ArrowLink from '@/components/ui/ArrowLink'
-import CaseStudyMeta from '@/components/work/CaseStudyMeta'
-import FooterCTA from '@/components/home/FooterCTA'
-import { cn } from '@/lib/utils'
-import {
-  monoIndexAccentClassName,
-  monoIndexGridClassName,
-  navBackLinkClassName,
-  navRelatedLinkClassName,
-  sectionEyebrowAccentClassName,
-  sectionHeadingClassName,
-  sectionLeadClassName,
-  sectionSubheadingClassName,
-} from '@/lib/headings'
+import CaseStudyContext from '@/components/work/case-study/CaseStudyContext'
+import ProblemSolution from '@/components/work/case-study/ProblemSolution'
+import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
+import CaseStudyScreens from '@/components/work/case-study/CaseStudyScreens'
+import CaseStudySystemNote from '@/components/work/case-study/CaseStudySystemNote'
+import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
+import CaseStudyShell, {
+  CaseStudyOutcome,
+  CaseStudySection,
+} from '@/components/work/case-study/CaseStudyShell'
+import { sectionEyebrowAccentClassName } from '@/lib/headings'
 import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
   title: 'SoundScope — Music Analytics Dashboard · Milos Dostanic',
   description:
-    'End-to-end case study for SoundScope: dashboard architecture, design system, implementation collaboration, and measurable outcomes for a music analytics platform.',
+    'SoundScope dashboard redesign — metric hierarchy, dark analyst UI, design system, and AI-assisted implementation collaboration.',
 }
 
-const META_FIELDS = [
-  { label: 'Client', value: 'SoundScope' },
+const nav = getCaseStudyNav('soundscope')
+
+const META = [
+  { label: 'Product', value: 'SoundScope' },
   { label: 'Year', value: '2025' },
-  { label: 'Role', value: 'Lead Product Designer' },
-  { label: 'Domain', value: 'Music Analytics' },
-  { label: 'Tools', value: 'Figma · Cursor' },
-  { label: 'Deliverable', value: 'Dashboard + system' },
-]
-
-const CHALLENGES = [
-  'Data fragmentation across DSPs, ad platforms, and royalty systems',
-  'Role-specific needs: analysts need depth, executives need clarity',
-  'High-density information without overwhelming cognitive load',
-  'Long reporting cycles delaying campaign adjustments',
-]
-
-const DECISIONS = [
-  {
-    title: 'Metric hierarchy over chart variety',
-    body: 'Prioritised a small set of decision metrics at the top level, with deeper exploratory charts in drill-down contexts. Reduced noise and made executive reviews faster.',
-  },
-  {
-    title: 'Context-preserving drill-down',
-    body: 'Users move from portfolio to artist to release with filter context retained. Removed repetitive setup and improved analysis flow.',
-  },
-  {
-    title: 'Dark-first ergonomics for analysts',
-    body: 'Visual contrast, typography rhythm, and table density tuned for long working sessions. Status colours tokenised for consistency and accessibility.',
-  },
-]
-
-const OUTCOMES = [
-  'Reduced average weekly reporting prep time by 38%',
-  'Campaign decision turnaround dropped from 3-5 days to under 48 hours',
-  'Increased self-serve dashboard analysis across non-analyst roles',
-  'Established a reusable component system that accelerated feature delivery',
+  { label: 'Role', value: 'Lead product designer' },
+  { label: 'Domain', value: 'Music analytics' },
+  { label: 'Focus', value: 'Dashboard · system · handoff' },
 ]
 
 export default function SoundScopeCaseStudy() {
   return (
-    <main>
-      {/* Back link band */}
-      <div className="pt-16">
-        <Container size="wide">
-          <Link
-            href="/work"
-            className={navBackLinkClassName}
-          >
-            <span aria-hidden="true">←</span> Back to work
-          </Link>
-        </Container>
-      </div>
+    <CaseStudyShell
+      meta={META}
+      eyebrow="Case Study / Analytics"
+      title={
+        <>
+          SoundScope —
+          <br />
+          <span className="accent-gradient-text">music analytics.</span>
+        </>
+      }
+      intro={
+        <>
+          Redesign of a music analytics platform for labels and publishers — decision
+          metrics, analyst-first UI, and a tokenized component system built with
+          implementation in mind.
+        </>
+      }
+      topRightLabel="2025"
+      previous={nav.previous}
+      next={nav.next}
+    >
+      <CaseStudySection alt>
+        <CaseStudyContext
+          lead="Teams were overwhelmed by fragmented reporting — slow decisions and low confidence in shared metrics."
+          body="The goal was a system that answers: what is moving, why, and what’s next — not another chart wall. I led dashboard architecture, semantic tokens, and collaboration with engineering using Figma and code-side iteration."
+        />
+      </CaseStudySection>
 
-      <PageHeader
-        eyebrow="Case Study / Analytics"
-        title={
-          <>
-            SoundScope —
-            <br />
-            Music Analytics
-            <br />
-            <span className="accent-gradient-text">Dashboard.</span>
-          </>
-        }
-        intro={
-          <>
-            End-to-end redesign of a music analytics platform used by labels and
-            publishers to track artist growth, campaign effectiveness, and revenue
-            across channels.
-          </>
-        }
-        topRightLabel="2025 / Featured"
-      />
+      <CaseStudySection>
+        <ProblemSolution
+          challengeTitle="Fragmented data, mixed audiences"
+          responseTitle="Decision-first dashboard"
+          problems={[
+            'Data scattered across DSPs, ad platforms, and royalty systems',
+            'Analysts need depth; executives need clarity — one product, two reading speeds',
+            'High-density information risking cognitive overload',
+            'Long reporting cycles delaying campaign adjustments',
+          ]}
+          solutions={[
+            'Small set of decision metrics at the top; exploration in drill-down contexts',
+            'Drill-down retains filter context from portfolio → artist → release',
+            'Dark-first ergonomics, tokenised status colours, table density for long sessions',
+            'Modular components so charts, tables, and filters evolve without visual drift',
+          ]}
+        />
+      </CaseStudySection>
 
-      {/* Cover image */}
-      <Section padding="sm">
-        <Container size="wide">
-          <CaseStudyMeta fields={META_FIELDS} className="mb-12" />
-          <div className="relative aspect-[16/9] overflow-hidden rounded-[10px] bg-surface">
-            <Image
-              src="/work/soundscope/cover.png"
-              alt="SoundScope dashboard overview"
-              fill
-              sizes="(min-width: 1280px) 1200px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </Container>
-      </Section>
+      <CaseStudySection alt>
+        <UXProcessFlow
+          steps={buildProcessSteps([
+            'Mapped analyst and executive jobs-to-be-done across catalog, campaigns, and revenue views.',
+            'Defined hierarchy: what ships on the overview vs what lives in drill-down only.',
+            'High-fidelity dark UI — contrast, type rhythm, and table behaviour for analysts.',
+            'Semantic tokens and component variants documented for engineering.',
+            'Cursor-assisted iteration on layout behaviour with real data volume in mind.',
+          ])}
+        />
+      </CaseStudySection>
 
-      {/* Context */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4">
-              <p className={sectionEyebrowAccentClassName}>
-                Project context
-              </p>
-            </div>
-            <div className="lg:col-span-8">
-              <p className={sectionLeadClassName}>
-                SoundScope was positioned as a decision layer for music teams overwhelmed
-                by fragmented reporting — slow decisions, low confidence in shared
-                metrics.
-              </p>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                The goal was not another dashboard with more charts. The goal was to
-                design a system that helps teams answer critical questions quickly: What
-                is moving? Why is it moving? What&apos;s next?
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CaseStudySection>
+        <CaseStudyScreens
+          intro="Overview frame showing metric hierarchy and analyst-first layout."
+          screens={[
+            {
+              src: '/work/soundscope/cover.png',
+              alt: 'SoundScope dashboard overview',
+              caption: 'Dashboard overview',
+              decision:
+                'Decision metrics up front — deeper charts only in context, reducing noise for executive reviews.',
+            },
+          ]}
+        />
+      </CaseStudySection>
 
-      {/* Challenge */}
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                The challenge
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                What the
-                <br />
-                redesign had to
-                <br />
-                <span className="text-accent">solve.</span>
-              </h2>
-            </div>
-            <ul className="lg:col-span-7 lg:col-start-6 lg:pt-2">
-              {CHALLENGES.map((item, idx) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-5 py-5"
-                >
-                  <span className={monoIndexAccentClassName}>
-                    /{String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-base leading-[1.65] text-muted lg:text-lg">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
+      <CaseStudySection alt>
+        <CaseStudySystemNote
+          title="Tokens & modular UI"
+          paragraphs={[
+            'Semantic tokens for surfaces, text, and status kept charts, tables, and filters aligned as features shipped.',
+            'Component structure prioritised repeatable patterns over one-off chart compositions.',
+          ]}
+        />
+      </CaseStudySection>
 
-      {/* Key decisions */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                Decisions that mattered
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Three calls
-                <br />
-                that shaped
-                <br />
-                <span className="text-accent block w-fit">the system.</span>
-              </h2>
-            </div>
-          </div>
+      <CaseStudySection>
+        <div className="mb-10 max-w-2xl">
+          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
+            {titleWithAccentGradient('Figma + code iteration')}
+          </h2>
+        </div>
+        <CaseStudyAIWorkflow
+          intro={
+            <>
+              Used <span className="text-foreground">Cursor</span> alongside Figma to
+              pressure-test dense layouts and handoff notes — AI accelerated exploration;
+              design decisions stayed manual.
+            </>
+          }
+          steps={DEFAULT_AI_STEPS}
+          tools={['Figma', 'Cursor', 'Claude', 'GitHub']}
+        />
+      </CaseStudySection>
 
-          <ul>
-            {DECISIONS.map((d, idx) => (
-              <li
-                key={d.title}
-                className="group grid grid-cols-12 gap-4 py-10 lg:gap-12 lg:py-14"
-              >
-                <span className={monoIndexGridClassName}>
-                  /{String(idx + 1).padStart(2, '0')}
-                </span>
-                <h3 className={cn(sectionSubheadingClassName, 'col-span-10 sm:col-span-5')}>
-                  {titleWithAccentGradient(d.title)}
-                </h3>
-                <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
-                  {d.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      {/* Outcome */}
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                Outcome
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Faster
-                <br />
-                decisions.
-                <br />
-                <span className="text-accent">Cleaner system.</span>
-              </h2>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                The redesigned SoundScope improved reporting clarity and shortened the
-                path from data review to campaign action. Teams reported higher trust in
-                shared metrics and fewer alignment meetings.
-              </p>
-            </div>
-            <ul className="space-y-5 lg:col-span-6 lg:col-start-7 lg:pt-2">
-              {OUTCOMES.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-4 pb-5"
-                >
-                  <span className="mt-[6px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <p className="text-base leading-[1.6] text-foreground lg:text-lg">
-                    {item}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Next case nav */}
-      <Section padding="sm" className="bg-surface/40">
-        <Container size="wide">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <Link
-              href="/work"
-              className={navRelatedLinkClassName}
-            >
-              <span aria-hidden="true">←</span> All work
-            </Link>
-            <ArrowLink
-              href="/work/optronic"
-              className="text-foreground hover:text-accent"
-            >
-              Next: Optronic — Website Redesign
-            </ArrowLink>
-          </div>
-        </Container>
-      </Section>
-
-      <FooterCTA />
-    </main>
+      <CaseStudySection alt>
+        <CaseStudyOutcome>
+          Clearer reporting hierarchy, faster path from data review to action, and a reusable
+          component system for future modules — qualitative improvements aimed at clarity and
+          maintainability, not claimed percentage uplifts.
+        </CaseStudyOutcome>
+      </CaseStudySection>
+    </CaseStudyShell>
   )
 }

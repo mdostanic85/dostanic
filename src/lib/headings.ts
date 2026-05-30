@@ -9,7 +9,7 @@
 
 /** Accent mono kicker above an `h2` (block; includes bottom margin). */
 export const sectionEyebrowAccentClassName =
-  'mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent'
+  'hidden mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent'
 
 /** Muted mono kicker with block spacing. */
 export const sectionEyebrowMutedBlockClassName =
@@ -26,13 +26,25 @@ export const sectionEyebrowMonoClassName =
 /** Spacer only when colour is custom. */
 export const sectionEyebrowToTitleSpacingClassName = 'mb-5'
 
+/** Display headline size ramp — home hero `h1` and section `h2` titles. */
+export const displayHeadlineSizeClassName =
+  'text-[44px] sm:text-[clamp(52px,7.6vw,102px)]'
+
+/** Keeps the last word glued to the one before it so display headings don't widow. */
+export function preventHeadingOrphan(text: string): string {
+  const trimmed = text.trim()
+  const lastSpace = trimmed.lastIndexOf(' ')
+  if (lastSpace <= 0) return trimmed
+  return `${trimmed.slice(0, lastSpace)}\u00a0${trimmed.slice(lastSpace + 1)}`
+}
+
 /** `h2` — primary section title (home strips + inner pages). */
 export const sectionHeadingClassName =
-  'display-tight text-3xl font-semibold leading-[1.06] text-foreground sm:text-4xl sm:leading-[1.04] lg:text-5xl lg:leading-[1.02]'
+  `section-heading display-tight hero-title-tight flex max-w-[1240px] flex-col gap-0 font-bold text-foreground ${displayHeadlineSizeClassName}`
 
 /** `h1` — subpage masthead (with `.page-header-headline` rules in globals). */
 export const pageHeadingClassName =
-  'page-header-headline display-tight text-4xl font-extrabold leading-[0.92] text-foreground sm:text-5xl sm:leading-[0.86] lg:text-[80px] lg:leading-[80px] xl:text-[80px] xl:leading-[80px]'
+  `page-header-headline section-heading display-tight hero-title-tight flex max-w-[1240px] flex-col gap-0 font-bold text-foreground ${displayHeadlineSizeClassName}`
 
 /** Inline mono accent mark (`/ 01`, PageHeader kicker). */
 export const monoMarkAccentClassName =
@@ -51,7 +63,7 @@ export const pageIntroClassName =
 
 /** `h1` — home hero stack (pair with `.hero-title-tight` in globals for rhythm). */
 export const heroHeadingClassName =
-  'display-tight flex max-w-[1240px] flex-col gap-0 text-[44px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(52px,7.6vw,102px)]'
+  `display-tight flex max-w-[1240px] flex-col gap-0 font-bold text-foreground animate-fade-in-up ${displayHeadlineSizeClassName}`
 
 /** Hero supporting paragraph under `h1`. */
 export const heroIntroClassName =
@@ -59,7 +71,7 @@ export const heroIntroClassName =
 
 /** `h2` — closing CTA masthead on inverse background. */
 export const footerCtaHeadingClassName =
-  'display-mega flex max-w-5xl flex-col gap-[0.02em] pb-[0.12em] text-[32px] font-bold leading-none tracking-[-0.045em] text-inverse-foreground sm:text-[clamp(44px,6.4vw,82px)]'
+  `display-tight hero-title-tight flex max-w-[1240px] flex-col gap-0 font-bold text-inverse-foreground ${displayHeadlineSizeClassName}`
 
 /** Lead line under section eyebrow (`<p>`, not a heading). */
 export const sectionLeadClassName =

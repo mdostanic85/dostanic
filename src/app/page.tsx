@@ -19,7 +19,6 @@ type CmsHomePage = {
     titleLine1?: string
     titleAccentLine?: string
     intro?: string
-    link?: { label: string; href: string }
     rows?: { label: string; blurb: string }[]
   }
   selectedWork?: {
@@ -78,21 +77,17 @@ export default async function HomePage() {
         secondaryCta={cms?.hero?.secondaryCta}
       />
       <DeliveryStrip
-        eyebrow={cms?.deliveryStrip?.eyebrow}
         titleLine1={cms?.deliveryStrip?.titleLine1}
         titleAccentLine={cms?.deliveryStrip?.titleAccentLine}
         intro={cms?.deliveryStrip?.intro}
-        link={cms?.deliveryStrip?.link}
         rows={cms?.deliveryStrip?.rows}
       />
       <SelectedWork
-        eyebrow={cms?.selectedWork?.eyebrow}
         titleLine1={cms?.selectedWork?.titleLine1}
         titleAccentLine={cms?.selectedWork?.titleAccentLine}
         viewAllLabel={cms?.selectedWork?.viewAllLabel}
       />
       <FooterCTA
-        eyebrow={cms?.footerCta?.eyebrow}
         titleLines={cms?.footerCta?.titleLines}
         titleAccentLine={cms?.footerCta?.titleAccentLine}
         body={cms?.footerCta?.body}

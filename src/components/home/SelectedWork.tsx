@@ -5,17 +5,16 @@ import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/lib/data'
 import ProjectCover from '@/components/work/ProjectCover'
 import {
-  sectionEyebrowAccentClassName,
   sectionHeadingClassName,
   sectionSubheadingClassName,
+  preventHeadingOrphan,
 } from '@/lib/headings'
 import CaseStudyTileLink from '@/components/work/CaseStudyTileLink'
 import { hasCaseStudyPage } from '@/lib/caseStudyRoutes'
 
 const DEFAULTS = {
-  eyebrow: 'Best Cases / Selected Work',
-  titleLine1: 'The work,',
-  titleAccentLine: 'not the pitch.',
+  titleLine1: 'Selected work,',
+  titleAccentLine: 'across complex products.',
   viewAllLabel: 'View all work',
 } as const
 
@@ -28,14 +27,12 @@ const HOMEPAGE_FEATURED_SLUGS = [
 ] as const
 
 type SelectedWorkProps = {
-  eyebrow?: string
   titleLine1?: string
   titleAccentLine?: string
   viewAllLabel?: string
 }
 
 export default function SelectedWork({
-  eyebrow,
   titleLine1,
   titleAccentLine,
   viewAllLabel,
@@ -45,18 +42,16 @@ export default function SelectedWork({
   ).filter((p): p is (typeof PROJECTS)[number] => Boolean(p))
 
   return (
-    <Section id="work" padding="lg">
+    <Section id="work" fullScreen className="pb-24 sm:pb-28 lg:pb-36">
       <Container size="wide">
-        <div className="mb-16 flex flex-col gap-8 sm:mb-20 sm:flex-row sm:items-end sm:justify-between lg:mb-24">
+        <div className="mb-20 flex flex-col gap-10 sm:mb-24 sm:flex-row sm:items-end sm:justify-between lg:mb-28">
           <div>
-            <p className={sectionEyebrowAccentClassName}>
-              {eyebrow ?? DEFAULTS.eyebrow}
-            </p>
             <h2 className={sectionHeadingClassName}>
-              {titleLine1 ?? DEFAULTS.titleLine1}
-              <br />
-              <span className="text-accent block w-fit">
-                {titleAccentLine ?? DEFAULTS.titleAccentLine}
+              <span className="block">
+                {preventHeadingOrphan(titleLine1 ?? DEFAULTS.titleLine1)}
+              </span>
+              <span className="text-accent block">
+                {preventHeadingOrphan(titleAccentLine ?? DEFAULTS.titleAccentLine)}
               </span>
             </h2>
           </div>

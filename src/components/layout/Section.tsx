@@ -5,6 +5,8 @@ type SectionProps = {
   id?: string
   className?: string
   padding?: 'none' | 'sm' | 'md' | 'lg'
+  /** At least one viewport tall; content vertically centered when shorter. */
+  fullScreen?: boolean
   as?: 'section' | 'div' | 'footer'
   /** Disable the scroll-triggered reveal animation for this Section.
    *  Useful for sections that already have their own entrance animation
@@ -23,6 +25,9 @@ const paddingClasses = {
   lg: 'py-24 lg:py-[140px]',
 }
 
+const fullScreenClasses =
+  'flex min-h-svh flex-col justify-center py-16 sm:py-20 lg:py-28'
+
 const SECTION_DIVIDER_CLASSES = new Set([
   'border-t',
   'border-b',
@@ -35,6 +40,7 @@ export default function Section({
   id,
   className = '',
   padding = 'md',
+  fullScreen = false,
   as: Tag = 'section',
   noReveal = false,
   revealDelayMs = 0,
@@ -44,6 +50,8 @@ export default function Section({
     .filter((token) => token && !SECTION_DIVIDER_CLASSES.has(token))
     .join(' ')
 
+  const spacingClasses = fullScreen ? fullScreenClasses : paddingClasses[padding]
+
   // Every Section auto-wraps in a SectionReveal so the scroll-triggered
   // entrance applies site-wide without each call-site needing to remember
   // it. The reveal wraps the outer <section> (not its children) so the
@@ -51,7 +59,7 @@ export default function Section({
   // would briefly see a bare bg-surface band with no content before the
   // text faded in.
   const sectionEl = (
-    <Tag id={id} className={`${paddingClasses[padding]} ${cleanedClassName}`}>
+    <Tag id={id} className={`${spacingClasses} ${cleanedClassName}`}>
       {children}
     </Tag>
   )

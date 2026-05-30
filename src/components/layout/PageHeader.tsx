@@ -4,14 +4,12 @@ import SectionReveal from '@/components/layout/SectionReveal'
 import { cn } from '@/lib/utils'
 import {
   pageHeadingClassName,
-  pageHeaderKickerAccentClassName,
-  pageHeaderMetaClassName,
   pageIntroClassName,
 } from '@/lib/headings'
 
 type PageHeaderProps = {
-  /** Mono caption shown above the headline — e.g. "About / Background". */
-  eyebrow: string
+  /** @deprecated No longer rendered — kept for CMS/call-site compatibility. */
+  eyebrow?: string
   /** The big editorial headline. Use a string for plain text, or a node for
    * accent-pulled phrasing — e.g. <>Design that <span className="text-accent">survives</span></>. */
   title: ReactNode
@@ -44,11 +42,9 @@ type PageHeaderProps = {
  * gradient spans match the home Hero without touching each route.
  */
 export default function PageHeader({
-  eyebrow,
   title,
   intro,
   aside,
-  topRightLabel = '2026 / Available',
   tightBottom = false,
 }: PageHeaderProps) {
   return (
@@ -64,11 +60,6 @@ export default function PageHeader({
             )}
           >
             <div className={aside ? 'lg:col-span-8' : 'lg:col-span-12'}>
-              <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                <p className={pageHeaderKickerAccentClassName}>{eyebrow}</p>
-                <span className={pageHeaderMetaClassName}>{topRightLabel}</span>
-              </div>
-
               <h1 className={pageHeadingClassName}>{title}</h1>
 
               {intro ? <p className={pageIntroClassName}>{intro}</p> : null}

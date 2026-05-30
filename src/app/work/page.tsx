@@ -13,6 +13,15 @@ import {
   WORK_INDEX_PAGE_QUERY,
 } from '@/sanity/lib/queries'
 
+import {
+  preventHeadingOrphan,
+} from '@/lib/headings'
+
+const WORK_PAGE_TITLE = {
+  line1: 'Selected work,',
+  line2: 'across complex products.',
+} as const
+
 type CmsPageHeader = {
   eyebrow?: string
   titleLines?: string[]
@@ -96,50 +105,27 @@ export default async function WorkPage() {
     cmsMapped.length > 0 ? cmsMapped : PROJECTS,
   )
 
-  const total = projects.length
-
-  const eyebrow = cmsPage?.pageHeader?.eyebrow ?? 'Selected Work / Best Cases'
   const intro =
     cmsPage?.pageHeader?.intro ??
     'Twenty-plus years across product UX, design systems, analytics, healthcare, fintech, and web. The selection below shows the kind of work I do and how I think — edge cases included.'
-  const topRightLabel = cmsPage?.pageHeader?.topRightLabel ?? `${total} cases`
   const footerNote =
     cmsPage?.footerNote ??
     'More projects available on request — including NDA-covered enterprise work and legacy projects not shown here.'
 
-  const titleLines = cmsPage?.pageHeader?.titleLines
-  const titleAccentLine = cmsPage?.pageHeader?.titleAccentLine
-  const titleNode =
-    titleLines && titleLines.length > 0 ? (
-      <>
-        {titleLines.map((line, idx) => (
-          <span key={idx}>
-            {line}
-            {idx < titleLines.length - 1 || titleAccentLine ? <br /> : null}
-          </span>
-        ))}
-        {titleAccentLine ? (
-          <span className="accent-gradient-text leading-[0.88]">
-            {titleAccentLine}
-          </span>
-        ) : null}
-      </>
-    ) : (
-      <>
-        The work,
-        <br />
-        not the{' '}
-        <span className="accent-gradient-text leading-[0.88]">pitch.</span>
-      </>
-    )
+  const titleNode = (
+    <>
+      <span className="block">{preventHeadingOrphan(WORK_PAGE_TITLE.line1)}</span>
+      <span className="accent-gradient-text block">
+        {preventHeadingOrphan(WORK_PAGE_TITLE.line2)}
+      </span>
+    </>
+  )
 
   return (
     <main>
       <PageHeader
-        eyebrow={eyebrow}
         title={titleNode}
         intro={<>{intro}</>}
-        topRightLabel={topRightLabel}
       />
 
       <Section padding="lg">

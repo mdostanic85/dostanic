@@ -17,7 +17,7 @@ type MarqueeProps = {
 const speedClass = {
   fast: 'animate-marquee-fast',
   medium: 'animate-marquee',
-  slow: 'animate-marquee',
+  slow: 'animate-marquee-slow',
 }
 
 /**

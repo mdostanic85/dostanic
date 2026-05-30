@@ -37,10 +37,10 @@ export default function Hero({
   return (
     <section
       aria-label="Introduction"
-      className="grain relative h-[300px] overflow-x-hidden pt-20 lg:h-[1000px] lg:pt-[120px]"
+      className="grain relative flex min-h-svh flex-col justify-center overflow-x-hidden pt-20 lg:pt-[120px]"
     >
       <Container size="wide" className="max-w-[1399px]">
-        <div className="pt-[calc(5rem*2/3)] pb-20 lg:py-20">
+        <div className="py-16 sm:py-20 lg:py-24">
           <h1
             className={cn(heroHeadingClassName, 'hero-title-tight')}
             style={{ animationDelay: '120ms' }}

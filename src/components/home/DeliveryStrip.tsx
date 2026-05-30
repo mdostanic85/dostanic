@@ -45,7 +45,7 @@ const DEFAULT_STACK = [
   'Admin tools',
   'SaaS UX',
   'Playwright',
-] as const
+]
 
 const DEFAULTS = {
   titleLine1: 'Design is half the job.',

@@ -268,8 +268,8 @@ export default function WaveStripe() {
             y2="0%"
           >
             <stop offset="0%" stopColor="#1b67e8" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="#1ccecb" stopOpacity="1" />
-            <stop offset="100%" stopColor="#a78bf7" stopOpacity="0.85" />
+            <stop offset="55%" stopColor="#1ccecb" stopOpacity="1" />
+            <stop offset="100%" stopColor="#0ea5a2" stopOpacity="0.9" />
           </linearGradient>
         </defs>
 

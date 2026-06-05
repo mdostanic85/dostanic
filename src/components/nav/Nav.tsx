@@ -57,9 +57,14 @@ export default function Nav() {
                   href={link.href}
                   aria-current={active ? 'page' : undefined}
                   className={[
-                    'text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] transition-colors duration-150',
+                    'text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] transition-colors duration-200',
                     active
-                      ? 'text-foreground'
+                      ? [
+                          'relative pb-px text-foreground',
+                          'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',
+                          'after:origin-left after:bg-accent after:scale-x-100',
+                          "after:content-['']",
+                        ].join(' ')
                       : [
                           'relative pb-px text-muted',
                           'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',

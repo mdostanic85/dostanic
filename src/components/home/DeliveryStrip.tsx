@@ -57,7 +57,7 @@ export default function DeliveryStrip() {
             </ArrowLink>
           </div>
 
-          <ul className="space-y-0 lg:col-span-6 lg:col-start-7">
+          <ul className="divide-y divide-stroke lg:col-span-6 lg:col-start-7">
             {STACK.map((row) => (
               <li
                 key={row.label}

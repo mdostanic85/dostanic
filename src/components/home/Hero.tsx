@@ -33,7 +33,7 @@ export default function Hero() {
             className={heroIntroClassName}
             style={{ animationDelay: '280ms' }}
           >
-            Senior Product Designer focused on SaaS platforms, scalable design systems, AI-assisted workflows, and developer-ready product delivery — bridging product thinking, UX, Figma, and code to help teams turn complex workflows into clear, buildable digital products.
+            Senior Product Designer focused on SaaS platforms, scalable design systems, and developer-ready delivery — bridging product thinking, UX, Figma, and code so complex workflows become clear, buildable products.
           </p>
 
           <div

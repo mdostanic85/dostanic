@@ -21,7 +21,7 @@ const buttonVariants = cva(
   // transition-colors + transition-transform (not transition-all) — keeps
   // hover lift while avoiding Tailwind v4 mis-parsing of comma-heavy
   // arbitrary `transition-[…]` declarations.
-  'inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium rounded-[4px] transition-colors transition-transform duration-150 hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium rounded-[4px] transition-colors transition-transform duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {

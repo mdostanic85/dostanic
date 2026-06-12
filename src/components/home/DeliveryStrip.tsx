@@ -28,12 +28,7 @@ const STACK = [
  */
 export default function DeliveryStrip() {
   return (
-    <Section
-      id="how-i-ship"
-      padding="md"
-      className="bg-surface/30"
-      revealDelayMs={80}
-    >
+    <Section id="how-i-ship" padding="md" revealDelayMs={80}>
       <Container size="wide">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
@@ -43,7 +38,7 @@ export default function DeliveryStrip() {
             <h2 className={sectionHeadingClassName}>
               Design is half the job.
               <br />
-              <span className="text-accent">Shipping is the rest.</span>
+              <span className="text-muted">Shipping is the rest.</span>
             </h2>
             <p className="mt-6 max-w-md text-base leading-[1.65] text-muted lg:text-lg">
               I am not a handoff-only designer. I work where product, systems, and

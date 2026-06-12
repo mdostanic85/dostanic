@@ -22,10 +22,10 @@ export default function Nav() {
     <>
       <header
         className={[
-          'fixed top-0 left-0 right-0 z-50 h-16 transition-colors duration-200',
+          'fixed top-0 left-0 right-0 z-50 h-16 border-b transition-colors duration-300',
           scrolled
-            ? 'bg-background/95 backdrop-blur-sm'
-            : 'bg-transparent',
+            ? 'border-stroke bg-background/80 backdrop-blur-md'
+            : 'border-transparent bg-transparent',
         ].join(' ')}
       >
         <Container
@@ -35,19 +35,19 @@ export default function Nav() {
           <Link
             href="/"
             className={[
-              'col-start-1 row-start-1 justify-self-start transition-colors leading-[25.189px]',
+              'col-start-1 row-start-1 justify-self-start text-[16px] tracking-[-0.01em] transition-colors',
               pathname === '/' ? 'text-foreground' : 'text-foreground hover:text-muted',
             ].join(' ')}
             aria-label="Go to home page"
             aria-current={pathname === '/' ? 'page' : undefined}
           >
-            <span className="text-[24px] font-light">milos</span>
-            <span className="text-[24px] font-bold">dostanic</span>
+            <span className="font-light">milos</span>
+            <span className="font-semibold">dostanic</span>
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="col-start-2 row-start-1 hidden items-center justify-center gap-7 md:col-start-2 md:flex"
+            className="col-start-2 row-start-1 hidden items-center justify-center gap-8 md:col-start-2 md:flex"
           >
             {NAV_LINKS.map((link) => {
               const active = isNavActive(pathname, link.href)
@@ -57,7 +57,7 @@ export default function Nav() {
                   href={link.href}
                   aria-current={active ? 'page' : undefined}
                   className={[
-                    'text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] transition-colors duration-200',
+                    'font-mono text-[11px] uppercase tracking-[0.16em] transition-colors duration-200',
                     active
                       ? [
                           'relative pb-px text-foreground',

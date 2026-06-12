@@ -11,7 +11,6 @@ import FooterCTA from '@/components/home/FooterCTA'
 import { cn } from '@/lib/utils'
 import {
   monoIndexAccentClassName,
-  monoIndexAccentPaddedClassName,
   monoIndexGridClassName,
   navBackLinkClassName,
   navRelatedLinkClassName,

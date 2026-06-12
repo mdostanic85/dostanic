@@ -51,15 +51,15 @@ export const pageIntroClassName =
 
 /** `h1` — home hero stack (pair with `.hero-title-tight` in globals for rhythm). */
 export const heroHeadingClassName =
-  'display-tight flex max-w-[1240px] flex-col gap-0 text-[40px] font-bold text-foreground animate-fade-in-up sm:text-[clamp(47px,6.84vw,92px)]'
+  'display-tight flex max-w-[1320px] flex-col gap-0 text-[44px] font-semibold text-foreground sm:text-[clamp(52px,7.6vw,112px)]'
 
 /** Hero supporting paragraph under `h1`. */
 export const heroIntroClassName =
-  'mt-5 max-w-[65ch] text-balance text-[13px] font-normal leading-[1.55] tracking-[-0.01em] text-muted animate-fade-in-up sm:mt-6 sm:text-[14px] lg:text-[16px] lg:leading-[1.6]'
+  'mt-7 max-w-[52ch] text-balance text-[15px] font-normal leading-[1.65] tracking-[-0.005em] text-muted animate-fade-in-up sm:mt-8 sm:text-[16px] lg:text-[17px]'
 
 /** `h2` — closing CTA masthead on inverse background. */
 export const footerCtaHeadingClassName =
-  'display-mega flex max-w-5xl flex-col gap-[0.02em] pb-[0.12em] text-[32px] font-bold leading-none tracking-[-0.045em] text-inverse-foreground sm:text-[clamp(44px,6.4vw,82px)]'
+  'display-mega flex max-w-5xl flex-col gap-[0.02em] pb-[0.12em] text-[36px] font-semibold tracking-[-0.04em] text-inverse-foreground sm:text-[clamp(48px,7vw,96px)]'
 
 /** Lead line under section eyebrow (`<p>`, not a heading). */
 export const sectionLeadClassName =

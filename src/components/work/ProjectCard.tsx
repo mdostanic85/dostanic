@@ -40,7 +40,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Cover image */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground/40">
           {project.coverImage ? (
             <Image
               src={project.coverImage}
@@ -62,7 +62,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Capability ribbon */}
           {project.isCapability ? (
-            <span className="absolute left-4 top-4 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-inverse-foreground">
+            <span className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-inverse-foreground">
               Capability
             </span>
           ) : null}
@@ -91,9 +91,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           <span
             aria-hidden="true"
-            className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stroke text-foreground transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-inverse-foreground"
+            className="mt-2 shrink-0 text-lg text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
           >
-            →
+            ↗
           </span>
         </div>
       </Link>

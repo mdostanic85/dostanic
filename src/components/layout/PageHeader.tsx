@@ -57,7 +57,7 @@ export default function PageHeader({
         <SectionReveal>
           <div
             className={cn(
-              'grid grid-cols-1 gap-12 pt-16 lg:grid-cols-12 lg:gap-12 lg:pt-24',
+              'grid grid-cols-1 gap-12 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-12 lg:pt-24',
               tightBottom
                 ? 'pb-8 lg:pb-10'
                 : 'pb-16 lg:pb-24',

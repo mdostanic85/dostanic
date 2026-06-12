@@ -1,19 +1,11 @@
-import Button from '@/components/ui/Button'
 import Container from '@/components/layout/Container'
 import { footerCtaHeadingClassName } from '@/lib/headings'
 
 /**
- * Closing CTA — atomic.black's "We are ready to discuss your project" wall.
- *  - Inverted color block (bg-inverse) so the footer reads as a closing slab
- *    distinct from the dark page body above.
- *  - Massive editorial headline with the same accent gradient as the hero
- *    (blue → cyan → violet via `.accent-gradient-text`).
- *  - Compact contact row + meta footer below with EST mark and GO TOP link.
- *
- * The wave stripe used to live here; it has moved to the home page (between
- * Hero and SelectedWork) so it appears once, in a single dedicated spot, on
- * a true dark background where the gradient strokes can read against the
- * page's body gradient.
+ * Closing CTA — inverted light slab so the footer reads as a distinct
+ * closing chapter after the dark page body. Massive editorial headline,
+ * then the email itself as the primary action: a giant underlined link
+ * rather than a button — the most confident CTA a portfolio can make.
  */
 export default function FooterCTA() {
   return (
@@ -22,47 +14,50 @@ export default function FooterCTA() {
       id="contact"
     >
       <Container size="wide">
-        <div className="flex flex-col gap-8 py-[128px]">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] leading-[16.5px] text-inverse-muted">
-            Contacts / Availability
+        <div className="flex flex-col gap-10 py-28 lg:py-36">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-inverse-muted">
+            Contact / Availability
           </p>
 
           <h2 className={footerCtaHeadingClassName}>
-            <span className="block leading-[0.88]">I&apos;m ready</span>
-            <span className="block leading-[0.88]">to discuss</span>
-            <span className="accent-gradient-text block w-fit leading-[0.88]">
-              your project.
-            </span>
+            <span className="block">Building something</span>
+            <span className="block">complex? Let&apos;s make</span>
+            <span className="block">it feel simple.</span>
           </h2>
 
-          <p className="max-w-3xl pt-2 text-[20px] leading-[1.7] text-inverse-muted">
-            If you&apos;re building something complex and need a designer who reads the PR
-            and stays close to implementation — let&apos;s talk.
+          <p className="max-w-2xl text-lg leading-[1.7] text-inverse-muted lg:text-xl">
+            If you need a designer who reads the PR, ships with engineering,
+            and stays close to implementation — I&apos;m one email away.
           </p>
 
-          <div className="flex flex-col items-start gap-3 pt-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] leading-[16.5px] text-inverse-muted">
+          <div className="pt-2">
+            <a
+              href="mailto:milos@dostanic.net"
+              className="group inline-block"
+            >
+              <span className="display-tight break-all text-[clamp(24px,4.6vw,56px)] font-semibold text-inverse-foreground transition-colors group-hover:text-accent">
+                milos@dostanic.net
+              </span>
+              <span
+                aria-hidden="true"
+                className="mt-2 block h-px w-full origin-left scale-x-0 bg-current transition-transform duration-500 ease-out group-hover:scale-x-100"
+              />
+            </a>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-inverse-muted">
               Based in Serbia · working remote with teams worldwide
             </p>
-            <Button
-              variant="primary-inverse"
-              href="mailto:milos@dostanic.net"
-              className="text-[14px] leading-5"
-            >
-              Send email
-            </Button>
           </div>
         </div>
 
         {/* Footer meta strip */}
-        <div className="py-8">
+        <div className="border-t border-inverse-stroke py-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-mono text-[11px] uppercase leading-[16.5px] tracking-[0.2em] text-inverse-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-inverse-muted">
               © 2026 Milos Dostanic
             </p>
             <a
               href="#top"
-              className="inline-flex items-center gap-2 pl-2 font-mono text-[14px] uppercase leading-[16.5px] tracking-[0.141em] text-inverse-foreground"
+              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-inverse-foreground transition-opacity hover:opacity-70"
             >
               <span>Go top</span>
               <span aria-hidden="true">↑</span>

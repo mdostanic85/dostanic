@@ -267,9 +267,10 @@ export default function WaveStripe() {
             x2="100%"
             y2="0%"
           >
-            <stop offset="0%" stopColor="#1b67e8" stopOpacity="0.9" />
-            <stop offset="55%" stopColor="#1ccecb" stopOpacity="1" />
-            <stop offset="100%" stopColor="#0ea5a2" stopOpacity="0.9" />
+            {/* Theme vars so the stripe keeps contrast in light mode too. */}
+            <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.7" />
+            <stop offset="55%" stopColor="var(--color-accent)" stopOpacity="1" />
+            <stop offset="100%" stopColor="var(--color-accent-secondary)" stopOpacity="0.85" />
           </linearGradient>
         </defs>
 

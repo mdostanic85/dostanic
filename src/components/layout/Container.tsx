@@ -7,7 +7,7 @@ type ContainerProps = {
 const sizeClasses = {
   narrow: 'max-w-[720px]',
   default: 'max-w-[1120px]',
-  wide: 'max-w-[1400px]',
+  wide: 'max-w-[1500px]',
 }
 
 export default function Container({

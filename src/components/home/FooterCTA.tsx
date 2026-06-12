@@ -1,91 +1,81 @@
-import Button from '@/components/ui/Button'
-import Container from '@/components/layout/Container'
-import { footerCtaHeadingClassName, preventHeadingOrphan } from '@/lib/headings'
+import Reveal from '@/components/v3/Reveal'
+import Magnetic from '@/components/v3/Magnetic'
+import LocalTime from '@/components/v3/LocalTime'
+import ChapterReveal from '@/components/v3/ChapterReveal'
 
-const DEFAULTS = {
-  titleLines: ["I'm ready to discuss"],
-  titleAccentLine: 'your project.',
-  body: "If you're building something complex and need a designer who reads the PR and stays close to implementation — let's talk.",
-  locationLine: 'Based in Serbia · working remote with teams worldwide',
-  emailLabel: 'Send email',
-  email: 'milos@dostanic.net',
-  copyrightOwner: '2026 Milos Dostanic',
-} as const
-
-type FooterCTAProps = {
-  titleLines?: string[]
-  titleAccentLine?: string
-  body?: string
-  locationLine?: string
-  emailLabel?: string
-  email?: string
-  copyrightOwner?: string
-}
-
-export default function FooterCTA({
-  titleLines,
-  titleAccentLine,
-  body,
-  locationLine,
-  emailLabel,
-  email,
-  copyrightOwner,
-}: FooterCTAProps = {}) {
-  const activeLines =
-    titleLines && titleLines.length > 0 ? titleLines : DEFAULTS.titleLines
-  const primaryLine = activeLines.join(' ')
-  const accentLine = titleAccentLine ?? DEFAULTS.titleAccentLine
-  const activeEmail = email ?? DEFAULTS.email
-
+/**
+ * Closing chapter — V3. Uppercase poster headline with the loudest word
+ * in outline stroke, the email as the primary action with an underline
+ * sweep, live Belgrade clock in the meta rail. Shared site footer.
+ */
+export default function FooterCTA() {
   return (
-    <footer className="grain relative bg-inverse text-inverse-foreground" id="contact">
-      <div className="flex min-h-svh flex-col justify-center">
-        <Container size="wide">
-          <div className="flex flex-col gap-10 py-16 sm:gap-12 sm:py-20 lg:gap-14 lg:py-28">
-            <h2 className={footerCtaHeadingClassName}>
-              <span className="block">{preventHeadingOrphan(primaryLine)}</span>
-              <span className="accent-gradient-text block">
-                {preventHeadingOrphan(accentLine)}
-              </span>
+    <ChapterReveal>
+    <footer
+      className="chapter-dark grain relative bg-background text-foreground"
+      id="contact"
+    >
+      <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+        <Reveal>
+          <div className="flex flex-col gap-12 py-28 lg:py-40">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+              04 — Contact
+            </p>
+
+            <h2 className="display-mega max-w-[14ch] text-[clamp(44px,8.5vw,128px)] font-semibold uppercase text-foreground">
+              Have something{' '}
+              <span className="text-outline block w-fit">complex?</span>
             </h2>
 
-            <p className="max-w-3xl text-[20px] leading-[1.7] text-inverse-muted lg:text-[22px]">
-              {body ?? DEFAULTS.body}
-            </p>
-
-            <div className="flex flex-col items-start gap-4 pt-2">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] leading-[16.5px] text-inverse-muted">
-                {locationLine ?? DEFAULTS.locationLine}
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+              <p className="max-w-[44ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]">
+                If you need a designer who reads the PR, ships with
+                engineering, and stays close to implementation — I&apos;m one
+                email away.
               </p>
-              <Button
-                variant="primary-inverse"
-                href={`mailto:${activeEmail}`}
-                className="text-[14px] leading-5"
-              >
-                {emailLabel ?? DEFAULTS.emailLabel}
-              </Button>
+
+              <Magnetic strength={12}>
+                <a
+                  href="mailto:milos@dostanic.net"
+                  className="group inline-block shrink-0"
+                >
+                  <span className="display-tight text-[clamp(22px,3.4vw,40px)] font-medium text-foreground transition-colors duration-300 group-hover:text-accent">
+                    milos@dostanic.net
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 block h-px w-full origin-left scale-x-100 bg-stroke transition-transform duration-500 ease-out group-hover:scale-x-0"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="block h-px w-full origin-right scale-x-0 bg-accent transition-transform delay-100 duration-500 ease-out group-hover:origin-left group-hover:scale-x-100"
+                  />
+                </a>
+              </Magnetic>
             </div>
           </div>
-        </Container>
-      </div>
+        </Reveal>
 
-      {/* Footer meta strip */}
-      <Container size="wide">
-        <div className="border-t border-inverse-foreground/10 py-10 lg:py-12">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-mono text-[11px] uppercase leading-[16.5px] tracking-[0.2em] text-inverse-muted">
-              © {copyrightOwner ?? DEFAULTS.copyrightOwner}
-            </p>
-            <a
-              href="#top"
-              className="inline-flex items-center gap-2 pl-2 font-mono text-[14px] uppercase leading-[16.5px] tracking-[0.141em] text-inverse-foreground"
-            >
-              <span>Go top</span>
-              <span aria-hidden="true">↑</span>
-            </a>
-          </div>
+        {/* Meta rail */}
+        <div className="flex flex-col gap-4 border-t border-stroke py-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+            © 2026 Milos Dostanic
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+            Serbia · <LocalTime />
+          </p>
+          <a
+            href="#top"
+            className="link-roll inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground"
+          >
+            <span className="link-roll-text">
+              <span>Back to top ↑</span>
+              <span aria-hidden="true">Back to top ↑</span>
+            </span>
+          </a>
         </div>
-      </Container>
+      </div>
     </footer>
+    </ChapterReveal>
   )
 }

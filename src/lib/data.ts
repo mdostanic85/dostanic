@@ -1,12 +1,19 @@
-import type {
-  Project,
-  ExpertiseTile,
-  Differentiator,
-  WorkEngagement,
-  StudioEmployment,
-} from './types'
+import type { Project, ExpertiseTile, Differentiator } from './types'
 
 export const PROJECTS: Project[] = [
+  // ─── Current engagement ──────────────────────────────────────────────────
+  {
+    title: 'Space Inch — Enterprise Product Design',
+    domain: 'Agency / SaaS',
+    discipline: 'Senior Product Designer',
+    description:
+      'At Space Inch — a product and engineering studio that partners with healthcare, fintech, and growth-stage SaaS organizations — I operate as a senior product designer embedded with client teams. I own discovery through delivery: journey mapping and IA, high-density operational UIs, accessible patterns, and engineering-ready specs so shipped software matches the design intent. Engagements span modernization of legacy workflows, internal tooling at scale, and AI-assisted product surfaces where design, data, and engineering have to stay aligned. For the latest engagements and timeline, see my LinkedIn profile.',
+    slug: 'spaceinch',
+    year: '2025',
+    featured: true,
+    category: 'Product Design',
+  },
+
   // ─── Product Design & Enterprise SaaS ────────────────────────────────────
   {
     title: 'DevRev — Developer Tools Platform',
@@ -56,8 +63,8 @@ export const PROJECTS: Project[] = [
     year: '2025',
     featured: true,
     category: 'Analytics',
-    coverImage: '/work/soundscope/cover.png',
     behanceUrl: 'https://www.behance.net/gallery/235878795/SoundScope-Music-Analytics-Dashboard-Redesign',
+    coverImage: '/work/soundscope/cover.png',
   },
   {
     title: 'MatchLink — Real-Time Matchday Insights',
@@ -70,6 +77,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     category: 'Analytics',
     behanceUrl: 'https://www.behance.net/gallery/225610623/MatchLink-Real-Time-Matchday-Insights',
+    coverImage: '/work/matchlink/cover.jpg',
   },
 
   // ─── Healthcare & Fintech ─────────────────────────────────────────────────
@@ -83,7 +91,6 @@ export const PROJECTS: Project[] = [
     year: '2024',
     featured: true,
     category: 'Healthcare',
-    coverImage: '/work/healthcare-crm/cover.jpg',
   },
   {
     title: 'Galaxy Cash — Fintech Mobile App',
@@ -96,6 +103,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     category: 'Fintech',
     behanceUrl: 'https://www.behance.net/gallery/225609903/Galaxy-Cash-Mobile-App-Design',
+    coverImage: '/work/galaxy-cash/cover.png',
   },
 
   // ─── Design Systems & AI Workflow ─────────────────────────────────────────
@@ -134,6 +142,7 @@ export const PROJECTS: Project[] = [
     year: '2021',
     featured: false,
     category: 'Web',
+    coverImage: '/work/cecconis/cover.png',
   },
 ]
 
@@ -142,78 +151,36 @@ export const LINKEDIN_PROFILE_URL =
   'https://www.linkedin.com/in/milosdostanic/' as const
 
 /**
- * Employers and studios (About → Experience). Timelines align with the public
- * LinkedIn record; summaries are tightened for the site. Product- and client-level
- * case studies live under /work.
+ * Employment timeline — companies only, LinkedIn-style. Used on About and
+ * the home experience strip. Client project names deliberately excluded;
+ * those live under /work.
  */
-export const WORK_ENGAGEMENTS: WorkEngagement[] = [
+export const COMPANIES = [
   {
     company: 'Space Inch',
-    period: 'Mar 2024 — present',
-    role: 'Senior Product Designer / AI Engineer',
-    summary:
-      'Product and engineering studio — I embed as senior product design lead from discovery through delivery: IA, flows, high-density SaaS and internal tools, accessibility, and specs that survive real sprint pressure (healthcare, fintech, enterprise). I often own the design system — tokens, components, Figma architecture, docs, and governance so more than one team can ship without visual or API drift. Work is increasingly AI-driven: faster exploration, tighter design–dev loops, and patterns where product, data, and tooling stay coherent. When it shortens the loop, I work in the same toolchain as engineering — GitHub (PRs, reviews, branching), Vercel previews for sign-off on production-like builds, and React / Next.js for prototypes or build-ready UI alongside Figma.',
+    role: 'Senior Product Designer',
+    period: '2025 — Present',
+    note: 'Product & engineering studio. Embedded with client teams as the senior designer — discovery to delivery across healthcare, fintech, and enterprise SaaS: IA, high-density operational UI, accessibility, and implementation-grade specs.',
   },
   {
     company: 'Polyrific',
-    period: 'Mar 2023 — Mar 2024',
-    role: 'Product Designer · Part-time, project-based',
-    summary:
-      'Part-time engagement by project — product design for Geniverse, an AI platform for organising, analysing, and acting on data through adaptive workflows. I owned research and flows through hi-fi UI and prototyping, evolved the design system (components, type, colour), simplified complex features (memory, uploads, Spaces), and partnered with engineering and product so the experience stayed clear, trustworthy, and buildable.',
-  },
-  {
-    company: 'KOD WORKS',
-    period: 'Jun 2023 — Nov 2023',
-    role: 'Senior UI/UX Designer',
-    summary:
-      'UI and UX for games and other digital products — flow maps and interfaces that support gameplay, Lottie-based motion for stronger mobile game feel, and a deliberate balance between visual appeal and practical, repeatable interaction patterns.',
+    role: 'Product Designer',
+    period: '2023 — 2024',
+    note: 'AI platform work — flows, UI, prototyping, and system thinking with product and engineering leads.',
   },
   {
     company: 'Quantox Technology',
-    period: 'Mar 2019 — Jun 2023',
-    role: 'Medior UI/UX Designer, then Senior UI/UX Designer',
-    summary:
-      'Agency-side product and marketing design for client digital products: user research, prototyping, and shipped UI in collaboration with PMs, developers, and stakeholders. Promoted from medior to senior as scope grew; graphic-design background applied to logos, infographics, decks, and supporting visual assets when products needed them.',
+    role: 'Medior → Senior UI/UX Designer',
+    period: '2019 — 2023',
+    note: 'Complex product UX/UI across long-form engagements and multiple client accounts — from discovery patterns through shipped UI, in tight collaboration with PMs and engineers.',
   },
   {
-    company: 'Fantastic Machines GmbH',
-    period: 'Jan 2016 — Jan 2017',
-    role: 'UI Designer',
-    summary:
-      'UI design across multiple web projects and UX improvements for the Paxxon app — working with a small product-oriented team (company based in Switzerland; I worked from Paraćin).',
+    company: 'Fantastic Machines · Promo · HEINEKEN',
+    role: 'Graphic & Campaign Design',
+    period: '2013 — 2017',
+    note: 'Brand and campaign craft for global brands including Heineken and Carlsberg — the visual foundation under the product work.',
   },
-  {
-    company: 'Carlsberg Group',
-    period: '2015 — 2016',
-    role: 'Graphic Designer',
-    summary:
-      'Brand-side graphic design for Carlsberg — campaign and packaging-adjacent materials, in line with global brand guidelines and local market execution.',
-  },
-  {
-    company: 'Promo Advertising',
-    period: 'Sep 2013 — Jun 2014',
-    role: 'Graphic Designer',
-    summary:
-      'Graphic design for advertising and print — campaign and client materials end to end, from layout and prepress-oriented execution to delivery-ready artwork.',
-  },
-  {
-    company: 'The HEINEKEN Company',
-    period: 'Jan 2013',
-    role: 'Graphic Designer',
-    summary:
-      'Limited-time packaging project — design for the Belgrade 2013 limited-edition can, executed to global brand standards on a short, high-visibility timeline.',
-  },
-  {
-    company: 'Freelance',
-    period: '2003 — present',
-    role: 'Independent designer',
-    summary:
-      'Independent practice since 2003 — graphic design, brand and campaign work, and (over time) product and digital UI/UX alongside studio and embedded roles. The thread is the same: clear systems, craft-level execution, and deliverables teams can ship.',
-  },
-]
-
-/** Reserved for additional archive rows; Experience employers live in WORK_ENGAGEMENTS. */
-export const STUDIO_EMPLOYMENT: StudioEmployment[] = []
+] as const
 
 export const EXPERTISE_TILES: ExpertiseTile[] = [
   {

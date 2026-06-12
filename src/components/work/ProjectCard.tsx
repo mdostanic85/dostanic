@@ -1,11 +1,8 @@
-'use client'
-
+import Image from 'next/image'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import type { Project } from '@/lib/types'
-import ProjectCover from '@/components/work/ProjectCover'
 import { sectionSubheadingClassName } from '@/lib/headings'
-import CaseStudyTileLink from '@/components/work/CaseStudyTileLink'
-import { hasCaseStudyPage } from '@/lib/caseStudyRoutes'
 
 type ProjectCardProps = {
   project: Project
@@ -14,20 +11,19 @@ type ProjectCardProps = {
 }
 
 /**
- * Atomic.black-style project tile — cover is a slug-stable colour placeholder,
- * with mono caption marks in the top corners (index + year/domain), an arrow
- * circle on the right of the caption, and a hover scale on the cover. Mirrors
- * the home SelectedWork tile so the listing reads as one coherent editorial system.
- * Links to the case study route when one exists; display-only otherwise.
+ * Atomic.black-style project tile — image-driven, with mono caption marks in
+ * the top corners (index + year/domain), an arrow circle on the right of the
+ * caption, and a hover scale on the cover. Mirrors the home Hero's case
+ * preview tile so the listing reads as one coherent editorial system.
  */
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const linked = hasCaseStudyPage(project.slug)
+  const href = `/work/${project.slug}`
+
   return (
     <article className="group">
-      <CaseStudyTileLink
-        slug={project.slug}
-        title={project.title}
-        className={cn('block', linked ? 'cursor-pointer' : 'cursor-default')}
+      <Link
+        href={href}
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         {/* Top mark row */}
         <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
@@ -43,7 +39,40 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </span>
         </div>
 
-        <ProjectCover project={project} />
+        {/* Cover image */}
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-stroke bg-surface transition-colors duration-300 group-hover:border-foreground/40">
+          {project.coverImage ? (
+            <Image
+              src={project.coverImage}
+              alt={`${project.title} cover`}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+          ) : (
+            <div
+              aria-hidden="true"
+              className="flex h-full w-full items-center justify-center"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/40">
+                {project.isCapability ? 'Capability' : 'Case study'}
+              </span>
+            </div>
+          )}
+
+          {/* Capability ribbon */}
+          {project.isCapability ? (
+            <span className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-inverse-foreground">
+              Capability
+            </span>
+          ) : null}
+
+          {/* Accent line slide-in */}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
+          />
+        </div>
 
         {/* Caption */}
         <div className="mt-5 flex items-start justify-between gap-5">
@@ -62,12 +91,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           <span
             aria-hidden="true"
-            className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stroke text-foreground transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-inverse-foreground"
+            className="mt-2 shrink-0 text-lg text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
           >
-            →
+            ↗
           </span>
         </div>
-      </CaseStudyTileLink>
+      </Link>
     </article>
   )
 }

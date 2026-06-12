@@ -4,14 +4,16 @@ import SectionReveal from '@/components/layout/SectionReveal'
 import { cn } from '@/lib/utils'
 import {
   pageHeadingClassName,
+  pageHeaderKickerAccentClassName,
+  pageHeaderMetaClassName,
   pageIntroClassName,
 } from '@/lib/headings'
 
 type PageHeaderProps = {
-  /** @deprecated No longer rendered — kept for CMS/call-site compatibility. */
-  eyebrow?: string
+  /** Mono caption shown above the headline — e.g. "About / Background". */
+  eyebrow: string
   /** The big editorial headline. Use a string for plain text, or a node for
-   * accent-pulled phrasing — e.g. <>Design that <span className="text-accent">survives</span></>. */
+   * accent-pulled phrasing — e.g. <>Design that <span className="accent-gradient-text">survives</span></>. */
   title: ReactNode
   /** Optional intro paragraph shown below the headline. */
   intro?: ReactNode
@@ -25,26 +27,16 @@ type PageHeaderProps = {
 }
 
 /**
- * Shared atomic.black-style page header used across all subpages.
- * Typography tokens: `@/lib/headings` (`pageHeadingClassName`, etc.).
- *
- * Structure:
- *   ┌──────────────────────────────────────────────────────────────┐
- *   │ <eyebrow>                                    <topRightLabel>  │
- *   │ <mega editorial title>                                        │
- *   │ <intro paragraph>                                             │
- *   │                                              <aside content>  │
- *   └──────────────────────────────────────────────────────────────┘
- *
- * Headlines use display-tight tracking + responsive type ramp tuned to feel
- * editorial but stay readable on mobile. The aside collapses below on
- * narrower viewports. The `h1` uses `.page-header-headline` so line rhythm and
- * gradient spans match the home Hero without touching each route.
+ * Shared subpage masthead — V3. A hairline kicker rail (eyebrow left,
+ * meta right) above the oversized headline; cyan accent words come
+ * from `.accent-gradient-text` spans passed in `title`.
  */
 export default function PageHeader({
+  eyebrow,
   title,
   intro,
   aside,
+  topRightLabel = '2026 / Available',
   tightBottom = false,
 }: PageHeaderProps) {
   return (
@@ -53,13 +45,16 @@ export default function PageHeader({
         <SectionReveal>
           <div
             className={cn(
-              'grid grid-cols-1 gap-12 pt-[calc(4rem*2/3)] lg:grid-cols-12 lg:gap-12 lg:pt-24',
-              tightBottom
-                ? 'pb-8 lg:pb-10'
-                : 'pb-16 lg:pb-24',
+              'grid grid-cols-1 gap-12 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-12 lg:pt-20',
+              tightBottom ? 'pb-8 lg:pb-10' : 'pb-16 lg:pb-24',
             )}
           >
             <div className={aside ? 'lg:col-span-8' : 'lg:col-span-12'}>
+              <div className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-stroke pb-5">
+                <p className={pageHeaderKickerAccentClassName}>{eyebrow}</p>
+                <span className={pageHeaderMetaClassName}>{topRightLabel}</span>
+              </div>
+
               <h1 className={pageHeadingClassName}>{title}</h1>
 
               {intro ? <p className={pageIntroClassName}>{intro}</p> : null}

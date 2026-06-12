@@ -1,142 +1,70 @@
 import type { Metadata } from 'next'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
 import FooterCTA from '@/components/home/FooterCTA'
+import Reveal from '@/components/v3/Reveal'
 import WorkClient from './WorkClient'
 import { PROJECTS } from '@/lib/data'
-import { normalizeProjects } from '@/lib/normalizeProjects'
-import type { Project, ProjectCategory } from '@/lib/types'
-import { sanityFetch } from '@/sanity/lib/fetch'
-import {
-  PROJECTS_LIST_QUERY,
-  WORK_INDEX_PAGE_QUERY,
-} from '@/sanity/lib/queries'
 
-import {
-  preventHeadingOrphan,
-} from '@/lib/headings'
-
-const WORK_PAGE_TITLE = {
-  line1: 'Selected work,',
-  line2: 'across complex products.',
-} as const
-
-type CmsPageHeader = {
-  eyebrow?: string
-  titleLines?: string[]
-  titleAccentLine?: string
-  intro?: string
-  topRightLabel?: string
-}
-
-type CmsWorkIndexPage = {
-  pageHeader?: CmsPageHeader
-  footerNote?: string
-  seo?: { title?: string; description?: string }
-}
-
-type CmsProject = {
-  _id: string
-  title: string
-  slug: string
-  domain?: string
-  discipline?: string
-  year?: string
-  featured?: boolean
-  isCapability?: boolean
-  category?: string
-  description?: string
-  behanceUrl?: string
-}
-
-const FALLBACK_METADATA: Metadata = {
+export const metadata: Metadata = {
   title: 'Work — Milos Dostanic',
   description:
     'Selected product design and systems work — enterprise SaaS, healthcare, analytics, fintech, and agency engagements — from a senior designer who ships.',
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const cms = await sanityFetch<CmsWorkIndexPage | null>({
-    query: WORK_INDEX_PAGE_QUERY,
-    tags: ['workIndexPage'],
-  })
-  return {
-    title: cms?.seo?.title ?? FALLBACK_METADATA.title,
-    description: cms?.seo?.description ?? FALLBACK_METADATA.description,
-  }
-}
-
-function mapCmsProject(p: CmsProject): Project | null {
-  const slug = typeof p.slug === 'string' ? p.slug.trim() : ''
-  if (!slug || !p.title) return null
-
-  const staticProject = PROJECTS.find((item) => item.slug === slug)
-  return {
-    title: p.title,
-    domain: p.domain ?? '',
-    discipline: p.discipline ?? '',
-    description: p.description ?? '',
-    slug,
-    year: p.year ?? '',
-    featured: Boolean(p.featured),
-    category: (p.category ?? 'Product Design') as ProjectCategory,
-    isCapability: p.isCapability,
-    behanceUrl: p.behanceUrl,
-    coverImage: staticProject?.coverImage,
-  }
-}
-
-export default async function WorkPage() {
-  const [cmsPage, cmsProjects] = await Promise.all([
-    sanityFetch<CmsWorkIndexPage | null>({
-      query: WORK_INDEX_PAGE_QUERY,
-      tags: ['workIndexPage'],
-    }),
-    sanityFetch<CmsProject[] | null>({
-      query: PROJECTS_LIST_QUERY,
-      tags: ['project'],
-    }),
-  ])
-
-  const cmsMapped =
-    cmsProjects?.map(mapCmsProject).filter((p): p is Project => p !== null) ?? []
-  const projects: Project[] = normalizeProjects(
-    cmsMapped.length > 0 ? cmsMapped : PROJECTS,
-  )
-
-  const intro =
-    cmsPage?.pageHeader?.intro ??
-    'Twenty-plus years across product UX, design systems, analytics, healthcare, fintech, and web. The selection below shows the kind of work I do and how I think — edge cases included.'
-  const footerNote =
-    cmsPage?.footerNote ??
-    'More projects available on request — including NDA-covered enterprise work and legacy projects not shown here.'
-
-  const titleNode = (
-    <>
-      <span className="block">{preventHeadingOrphan(WORK_PAGE_TITLE.line1)}</span>
-      <span className="accent-gradient-text block">
-        {preventHeadingOrphan(WORK_PAGE_TITLE.line2)}
-      </span>
-    </>
-  )
+/**
+ * Work — V3.1. A raw index, not a gallery: giant INDEX masthead with a
+ * project counter, filters as a mono rail, then the hairline table with
+ * cursor-trailing previews.
+ */
+export default function WorkPage() {
+  const total = PROJECTS.length
+  const years = '2021 — 2026'
 
   return (
     <main>
-      <PageHeader
-        title={titleNode}
-        intro={<>{intro}</>}
-      />
+      {/* Masthead — INDEX + counter */}
+      <header className="relative overflow-hidden pt-16">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col justify-end pb-10 pt-20 sm:pt-28 lg:pb-14">
+            <div className="flex flex-wrap items-end gap-x-8 gap-y-4">
+              <h1 className="display-mega text-[clamp(56px,12vw,190px)] font-semibold uppercase">
+                <span className="line-mask">
+                  <span
+                    className="line-rise block"
+                    style={{ animationDelay: '80ms' }}
+                  >
+                    Ind<span className="text-outline">ex.</span>
+                  </span>
+                </span>
+              </h1>
+              <p
+                className="mb-4 font-mono text-[12px] uppercase tracking-[0.25em] text-accent animate-fade-in-up sm:mb-8"
+                style={{ animationDelay: '300ms' }}
+              >
+                ({String(total).padStart(2, '0')})
+              </p>
+            </div>
+            <div
+              className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-stroke pt-6 animate-fade-in-up"
+              style={{ animationDelay: '400ms' }}
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+                Selected work — {years}
+              </p>
+              <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:block">
+                NDA-covered enterprise work available on request
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <Section padding="lg">
-        <Container size="wide">
-          <WorkClient projects={projects} />
-
-          <p className="mt-20 max-w-2xl pt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-            {footerNote}
-          </p>
-        </Container>
-      </Section>
+      <section aria-label="Project index" className="pb-28 lg:pb-40">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <WorkClient projects={PROJECTS} />
+          </Reveal>
+        </div>
+      </section>
 
       <FooterCTA />
     </main>

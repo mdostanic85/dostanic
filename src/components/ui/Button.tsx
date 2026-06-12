@@ -21,24 +21,25 @@ const buttonVariants = cva(
   // transition-colors + transition-transform (not transition-all) — keeps
   // hover lift while avoiding Tailwind v4 mis-parsing of comma-heavy
   // arbitrary `transition-[…]` declarations.
-  'inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium rounded-[4px] transition-colors transition-transform duration-150 hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  // V3 — sharp rectangles, mono uppercase labels, fill-swap hovers.
+  'inline-flex shrink-0 items-center justify-center whitespace-nowrap font-mono uppercase tracking-[0.2em] transition-colors duration-200 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         primary:
-          'bg-foreground text-inverse-foreground border border-foreground hover:bg-foreground/90',
+          'bg-foreground text-inverse-foreground border border-foreground hover:bg-transparent hover:text-foreground',
         ghost:
-          'bg-transparent text-foreground border border-foreground/28 hover:border-foreground',
+          'bg-transparent text-muted border border-stroke hover:border-foreground hover:text-foreground',
         'primary-inverse':
-          'bg-inverse-foreground text-foreground border border-inverse-foreground hover:bg-inverse-foreground/90',
+          'bg-inverse-foreground text-foreground border border-inverse-foreground hover:bg-transparent hover:text-inverse-foreground',
         accent:
-          'bg-accent text-inverse-foreground border border-accent hover:bg-accent-hover hover:border-accent-hover',
+          'bg-accent text-inverse-foreground border border-accent hover:bg-transparent hover:text-accent',
       },
       size: {
-        default: 'h-10 px-5 text-[14px] leading-5',
-        sm: 'h-8 px-3 text-[13px] leading-4',
-        lg: 'h-12 px-6 text-[15px] leading-5',
-        icon: 'h-10 w-10 p-0',
+        default: 'h-11 px-6 text-[11px]',
+        sm: 'h-9 px-4 text-[10px]',
+        lg: 'h-12 px-7 text-[11px]',
+        icon: 'h-11 w-11 p-0',
       },
     },
     defaultVariants: {

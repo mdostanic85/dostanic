@@ -3,14 +3,17 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useScrolled } from '@/hooks/useScrolled'
-import Container from '@/components/layout/Container'
+import Magnetic from '@/components/v3/Magnetic'
 import MobileMenu from './MobileMenu'
-import ThemeToggle from './ThemeToggle'
-import { NAV_LINKS, isNavActive } from '@/lib/nav'
 
+/**
+ * V3.1 navigation — a transparent fixed rail rendered in white with
+ * `mix-blend-difference`, so it self-inverts over both the ice body and
+ * the ink chapters (no scroll background, no border — the ScrollProgress
+ * hairline is the scroll affordance). Everything stays monochrome inside
+ * the blend layer; cyan would shift warm under difference.
+ */
 export default function Nav() {
-  const scrolled = useScrolled(80)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
 
@@ -25,82 +28,45 @@ export default function Nav() {
 
   return (
     <>
-      <header
-        className={[
-          'fixed top-0 left-0 right-0 z-50 h-16 transition-colors duration-200',
-          scrolled
-            ? 'bg-background/95 backdrop-blur-sm'
-            : 'bg-transparent',
-        ].join(' ')}
-      >
-        <Container
-          size="wide"
-          className="grid h-full grid-cols-[1fr_auto] items-center gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]"
-        >
+      <header className="pointer-events-none fixed top-0 left-0 right-0 z-50 h-16 mix-blend-difference">
+        <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[1fr_auto] items-center gap-3 px-5 text-white sm:px-8 md:grid-cols-[1fr_auto_1fr] lg:px-12">
           <Link
             href="/"
-            className={[
-              'col-start-1 row-start-1 justify-self-start transition-colors leading-[25.189px]',
-              pathname === '/' ? 'text-foreground' : 'text-foreground hover:text-muted',
-            ].join(' ')}
+            className="link-roll pointer-events-auto justify-self-start font-mono text-[12px] uppercase tracking-[0.25em]"
             aria-label="Go to home page"
             aria-current={pathname === '/' ? 'page' : undefined}
           >
-            <span className="text-[24px] font-light">milos</span>
-            <span className="text-[24px] font-bold">dostanic</span>
+            <span className="link-roll-text">
+              <span>Milos Dostanic®</span>
+              <span aria-hidden="true">Milos Dostanic®</span>
+            </span>
           </Link>
 
-          <nav
-            aria-label="Primary navigation"
-            className="col-start-2 row-start-1 hidden items-center justify-center gap-7 md:col-start-2 md:flex"
+          <p
+            aria-hidden="true"
+            className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-white/60 md:block"
           >
-            {NAV_LINKS.map((link) => {
-              const active = isNavActive(pathname, link.href)
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? 'page' : undefined}
-                  className={[
-                    'text-[14px] font-medium lowercase leading-[16.5px] tracking-[0.071em] transition-colors duration-150',
-                    active
-                      ? 'text-foreground'
-                      : [
-                          'relative pb-px text-muted',
-                          'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',
-                          'after:origin-left after:bg-accent after:transition-transform after:duration-200',
-                          "after:content-['']",
-                          'after:scale-x-0 hover:text-foreground hover:after:scale-x-100',
-                        ].join(' '),
-                  ].join(' ')}
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
-          </nav>
+            Senior Product Designer
+          </p>
 
-          <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-2 md:col-start-3 md:gap-3">
-            <ThemeToggle />
-
-            <button
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-navigation-dialog"
-              className="md:hidden p-2 -mr-2 text-muted hover:text-foreground transition-colors"
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path
-                  d="M3 5h14M3 10h14M3 15h14"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
+          <div className="flex items-center justify-self-end">
+            <Magnetic strength={8}>
+              <button
+                onClick={() => setMenuOpen(true)}
+                aria-label="Open menu"
+                aria-expanded={menuOpen}
+                aria-controls="site-navigation-overlay"
+                className="group pointer-events-auto inline-flex items-center gap-3 py-2 pl-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-opacity hover:opacity-70"
+              >
+                Menu
+                <span aria-hidden="true" className="flex flex-col gap-[5px]">
+                  <span className="block h-px w-6 bg-current transition-transform duration-300 group-hover:scale-x-75" />
+                  <span className="block h-px w-6 bg-current" />
+                </span>
+              </button>
+            </Magnetic>
           </div>
-        </Container>
+        </div>
       </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />

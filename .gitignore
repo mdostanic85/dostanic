@@ -2,11 +2,6 @@
 node_modules
 .next
 *.tsbuildinfo
-
-# Environment
-.env
 .env.local
-.env.*.local
-
-# Sanity
-/dist
+.env*.local
+.claude/

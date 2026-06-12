@@ -1,30 +1,14 @@
 import type { Metadata } from 'next'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
 import FooterCTA from '@/components/home/FooterCTA'
+import Reveal from '@/components/v3/Reveal'
+import ParallaxY from '@/components/v3/ParallaxY'
 import ArrowLink from '@/components/ui/ArrowLink'
-import {
-  LINKEDIN_PROFILE_URL,
-  STUDIO_EMPLOYMENT,
-  WORK_ENGAGEMENTS,
-} from '@/lib/data'
-import {
-  monoIndexAccentPaddedClassName,
-  monoKickerMutedClassName,
-  monoMetaMutedClassName,
-  sectionEyebrowAccentClassName,
-  sectionHeadingClassName,
-  sectionLeadClassName,
-  sectionPrincipleTitleClassName,
-  sectionSubheadingClassName,
-} from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import { COMPANIES, LINKEDIN_PROFILE_URL } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'About — Milos Dostanic',
   description:
-    'Award-winning Senior Product Designer with a strong graphic design foundation, focused on complex products, scalable systems, and AI-assisted delivery.',
+    'Senior Product Designer with a strong graphic design foundation, focused on complex products, scalable systems, and AI-assisted delivery.',
 }
 
 const PRINCIPLES = [
@@ -50,205 +34,192 @@ const PRINCIPLES = [
   },
 ]
 
+/**
+ * About — V3.1. Statement masthead (no shared PageHeader), then three
+ * chapters with sticky mono labels on the left: Story, Experience
+ * (companies only), Principles. Ghost "20+" numeral drifts behind the
+ * masthead on scroll.
+ */
 export default function AboutPage() {
   return (
     <main>
-      <PageHeader
-        eyebrow="About / Background"
-        title={
-          <>
-            20+ years of design.
-            <br />
-            Still getting closer to the
-            <br />
-            <span className="accent-gradient-text">hard problems.</span>
-          </>
-        }
-        intro={
-          <>
-            I am an award-winning designer with a strong graphic design background and
-            20+ years of experience. I help teams turn complex product requirements into
-            clear UX, scalable systems, and implementation-ready design.
-          </>
-        }
-        topRightLabel="Serbia · Remote"
-      />
+      {/* Masthead — statement + bio */}
+      <header className="relative overflow-hidden pt-16">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          {/* Ghost numeral */}
+          <ParallaxY
+            drift={120}
+            className="pointer-events-none absolute right-0 top-10 select-none sm:top-0"
+          >
+            <span
+              aria-hidden="true"
+              className="font-mono text-[34vw] font-light leading-none tracking-tighter text-foreground/[0.05] sm:text-[26vw]"
+            >
+              20+
+            </span>
+          </ParallaxY>
 
-      {/* ── The story ─────────────────────────────────────────────────── */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4">
-              <p className={sectionEyebrowAccentClassName}>
-                The story
+          <div className="relative flex flex-col justify-end pb-10 pt-20 sm:pt-28 lg:pb-14">
+            <h1 className="display-mega max-w-[12ch] text-[clamp(44px,8.5vw,136px)] font-semibold uppercase">
+              <span className="line-mask">
+                <span
+                  className="line-rise block"
+                  style={{ animationDelay: '80ms' }}
+                >
+                  Still chasing
+                </span>
+              </span>
+              <span className="line-mask">
+                <span
+                  className="line-rise block"
+                  style={{ animationDelay: '200ms' }}
+                >
+                  <span className="text-outline">hard problems.</span>
+                </span>
+              </span>
+            </h1>
+
+            <div
+              className="mt-10 flex flex-col gap-6 border-t border-stroke pt-6 animate-fade-in-up lg:flex-row lg:items-start lg:justify-between"
+              style={{ animationDelay: '420ms' }}
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+                20+ years of design · Serbia · remote worldwide
               </p>
-              <p className={monoKickerMutedClassName}>
-                Practising
-                <br />
-                <span className="text-foreground">since — 2003</span>
+              <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
+                I help teams turn complex product requirements into clear UX,
+                scalable systems, and implementation-ready design — with a
+                craft foundation built in graphic design and brand work for
+                names like Heineken and Carlsberg.
               </p>
             </div>
-            <div className="lg:col-span-8">
-              <p className={sectionLeadClassName}>
-                20+ years in design, now focused on complex products where UX, system
-                quality, and implementation alignment matter more than visual polish alone.
-              </p>
-              <div className="mt-8 space-y-5 text-base leading-[1.7] text-muted lg:text-lg">
-                <p>
-                  Before product work, I spent years in graphic and visual design. That
-                  craft foundation still shapes how I think about hierarchy, typography,
-                  clarity, and communication inside complex interfaces.
-                </p>
-                <p>
-                  I also worked on brand-side projects for clients such as Heineken and
-                  Carlsberg, which sharpened my discipline around visual systems and
-                  consistency at scale.
-                </p>
-                <p>
-                  My work spans healthcare, fintech, SaaS, enterprise tools, and data-heavy
-                  workflows where permissions, states, and edge cases shape the product.
-                </p>
-                <p>
-                  I operate between product strategy, UX, UI, design systems, Figma, and
-                  code-aware delivery so what gets designed can actually be built and maintained.
+          </div>
+        </div>
+      </header>
+
+      {/* ── 01 Story ──────────────────────────────────────────────────── */}
+      <section aria-label="Story" className="pt-20 lg:pt-28">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-3">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent lg:sticky lg:top-24">
+                  01 — Story
                 </p>
               </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ── How I think ───────────────────────────────────────────────── */}
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:mb-20">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                How I think
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Four
-                <br />
-                <span className="text-accent block w-fit">principles.</span>
-              </h2>
-            </div>
-            <p className="text-base leading-[1.7] text-muted lg:col-span-6 lg:col-start-7 lg:text-lg">
-              Not a process diagram. The mental model behind the work — what I look at
-              first, what I refuse to compromise on, and why I stay involved past the
-              Figma file.
-            </p>
-          </div>
-
-          <ul>
-            {PRINCIPLES.map((p) => (
-              <li
-                key={p.number}
-                className="group relative grid grid-cols-12 items-start gap-4 py-10 lg:py-14"
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
-                />
-                <span className={monoIndexAccentPaddedClassName}>
-                  {p.number}
-                </span>
-                <h3 className={sectionPrincipleTitleClassName}>
-                  {titleWithAccentGradient(p.title, {
-                    leadClassName: 'transition-colors duration-300 group-hover:text-accent',
-                  })}
-                </h3>
-                <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
-                  {p.body}
+              <div className="lg:col-span-9">
+                <p className="display-tight max-w-4xl text-2xl font-medium leading-[1.25] text-foreground sm:text-3xl lg:text-4xl">
+                  From global brand campaigns to data-heavy product UX —
+                  <span className="text-muted">
+                    {' '}
+                    the common thread is clarity under complexity.
+                  </span>
                 </p>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      {/* ── Where I have shipped ─────────────────────────────────────── */}
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="mb-12 grid grid-cols-1 gap-10 lg:mb-16 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>Experience</p>
-              <h2 className={sectionHeadingClassName}>
-                Where
-                <br />
-                <span className="text-accent block w-fit">I have shipped.</span>
-              </h2>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              <p className="text-base leading-[1.7] text-muted lg:text-lg">
-                Senior product designer operating at implementation depth — IA, dense
-                SaaS and internal tools, design systems, and handoff that survives contact
-                with real engineering schedules. The rows below are the organisations and
-                products where that responsibility sat; titles, timelines, and
-                client-specific depth that cannot sit on a public site live on LinkedIn.
-              </p>
-              <ArrowLink
-                href={LINKEDIN_PROFILE_URL}
-                className="mt-6 inline-flex text-foreground hover:text-accent"
-              >
-                Full professional record on LinkedIn
-              </ArrowLink>
-            </div>
-          </div>
-
-          <ul className="border-t border-stroke">
-            {WORK_ENGAGEMENTS.map((row) => (
-              <li
-                key={row.company}
-                className="grid grid-cols-1 gap-4 border-b border-stroke py-8 last:border-b-0 lg:grid-cols-12 lg:gap-8 lg:py-10"
-              >
-                <div className="lg:col-span-3">
-                  <p className={monoMetaMutedClassName}>{row.period}</p>
-                </div>
-                <div className="lg:col-span-9">
-                  <h3 className={sectionSubheadingClassName}>{row.company}</h3>
-                  <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
-                    {row.role}
+                <div className="mt-10 grid max-w-4xl grid-cols-1 gap-8 text-[15px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-base">
+                  <p>
+                    Before product work, I spent years in graphic and visual
+                    design. That craft foundation still shapes how I think
+                    about hierarchy, typography, and communication inside
+                    complex interfaces.
                   </p>
-                  <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
-                    {row.summary}
+                  <p>
+                    Today I operate between product strategy, UX, UI, design
+                    systems, Figma, and code-aware delivery — across
+                    healthcare, fintech, SaaS, and enterprise tools where
+                    permissions, states, and edge cases shape the product.
                   </p>
                 </div>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-          <div className="mt-16 border-t border-stroke pt-14 lg:mt-20 lg:pt-16">
-            <p className={sectionEyebrowAccentClassName}>Studios & full-time roles</p>
-            <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">
-              The longer-running studio chapter before embedded agency and direct product
-              work at the scale above.
-            </p>
-            <ul className="mt-10 divide-y divide-stroke">
-              {STUDIO_EMPLOYMENT.map((e) => (
-                <li
-                  key={`${e.role}-${e.company}-${e.period}`}
-                  className="grid grid-cols-1 gap-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
-                >
-                  <div className="lg:col-span-3">
-                    <p className={monoMetaMutedClassName}>{e.period}</p>
-                  </div>
-                  <div className="lg:col-span-9">
-                    <h3 className={sectionSubheadingClassName}>
-                      {titleWithAccentGradient(e.role)}
+      {/* ── 02 Experience — companies only ───────────────────────────── */}
+      <section aria-label="Experience" className="pt-20 lg:pt-28">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-3">
+                <div className="lg:sticky lg:top-24">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                    02 — Experience
+                  </p>
+                  <p className="mt-6 max-w-xs text-sm leading-[1.75] text-muted">
+                    Companies and roles. Client projects from these chapters
+                    live under Work.
+                  </p>
+                  <ArrowLink
+                    href={LINKEDIN_PROFILE_URL}
+                    className="mt-6 inline-flex text-foreground hover:text-accent"
+                  >
+                    LinkedIn profile
+                  </ArrowLink>
+                </div>
+              </div>
+
+              <ul className="lg:col-span-9">
+                {COMPANIES.map((row, i) => (
+                  <li
+                    key={row.company}
+                    className={[
+                      'group grid grid-cols-1 gap-3 border-stroke py-8 lg:grid-cols-12 lg:gap-8 lg:py-10',
+                      i > 0 ? 'border-t' : '',
+                    ].join(' ')}
+                  >
+                    <div className="lg:col-span-3">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
+                        {row.period}
+                      </p>
+                    </div>
+                    <div className="lg:col-span-9">
+                      <h3 className="display-tight text-xl font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
+                        {row.company}
+                      </h3>
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+                        {row.role}
+                      </p>
+                      <p className="mt-4 max-w-2xl text-sm leading-[1.75] text-muted lg:text-base">
+                        {row.note}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── 03 Principles ─────────────────────────────────────────────── */}
+      <section aria-label="Principles" className="py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <Reveal staggerSelector="[data-reveal-item]">
+            <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-3">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent lg:sticky lg:top-24">
+                  03 — Principles
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:col-span-9 lg:gap-y-16">
+                {PRINCIPLES.map((p) => (
+                  <div key={p.number} data-reveal-item className="group">
+                    <p className="font-mono text-[28px] font-light leading-none text-foreground/20 transition-colors duration-300 group-hover:text-accent">
+                      {p.number}
+                    </p>
+                    <h3 className="display-tight mt-5 text-xl font-medium text-foreground sm:text-2xl">
+                      {p.title}
                     </h3>
-                    <p className="mt-2 text-sm font-mono uppercase tracking-[0.16em] text-accent">
-                      {e.company}
-                    </p>
-                    <p className="mt-4 max-w-3xl text-base leading-[1.7] text-muted lg:text-lg">
-                      {e.note}
+                    <p className="mt-4 max-w-md text-sm leading-[1.75] text-muted">
+                      {p.body}
                     </p>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <FooterCTA />
     </main>

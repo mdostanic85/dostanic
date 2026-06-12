@@ -1,16 +1,9 @@
 import type { Metadata } from 'next'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
 import FooterCTA from '@/components/home/FooterCTA'
-import { cn } from '@/lib/utils'
-import {
-  sectionEyebrowForegroundBlockClassName,
-  sectionEyebrowMutedBlockClassName,
-  sectionEyebrowMonoClassName,
-  sectionHeadingClassName,
-} from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import Reveal from '@/components/v3/Reveal'
+import ExpertiseAccordion, {
+  type ExpertiseArea,
+} from '@/components/v3/ExpertiseAccordion'
 
 export const metadata: Metadata = {
   title: 'Expertise — Milos Dostanic',
@@ -18,7 +11,7 @@ export const metadata: Metadata = {
     'Focused expertise across complex product UX, design systems, AI-assisted workflows, and Figma-to-code delivery.',
 }
 
-const EXPERTISE_AREAS = [
+const EXPERTISE_AREAS: ExpertiseArea[] = [
   {
     id: 'product-ux-ui',
     number: '01',
@@ -111,136 +104,47 @@ const EXPERTISE_AREAS = [
   },
 ]
 
+/**
+ * Expertise — V3.1. No shared masthead pattern: a giant outline word
+ * with a counter rail, then the whole page is one oversized accordion.
+ */
 export default function ExpertisePage() {
   return (
     <main>
-      <PageHeader
-        eyebrow="Expertise / Capabilities"
-        title={
-          <>
-            What I do.
-            <br />
-            And when it
-            <br />
-            <span className="accent-gradient-text">matters.</span>
-          </>
-        }
-        intro={
-          <>
-            Focused capabilities for teams building complex products — what I do, when it
-            helps, and what you get.
-          </>
-        }
-        aside={
-          <nav aria-label="Jump to expertise area" className="hidden lg:block">
-            <p className={sectionEyebrowMutedBlockClassName}>
-              On this page
-            </p>
-            <ul className="space-y-3">
-              {EXPERTISE_AREAS.map((a) => (
-                <li key={a.id}>
-                  <a
-                    href={`#${a.id}`}
-                    className="group flex items-baseline gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground"
-                  >
-                    <span className="text-accent/70 transition-colors group-hover:text-accent">
-                      {a.number}
-                    </span>
-                    <span>{a.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        }
-        topRightLabel="Six disciplines"
-      />
+      {/* Masthead — outline word + counter rail */}
+      <header className="relative overflow-hidden pt-16">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col justify-end pb-10 pt-20 sm:pt-28 lg:pb-14">
+            <h1 className="display-mega text-[clamp(56px,12vw,190px)] font-semibold uppercase">
+              <span className="line-mask">
+                <span className="line-rise block" style={{ animationDelay: '80ms' }}>
+                  Expert
+                  <span className="text-outline">ise.</span>
+                </span>
+              </span>
+            </h1>
+            <div
+              className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-stroke pt-6 animate-fade-in-up"
+              style={{ animationDelay: '400ms' }}
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+                Six disciplines — one operating model
+              </p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+                Tap a row to expand
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      {/* ── Expertise areas — atomic-style large editorial rows ─────────── */}
-      <Section padding="lg">
-        <Container size="wide">
-          <ul>
-            {EXPERTISE_AREAS.map((area) => (
-              <li
-                key={area.id}
-                id={area.id}
-                className="group relative scroll-mt-24 py-12 lg:py-20"
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full"
-                />
-
-                <div className="grid grid-cols-12 gap-4 lg:gap-12">
-                  {/* Number + title */}
-                  <div className="col-span-12 lg:col-span-5">
-                    <span
-                      className={cn(
-                        sectionEyebrowMonoClassName,
-                        'mb-5 block text-accent'
-                      )}
-                    >
-                      / {area.number}
-                    </span>
-                    <h2 className={sectionHeadingClassName}>
-                      {titleWithAccentGradient(area.title, {
-                        leadClassName: 'transition-colors duration-300 group-hover:text-accent',
-                      })}
-                    </h2>
-                  </div>
-
-                  {/* Description + lists */}
-                  <div className="col-span-12 lg:col-span-7">
-                    <p className="text-base leading-[1.7] text-muted lg:text-lg">
-                      {area.description}
-                    </p>
-
-                    <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8">
-                      <div>
-                        <p className={sectionEyebrowForegroundBlockClassName}>
-                          Useful when
-                        </p>
-                        <ul className="space-y-3">
-                          {area.usefulWhen.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-3 text-sm leading-[1.6] text-muted"
-                            >
-                              <span className="mt-[3px] shrink-0 font-mono text-accent">
-                                →
-                              </span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <p className={sectionEyebrowForegroundBlockClassName}>
-                          Typical outputs
-                        </p>
-                        <ul className="space-y-3">
-                          {area.outputs.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-3 text-sm leading-[1.6] text-muted"
-                            >
-                              <span className="mt-[3px] shrink-0 font-mono text-accent">
-                                ·
-                              </span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+      <section aria-label="Expertise areas" className="pb-28 lg:pb-40">
+        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <ExpertiseAccordion areas={EXPERTISE_AREAS} />
+          </Reveal>
+        </div>
+      </section>
 
       <FooterCTA />
     </main>

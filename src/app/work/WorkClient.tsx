@@ -1,7 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import ProjectCard from '@/components/work/ProjectCard'
+import { useLayoutEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { gsap } from '@/lib/gsap'
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import type { Project, ProjectCategory } from '@/lib/types'
 
 type FilterOption = 'All' | ProjectCategory
@@ -20,23 +23,57 @@ type WorkClientProps = {
   projects: Project[]
 }
 
+/**
+ * V3 work index — an editorial table. Each case is a hairline row:
+ * index, title, domain, year, arrow. On fine-pointer devices a floating
+ * cover preview trails the cursor over the list (GSAP quickTo springs);
+ * touch devices get inline thumbnails instead. Filters are plain mono
+ * text with counts — no pills.
+ */
 export default function WorkClient({ projects }: WorkClientProps) {
   const [active, setActive] = useState<FilterOption>('All')
+  const [previewSrc, setPreviewSrc] = useState<string | null>(null)
+  const listRef = useRef<HTMLDivElement | null>(null)
+  const previewRef = useRef<HTMLDivElement | null>(null)
+  const moveX = useRef<((v: number) => void) | null>(null)
+  const moveY = useRef<((v: number) => void) | null>(null)
+  const prefersReducedMotion = usePrefersReducedMotion()
 
   const filtered =
     active === 'All' ? projects : projects.filter((p) => p.category === active)
 
+  const countFor = (f: FilterOption) =>
+    f === 'All'
+      ? projects.length
+      : projects.filter((p) => p.category === f).length
+
+  // Floating preview springs — desktop only.
+  useLayoutEffect(() => {
+    const el = previewRef.current
+    if (!el || prefersReducedMotion) return
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    if (!fine) return
+
+    moveX.current = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3.out' })
+    moveY.current = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3.out' })
+
+    const onMove = (e: PointerEvent) => {
+      moveX.current?.(e.clientX + 28)
+      moveY.current?.(e.clientY - 110)
+    }
+    const list = listRef.current
+    list?.addEventListener('pointermove', onMove, { passive: true })
+    return () => list?.removeEventListener('pointermove', onMove)
+  }, [prefersReducedMotion])
+
   return (
     <>
-      {/* Filter strip — atomic-style mono pill row */}
+      {/* Filters — mono text row */}
       <div
         role="tablist"
         aria-label="Filter projects by category"
-        className="mb-12 flex flex-wrap items-center gap-2 py-5 lg:mb-16"
+        className="mb-14 flex flex-wrap items-baseline gap-x-7 gap-y-3 border-b border-stroke pb-6 lg:mb-20"
       >
-        <span className="mr-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-          Filter:
-        </span>
         {FILTERS.map((f) => {
           const selected = active === f
           return (
@@ -46,31 +83,103 @@ export default function WorkClient({ projects }: WorkClientProps) {
               aria-selected={selected}
               onClick={() => setActive(f)}
               className={[
-                'rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-150',
+                'group inline-flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors duration-150',
                 selected
-                  ? 'bg-foreground text-inverse-foreground'
-                  : 'border border-stroke text-muted hover:border-foreground hover:text-foreground',
+                  ? 'text-foreground'
+                  : 'text-muted hover:text-foreground',
               ].join(' ')}
             >
-              {f}
+              <span
+                className={
+                  selected
+                    ? 'border-b border-accent pb-1'
+                    : 'border-b border-transparent pb-1'
+                }
+              >
+                {f}
+              </span>
+              <sup className={selected ? 'text-accent' : 'text-muted/70'}>
+                {countFor(f)}
+              </sup>
             </button>
           )
         })}
       </div>
 
-      {/* Grid — staggered like home SelectedWork to keep one editorial system */}
-      <div className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 sm:gap-y-20 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-24">
-        {filtered.map((project, idx) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            index={idx + 1}
-          />
-        ))}
+      {/* Index rows */}
+      <div ref={listRef} className="relative">
+        <ul className="border-t border-stroke">
+          {filtered.map((project, idx) => (
+            <li key={project.slug} className="border-b border-stroke">
+              <Link
+                href={`/work/${project.slug}`}
+                onPointerEnter={() =>
+                  setPreviewSrc(project.coverImage ?? null)
+                }
+                onPointerLeave={() => setPreviewSrc(null)}
+                className="group grid grid-cols-12 items-baseline gap-3 py-7 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:py-9 lg:gap-8"
+              >
+                <span className="col-span-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-accent sm:col-span-1">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <h3 className="display-tight col-span-10 text-2xl font-medium text-foreground transition-transform duration-300 group-hover:translate-x-2 sm:col-span-6 sm:text-3xl lg:text-4xl">
+                  {project.title.split(' — ')[0]}
+                </h3>
+                <span className="col-span-6 col-start-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-3 sm:col-start-8 sm:text-right">
+                  {project.domain}
+                </span>
+                <span className="col-span-3 text-right font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-1">
+                  {project.isCapability ? 'CAP' : project.year || '—'}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="col-span-1 text-right text-lg text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                >
+                  ↗
+                </span>
+
+                {/* Touch fallback — inline thumbnail */}
+                {project.coverImage ? (
+                  <span className="col-span-12 mt-4 block overflow-hidden border border-stroke [@media(hover:hover)_and_(pointer:fine)]:hidden">
+                    <Image
+                      src={project.coverImage}
+                      alt=""
+                      width={1200}
+                      height={750}
+                      sizes="100vw"
+                      className="aspect-[16/10] w-full object-cover"
+                    />
+                  </span>
+                ) : null}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Floating preview — fixed, trails cursor, fine pointers only */}
+        <div
+          ref={previewRef}
+          aria-hidden="true"
+          className={[
+            'pointer-events-none fixed left-0 top-0 z-40 hidden w-[320px] overflow-hidden border border-stroke bg-surface shadow-2xl transition-opacity duration-300 [@media(hover:hover)_and_(pointer:fine)]:block',
+            previewSrc ? 'opacity-100' : 'opacity-0',
+          ].join(' ')}
+        >
+          {previewSrc ? (
+            <Image
+              src={previewSrc}
+              alt=""
+              width={640}
+              height={400}
+              sizes="320px"
+              className="aspect-[16/10] w-full object-cover"
+            />
+          ) : null}
+        </div>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-16 text-center text-sm text-muted">
+        <p className="py-16 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
           No projects in this category yet.
         </p>
       ) : null}

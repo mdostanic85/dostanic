@@ -4,13 +4,18 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS, isNavActive } from '@/lib/nav'
-import ThemeToggle from './ThemeToggle'
 
 type MobileMenuProps = {
   open: boolean
   onClose: () => void
 }
 
+/**
+ * Full-screen overlay navigation — V3 uses this on every breakpoint.
+ * Ink panel, oversized grotesk links with mono index marks,
+ * staggered CSS entrance, contact rail at the bottom. Focus-trapped
+ * dialog with Escape-to-close.
+ */
 export default function MobileMenu({ open, onClose }: MobileMenuProps) {
   const pathname = usePathname()
   const dialogRef = useRef<HTMLDivElement>(null)
@@ -79,69 +84,92 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
   if (!open) return null
 
   return (
-    // P0 fix: z-50 (same as header) — since this element is later in the DOM,
-    // it stacks on top of the header at equal z-index, replacing it visually.
     <div
-      id="mobile-navigation-dialog"
+      id="site-navigation-overlay"
       ref={dialogRef}
-      className="fixed inset-0 z-50 bg-background flex flex-col"
+      className="chapter-dark fixed inset-0 z-50 flex flex-col bg-background text-foreground animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
     >
-      <div className="flex items-center justify-between px-5 sm:px-8 h-16">
+      {/* Top rail */}
+      <div className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-muted"
+          className="font-mono text-[12px] uppercase tracking-[0.25em] text-foreground transition-opacity hover:opacity-70"
         >
-          Milos Dostanic
+          Milos Dostanic<span className="text-accent">®</span>
         </Link>
         <button
           ref={closeButtonRef}
           onClick={onClose}
           aria-label="Close menu"
-          className="p-2 -mr-2 text-muted hover:text-foreground transition-colors"
+          className="inline-flex items-center gap-3 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          Close
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path
               d="M4 4L16 16M16 4L4 16"
               stroke="currentColor"
-              strokeWidth="1.5"
+              strokeWidth="1.25"
               strokeLinecap="round"
             />
           </svg>
         </button>
       </div>
 
-      <nav className="flex-1 flex flex-col justify-center px-5 sm:px-8 gap-2">
-        {NAV_LINKS.map((link) => {
-          const active = isNavActive(pathname, link.href)
-          return (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={active ? 'page' : undefined}
-              className={[
-                'border-l-2 py-3 pl-4 text-4xl font-semibold transition-colors sm:text-5xl sm:pl-5',
-                active
-                  ? 'border-accent text-foreground'
-                  : 'border-transparent text-muted hover:border-stroke hover:text-foreground',
-              ].join(' ')}
-            >
-              {link.label}
-            </Link>
-          )
-        })}
+      {/* Links */}
+      <nav className="mx-auto flex w-full max-w-[1500px] flex-1 flex-col justify-center px-5 sm:px-8 lg:px-12">
+        <ul className="flex flex-col">
+          {NAV_LINKS.map((link, i) => {
+            const active = isNavActive(pathname, link.href)
+            return (
+              <li
+                key={link.href}
+                className="animate-fade-in-up border-b border-stroke last:border-b-0"
+                style={{ animationDelay: `${80 + i * 70}ms` }}
+              >
+                <Link
+                  href={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={[
+                    'group flex items-baseline gap-6 py-5 transition-colors sm:gap-10 sm:py-7',
+                    active ? 'text-foreground' : 'text-muted hover:text-foreground',
+                  ].join(' ')}
+                >
+                  <span className="w-10 shrink-0 font-mono text-[11px] uppercase tracking-[0.25em] text-accent sm:text-xs">
+                    0{i + 1}
+                  </span>
+                  <span className="display-tight text-5xl font-medium sm:text-7xl lg:text-8xl">
+                    {link.label}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="ml-auto hidden text-2xl opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 sm:block"
+                  >
+                    →
+                  </span>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       </nav>
 
-      <div className="flex flex-col gap-4 px-5 pb-10 pt-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <ThemeToggle />
+      {/* Bottom rail */}
+      <div
+        className="mx-auto flex w-full max-w-[1500px] animate-fade-in-up flex-col gap-4 px-5 pb-10 pt-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12"
+        style={{ animationDelay: '380ms' }}
+      >
         <a
           href="mailto:milos@dostanic.net"
-          className="text-sm text-muted transition-colors hover:text-foreground"
+          className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
         >
           milos@dostanic.net
         </a>
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+          Serbia · remote worldwide
+        </p>
       </div>
     </div>
   )

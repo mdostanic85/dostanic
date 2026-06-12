@@ -4,7 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import Nav from '@/components/nav/Nav'
 import RouteTransitions from '@/components/layout/RouteTransitions'
 import SmoothScroll from '@/components/layout/SmoothScroll'
-import CursorGlow from '@/components/layout/CursorGlow'
+import CursorDot from '@/components/v3/CursorDot'
+import ScrollProgress from '@/components/v3/ScrollProgress'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -31,34 +32,24 @@ export const metadata: Metadata = {
   },
 }
 
-/** Inline script that runs before React hydration to prevent flash of wrong theme.
- *  Dark is the default — only apply data-theme="light" when explicitly stored. */
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-    >
-      <head>
-        {/* Anti-FOCT: set theme before first paint */}
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <a
           href="#top"
-          className="skip-to-content fixed left-4 top-4 z-[100] -translate-y-[200%] rounded-sm bg-foreground px-4 py-2 text-sm font-medium text-inverse-foreground transition-transform focus:translate-y-0"
+          className="skip-to-content fixed left-4 top-4 z-[100] -translate-y-[200%] bg-foreground px-4 py-2 text-sm font-medium text-inverse-foreground transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>
         <SmoothScroll />
         <RouteTransitions />
-        <CursorGlow />
+        <ScrollProgress />
+        <CursorDot />
         <Nav />
         {children}
       </body>

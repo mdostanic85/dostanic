@@ -86,7 +86,7 @@ export default function AboutPage() {
               className="mt-10 flex flex-col gap-6 border-t border-stroke pt-6 animate-fade-in-up lg:flex-row lg:items-start lg:justify-between"
               style={{ animationDelay: '420ms' }}
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+              <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
                 12+ years across design · 10+ years in digital products
               </p>
               <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <Reveal>
             <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-3">
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent lg:sticky lg:top-24">
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent lg:sticky lg:top-24">
                   01 · Story
                 </p>
               </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                       className="object-cover grayscale"
                     />
                   </div>
-                  <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">Milos Dostanic · Serbia / CET</figcaption>
+                  <figcaption className="mt-3 font-mono text-[12px] uppercase tracking-[0.18em] text-muted">Milos Dostanic · Serbia / CET</figcaption>
                 </figure>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-3">
                 <div className="lg:sticky lg:top-24">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+                  <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
                     02 · Experience
                   </p>
                   <p className="mt-6 max-w-xs text-sm leading-[1.75] text-muted">
@@ -169,7 +169,7 @@ export default function AboutPage() {
                     <Link
                       href="/resume"
                       data-analytics-event="resume_action"
-                      className="group inline-flex h-11 items-center gap-3 border border-foreground px-5 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-inverse-foreground"
+                      className="group inline-flex h-11 items-center gap-3 border border-foreground px-5 font-mono text-[12px] uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-inverse-foreground"
                     >
                       View résumé
                       <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -194,7 +194,7 @@ export default function AboutPage() {
                     ].join(' ')}
                   >
                     <div className="lg:col-span-3">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.23em] text-muted">
+                      <p className="font-mono text-[12px] uppercase tracking-[0.23em] text-muted">
                         {row.period}
                       </p>
                     </div>
@@ -202,7 +202,7 @@ export default function AboutPage() {
                       <h3 className="display-tight text-xl font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
                         {row.company}
                       </h3>
-                      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.23em] text-accent">
+                      <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.23em] text-accent">
                         {row.role}
                       </p>
                       <p className="mt-4 max-w-2xl text-sm leading-[1.75] text-muted lg:text-base">
@@ -223,7 +223,7 @@ export default function AboutPage() {
           <Reveal staggerSelector="[data-reveal-item]">
             <div className="grid grid-cols-1 gap-10 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-3">
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent lg:sticky lg:top-24">
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent lg:sticky lg:top-24">
                   03 · Principles
                 </p>
               </div>

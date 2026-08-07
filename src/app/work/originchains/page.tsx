@@ -127,7 +127,7 @@ export default function OriginChainsCaseStudy() {
               priority
             />
           </div>
-          <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+          <p className="mt-4 font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
             Source file —{' '}
             <a
               href="https://www.figma.com/design/6IPIMKih4iNN63d9lmOIcF/OriginChains-Web-App?node-id=2807-2666"
@@ -203,7 +203,7 @@ export default function OriginChainsCaseStudy() {
                   className="object-cover object-top"
                 />
               </div>
-              <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+              <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
                 Activity feed / Activity — one frame
               </figcaption>
             </figure>
@@ -214,7 +214,7 @@ export default function OriginChainsCaseStudy() {
                 aspectClass="aspect-[4/3]"
                 footnote=""
               />
-              <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+              <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
                 Highest-density UI — placeholder (multi-panel search grid)
               </figcaption>
             </figure>

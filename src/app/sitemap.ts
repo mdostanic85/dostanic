@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { CASE_STUDY_SLUGS } from '@/lib/caseStudyRoutes'
 
-const BASE_URL = 'https://dostanic.net'
+const BASE_URL = 'https://dostanic-2.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const mainRoutes = ['', '/work', '/expertise', '/about', '/contact', '/resume', '/privacy']

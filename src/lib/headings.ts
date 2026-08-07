@@ -9,19 +9,19 @@
 
 /** Accent mono kicker above an `h2` (block; includes bottom margin). */
 export const sectionEyebrowAccentClassName =
-  'mb-6 font-mono text-[10px] uppercase tracking-[0.3em] text-accent'
+  'mb-6 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent'
 
 /** Muted mono kicker with block spacing. */
 export const sectionEyebrowMutedBlockClassName =
-  'mb-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted'
+  'mb-6 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-muted'
 
 /** Foreground mono kicker with block spacing. */
 export const sectionEyebrowForegroundBlockClassName =
-  'mb-6 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground'
+  'mb-6 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-foreground'
 
 /** Mono label without bottom margin. */
 export const sectionEyebrowMonoClassName =
-  'font-mono text-[10px] uppercase tracking-[0.3em]'
+  'font-mono text-[13px] font-semibold uppercase tracking-[0.3em]'
 
 /** Spacer only when colour is custom. */
 export const sectionEyebrowToTitleSpacingClassName = 'mb-6'
@@ -36,14 +36,14 @@ export const pageHeadingClassName =
 
 /** Inline mono accent mark (`/ 01`, PageHeader kicker). */
 export const monoMarkAccentClassName =
-  'font-mono text-[10px] uppercase tracking-[0.3em] text-accent'
+  'font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent'
 
 /** Accent kicker in PageHeader top row (no `mb`; sits beside meta). */
 export const pageHeaderKickerAccentClassName = monoMarkAccentClassName
 
 /** Right meta label in PageHeader top row. */
 export const pageHeaderMetaClassName =
-  'font-mono text-[10px] uppercase tracking-[0.25em] text-muted'
+  'font-mono text-[12px] uppercase tracking-[0.25em] text-muted'
 
 /** Intro paragraph directly under page `h1`. */
 export const pageIntroClassName =
@@ -91,19 +91,19 @@ export const sectionStatementClassName =
 
 /** Step / list index prefix (`/01`). */
 export const monoIndexAccentClassName =
-  'font-mono text-[10px] uppercase tracking-[0.25em] text-accent'
+  'font-mono text-[13px] font-semibold uppercase tracking-[0.25em] text-accent'
 
 /** Step index with top padding when aligned to multi-line titles. */
 export const monoIndexAccentPaddedClassName =
-  'col-span-2 pt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-accent sm:col-span-1'
+  'col-span-2 pt-2 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent sm:col-span-1'
 
 /** Step index — expertise strip rows (extra top padding). */
 export const monoIndexAccentExpertiseClassName =
-  'col-span-2 pt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-accent sm:col-span-1'
+  'col-span-2 pt-3 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent sm:col-span-1'
 
 /** Step index in grid rows without top padding (decision lists). */
 export const monoIndexGridClassName =
-  'col-span-2 font-mono text-[10px] uppercase tracking-[0.3em] text-accent sm:col-span-1'
+  'col-span-2 font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent sm:col-span-1'
 
 /** Contact masthead aside — availability line. */
 export const contactAvailabilityClassName =
@@ -115,19 +115,19 @@ export const contactEmailLinkClassName =
 
 /** Muted mono kicker without bottom margin (side columns, meta). */
 export const monoKickerMutedClassName =
-  'font-mono text-[10px] uppercase tracking-[0.3em] text-muted'
+  'font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-muted'
 
 /** Muted mono meta line (periods, captions). */
 export const monoMetaMutedClassName =
-  'font-mono text-[10px] uppercase tracking-[0.25em] text-muted'
+  'font-mono text-[12px] uppercase tracking-[0.25em] text-muted'
 
 /** “Back to work” / “All work” link above case studies. */
 export const navBackLinkClassName =
-  'inline-flex items-center gap-2 py-4 font-mono text-[10px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground'
+  'inline-flex items-center gap-2 py-4 font-mono text-[12px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground'
 
 /** “Next case study” / related work link (no vertical padding). */
 export const navRelatedLinkClassName =
-  'inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground'
+  'inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground'
 
 /** Marquee item caption (decorative; not a heading). */
 export const marqueeItemClassName =

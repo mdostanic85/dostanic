@@ -23,7 +23,7 @@ export default function ContactPage() {
       <header className="chapter-dark grain bg-background pb-20 pt-36 text-foreground sm:pb-28 sm:pt-44">
         <div className="mx-auto grid w-full max-w-[1500px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
           <div className="lg:col-span-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Contact</p>
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.3em] text-accent">Contact</p>
             <h1 className="display-mega mt-7 max-w-[12ch] text-[clamp(48px,9vw,132px)] font-semibold uppercase">
               Let&apos;s discuss the product problem.
             </h1>
@@ -49,7 +49,7 @@ export default function ContactPage() {
           <Reveal>
             <div className="grid grid-cols-1 gap-12 border-t border-stroke pt-10 lg:grid-cols-12">
               <div className="lg:col-span-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Good fit</p>
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Good fit</p>
                 <h2 id="contact-fit" className="display-tight mt-5 max-w-[10ch] text-3xl font-medium sm:text-5xl">
                   The work I want to do next.
                 </h2>
@@ -57,7 +57,7 @@ export default function ContactPage() {
               <ul className="border-t border-stroke lg:col-span-8">
                 {FIT.map((item, index) => (
                   <li key={item} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-stroke py-7">
-                    <span className="font-mono text-[10px] tracking-[0.22em] text-accent">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="font-mono text-[12px] tracking-[0.22em] text-accent">{String(index + 1).padStart(2, '0')}</span>
                     <p className="text-base leading-[1.65] text-foreground sm:text-lg">{item}</p>
                   </li>
                 ))}
@@ -68,7 +68,7 @@ export default function ContactPage() {
               <p className="max-w-[50ch] text-sm leading-[1.7] text-muted">
                 Include a short description of the product, team, problem, and timing. I will reply by email.
               </p>
-              <div className="flex flex-wrap gap-5 font-mono text-[10px] uppercase tracking-[0.22em]">
+              <div className="flex flex-wrap gap-5 font-mono text-[12px] uppercase tracking-[0.22em]">
                 <a href="https://www.linkedin.com/in/milos-dostanic/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">LinkedIn ↗</a>
                 <a href="https://github.com/mdostanic85" target="_blank" rel="noopener noreferrer" className="hover:text-accent">GitHub ↗</a>
                 <Link href="/resume" data-analytics-event="resume_action" className="hover:text-accent">Résumé →</Link>

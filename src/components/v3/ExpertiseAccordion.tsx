@@ -38,7 +38,7 @@ export default function ExpertiseAccordion({
             >
               <span
                 className={[
-                  'col-span-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-colors duration-300 sm:col-span-1',
+                  'col-span-2 font-mono text-[12px] uppercase tracking-[0.25em] transition-colors duration-300 sm:col-span-1',
                   isOpen ? 'text-accent' : 'text-muted group-hover:text-accent',
                 ].join(' ')}
               >
@@ -78,7 +78,7 @@ export default function ExpertiseAccordion({
                     </p>
                   </div>
                   <div className="col-span-12 sm:col-start-2 sm:col-span-5 lg:col-start-7 lg:col-span-3">
-                    <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground">
+                    <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.3em] text-foreground">
                       Useful when
                     </p>
                     <ul className="space-y-3">
@@ -96,7 +96,7 @@ export default function ExpertiseAccordion({
                     </ul>
                   </div>
                   <div className="col-span-12 sm:col-start-7 sm:col-span-5 lg:col-start-10 lg:col-span-3">
-                    <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground">
+                    <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.3em] text-foreground">
                       Typical outputs
                     </p>
                     <ul className="space-y-3">

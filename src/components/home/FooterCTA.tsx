@@ -10,19 +10,19 @@ type FooterCTAProps = {
 function FooterMeta() {
   return (
     <div className="flex flex-col gap-4 border-t border-stroke py-7 sm:flex-row sm:items-center sm:justify-between">
-      <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+      <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
         © 2026 Milos Dostanic
       </p>
-      <div className="flex flex-wrap items-center gap-5 font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+      <div className="flex flex-wrap items-center gap-5 font-mono text-[12px] uppercase tracking-[0.22em] text-muted">
         <a href="/resume" data-analytics-event="resume_action" className="hover:text-foreground">Résumé</a>
         <a href="https://www.linkedin.com/in/milos-dostanic/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">LinkedIn</a>
         <a href="https://github.com/mdostanic85" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">GitHub</a>
         <a href="/privacy" className="hover:text-foreground">Privacy</a>
       </div>
-      <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">Serbia · <LocalTime /></p>
+      <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">Serbia · <LocalTime /></p>
       <a
         href="#top"
-        className="link-roll inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-foreground"
+        className="link-roll inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.28em] text-foreground"
       >
         <span className="link-roll-text">
           <span>Back to top ↑</span>
@@ -58,7 +58,7 @@ export default function FooterCTA({ compact = false }: FooterCTAProps) {
       <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
         <Reveal>
           <div className="flex flex-col gap-12 py-28 lg:py-40">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
               Contact
             </p>
 

@@ -96,7 +96,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       <div className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           href="/"
-          className="font-mono text-[12px] uppercase tracking-[0.25em] text-foreground transition-opacity hover:opacity-70"
+          className="font-mono text-[13px] uppercase tracking-[0.25em] text-foreground transition-opacity hover:opacity-70"
         >
           Milos Dostanic<span className="text-accent">®</span>
         </Link>
@@ -104,7 +104,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           ref={closeButtonRef}
           onClick={onClose}
           aria-label="Close menu"
-          className="inline-flex items-center gap-3 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
+          className="inline-flex items-center gap-3 py-2 font-mono text-[12px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
         >
           Close
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -141,7 +141,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                     active ? 'text-foreground' : 'text-muted hover:text-foreground',
                   ].join(' ')}
                 >
-                  <span className="w-10 shrink-0 font-mono text-[11px] uppercase tracking-[0.25em] text-accent sm:text-xs">
+                  <span className="w-10 shrink-0 font-mono text-[12px] uppercase tracking-[0.25em] text-accent sm:text-xs">
                     0{i + 1}
                   </span>
                   {/* Sized against viewport height, not width: five links must
@@ -171,11 +171,11 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       >
         <a
           href="mailto:milos@dostanic.net"
-          className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
+          className="font-mono text-[12px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-foreground"
         >
           milos@dostanic.net
         </a>
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+        <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted">
           Serbia / CET · remote worldwide
         </p>
       </div>

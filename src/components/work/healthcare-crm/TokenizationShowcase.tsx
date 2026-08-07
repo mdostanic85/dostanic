@@ -112,7 +112,7 @@ export default function TokenizationShowcase() {
                 style={{ backgroundColor: t.hex }}
               />
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+                <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted">
                   --color-{t.name}
                 </p>
                 <p className="mt-1 text-sm font-medium text-foreground">{t.label}</p>
@@ -130,7 +130,7 @@ export default function TokenizationShowcase() {
                 style={{ backgroundColor: t.hex }}
               />
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+                <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
                   --color-{t.name}
                 </p>
                 <p className="text-xs text-muted">{t.role}</p>
@@ -164,7 +164,7 @@ export default function TokenizationShowcase() {
           <ul className="mt-6 space-y-6">
             {TYPE_TOKENS.map((t) => (
               <li key={t.family} className="border-b border-stroke pb-6 last:border-0 last:pb-0">
-                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+                <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
                   {t.role}
                 </p>
                 <p
@@ -177,7 +177,7 @@ export default function TokenizationShowcase() {
                   {t.sample}
                 </p>
                 <p className="mt-1 text-sm text-muted">{t.family}</p>
-                <p className="mt-2 font-mono text-[11px] text-muted">{t.specs}</p>
+                <p className="mt-2 font-mono text-[12px] text-muted">{t.specs}</p>
               </li>
             ))}
           </ul>
@@ -185,10 +185,10 @@ export default function TokenizationShowcase() {
       </div>
 
       <TokenCard className="bg-surface/60">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+        <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
           Component binding (example)
         </p>
-        <pre className="mt-4 overflow-x-auto rounded-[8px] border border-stroke bg-background p-4 font-mono text-[12px] leading-relaxed text-muted">
+        <pre className="mt-4 overflow-x-auto rounded-[8px] border border-stroke bg-background p-4 font-mono text-[13px] leading-relaxed text-muted">
           {`// KPI card — tokens only, no raw values
 .kpi-card {
   padding: var(--space-4);

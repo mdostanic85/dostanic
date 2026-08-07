@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/studio/',
     },
-    sitemap: 'https://dostanic.net/sitemap.xml',
+    sitemap: 'https://dostanic-2.vercel.app/sitemap.xml',
   }
 }

@@ -3,15 +3,15 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Privacy',
-  description: 'Privacy information for dostanic.net.',
+  description: 'Privacy information for this site.',
   alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-[900px] px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
-      <Link href="/" className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted hover:text-accent">← Portfolio</Link>
-      <p className="mt-16 font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Privacy</p>
+      <Link href="/" className="font-mono text-[12px] uppercase tracking-[0.22em] text-muted hover:text-accent">← Portfolio</Link>
+      <p className="mt-16 font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Privacy</p>
       <h1 className="display-tight mt-6 text-5xl font-medium sm:text-7xl">A simple portfolio with minimal data collection.</h1>
 
       <div className="mt-16 space-y-12 border-t border-stroke pt-10 text-base leading-[1.75] text-muted">

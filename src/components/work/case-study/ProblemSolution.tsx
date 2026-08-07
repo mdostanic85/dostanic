@@ -26,7 +26,7 @@ export default function ProblemSolution({
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
         <article className="rounded-[10px] border border-stroke bg-surface p-6 lg:p-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+          <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
             The challenge
           </p>
           <h3 className={cn(sectionSubheadingClassName, 'mt-4')}>{challengeTitle}</h3>
@@ -41,7 +41,7 @@ export default function ProblemSolution({
         </article>
 
         <article className="rounded-[10px] border border-stroke bg-surface/60 p-6 lg:p-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-accent">
             Design response
           </p>
           <h3 className={cn(sectionSubheadingClassName, 'mt-4')}>{responseTitle}</h3>

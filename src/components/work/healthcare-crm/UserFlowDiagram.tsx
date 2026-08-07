@@ -27,7 +27,7 @@ function FlowNode({ data }: NodeProps<Node<FlowNodeData>>) {
   return (
     <div
       className={cn(
-        'min-w-[120px] max-w-[160px] rounded-[8px] border px-3 py-2 text-center text-[11px] font-medium leading-snug shadow-sm',
+        'min-w-[120px] max-w-[160px] rounded-[8px] border px-3 py-2 text-center text-[12px] font-medium leading-snug shadow-sm',
         variant === 'start' && 'border-accent bg-accent/10 text-foreground',
         variant === 'hub' && 'border-foreground bg-foreground text-inverse-foreground',
         variant === 'end' && 'border-stroke bg-surface text-muted',

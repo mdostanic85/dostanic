@@ -30,7 +30,7 @@ export default function HowIWork() {
         <Reveal>
           <div className="grid grid-cols-1 gap-12 border-t border-stroke pt-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">03 · How I work</p>
+              <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">03 · How I work</p>
               <h2 id="how-i-work-title" className="display-tight mt-6 max-w-[12ch] text-4xl font-medium sm:text-5xl lg:text-6xl">
                 From ambiguity to a product teams can build.
               </h2>
@@ -39,7 +39,7 @@ export default function HowIWork() {
             <ol className="border-t border-stroke lg:col-span-8">
               {STEPS.map((step) => (
                 <li key={step.number} className="grid grid-cols-12 gap-4 border-b border-stroke py-8 sm:py-10">
-                  <span className="col-span-2 font-mono text-[11px] tracking-[0.23em] text-accent">{step.number}</span>
+                  <span className="col-span-2 font-mono text-[12px] tracking-[0.23em] text-accent">{step.number}</span>
                   <h3 className="display-tight col-span-10 text-xl font-medium sm:col-span-4 sm:text-2xl">
                     {step.title}
                   </h3>

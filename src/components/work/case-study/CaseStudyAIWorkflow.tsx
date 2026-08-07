@@ -53,7 +53,7 @@ export default function CaseStudyAIWorkflow({
           {tools.map((tool) => (
             <span
               key={tool}
-              className="inline-flex rounded-full border border-stroke bg-surface px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted"
+              className="inline-flex rounded-full border border-stroke bg-surface px-3 py-1 font-mono text-[12px] uppercase tracking-[0.16em] text-muted"
             >
               {tool}
             </span>

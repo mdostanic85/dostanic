@@ -20,7 +20,7 @@ export default function AppError({
 
   return (
     <main className="grain flex min-h-[70vh] flex-col items-center justify-center gap-6 px-6 py-24 text-center">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+      <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-muted">
         Something went wrong
       </p>
       <h1 className="max-w-md text-2xl font-semibold leading-snug text-foreground sm:text-3xl">

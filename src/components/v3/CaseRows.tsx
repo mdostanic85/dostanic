@@ -18,27 +18,13 @@ export default function CaseRows() {
       <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
         {/* Section head */}
         <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-8 pb-20 pt-24 sm:pb-28 sm:pt-32">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
-                01 · Selected work
-              </p>
-              <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl lg:text-6xl">
-                Evidence, not just screens.
-              </h2>
-            </div>
-            <Link
-              href="/work"
-              className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
-            >
-              Full index
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </Link>
+          <div className="pb-20 pt-24 sm:pb-28 sm:pt-32">
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
+              01 · Selected work
+            </p>
+            <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl lg:text-6xl">
+              Evidence, not just screens.
+            </h2>
           </div>
         </Reveal>
 
@@ -92,7 +78,7 @@ export default function CaseRows() {
                         : 'lg:col-start-9',
                     ].join(' ')}
                   >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+                    <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
                       {num} / {project.projectType || project.domain} · {project.year || 'Current'}
                     </p>
                     <h3 className="display-tight mt-5 text-2xl font-medium text-foreground sm:text-3xl">
@@ -107,13 +93,13 @@ export default function CaseRows() {
                       {project.description}
                     </p>
                     {project.delivery ? (
-                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                      <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.18em] text-accent">
                         {project.delivery}
                       </p>
                     ) : null}
                     <Link
                       href={`/work/${project.slug}`}
-                      className="group/link mt-8 inline-flex w-fit items-center gap-3 border-b border-stroke pb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-accent hover:text-accent"
+                      className="group/link mt-8 inline-flex w-fit items-center gap-3 border-b border-stroke pb-2 font-mono text-[12px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-accent hover:text-accent"
                     >
                       Open case
                       <span

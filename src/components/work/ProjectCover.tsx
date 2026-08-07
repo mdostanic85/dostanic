@@ -50,7 +50,7 @@ export default function ProjectCover({
         >
           <span
             className={cn(
-              'font-mono text-[11px] uppercase tracking-[0.2em] text-white/75',
+              'font-mono text-[12px] uppercase tracking-[0.2em] text-white/75',
               labelClassName,
             )}
           >
@@ -60,7 +60,7 @@ export default function ProjectCover({
       )}
 
       {project.isCapability ? (
-        <span className="absolute left-4 top-4 z-10 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-inverse-foreground">
+        <span className="absolute left-4 top-4 z-10 rounded-[3px] bg-foreground px-2 py-1 font-mono text-[13px] uppercase tracking-[0.18em] text-inverse-foreground">
           Capability
         </span>
       ) : null}

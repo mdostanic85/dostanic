@@ -36,9 +36,9 @@ const buttonVariants = cva(
           'bg-accent text-inverse-foreground border border-accent hover:bg-transparent hover:text-accent',
       },
       size: {
-        default: 'h-11 px-6 text-[11px]',
-        sm: 'h-9 px-4 text-[10px]',
-        lg: 'h-12 px-7 text-[11px]',
+        default: 'h-11 px-6 text-[12px]',
+        sm: 'h-9 px-4 text-[12px]',
+        lg: 'h-12 px-7 text-[12px]',
         icon: 'h-11 w-11 p-0',
       },
     },

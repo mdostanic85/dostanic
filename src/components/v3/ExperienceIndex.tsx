@@ -13,7 +13,7 @@ export default function ExperienceIndex() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-8 pb-12">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+              <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
                 04 · Experience
               </p>
               <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl">
@@ -23,7 +23,7 @@ export default function ExperienceIndex() {
             </div>
             <Link
               href="/about"
-              className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
+              className="group inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
             >
               About me
               <span
@@ -44,13 +44,13 @@ export default function ExperienceIndex() {
                 data-reveal-item
                 className="group grid grid-cols-12 items-baseline gap-3 border-b border-stroke py-7 lg:py-8"
               >
-                <span className="col-span-4 font-mono text-[11px] uppercase tracking-[0.23em] text-muted sm:col-span-2">
+                <span className="col-span-4 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-2">
                   {row.period}
                 </span>
                 <h3 className="display-tight col-span-8 text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:col-span-5 sm:text-xl lg:text-2xl">
                   {row.company}
                 </h3>
-                <span className="col-span-12 col-start-5 font-mono text-[11px] uppercase tracking-[0.23em] text-muted sm:col-span-5 sm:col-start-8 sm:text-right">
+                <span className="col-span-12 col-start-5 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-5 sm:col-start-8 sm:text-right">
                   {row.role}
                 </span>
               </li>

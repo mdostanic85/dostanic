@@ -86,7 +86,7 @@ function ScreenFigure({
         )}
       </div>
       <figcaption>
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+        <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
           {screen.caption}
         </p>
         <p className="mt-2 text-sm leading-[1.65] text-muted">{screen.decision}</p>

@@ -17,7 +17,7 @@ export default function MarqueeDivider() {
       {ITEMS.map((item) => (
         <span
           key={item}
-          className="flex items-center gap-10 px-5 font-mono text-[11px] uppercase tracking-[0.3em] text-muted"
+          className="flex items-center gap-10 px-5 font-mono text-[12px] uppercase tracking-[0.3em] text-muted"
         >
           {item}
           <span aria-hidden="true" className="text-accent">

@@ -59,11 +59,11 @@ export default function ImagePlaceholder({
             strokeLinejoin="round"
           />
         </svg>
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/60">
+        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-foreground/60">
           {label}
         </p>
         {foot ? (
-          <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-muted/70">
+          <p className="font-mono text-[13px] uppercase tracking-[0.18em] text-muted/70">
             {foot}
           </p>
         ) : null}

@@ -26,7 +26,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         {/* Top mark row */}
-        <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+        <div className="mb-4 flex items-center justify-between font-mono text-[12px] uppercase tracking-[0.18em] text-muted">
           <span>
             {typeof index === 'number'
               ? `/ ${String(index).padStart(2, '0')}`
@@ -54,7 +54,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               aria-hidden="true"
               className="flex h-full w-full items-center justify-center"
             >
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/40">
+              <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-foreground/40">
                 {project.isCapability ? 'Capability' : 'Case study'}
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Capability ribbon */}
           {project.isCapability ? (
-            <span className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-inverse-foreground">
+            <span className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-inverse-foreground">
               Capability
             </span>
           ) : null}

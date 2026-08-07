@@ -19,7 +19,7 @@ export default function Capabilities() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-8 pb-16 lg:pb-24">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+              <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
                 02 · Core expertise
               </p>
               <h2 className="display-tight mt-6 max-w-[16ch] text-4xl font-medium sm:text-5xl lg:text-6xl">
@@ -28,7 +28,7 @@ export default function Capabilities() {
             </div>
             <Link
               href="/expertise"
-              className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
+              className="group inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
             >
               Full expertise
               <span
@@ -49,7 +49,7 @@ export default function Capabilities() {
                 data-reveal-item
                 className="group border-b border-stroke px-1 py-10 sm:border-r sm:px-8 sm:py-12 sm:[&:nth-child(2n)]:border-r-0 lg:min-h-[280px] lg:px-10"
               >
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted transition-colors group-hover:text-accent">
+                <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted transition-colors group-hover:text-accent">
                   / {tile.number}
                 </p>
                 <h3 className="display-tight mt-6 text-xl font-medium sm:text-2xl">

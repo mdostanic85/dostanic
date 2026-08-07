@@ -23,7 +23,7 @@ export default function CaseStudyMeta({ fields, className = '' }: CaseStudyMetaP
           key={label}
           className="flex h-full min-h-0 flex-col gap-3 rounded-[10px] bg-surface p-5 sm:gap-3.5 sm:p-6"
         >
-          <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted sm:text-[12px]">
+          <dt className="font-mono text-[12px] uppercase tracking-[0.2em] text-muted sm:text-[13px]">
             {label}
           </dt>
           <dd className="text-[15px] font-medium leading-snug text-foreground sm:text-base sm:leading-snug">

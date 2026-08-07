@@ -51,7 +51,7 @@ export default function UXProcessFlow({
                   {step.tools.map((t) => (
                     <span
                       key={t}
-                      className="inline-flex rounded-full bg-surface px-3 py-1 font-mono text-[12px] uppercase tracking-[0.18em] text-muted"
+                      className="inline-flex rounded-full bg-surface px-3 py-1 font-mono text-[13px] uppercase tracking-[0.18em] text-muted"
                     >
                       {t}
                     </span>

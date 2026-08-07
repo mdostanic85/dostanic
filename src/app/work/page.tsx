@@ -41,7 +41,7 @@ export default function WorkPage() {
                 </span>
               </h1>
               <p
-                className="mb-4 font-mono text-[12px] uppercase tracking-[0.25em] text-accent animate-fade-in-up sm:mb-8"
+                className="mb-4 font-mono text-[13px] uppercase tracking-[0.25em] text-accent animate-fade-in-up sm:mb-8"
                 style={{ animationDelay: '300ms' }}
               >
                 ({String(selectedTotal).padStart(2, '0')})
@@ -51,10 +51,10 @@ export default function WorkPage() {
               className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-stroke pt-6 animate-fade-in-up"
               style={{ animationDelay: '400ms' }}
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+              <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted">
                 {selectedTotal} selected · {explorationTotal} explorations · {years}
               </p>
-              <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:block">
+              <p className="hidden font-mono text-[12px] uppercase tracking-[0.3em] text-muted sm:block">
                 Every item labelled by type and delivery status
               </p>
             </div>

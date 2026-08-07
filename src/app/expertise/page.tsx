@@ -98,10 +98,10 @@ export default function ExpertisePage() {
               className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-stroke pt-6 animate-fade-in-up"
               style={{ animationDelay: '400ms' }}
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+              <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted">
                 Four areas · one operating model
               </p>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+              <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted">
                 Tap a row to expand
               </p>
             </div>

@@ -94,7 +94,7 @@ export default function WorkClient({ projects }: WorkClientProps) {
               aria-selected={selected}
               onClick={() => setActive(f)}
               className={[
-                'group inline-flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors duration-150',
+                'group inline-flex items-baseline gap-2 font-mono text-[12px] uppercase tracking-[0.2em] transition-colors duration-150',
                 selected
                   ? 'text-foreground'
                   : 'text-muted hover:text-foreground',
@@ -130,16 +130,16 @@ export default function WorkClient({ projects }: WorkClientProps) {
                 onPointerLeave={() => setPreviewSrc(null)}
                 className="group grid grid-cols-12 items-baseline gap-3 py-7 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:py-9 lg:gap-8"
               >
-                <span className="col-span-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-accent sm:col-span-1">
+                <span className="col-span-2 font-mono text-[12px] uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-accent sm:col-span-1">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
                 <h3 className="display-tight col-span-10 text-2xl font-medium text-foreground transition-transform duration-300 group-hover:translate-x-2 sm:col-span-6 sm:text-3xl lg:text-4xl">
                   {project.title.split(' | ')[0].split(' — ')[0]}
                 </h3>
-                <span className="col-span-6 col-start-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-3 sm:col-start-8 sm:text-right">
+                <span className="col-span-6 col-start-3 font-mono text-[12px] uppercase tracking-[0.25em] text-muted sm:col-span-3 sm:col-start-8 sm:text-right">
                   {project.projectType || project.domain}
                 </span>
-                <span className="col-span-3 text-right font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-1">
+                <span className="col-span-3 text-right font-mono text-[12px] uppercase tracking-[0.25em] text-muted sm:col-span-1">
                   {project.isCapability ? 'CAP' : project.year || '—'}
                 </span>
                 <span
@@ -181,7 +181,7 @@ export default function WorkClient({ projects }: WorkClientProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-16 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+        <p className="py-16 text-center font-mono text-[12px] uppercase tracking-[0.2em] text-muted">
           No projects in this category yet.
         </p>
       ) : null}

@@ -103,7 +103,7 @@ export default function SpaceInchCaseStudy() {
       <CaseStudySection alt>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Important decisions</p>
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Important decisions</p>
             <h2 className="display-tight mt-5 max-w-[11ch] text-3xl font-medium sm:text-4xl">
               The work behind a scalable interface.
             </h2>
@@ -111,7 +111,7 @@ export default function SpaceInchCaseStudy() {
           <ol className="border-t border-stroke lg:col-span-8">
             {DECISIONS.map((decision) => (
               <li key={decision.number} className="grid grid-cols-12 gap-4 border-b border-stroke py-8">
-                <span className="col-span-2 font-mono text-[10px] tracking-[0.22em] text-accent">{decision.number}</span>
+                <span className="col-span-2 font-mono text-[12px] tracking-[0.22em] text-accent">{decision.number}</span>
                 <div className="col-span-10 sm:grid sm:grid-cols-8 sm:gap-6">
                   <h3 className="display-tight text-xl font-medium sm:col-span-3">{decision.title}</h3>
                   <p className="mt-4 text-sm leading-[1.75] text-muted sm:col-span-5 sm:mt-0 sm:text-base">{decision.body}</p>
@@ -145,7 +145,7 @@ export default function SpaceInchCaseStudy() {
             </CaseStudyOutcome>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Reflection</p>
+            <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">Reflection</p>
             <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
               Senior product work is often less about a single screen and more about making a complex system
               understandable to users, stakeholders, and the engineers who have to build it.

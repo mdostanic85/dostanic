@@ -132,7 +132,7 @@ export default function AIWorkflowPage() {
               </span>
               &rdquo;
             </p>
-            <cite className="lg:col-span-3 lg:self-end font-mono text-[11px] not-italic uppercase tracking-[0.2em] text-muted">
+            <cite className="lg:col-span-3 lg:self-end font-mono text-[12px] not-italic uppercase tracking-[0.2em] text-muted">
               — Milos Dostanic
             </cite>
           </blockquote>

@@ -101,7 +101,7 @@ export default function WorkLightCaseStudy() {
       <CaseStudySection alt>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Product model</p>
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Product model</p>
             <h2 className="display-tight mt-5 max-w-[12ch] text-3xl font-medium sm:text-4xl">Signals become decisions through an auditable path.</h2>
             <p className="mt-6 max-w-[46ch] text-sm leading-[1.75] text-muted sm:text-base">
               The UI talks to services, services own database access, and each external connector stays isolated and read only.
@@ -110,21 +110,21 @@ export default function WorkLightCaseStudy() {
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 border border-stroke bg-background sm:grid-cols-3">
               <div className="border-b border-stroke p-6 sm:border-b-0 sm:border-r">
-                <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-accent">01 · Sources</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">01 · Sources</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {SOURCES.map((source) => (
-                    <span key={source} className="border border-stroke px-2 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-muted">{source}</span>
+                    <span key={source} className="border border-stroke px-2 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">{source}</span>
                   ))}
                 </div>
               </div>
               <div className="border-b border-stroke p-6 sm:border-b-0 sm:border-r">
-                <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-accent">02 · Decision layer</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">02 · Decision layer</p>
                 <ul className="mt-5 space-y-3 text-sm leading-[1.6] text-muted">
                   <li>Extract and merge</li><li>Rank and score confidence</li><li>Verify claims</li><li>Expose conflicts</li>
                 </ul>
               </div>
               <div className="p-6">
-                <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-accent">03 · Daily operator</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">03 · Daily operator</p>
                 <ul className="mt-5 space-y-3 text-sm leading-[1.6] text-muted">
                   <li>What to do first</li><li>Why it matters</li><li>Next action</li><li>Done criteria</li>
                 </ul>
@@ -137,13 +137,13 @@ export default function WorkLightCaseStudy() {
       <CaseStudySection>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Important decisions</p>
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Important decisions</p>
             <h2 className="display-tight mt-5 max-w-[12ch] text-3xl font-medium sm:text-4xl">Trust is part of the interaction model.</h2>
           </div>
           <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-8">
             {DECISIONS.map((decision, index) => (
               <article key={decision.title} className="border-t border-stroke pt-5">
-                <p className="font-mono text-[9px] tracking-[0.22em] text-accent">{String(index + 1).padStart(2, '0')}</p>
+                <p className="font-mono text-[11px] tracking-[0.22em] text-accent">{String(index + 1).padStart(2, '0')}</p>
                 <h3 className="display-tight mt-4 text-xl font-medium">{decision.title}</h3>
                 <p className="mt-4 text-sm leading-[1.75] text-muted">{decision.body}</p>
               </article>
@@ -176,7 +176,7 @@ export default function WorkLightCaseStudy() {
             </CaseStudyOutcome>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Public proof</p>
+            <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">Public proof</p>
             <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
               The repository documents the architecture, task model, integration boundaries, commands, and current product behaviour.
             </p>

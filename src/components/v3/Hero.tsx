@@ -79,26 +79,6 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto flex w-full max-w-[1500px] flex-1 flex-col px-5 pt-16 sm:px-8 lg:px-12">
-        {/* Meta rail */}
-        <div className="flex items-start justify-between gap-6 pt-8 sm:pt-12">
-          <p
-            data-hero-fade
-            className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted"
-          >
-            Senior Product Designer & Product Builder
-          </p>
-          <p
-            data-hero-fade
-            className="hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted sm:flex"
-          >
-            <span className="pulse-host h-1.5 w-1.5" aria-hidden="true">
-              <span className="pulse-ring" />
-              <span className="pulse-core block h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            Open to senior remote product roles
-          </p>
-        </div>
-
         {/* Poster lockup */}
         <div className="flex flex-1 flex-col justify-center py-8 sm:py-10">
           <h1 className="display-mega text-[clamp(42px,7.3vw,118px)] font-semibold uppercase !leading-[0.92] text-foreground">
@@ -139,7 +119,7 @@ export default function Hero() {
                 <Link
                   href="#selected-work"
                   data-analytics-event="selected_work_action"
-                  className="group inline-flex h-12 items-center gap-3 border border-foreground bg-foreground px-7 font-mono text-[11px] uppercase tracking-[0.2em] text-inverse-foreground transition-colors hover:bg-transparent hover:text-foreground"
+                  className="group inline-flex h-12 items-center gap-3 border border-foreground bg-foreground px-7 font-mono text-[12px] uppercase tracking-[0.2em] text-inverse-foreground transition-colors hover:bg-transparent hover:text-foreground"
                 >
                   View selected work
                   <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -149,7 +129,7 @@ export default function Hero() {
                 <Link
                   href="/contact"
                   data-analytics-event="contact_action"
-                  className="group inline-flex h-12 items-center gap-3 border border-stroke px-7 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:border-foreground hover:text-foreground"
+                  className="group inline-flex h-12 items-center gap-3 border border-stroke px-7 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:border-foreground hover:text-foreground"
                 >
                   Contact me
                   <span aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
@@ -159,23 +139,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Base rail */}
+        {/* Base rail — experience summary */}
         <div
           data-hero-fade
-          className="flex items-center justify-between gap-6 border-t border-stroke py-6"
+          className="flex items-center border-t border-stroke py-6"
         >
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
-            12+ years across design · 10+ years digital products
-          </p>
-          <p className="hidden font-mono text-[11px] uppercase tracking-[0.28em] text-muted md:block">
-            Serbia / CET · Remote worldwide
-          </p>
-          <p
-            aria-hidden="true"
-            className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted"
-          >
-            Scroll
-            <span className="inline-block animate-bounce">↓</span>
+          <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
+            <span className="font-semibold text-foreground">20</span> years of
+            design experience ·{' '}
+            <span className="font-semibold text-foreground">12</span> in digital
+            products
           </p>
         </div>
       </div>

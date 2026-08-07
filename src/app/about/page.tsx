@@ -10,7 +10,7 @@ import { COMPANIES, LINKEDIN_PROFILE_URL } from '@/lib/data'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Milos Dostanic is a Senior Product Designer and Product Builder with 12+ years across design and 10+ years in digital products.',
+    'Milos Dostanic is a Senior Product Designer and Product Builder with 20 years across design and 12 years in digital products.',
   alternates: { canonical: '/about' },
 }
 
@@ -40,7 +40,7 @@ const PRINCIPLES = [
 /**
  * About — V3.1. Statement masthead (no shared PageHeader), then three
  * chapters with sticky mono labels on the left: Story, Experience
- * (companies only), Principles. Ghost "12+" numeral drifts behind the
+ * (companies only), Principles. Ghost "20" numeral drifts behind the
  * masthead on scroll.
  */
 export default function AboutPage() {
@@ -58,7 +58,7 @@ export default function AboutPage() {
               aria-hidden="true"
               className="font-mono text-[34vw] font-light leading-none tracking-tighter text-foreground/[0.05] sm:text-[26vw]"
             >
-              12+
+              20
             </span>
           </ParallaxY>
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
               style={{ animationDelay: '420ms' }}
             >
               <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
-                12+ years across design · 10+ years in digital products
+                20 years across design · 12 years in digital products
               </p>
               <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
                 I help teams turn complex product requirements into clear UX,

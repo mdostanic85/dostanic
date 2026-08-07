@@ -8,7 +8,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
  *
  * `extraSections` is a closed enum of preset variants so editors cannot
  * compose arbitrary new layouts — this keeps the schema out of page-builder
- * territory while still allowing the DevRev "UI screens" grid to be toggled.
+ * territory while still allowing shared screen-grid blocks to be toggled.
  */
 export const caseStudy = defineType({
   name: 'caseStudy',
@@ -293,22 +293,6 @@ export const caseStudy = defineType({
             }),
           ],
           preview: { select: { title: 'label' } },
-        }),
-        defineArrayMember({
-          name: 'devrevUiScreensBlock',
-          title: 'DevRev UI screens (preset)',
-          type: 'object',
-          description:
-            'Renders the existing DevRevUIScreens React component. No editable fields.',
-          fields: [
-            defineField({
-              name: 'enabled',
-              title: 'Enabled',
-              type: 'boolean',
-              initialValue: true,
-            }),
-          ],
-          preview: { prepare: () => ({ title: 'DevRev UI screens' }) },
         }),
       ],
     }),

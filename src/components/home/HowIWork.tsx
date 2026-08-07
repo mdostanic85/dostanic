@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Reveal from '@/components/v3/Reveal'
 
 const STEPS = [
@@ -36,19 +37,35 @@ export default function HowIWork() {
               </h2>
             </div>
 
-            <ol className="border-t border-stroke lg:col-span-8">
-              {STEPS.map((step) => (
-                <li key={step.number} className="grid grid-cols-12 gap-4 border-b border-stroke py-8 sm:py-10">
-                  <span className="col-span-2 font-mono text-[12px] tracking-[0.23em] text-accent">{step.number}</span>
-                  <h3 className="display-tight col-span-10 text-xl font-medium sm:col-span-4 sm:text-2xl">
-                    {step.title}
-                  </h3>
-                  <p className="col-span-10 col-start-3 max-w-[52ch] text-sm leading-[1.75] text-muted sm:col-span-6 sm:col-start-auto sm:text-base">
-                    {step.body}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <div className="lg:col-span-8">
+              <ol className="border-t border-stroke">
+                {STEPS.map((step) => (
+                  <li key={step.number} className="grid grid-cols-12 gap-4 border-b border-stroke py-8 sm:py-10">
+                    <span className="col-span-2 font-mono text-[12px] tracking-[0.23em] text-accent">{step.number}</span>
+                    <h3 className="display-tight col-span-10 text-xl font-medium sm:col-span-4 sm:text-2xl">
+                      {step.title}
+                    </h3>
+                    <p className="col-span-10 col-start-3 max-w-[52ch] text-sm leading-[1.75] text-muted sm:col-span-6 sm:col-start-auto sm:text-base">
+                      {step.body}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-8">
+                <Link
+                  href="/work/ai-design-system-workflow"
+                  className="group inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
+                >
+                  Design ↔ implementation method
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>

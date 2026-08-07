@@ -194,16 +194,16 @@ PROOF = [
         "https://github.com/mdostanic85/morning",
     ),
     (
-        "Space Inch",
-        "CURRENT ROLE / NDA PROTECTED",
-        "Senior product design across confidential B2B engagements, including product structure, dense operational UI, system patterns, and implementation review.",
-        "https://dostanic.net/work/spaceinch",
+        "OriginChains",
+        "CLIENT WORK / CLIMATE SAAS",
+        "Lead product design for company discovery, trust-heavy data presentation, activity feeds, and a Figma system tuned for engineering handoff.",
+        "https://www.dostanic.net/work/originchains",
     ),
     (
         "AI-connected design systems",
         "WORKING METHOD",
         "A documented workflow connecting Figma variables, component APIs, functional prototypes, code review, and design QA.",
-        "https://dostanic.net/work/ai-design-system-workflow",
+        "https://www.dostanic.net/work/ai-design-system-workflow",
     ),
 ]
 
@@ -286,7 +286,7 @@ def build_resume():
 
     contact = Paragraph(
         '<a href="mailto:milos@dostanic.net" color="#5F6471">milos@dostanic.net</a><br/>'
-        '<a href="https://dostanic.net" color="#5F6471">dostanic.net</a><br/>'
+        '<a href="https://www.dostanic.net" color="#5F6471">www.dostanic.net</a><br/>'
         '<a href="https://www.linkedin.com/in/milos-dostanic/" color="#5F6471">linkedin.com/in/milos-dostanic</a><br/>'
         '<a href="https://github.com/mdostanic85" color="#5F6471">github.com/mdostanic85</a><br/>'
         'Serbia / CET / Remote worldwide',
@@ -311,7 +311,7 @@ def build_resume():
 
     profile = Table(
         [[Paragraph(
-            "Senior Product Designer with 12+ years across design and 10+ years in digital products. "
+            "Senior Product Designer with 20 years across design and 12 years in digital products. "
             "I work on complex B2B UX, design systems, functional prototypes, AI workflows, and "
             "implementation review. I am most useful when product logic is unclear, states are dense, "
             "or design and engineering need a shared model.",

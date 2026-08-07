@@ -109,9 +109,9 @@ export default function Hero() {
               data-hero-fade
               className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              Complex workflows, design systems, data-heavy interfaces, and
-              AI-powered products. I work from early product thinking to
-              implementation-ready delivery.
+              Workflows, data, roles, and edge cases — structured so engineering
+              can implement them. Design systems and delivery through production,
+              not just polished screens.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">
@@ -145,10 +145,11 @@ export default function Hero() {
           className="flex items-center border-t border-stroke py-6"
         >
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
-            <span className="font-semibold text-foreground">20</span> years of
-            design experience ·{' '}
-            <span className="font-semibold text-foreground">12</span> in digital
-            products
+            Space Inch ·{' '}
+            <span className="font-semibold text-foreground">12+</span> years
+            digital ·{' '}
+            <span className="font-semibold text-foreground">20</span> years
+            design
           </p>
         </div>
       </div>

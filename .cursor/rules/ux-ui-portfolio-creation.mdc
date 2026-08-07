@@ -13,7 +13,7 @@ alwaysApply: false
 ## Repo-specific notes
 
 - Case study pages live at `src/app/work/[slug]/page.tsx`.
-- Use `src/app/work/devrev/page.tsx` as the **structural reference** for full-section case studies (role scope, challenge, process steps, design decisions, outcomes, reflection).
+- Use `src/app/work/worklight/page.tsx` as the **structural reference** for full-section case studies (role scope, challenge, process steps, design decisions, outcomes, reflection).
 - Do **not** model new case studies after `src/app/work/soundscope/page.tsx` — it contains invented outcome percentages that violate the no-fake-metrics rule.
 - Project data lives in `src/lib/data.ts`; which slugs have live routes is controlled by `src/lib/caseStudyRoutes.ts`.
 - Whenever you add a new case study page, also append its slug to `CASE_STUDY_SLUGS` in `src/lib/caseStudyRoutes.ts` so the tile becomes linkable.

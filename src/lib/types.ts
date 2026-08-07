@@ -14,7 +14,7 @@ export type ProjectType =
   | 'Concept'
   | 'Capability'
 
-export type PortfolioGroup = 'Selected' | 'Exploration'
+export type PortfolioGroup = 'Selected' | 'Exploration' | 'Capability'
 
 export type Project = {
   title: string
@@ -31,7 +31,7 @@ export type Project = {
   delivery?: string
   /** Keeps speculative explorations out of the default senior-work index. */
   portfolioGroup?: PortfolioGroup
-  /** Optional path to cover image — e.g. /work/devrev/cover.jpg */
+  /** Optional path to cover image — e.g. /work/originchains/cover.png */
   coverImage?: string
   /** Link to Behance project if public */
   behanceUrl?: string

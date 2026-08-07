@@ -2,37 +2,31 @@
  * Registry of project slugs that have a live case study route at /work/[slug].
  *
  * Order here is the prev/next chain across case study footers.
- * When a new page is added under src/app/work/[slug]/page.tsx, append the slug.
+ * Selected cases first, then capability, then explorations.
  */
 export const CASE_STUDY_SLUGS = [
-  'spaceinch',
-  'devrev',
   'worklight',
   'originchains',
-  'spotify-admin-enterprise',
-  'soundscope',
-  'matchlink',
-  'healthcare-crm',
-  'galaxy-cash',
-  'ai-design-system-workflow',
   'optronic',
+  'ai-design-system-workflow',
+  'soundscope',
+  'healthcare-crm',
+  'matchlink',
+  'galaxy-cash',
   'cecconis',
 ] as const
 
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number]
 
 export const CASE_STUDY_LABELS: Record<CaseStudySlug, string> = {
-  spaceinch: 'Space Inch',
-  devrev: 'DevRev',
   worklight: 'WorkLight',
   originchains: 'OriginChains',
-  'spotify-admin-enterprise': 'Spotify Admin',
-  soundscope: 'SoundScope',
-  matchlink: 'MatchLink',
-  'healthcare-crm': 'HealthCare CRM',
-  'galaxy-cash': 'Galaxy Cash',
-  'ai-design-system-workflow': 'AI workflow',
   optronic: 'Optronic',
+  'ai-design-system-workflow': 'AI workflow',
+  soundscope: 'SoundScope',
+  'healthcare-crm': 'HealthCare CRM',
+  matchlink: 'MatchLink',
+  'galaxy-cash': 'Galaxy Cash',
   cecconis: "Cecconi's",
 }
 

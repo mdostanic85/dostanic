@@ -43,14 +43,14 @@ export default function WorkClient({ projects }: WorkClientProps) {
   const prefersReducedMotion = usePrefersReducedMotion()
 
   const filtered = projects.filter((project) => {
-    if (active === 'Selected') return project.portfolioGroup !== 'Exploration'
+    if (active === 'Selected') return project.portfolioGroup === 'Selected'
     if (active === 'Explorations') return project.portfolioGroup === 'Exploration'
     return project.category === active
   })
 
   const countFor = (filter: FilterOption) => {
     if (filter === 'Selected') {
-      return projects.filter((project) => project.portfolioGroup !== 'Exploration').length
+      return projects.filter((project) => project.portfolioGroup === 'Selected').length
     }
     if (filter === 'Explorations') {
       return projects.filter((project) => project.portfolioGroup === 'Exploration').length

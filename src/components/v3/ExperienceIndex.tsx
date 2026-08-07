@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { COMPANIES } from '@/lib/data'
+import { HOME_COMPANIES } from '@/lib/data'
 import Reveal from './Reveal'
 
 /**
- * Experience — employment timeline, companies only (client projects live
- * under /work). Hairline rows: period, company, role.
+ * Experience — curated employers for the homepage. Full chronology is on
+ * About / Résumé. Space Inch is current employer (NDA client work; not a case).
  */
 export default function ExperienceIndex() {
   return (
@@ -38,7 +38,7 @@ export default function ExperienceIndex() {
 
         <Reveal staggerSelector="[data-reveal-item]">
           <ul className="border-t border-stroke">
-            {COMPANIES.map((row) => (
+            {HOME_COMPANIES.map((row) => (
               <li
                 key={row.company}
                 data-reveal-item

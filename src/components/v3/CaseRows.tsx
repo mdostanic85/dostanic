@@ -89,7 +89,7 @@ export default function CaseRows() {
                       {project.title.split(' | ')[0]}
                       </Link>
                     </h3>
-                    <p className="mt-5 line-clamp-4 max-w-md text-sm leading-[1.75] text-muted">
+                    <p className="mt-5 max-w-md text-sm leading-[1.75] text-muted">
                       {project.description}
                     </p>
                     {project.delivery ? (

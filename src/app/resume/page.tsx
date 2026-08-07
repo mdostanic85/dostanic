@@ -32,10 +32,10 @@ const SELECTED_PROOF = [
     href: 'https://github.com/mdostanic85/morning',
   },
   {
-    title: 'Space Inch',
-    label: 'Current role · NDA protected',
-    body: 'Senior product design across confidential B2B engagements, including product structure, dense operational UI, system patterns, and implementation review.',
-    href: '/work/spaceinch',
+    title: 'OriginChains',
+    label: 'Client work · Climate SaaS',
+    body: 'Lead product design for company discovery, trust-heavy data presentation, activity feeds, and a Figma system tuned for engineering handoff.',
+    href: '/work/originchains',
   },
   {
     title: 'AI-connected design systems',
@@ -61,7 +61,7 @@ export default function ResumePage() {
               Senior Product Designer & Product Builder
             </h1>
             <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-[#111318]/70">
-              Senior Product Designer with 12+ years across design and 10+ years in digital products.
+              Senior Product Designer with 20 years across design and 12 years in digital products.
               I work on complex B2B UX, design systems, functional prototypes, AI workflows, and
               implementation review.
             </p>
@@ -71,7 +71,7 @@ export default function ResumePage() {
             <a href="mailto:milos@dostanic.net" className="block text-sm leading-7 hover:text-[#2742ff]">milos@dostanic.net</a>
             <a href={LINKEDIN_PROFILE_URL} className="block text-sm leading-7 hover:text-[#2742ff]">linkedin.com/in/milos-dostanic</a>
             <a href="https://github.com/mdostanic85" className="block text-sm leading-7 hover:text-[#2742ff]">github.com/mdostanic85</a>
-            <a href="https://dostanic-2.vercel.app" className="block text-sm leading-7 hover:text-[#2742ff]">dostanic-2.vercel.app</a>
+            <a href="https://www.dostanic.net" className="block text-sm leading-7 hover:text-[#2742ff]">www.dostanic.net</a>
           </address>
         </header>
 

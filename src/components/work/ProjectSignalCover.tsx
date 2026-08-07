@@ -16,14 +16,6 @@ type SignalCard = {
  * the project record — never from another project's story.
  */
 const SIGNAL_CARDS: Record<string, SignalCard> = {
-  spaceinch: {
-    label:
-      'Abstract system map for NDA-protected enterprise product work at Space Inch',
-    eyebrow: 'Space Inch · Enterprise systems',
-    status: 'NDA protected',
-    headline: 'Complex workflows made legible, scalable, and ready for build.',
-    rail: ['Product framing', 'System design', 'Delivery QA'],
-  },
   'ai-design-system-workflow': {
     label:
       'Abstract map of the AI-connected design system workflow — tokens, component APIs, and review loops kept in sync across Figma and code',

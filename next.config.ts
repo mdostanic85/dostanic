@@ -9,6 +9,25 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/work/devrev',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/work/spotify-admin-enterprise',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/work/spaceinch',
+        destination: '/about',
+        permanent: true,
+      },
+    ]
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       // Avoid intermittent ENOENT rename failures under `.next/cache/webpack`

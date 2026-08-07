@@ -18,9 +18,11 @@ export const metadata: Metadata = {
  */
 export default function WorkPage() {
   const selectedTotal = PROJECTS.filter(
-    (project) => project.portfolioGroup !== 'Exploration',
+    (project) => project.portfolioGroup === 'Selected',
   ).length
-  const explorationTotal = PROJECTS.length - selectedTotal
+  const explorationTotal = PROJECTS.filter(
+    (project) => project.portfolioGroup === 'Exploration',
+  ).length
   const years = '2021 — 2026'
 
   return (

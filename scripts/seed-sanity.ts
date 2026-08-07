@@ -404,20 +404,6 @@ const experienceEntries = [
 
 const projects = [
   {
-    _id: 'project-devrev',
-    _type: 'project',
-    title: 'DevRev — Developer Tools Platform',
-    slug: { _type: 'slug', current: 'devrev' },
-    domain: 'SaaS',
-    discipline: 'Product Design',
-    year: '2023',
-    featured: true,
-    category: 'Product Design',
-    description:
-      'I led end-to-end product design for DevRev — a developer-centric platform that ties engineering, support, and product workflows together. As the senior designer on complex surface area, I defined multi-role information architecture, dashboard and table systems, and a shared component language so dozens of screens stayed coherent as the product grew.',
-    orderRank: 1,
-  },
-  {
     _id: 'project-originchains',
     _type: 'project',
     title: 'OriginChains — Climate Company Discovery',
@@ -429,21 +415,7 @@ const projects = [
     category: 'Product Design',
     description:
       'I acted as lead product designer on a B2B climate intelligence web app — company discovery, trust-heavy data presentation, activity feeds, and admin and privacy modes where permissions had to be obvious, not decorative.',
-    orderRank: 2,
-  },
-  {
-    _id: 'project-spotify-admin',
-    _type: 'project',
-    title: 'Spotify — Admin Enterprise Panel',
-    slug: { _type: 'slug', current: 'spotify-admin-enterprise' },
-    domain: 'SaaS',
-    discipline: 'Product Design',
-    year: '2022',
-    featured: true,
-    category: 'Product Design',
-    description:
-      'I designed enterprise-grade admin experiences for internal Spotify tooling — power users managing content and configuration at scale. The challenge was extreme density without losing scanability: bulk operations, role-based access, audit-friendly layouts, and predictable patterns for tables, dialogs, and inline edits.',
-    orderRank: 3,
+    orderRank: 1,
   },
   {
     _id: 'project-soundscope',

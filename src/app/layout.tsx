@@ -7,10 +7,11 @@ import SmoothScroll from '@/components/layout/SmoothScroll'
 import CursorDot from '@/components/v3/CursorDot'
 import ScrollProgress from '@/components/v3/ScrollProgress'
 import PortfolioAnalytics from '@/components/analytics/PortfolioAnalytics'
+import { SITE_URL } from '@/lib/site'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dostanic-2.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Milos Dostanic | Senior Product Designer & Product Builder',
     template: '%s | Milos Dostanic',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Milos Dostanic | Senior Product Designer & Product Builder',
     description:
       'Complex B2B product design, scalable systems, data-heavy UX, and implementation-ready delivery.',
-    url: 'https://dostanic-2.vercel.app',
+    url: SITE_URL,
     siteName: 'Milos Dostanic',
     type: 'website',
   },
@@ -65,7 +66,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Milos Dostanic',
-              url: 'https://dostanic-2.vercel.app',
+              url: SITE_URL,
               email: 'mailto:milos@dostanic.net',
               jobTitle: 'Senior Product Designer & Product Builder',
               homeLocation: { '@type': 'Country', name: 'Serbia' },

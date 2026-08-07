@@ -6,44 +6,13 @@ import type {
 } from './types'
 
 export const PROJECTS: Project[] = [
-  // ─── Current engagement ──────────────────────────────────────────────────
-  {
-    title: 'Space Inch | Enterprise Product Design',
-    domain: 'Agency / SaaS',
-    discipline: 'Senior Product Designer',
-    description:
-      'Embedded product design across complex client engagements. I work on information architecture, dense operational interfaces, accessible interaction patterns, and implementation reviews while keeping confidential product details protected.',
-    slug: 'spaceinch',
-    year: '2024–Now',
-    featured: true,
-    category: 'Product Design',
-    projectType: 'Client work',
-    delivery: 'Production engagement · NDA protected',
-    portfolioGroup: 'Selected',
-  },
-
-  // ─── Product Design & Enterprise SaaS ────────────────────────────────────
-  {
-    title: 'DevRev | Developer Tools Platform',
-    domain: 'SaaS',
-    discipline: 'Product Design',
-    description:
-      'I led end-to-end product design for DevRev — a developer-centric platform that ties engineering, support, and product workflows together. As the senior designer on complex surface area, I defined multi-role information architecture, dashboard and table systems, and a shared component language so dozens of screens stayed coherent as the product grew. My remit included interaction models for dense data, empty and error states that respect practitioner mental models, and documentation that let engineering ship without re-interpreting every edge case.',
-    slug: 'devrev',
-    year: '2023',
-    featured: true,
-    category: 'Product Design',
-    projectType: 'Client work',
-    delivery: 'Product design · Enterprise SaaS',
-    portfolioGroup: 'Selected',
-    coverImage: '/work/devrev/cover.png',
-  },
+  // ─── Selected (senior portfolio) ─────────────────────────────────────────
   {
     title: 'WorkLight | Daily Work Operator',
     domain: 'AI Product',
     discipline: 'Product Designer & Builder',
     description:
-      'A local-first product that turns signals from work tools into an evidence-linked daily plan. I am designing and building the product, including the ranking logic, trust model, interaction system, integrations, and implementation.',
+      'Local-first product that turns work-tool signals into an evidence-linked daily plan — ranking, trust model, and implementation owned end to end.',
     slug: 'worklight',
     year: '2026',
     featured: true,
@@ -58,7 +27,7 @@ export const PROJECTS: Project[] = [
     domain: 'SaaS',
     discipline: 'Product Design',
     description:
-      'I acted as lead product designer on a B2B climate intelligence web app — company discovery, trust-heavy data presentation, activity feeds, and admin and privacy modes where permissions had to be obvious, not decorative. I architected flows for analysts and buyers, tightened how evidence and signals surface in the UI, and built a Figma design system tuned for single-frame engineering handoff. The work demanded systems thinking: every list, filter, and detail panel had to scale as datasets and customer segments expanded.',
+      'B2B climate intelligence — discovery UX, trust-heavy company data, and a Figma system built for engineering handoff.',
     slug: 'originchains',
     year: '2025',
     featured: true,
@@ -69,28 +38,46 @@ export const PROJECTS: Project[] = [
     coverImage: '/work/originchains/cover.png',
   },
   {
-    title: 'Spotify | Admin Enterprise Panel',
-    domain: 'SaaS',
-    discipline: 'Product Design',
+    title: 'Optronic | Website Redesign',
+    domain: 'Web',
+    discipline: 'UX & Frontend',
     description:
-      'I designed enterprise-grade admin experiences for internal Spotify tooling — power users managing content and configuration at scale. The challenge was extreme density without losing scanability: bulk operations, role-based access, audit-friendly layouts, and predictable patterns for tables, dialogs, and inline edits. I treated accessibility and keyboard paths as first-class requirements and partnered closely with engineering so constraints from production data volumes shaped the UI early, not after handoff.',
-    slug: 'spotify-admin-enterprise',
-    year: '2022',
-    featured: false,
-    category: 'Product Design',
-    projectType: 'Internal product',
-    delivery: 'Enterprise tooling',
+      'Industrial sensor manufacturer site — EN/DE IA, nine product families, React components, live on Vercel.',
+    slug: 'optronic',
+    year: '2024',
+    featured: true,
+    category: 'Web',
+    projectType: 'Client work',
+    delivery: 'Designed and built · Live',
     portfolioGroup: 'Selected',
-    coverImage: '/work/spotify-admin-enterprise/cover.png',
+    liveUrl: 'https://optronic-v2.vercel.app',
+    coverImage: '/work/optronic/cover.webp',
   },
 
-  // ─── Analytics & Data Dashboards ─────────────────────────────────────────
+  // ─── Capability (not Selected flagship) ──────────────────────────────────
+  {
+    title: 'AI-Connected Design System Workflow',
+    domain: 'Design Systems',
+    discipline: 'Capability',
+    description:
+      'How I keep design-system work aligned across tokens, Figma architecture, AI tooling, and code — a delivery method, not a client case.',
+    slug: 'ai-design-system-workflow',
+    year: '',
+    featured: false,
+    category: 'Design Systems',
+    isCapability: true,
+    projectType: 'Capability',
+    delivery: 'Working method',
+    portfolioGroup: 'Capability',
+  },
+
+  // ─── Explorations ────────────────────────────────────────────────────────
   {
     title: 'SoundScope | Music Analytics Dashboard',
     domain: 'Analytics',
     discipline: 'Product Design',
     description:
-      'A self-directed analytics dashboard concept for labels and publishers. It explores decision hierarchy, dense charts and tables, dark interface ergonomics, and a reusable token and component system.',
+      'Analytics dashboard concept — decision hierarchy, dense charts, dark ergonomics, reusable tokens.',
     slug: 'soundscope',
     year: '2025',
     featured: false,
@@ -106,7 +93,7 @@ export const PROJECTS: Project[] = [
     domain: 'Sports Tech',
     discipline: 'Product Design',
     description:
-      'A self-directed matchday product concept exploring real-time streams, event timelines, status encoding, and high-density views for analysts and operations staff.',
+      'Matchday concept — real-time streams, event timelines, and high-density ops views.',
     slug: 'matchlink',
     year: '2025',
     featured: false,
@@ -117,14 +104,12 @@ export const PROJECTS: Project[] = [
     behanceUrl: 'https://www.behance.net/gallery/225610623/MatchLink-Real-Time-Matchday-Insights',
     coverImage: '/work/matchlink/cover.jpg',
   },
-
-  // ─── Healthcare & Fintech ─────────────────────────────────────────────────
   {
     title: 'HealthCare CRM',
     domain: 'Healthcare',
     discipline: 'Product UX',
     description:
-      'A healthcare CRM case study exploring patient context, scheduling, communication, role-based workflows, responsive behaviour, and a maintainable interface system.',
+      'Healthcare CRM concept — patient context, scheduling, role-based workflows, responsive system.',
     slug: 'healthcare-crm',
     year: '2024',
     featured: false,
@@ -139,7 +124,7 @@ export const PROJECTS: Project[] = [
     domain: 'Fintech',
     discipline: 'Product Design',
     description:
-      'A self-directed consumer fintech concept covering onboarding, balances, transfers, step-up authentication, error recovery, and transaction review.',
+      'Consumer fintech concept — onboarding, transfers, step-up auth, error recovery.',
     slug: 'galaxy-cash',
     year: '2025',
     featured: false,
@@ -150,47 +135,12 @@ export const PROJECTS: Project[] = [
     behanceUrl: 'https://www.behance.net/gallery/225609903/Galaxy-Cash-Mobile-App-Design',
     coverImage: '/work/galaxy-cash/cover.png',
   },
-
-  // ─── Design Systems & AI Workflow ─────────────────────────────────────────
-  {
-    title: 'AI-Connected Design System Workflow',
-    domain: 'Design Systems',
-    discipline: 'Capability',
-    description:
-      'I codified how I run design-system work when AI tooling, tokens, Figma architecture, and codebases all have to stay in sync — a senior-practice playbook rather than a single client deliverable. It covers variable strategy, component API thinking, AI-assisted prototyping, and review loops with engineering so "design system" means velocity and governance, not a static library. I treat this as the operating model behind the craft you see in the shipped work above.',
-    slug: 'ai-design-system-workflow',
-    year: '',
-    featured: false,
-    category: 'Design Systems',
-    isCapability: true,
-    projectType: 'Capability',
-    delivery: 'Working method',
-    portfolioGroup: 'Selected',
-  },
-
-  // ─── Web & Digital Experience ─────────────────────────────────────────────
-  {
-    title: 'Optronic | Website Redesign',
-    domain: 'Web',
-    discipline: 'UX & Frontend',
-    description:
-      'A complete redesign and build for an industrial sensor and control-system manufacturer. The work covers EN/DE information architecture, nine product families, technical downloads, SEO structure, reusable React components, and live review on Vercel.',
-    slug: 'optronic',
-    year: '2024',
-    featured: false,
-    category: 'Web',
-    projectType: 'Client work',
-    delivery: 'Designed and built',
-    portfolioGroup: 'Selected',
-    liveUrl: 'https://optronic-v2.vercel.app',
-    coverImage: '/work/optronic/cover.webp',
-  },
   {
     title: "Cecconi's Restaurant",
     domain: 'Hospitality',
     discipline: 'Web & Brand',
     description:
-      'A self-directed hospitality website concept exploring menu hierarchy, reservation paths, editorial photography, typography, and mobile pacing.',
+      'Hospitality site concept — menu hierarchy, reservation paths, editorial type and photo.',
     slug: 'cecconis',
     year: '2021',
     featured: false,
@@ -207,16 +157,15 @@ export const LINKEDIN_PROFILE_URL =
   'https://www.linkedin.com/in/milos-dostanic/' as const
 
 /**
- * Employment timeline — companies only, LinkedIn-style. Used on About and
- * the home experience strip. Client project names deliberately excluded;
- * those live under /work.
+ * Full employment timeline — companies only. Used on About and Résumé context.
+ * Client product names stay under /work; employer client work may be NDA.
  */
 export const COMPANIES = [
   {
     company: 'Space Inch',
     role: 'Senior Product Designer',
     period: '2024 — Present',
-    note: 'Product & engineering studio. Embedded with client teams as the senior designer — discovery to delivery across healthcare, fintech, and enterprise SaaS: IA, high-density operational UI, accessibility, and implementation-grade specs.',
+    note: 'Product & engineering studio. Senior product design across healthcare, fintech, and enterprise SaaS client engagements (NDA) — IA, high-density operational UI, accessibility, and implementation-grade specs.',
   },
   {
     company: 'TheBrendz',
@@ -254,6 +203,18 @@ export const COMPANIES = [
     period: '2013 — 2017',
     note: 'Early UI, graphic, and campaign work, including the HEINEKEN Belgrade 2013 Limited Edition can.',
   },
+] as const
+
+/**
+ * Homepage experience strip — high-signal employers only.
+ * Full chronology stays on About / Résumé. Space Inch is current employer
+ * (not a portfolio case study; client work there is NDA).
+ */
+export const HOME_COMPANIES = [
+  COMPANIES[0], // Space Inch
+  COMPANIES[3], // Polyrific
+  COMPANIES[5], // Quantox
+  COMPANIES[6], // Early career / HEINEKEN
 ] as const
 
 /** Complete public résumé timeline, kept separate from the shorter About list. */
@@ -369,11 +330,11 @@ export const EXPERTISE_TILES: ExpertiseTile[] = [
   },
 ]
 
+/** Homepage Selected Work — curated senior cases only (no capability pages). */
 export const FLAGSHIP_PROJECT_SLUGS = [
   'worklight',
-  'devrev',
-  'spaceinch',
   'originchains',
+  'optronic',
 ] as const
 
 export const FLAGSHIP_PROJECTS = FLAGSHIP_PROJECT_SLUGS.map((slug) => {

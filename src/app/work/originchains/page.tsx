@@ -6,7 +6,6 @@ import Section from '@/components/layout/Section'
 import PageHeader from '@/components/layout/PageHeader'
 import ArrowLink from '@/components/ui/ArrowLink'
 import CaseStudyMeta from '@/components/work/CaseStudyMeta'
-import ImagePlaceholder from '@/components/work/ImagePlaceholder'
 import FooterCTA from '@/components/home/FooterCTA'
 import { cn } from '@/lib/utils'
 import {
@@ -20,6 +19,9 @@ import {
   sectionSubheadingClassName,
 } from '@/lib/headings'
 import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
+
+const nav = getCaseStudyNav('originchains')
 
 export const metadata: Metadata = {
   title: 'OriginChains — Climate Company Discovery',
@@ -182,43 +184,29 @@ export default function OriginChainsCaseStudy() {
               Selected screens
             </p>
             <h2 className={sectionHeadingClassName}>
-              {titleWithAccentGradient('Feed — and the densest surface as a placeholder')}
+              {titleWithAccentGradient('Activity feed')}
             </h2>
             <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
-              The activity feed is a single exported frame. The heaviest layout — search
-              with expanded cards, filters, and comparison — stays a placeholder here
-              until a clean single-frame export is wired in (that artboard is the one most
-              likely to need a dedicated crop for the portfolio).
+              Social and activity patterns had to feel familiar while staying coherent
+              with the denser signed-in product — post, comment, and status surfaces
+              that still read as part of the same system.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
-            <figure className="space-y-3">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] bg-surface">
-                <Image
-                  src="/work/originchains/screen-feed.png"
-                  alt="OriginChains — activity feed (single frame)"
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="object-cover object-top"
-                />
-              </div>
-              <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
-                Activity feed / Activity — one frame
-              </figcaption>
-            </figure>
-
-            <figure className="space-y-3">
-              <ImagePlaceholder
-                label="Search results v2 — expanded cards, filters & compare"
-                aspectClass="aspect-[4/3]"
-                footnote=""
+          <figure className="mx-auto max-w-4xl space-y-3">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-surface">
+              <Image
+                src="/work/originchains/screen-feed.png"
+                alt="OriginChains — activity feed"
+                fill
+                sizes="(min-width: 1024px) 64rem, 100vw"
+                className="object-cover object-top"
               />
-              <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
-                Highest-density UI — placeholder (multi-panel search grid)
-              </figcaption>
-            </figure>
-          </div>
+            </div>
+            <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
+              Activity feed — signed-in product surface
+            </figcaption>
+          </figure>
         </Container>
       </Section>
 
@@ -355,9 +343,11 @@ export default function OriginChainsCaseStudy() {
             >
               <span aria-hidden="true">←</span> All work
             </Link>
-            <ArrowLink href="/work/spotify-admin-enterprise" className="text-foreground hover:text-accent">
-              Next: Spotify Admin
-            </ArrowLink>
+            {nav.next ? (
+              <ArrowLink href={nav.next.href} className="text-foreground hover:text-accent">
+                Next: {nav.next.label}
+              </ArrowLink>
+            ) : null}
           </div>
         </Container>
       </Section>

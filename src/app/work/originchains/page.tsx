@@ -22,13 +22,13 @@ import {
 import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
 
 export const metadata: Metadata = {
-  title: 'OriginChains — Climate Company Discovery · Milos Dostanic',
+  title: 'OriginChains — Climate Company Discovery',
   description:
     'Senior product design for OriginChains — discovery UX, trust-heavy company data, social feed, and a Figma design system aligned to engineering delivery.',
 }
 
 const META_FIELDS = [
-  { label: 'Product', value: 'OriginChains' },
+  { label: 'Type', value: 'Client work' },
   { label: 'Year', value: '2025' },
   { label: 'Role', value: 'Senior product designer' },
   { label: 'Domain', value: 'Climate · B2B SaaS' },
@@ -355,8 +355,8 @@ export default function OriginChainsCaseStudy() {
             >
               <span aria-hidden="true">←</span> All work
             </Link>
-            <ArrowLink href="/work/soundscope" className="text-foreground hover:text-accent">
-              Next: SoundScope
+            <ArrowLink href="/work/spotify-admin-enterprise" className="text-foreground hover:text-accent">
+              Next: Spotify Admin
             </ArrowLink>
           </div>
         </Container>

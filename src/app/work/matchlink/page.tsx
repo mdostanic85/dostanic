@@ -4,26 +4,23 @@ import ProblemSolution from '@/components/work/case-study/ProblemSolution'
 import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
 import CaseStudyScreens from '@/components/work/case-study/CaseStudyScreens'
 import CaseStudySystemNote from '@/components/work/case-study/CaseStudySystemNote'
-import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
 import CaseStudyShell, {
   CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
-import { sectionEyebrowAccentClassName } from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
-import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { buildConceptSteps } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'MatchLink — Real-Time Matchday Insights · Milos Dostanic',
+  title: 'MatchLink: Real-Time Matchday Insights',
   description:
-    'MatchLink product design — live matchday streams, event timelines, and high-density views for analysts under time pressure.',
+    'A self-directed sports product concept exploring live event streams, timelines, and high-density matchday views.',
 }
 
 const META = [
-  { label: 'Product', value: 'MatchLink' },
+  { label: 'Type', value: 'Concept · Visual exploration' },
   { label: 'Year', value: '2025' },
-  { label: 'Role', value: 'Product design lead' },
+  { label: 'Role', value: 'Self-directed product design' },
   { label: 'Domain', value: 'Sports tech' },
   { label: 'Focus', value: 'Real-time · density' },
 ]
@@ -34,28 +31,32 @@ export default function MatchLinkCaseStudy() {
   return (
     <CaseStudyShell
       meta={META}
-      eyebrow="Case Study / Sports analytics"
+      eyebrow="Exploration / Sports analytics"
       title={
         <>
-          MatchLink —
+          MatchLink
           <br />
           <span className="accent-gradient-text">matchday insights.</span>
         </>
       }
       intro={
         <>
-          Live matchday platform — real-time streams, event timelines, and high-density views
-          for analysts and operations staff working under seconds of pressure.
+          A self-directed matchday concept exploring live streams, event timelines, and dense
+          views for analysts and operations staff.
         </>
       }
       topRightLabel="2025"
       previous={nav.previous}
       next={nav.next}
+      links={[{
+        label: 'View on Behance',
+        href: 'https://www.behance.net/gallery/225610623/MatchLink-Real-Time-Matchday-Insights',
+      }]}
     >
       <CaseStudySection alt>
         <CaseStudyContext
-          lead="Matchday decisions happen in seconds — the UI must stay legible when data refreshes constantly."
-          body="I shaped real-time streams, event timelines, and operator layouts where partial data, delayed feeds, and overrides all need clear, calm affordances. Typography, status encoding, and spatial rhythm were tuned for speed, not decoration."
+          lead="The exercise asks how a matchday interface can stay legible while events update, arrive late, or get corrected."
+          body="I used likely feed states and operator tasks as design assumptions. Typography, status encoding, and spatial rhythm were explored for quick scanning. No operator research or production implementation is claimed."
         />
       </CaseStudySection>
 
@@ -64,13 +65,13 @@ export default function MatchLinkCaseStudy() {
           challengeTitle="Live data, high stakes"
           responseTitle="Calm under refresh"
           problems={[
-            'Feeds can lag or arrive out of order — the UI must not pretend certainty',
-            'Analysts scan timelines while events still arrive',
-            'Operators need override paths without breaking audit clarity',
-            'Mobile and desktop operators share one product with different density needs',
+            'The concept assumes feeds can lag or arrive out of order',
+            'Timelines must remain readable while events continue to arrive',
+            'Correction and override paths need a visible history',
+            'Mobile and desktop views require different density without changing event priority',
           ]}
           solutions={[
-            'Explicit staleness and partial-data states — never silent failure',
+            'Explicit staleness and partial-data states, with no silent failure',
             'Timeline typography and colour encoding optimised for peripheral scanning',
             'Override flows with confirmation and visible audit trail in context',
             'Responsive breakpoints that preserve event priority, not just shrink columns',
@@ -80,19 +81,19 @@ export default function MatchLinkCaseStudy() {
 
       <CaseStudySection alt>
         <UXProcessFlow
-          steps={buildProcessSteps([
-            'Shadowed matchday operators — peak load, delays, and recovery workflows.',
-            'Mapped event model to UI states — live, delayed, corrected, void.',
-            'Explored timeline density in Figma with realistic event volume.',
-            'Defined status tokens and motion restraint so refresh does not distract.',
-            'Partnered with engineering on websocket-driven UI behaviour and empty paths.',
+          steps={buildConceptSteps([
+            'Defined a hypothetical operator, event model, feed constraints, and time-sensitive tasks.',
+            'Mapped live, delayed, corrected, and void states into one timeline structure.',
+            'Explored timeline density in Figma with realistic sample event volume.',
+            'Defined status tokens and restrained motion rules so updates do not distract from the match.',
+            'A next phase would include operator interviews and a working prototype with simulated feed latency.',
           ])}
         />
       </CaseStudySection>
 
       <CaseStudySection>
         <CaseStudyScreens
-          intro="Overview frame — timeline-first layout for live match context."
+          intro="Overview frame with a timeline-first layout for live match context."
           screens={[
             {
               src: '/work/matchlink/cover.jpg',
@@ -109,30 +110,16 @@ export default function MatchLinkCaseStudy() {
         <CaseStudySystemNote
           title="Real-time UI system"
           paragraphs={[
-            'Status colours and icons map to feed health — live, delayed, corrected — not decorative categories.',
+            'Status colours and icons map to live, delayed, and corrected feed health, not decorative categories.',
             'Components assume refresh: skeletons, optimistic rows, and rollback when corrections arrive.',
           ]}
         />
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="mb-10 max-w-2xl">
-          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
-            {titleWithAccentGradient('Edge cases before matchday')}
-          </h2>
-        </div>
-        <CaseStudyAIWorkflow
-          intro="AI helped enumerate feed failure and correction scenarios — visual design and hierarchy stayed manual."
-          steps={DEFAULT_AI_STEPS}
-          tools={['Figma', 'Claude', 'Linear']}
-        />
-      </CaseStudySection>
-
-      <CaseStudySection alt>
         <CaseStudyOutcome>
-          Operators get a matchday surface that respects uncertainty — faster scanning, clearer
-          event priority, and patterns that hold up when the feed misbehaves.
+          The result is a design concept for a matchday surface that makes uncertainty and event
+          priority visible. It still needs operator research and technical validation with a live feed.
         </CaseStudyOutcome>
       </CaseStudySection>
     </CaseStudyShell>

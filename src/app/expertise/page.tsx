@@ -6,18 +6,19 @@ import ExpertiseAccordion, {
 } from '@/components/v3/ExpertiseAccordion'
 
 export const metadata: Metadata = {
-  title: 'Expertise — Milos Dostanic',
+  title: 'Expertise',
   description:
-    'Focused expertise across complex product UX, design systems, AI-assisted workflows, and Figma-to-code delivery.',
+    'Focused expertise across complex product UX, design systems, product delivery, and Product Builder work with AI.',
+  alternates: { canonical: '/expertise' },
 }
 
 const EXPERTISE_AREAS: ExpertiseArea[] = [
   {
     id: 'product-ux-ui',
     number: '01',
-    title: 'Product UX/UI Design',
+    title: 'Complex Product UX',
     description:
-      'Complex SaaS, healthcare, fintech, and enterprise interfaces. I design flows, structure, and UI that stay clear under real product complexity.',
+      'B2B and enterprise workflows, information architecture, dense tables, multi-role products, permissions, forms, and edge cases.',
     usefulWhen: [
       'You need clear UX architecture before engineering scales the feature set',
       'The product has grown inconsistent and hard to navigate',
@@ -43,63 +44,33 @@ const EXPERTISE_AREAS: ExpertiseArea[] = [
     ],
   },
   {
-    id: 'ai-prototyping',
+    id: 'product-delivery',
     number: '03',
-    title: 'AI-Assisted Prototyping',
+    title: 'Product Delivery',
     description:
-      'AI-assisted prototyping with Cursor, Claude, and Figma workflows to test complex interactions faster in realistic conditions.',
+      'Prototyping, developer handoff, implementation review, and close collaboration with engineering until the working product keeps the design intent.',
     usefulWhen: [
-      'A static Figma prototype is not enough to validate behavior',
-      'You need to test multiple directions quickly before engineering commit',
+      'The team needs to test behaviour before committing engineering time',
+      'Shipped UI keeps drifting from the intended interaction and system rules',
     ],
     outputs: [
-      'Interactive code prototypes and fast UX experiments',
-      'Implementation-aware concepts with clearer design-to-dev alignment',
+      'Functional prototypes, detailed states, and implementation-ready handoff',
+      'Design QA feedback tied to specific behaviour and reusable patterns',
     ],
   },
   {
-    id: 'figma-to-code',
+    id: 'product-builder-ai',
     number: '04',
-    title: 'Figma-to-Code',
+    title: 'Product Builder & AI',
     description:
-      'Reducing the gap between designed and shipped through PR-aware handoff, implementation review, and token/component parity checks.',
+      'Functional products, Figma-to-code workflows, AI interaction models, LLM features, and architecture-aware product decisions.',
     usefulWhen: [
-      'Shipped UI keeps drifting from Figma intent',
-      'The team needs design quality to survive implementation',
+      'A product idea needs working behaviour, not only a click-through prototype',
+      'AI features need evidence, confidence, failure, privacy, and trust decisions in the UX',
     ],
     outputs: [
-      'Clear handoff specs and implementation QA feedback',
-      'Figma-to-code parity checks for tokens and components',
-    ],
-  },
-  {
-    id: 'ux-audits',
-    number: '05',
-    title: 'UX Audits & Redesigns',
-    description:
-      'Structured UX diagnosis for products that feel messy, inconsistent, or hard to scale.',
-    usefulWhen: [
-      'You know UX is breaking but not where to start',
-      'A redesign needs a prioritized plan, not guesswork',
-    ],
-    outputs: [
-      'Prioritized findings with impact and effort',
-      'Redesign roadmap focused on the highest-leverage fixes',
-    ],
-  },
-  {
-    id: 'web-brand',
-    number: '06',
-    title: 'Web & Digital Experience',
-    description:
-      'Product-focused websites and digital experiences built for clarity, credibility, and conversion.',
-    usefulWhen: [
-      'Your website looks fine but does not explain the product clearly',
-      'You need stronger information hierarchy and message clarity',
-    ],
-    outputs: [
-      'Site architecture and clear content structure',
-      'Page-level UI direction and implementation-ready design',
+      'Working prototypes or product slices built with the existing stack',
+      'AI interaction flows with explicit trust and failure-state decisions',
     ],
   },
 ]
@@ -128,7 +99,7 @@ export default function ExpertisePage() {
               style={{ animationDelay: '400ms' }}
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-                Six disciplines — one operating model
+                Four areas · one operating model
               </p>
               <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
                 Tap a row to expand

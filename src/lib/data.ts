@@ -1,22 +1,30 @@
-import type { Project, ExpertiseTile, Differentiator } from './types'
+import type {
+  Project,
+  ExpertiseTile,
+  Differentiator,
+  ResumeExperience,
+} from './types'
 
 export const PROJECTS: Project[] = [
   // ─── Current engagement ──────────────────────────────────────────────────
   {
-    title: 'Space Inch — Enterprise Product Design',
+    title: 'Space Inch | Enterprise Product Design',
     domain: 'Agency / SaaS',
     discipline: 'Senior Product Designer',
     description:
-      'At Space Inch — a product and engineering studio that partners with healthcare, fintech, and growth-stage SaaS organizations — I operate as a senior product designer embedded with client teams. I own discovery through delivery: journey mapping and IA, high-density operational UIs, accessible patterns, and engineering-ready specs so shipped software matches the design intent. Engagements span modernization of legacy workflows, internal tooling at scale, and AI-assisted product surfaces where design, data, and engineering have to stay aligned. For the latest engagements and timeline, see my LinkedIn profile.',
+      'Embedded product design across complex client engagements. I work on information architecture, dense operational interfaces, accessible interaction patterns, and implementation reviews while keeping confidential product details protected.',
     slug: 'spaceinch',
-    year: '2025',
+    year: '2024–Now',
     featured: true,
     category: 'Product Design',
+    projectType: 'Client work',
+    delivery: 'Production engagement · NDA protected',
+    portfolioGroup: 'Selected',
   },
 
   // ─── Product Design & Enterprise SaaS ────────────────────────────────────
   {
-    title: 'DevRev — Developer Tools Platform',
+    title: 'DevRev | Developer Tools Platform',
     domain: 'SaaS',
     discipline: 'Product Design',
     description:
@@ -25,10 +33,28 @@ export const PROJECTS: Project[] = [
     year: '2023',
     featured: true,
     category: 'Product Design',
+    projectType: 'Client work',
+    delivery: 'Product design · Enterprise SaaS',
+    portfolioGroup: 'Selected',
     coverImage: '/work/devrev/cover.png',
   },
   {
-    title: 'OriginChains — Climate Company Discovery',
+    title: 'WorkLight | Daily Work Operator',
+    domain: 'AI Product',
+    discipline: 'Product Designer & Builder',
+    description:
+      'A local-first product that turns signals from work tools into an evidence-linked daily plan. I am designing and building the product, including the ranking logic, trust model, interaction system, integrations, and implementation.',
+    slug: 'worklight',
+    year: '2026',
+    featured: true,
+    category: 'Product Builder',
+    projectType: 'Personal product',
+    delivery: 'Working product · Active development',
+    portfolioGroup: 'Selected',
+    repositoryUrl: 'https://github.com/mdostanic85/morning',
+  },
+  {
+    title: 'OriginChains | Climate Company Discovery',
     domain: 'SaaS',
     discipline: 'Product Design',
     description:
@@ -37,45 +63,57 @@ export const PROJECTS: Project[] = [
     year: '2025',
     featured: true,
     category: 'Product Design',
+    projectType: 'Client work',
+    delivery: 'Product design · Figma system',
+    portfolioGroup: 'Selected',
     coverImage: '/work/originchains/cover.png',
   },
   {
-    title: 'Spotify — Admin Enterprise Panel',
+    title: 'Spotify | Admin Enterprise Panel',
     domain: 'SaaS',
     discipline: 'Product Design',
     description:
       'I designed enterprise-grade admin experiences for internal Spotify tooling — power users managing content and configuration at scale. The challenge was extreme density without losing scanability: bulk operations, role-based access, audit-friendly layouts, and predictable patterns for tables, dialogs, and inline edits. I treated accessibility and keyboard paths as first-class requirements and partnered closely with engineering so constraints from production data volumes shaped the UI early, not after handoff.',
     slug: 'spotify-admin-enterprise',
     year: '2022',
-    featured: true,
+    featured: false,
     category: 'Product Design',
+    projectType: 'Internal product',
+    delivery: 'Enterprise tooling',
+    portfolioGroup: 'Selected',
     coverImage: '/work/spotify-admin-enterprise/cover.png',
   },
 
   // ─── Analytics & Data Dashboards ─────────────────────────────────────────
   {
-    title: 'SoundScope — Music Analytics Dashboard',
+    title: 'SoundScope | Music Analytics Dashboard',
     domain: 'Analytics',
     discipline: 'Product Design',
     description:
-      'I led the redesign of an analytics platform for labels and publishers — artist and catalog performance, revenue, campaigns, and genre-level insight in one dark, analyst-first shell. I established semantic tokens and modular components so charts, tables, and filters could evolve without visual drift, and I prioritized decision hierarchy over chart variety so executives and analysts could share one product without diluting either workflow. The case study documents how I paired design-system structure with implementation collaboration.',
+      'A self-directed analytics dashboard concept for labels and publishers. It explores decision hierarchy, dense charts and tables, dark interface ergonomics, and a reusable token and component system.',
     slug: 'soundscope',
     year: '2025',
-    featured: true,
+    featured: false,
     category: 'Analytics',
+    projectType: 'Concept',
+    delivery: 'Portfolio case study',
+    portfolioGroup: 'Exploration',
     behanceUrl: 'https://www.behance.net/gallery/235878795/SoundScope-Music-Analytics-Dashboard-Redesign',
     coverImage: '/work/soundscope/cover.png',
   },
   {
-    title: 'MatchLink — Real-Time Matchday Insights',
+    title: 'MatchLink | Real-Time Matchday Insights',
     domain: 'Sports Tech',
     discipline: 'Product Design',
     description:
-      'As product design lead on a live matchday platform, I shaped real-time streams, event timelines, and high-density views for analysts and operations staff working under seconds of pressure. I focused on legibility at speed — typographic rhythm, status encoding, and layouts that stay usable when data refreshes constantly. The UI had to make uncertainty explicit: partial data, delayed feeds, and operator overrides all needed clear, calm affordances.',
+      'A self-directed matchday product concept exploring real-time streams, event timelines, status encoding, and high-density views for analysts and operations staff.',
     slug: 'matchlink',
     year: '2025',
     featured: false,
     category: 'Analytics',
+    projectType: 'Concept',
+    delivery: 'Visual exploration',
+    portfolioGroup: 'Exploration',
     behanceUrl: 'https://www.behance.net/gallery/225610623/MatchLink-Real-Time-Matchday-Insights',
     coverImage: '/work/matchlink/cover.jpg',
   },
@@ -86,22 +124,29 @@ export const PROJECTS: Project[] = [
     domain: 'Healthcare',
     discipline: 'Product UX',
     description:
-      'I owned UX for a healthcare CRM and care-coordination product — patient communication, tasking, handoffs between roles, and clinical-adjacent workflows where mistakes carry real cost. I mapped provider personas and permission boundaries, then designed flows that reduce context switching: in-line patient context, templated but flexible messaging, and dashboards that surface what each role must do next. The work sits at the intersection of compliance expectations, speed of use in clinics, and long-term maintainability of the pattern library.',
+      'A healthcare CRM case study exploring patient context, scheduling, communication, role-based workflows, responsive behaviour, and a maintainable interface system.',
     slug: 'healthcare-crm',
     year: '2024',
-    featured: true,
+    featured: false,
     category: 'Healthcare',
+    projectType: 'Concept',
+    delivery: 'UX case study',
+    portfolioGroup: 'Exploration',
+    coverImage: '/work/healthcare-crm/cover.jpg',
   },
   {
-    title: 'Galaxy Cash — Fintech Mobile App',
+    title: 'Galaxy Cash | Fintech Mobile App',
     domain: 'Fintech',
     discipline: 'Product Design',
     description:
-      'I directed product design for a consumer fintech mobile experience — onboarding, balances, transfers, and security-sensitive flows where trust is built through clarity, not decoration. I defined interaction patterns for step-up authentication, error recovery, and transaction review so users always know what will happen before money moves. Visual hierarchy and motion were kept minimal on purpose: in fintech, restraint reads as expertise.',
+      'A self-directed consumer fintech concept covering onboarding, balances, transfers, step-up authentication, error recovery, and transaction review.',
     slug: 'galaxy-cash',
     year: '2025',
     featured: false,
     category: 'Fintech',
+    projectType: 'Concept',
+    delivery: 'Visual exploration',
+    portfolioGroup: 'Exploration',
     behanceUrl: 'https://www.behance.net/gallery/225609903/Galaxy-Cash-Mobile-App-Design',
     coverImage: '/work/galaxy-cash/cover.png',
   },
@@ -115,40 +160,51 @@ export const PROJECTS: Project[] = [
       'I codified how I run design-system work when AI tooling, tokens, Figma architecture, and codebases all have to stay in sync — a senior-practice playbook rather than a single client deliverable. It covers variable strategy, component API thinking, AI-assisted prototyping, and review loops with engineering so "design system" means velocity and governance, not a static library. I treat this as the operating model behind the craft you see in the shipped work above.',
     slug: 'ai-design-system-workflow',
     year: '',
-    featured: true,
+    featured: false,
     category: 'Design Systems',
     isCapability: true,
+    projectType: 'Capability',
+    delivery: 'Working method',
+    portfolioGroup: 'Selected',
   },
 
   // ─── Web & Digital Experience ─────────────────────────────────────────────
   {
-    title: 'Optronic — Website Redesign',
+    title: 'Optronic | Website Redesign',
     domain: 'Web',
     discipline: 'UX & Frontend',
     description:
-      'I led a full website redesign and build for an industrial optics manufacturer — multilingual EN/DE IA, nine structured product families, SEO-aware content hierarchy, and hosted manuals and firmware as first-class product surfaces. As both UX lead and implementer (Next.js on Vercel), I shortened the loop between design intent and production typography, routing, and performance. The engagement included a live preview workflow so stakeholders could annotate against real builds, not static exports.',
+      'A complete redesign and build for an industrial sensor and control-system manufacturer. The work covers EN/DE information architecture, nine product families, technical downloads, SEO structure, reusable React components, and live review on Vercel.',
     slug: 'optronic',
     year: '2024',
     featured: false,
     category: 'Web',
+    projectType: 'Client work',
+    delivery: 'Designed and built',
+    portfolioGroup: 'Selected',
+    liveUrl: 'https://optronic-v2.vercel.app',
+    coverImage: '/work/optronic/cover.webp',
   },
   {
     title: "Cecconi's Restaurant",
     domain: 'Hospitality',
     discipline: 'Web & Brand',
     description:
-      'I set art direction and UX for a premium hospitality site — menu hierarchy, reservation paths, and editorial photography pacing that match a high-touch restaurant brand. Typography, spacing, and motion were tuned for an audience that evaluates quality in seconds on mobile. The outcome is a restrained digital layer that supports the physical experience instead of competing with it.',
+      'A self-directed hospitality website concept exploring menu hierarchy, reservation paths, editorial photography, typography, and mobile pacing.',
     slug: 'cecconis',
     year: '2021',
     featured: false,
     category: 'Web',
+    projectType: 'Concept',
+    delivery: 'Visual exploration',
+    portfolioGroup: 'Exploration',
     coverImage: '/work/cecconis/cover.png',
   },
 ]
 
 /** Public profile — titles, timelines, recommendations, and client context under NDA. */
 export const LINKEDIN_PROFILE_URL =
-  'https://www.linkedin.com/in/milosdostanic/' as const
+  'https://www.linkedin.com/in/milos-dostanic/' as const
 
 /**
  * Employment timeline — companies only, LinkedIn-style. Used on About and
@@ -159,14 +215,32 @@ export const COMPANIES = [
   {
     company: 'Space Inch',
     role: 'Senior Product Designer',
-    period: '2025 — Present',
+    period: '2024 — Present',
     note: 'Product & engineering studio. Embedded with client teams as the senior designer — discovery to delivery across healthcare, fintech, and enterprise SaaS: IA, high-density operational UI, accessibility, and implementation-grade specs.',
+  },
+  {
+    company: 'TheBrendz',
+    role: 'Senior Product Designer',
+    period: '2016 — Present',
+    note: 'Ongoing product design work across UX/UI, design systems, functional prototypes, and implementation-ready delivery.',
+  },
+  {
+    company: 'Freelance',
+    role: 'Product Designer',
+    period: '2008 — Present',
+    note: 'Independent product design work running alongside studio and client engagements — visual design, prototypes, and digital delivery.',
   },
   {
     company: 'Polyrific',
     role: 'Product Designer',
     period: '2023 — 2024',
     note: 'AI platform work — flows, UI, prototyping, and system thinking with product and engineering leads.',
+  },
+  {
+    company: 'KOD WORKS',
+    role: 'Senior UI/UX Designer',
+    period: '2023',
+    note: 'Interfaces and flows for games, apps, and websites — interaction maps and Lottie-based product motion.',
   },
   {
     company: 'Quantox Technology',
@@ -178,48 +252,135 @@ export const COMPANIES = [
     company: 'Fantastic Machines · Promo · HEINEKEN',
     role: 'Graphic & Campaign Design',
     period: '2013 — 2017',
-    note: 'Brand and campaign craft for global brands including Heineken and Carlsberg — the visual foundation under the product work.',
+    note: 'Early UI, graphic, and campaign work, including the HEINEKEN Belgrade 2013 Limited Edition can.',
   },
+] as const
+
+/** Complete public résumé timeline, kept separate from the shorter About list. */
+export const RESUME_EXPERIENCE: ResumeExperience[] = [
+  {
+    company: 'Space Inch',
+    role: 'Senior Product Designer',
+    period: 'Mar 2024 - Present',
+    location: 'United States / Remote',
+    summary:
+      'Lead product design across complex B2B engagements, covering product strategy, UX, prototypes, design systems, AI workflows, and development-ready delivery.',
+  },
+  {
+    company: 'TheBrendz',
+    role: 'Senior Product Designer',
+    period: 'Jan 2016 - Present',
+    location: 'Serbia',
+    summary:
+      'Design digital products across product strategy, UX/UI, system design, functional prototypes, and implementation-ready solutions.',
+  },
+  {
+    company: 'Freelance',
+    role: 'Product Designer',
+    period: 'Jun 2008 - Present',
+    location: 'Independent',
+    summary:
+      'Independent design work spanning early product thinking, user flows, visual design, prototypes, and digital delivery.',
+  },
+  {
+    company: 'Polyrific',
+    role: 'Product Designer',
+    period: 'Mar 2023 - Mar 2024',
+    location: 'United States / Remote',
+    summary:
+      'Designed an AI platform for organizing, analyzing, and interacting with personal data. Work covered research, flows, high-fidelity UI, prototypes, and the product design system.',
+  },
+  {
+    company: 'KOD WORKS',
+    role: 'Senior UI/UX Designer',
+    period: 'Jun 2023 - Nov 2023',
+    location: 'Serbia',
+    summary:
+      'Designed interfaces and flows for games, apps, and websites, including interaction maps and Lottie-based product motion.',
+  },
+  {
+    company: 'Quantox Technology',
+    role: 'Medior to Senior UI/UX Designer',
+    period: 'Mar 2019 - Jun 2023',
+    location: 'Serbia',
+    summary:
+      'Worked with product managers, engineers, and stakeholders on product UX, prototypes, interface design, and supporting visual communication across client engagements.',
+  },
+  {
+    company: 'Fantastic Machines GmbH',
+    role: 'UI Designer',
+    period: 'Jan 2016 - Jan 2017',
+    location: 'Serbia',
+    summary:
+      'Designed interfaces for web projects and contributed UI/UX improvements to the Paxxon application.',
+  },
+  {
+    company: 'Promo Advertising',
+    role: 'Graphic Designer',
+    period: 'Sep 2013 - Jun 2014',
+    location: 'Serbia',
+    summary: 'Created graphic design for advertising and campaign materials.',
+  },
+  {
+    company: 'The HEINEKEN Company',
+    role: 'Graphic Designer',
+    period: '2013',
+    summary: 'Designed the Belgrade 2013 Limited Edition can.',
+  },
+]
+
+export const RESUME_EDUCATION = [
+  {
+    school: 'Technical School',
+    qualification: 'Computer Electrician, IT',
+    period: '2000 - 2004',
+  },
+] as const
+
+export const RESUME_LANGUAGES = [
+  { language: 'English', level: 'Professional working proficiency' },
+  { language: 'German', level: 'Limited working proficiency' },
 ] as const
 
 export const EXPERTISE_TILES: ExpertiseTile[] = [
   {
     number: '01',
-    title: 'Product UX/UI',
+    title: 'Complex Product UX',
     description:
-      'Complex enterprise products — SaaS dashboards, healthcare workflows, fintech platforms, logistics ops tools. I work where edge cases and high-density information are the norm, not the exception.',
+      'B2B workflows, information architecture, dense tables, multi-role products, permissions, complex forms, and the edge cases that shape real software.',
   },
   {
     number: '02',
     title: 'Design Systems',
     description:
-      'Token-first component architecture. Figma variables mapped to CSS custom properties. Component APIs designed for engineering. Documentation written for the team that has to maintain it in two years.',
+      'Tokens, components, variants, accessibility, documentation, and governance that keep a growing product coherent in Figma and code.',
   },
   {
     number: '03',
-    title: 'AI-Assisted Workflows',
+    title: 'Product Delivery',
     description:
-      'Cursor for prototyping in code. Claude for content architecture and copy structure. Figma Make for rapid variant exploration. MCP for design-to-code automation. Production workflow tools — not experiments.',
+      'Functional prototypes, developer handoff, implementation review, and close collaboration with engineering until the shipped interface matches the intent.',
   },
   {
     number: '04',
-    title: 'Figma Architecture',
+    title: 'Product Builder & AI',
     description:
-      'Component structure, variant logic, and auto-layout that scales past 10 contributors without breaking. File organisation built for handoff and long-term maintenance — not for a Dribbble screenshot.',
-  },
-  {
-    number: '05',
-    title: 'Design-to-Code',
-    description:
-      'GitHub PRs, Vercel preview review, implementation parity checks. I annotate discrepancies, flag shortcuts that degrade the design intent, and close the loop before shipping.',
-  },
-  {
-    number: '06',
-    title: 'Rapid Prototyping',
-    description:
-      'High-fidelity interactive prototypes in Figma — and when fidelity requires real code, I build it in Cursor. Stakeholders get something they can actually use, not a click-through approximation.',
+      'Figma-to-code workflows, functional prototypes, AI product flows, LLM features, and product architecture decisions tested in working software.',
   },
 ]
+
+export const FLAGSHIP_PROJECT_SLUGS = [
+  'worklight',
+  'devrev',
+  'spaceinch',
+  'originchains',
+] as const
+
+export const FLAGSHIP_PROJECTS = FLAGSHIP_PROJECT_SLUGS.map((slug) => {
+  const project = PROJECTS.find((item) => item.slug === slug)
+  if (!project) throw new Error(`Missing flagship project: ${slug}`)
+  return project
+})
 
 export const DIFFERENTIATORS: Differentiator[] = [
   {

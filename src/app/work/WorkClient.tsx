@@ -3,15 +3,18 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import ProjectSignalCover from '@/components/work/ProjectSignalCover'
 import { gsap } from '@/lib/gsap'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import type { Project, ProjectCategory } from '@/lib/types'
 
-type FilterOption = 'All' | ProjectCategory
+type FilterOption = 'Selected' | 'Explorations' | ProjectCategory
 
 const FILTERS: FilterOption[] = [
-  'All',
+  'Selected',
+  'Explorations',
   'Product Design',
+  'Product Builder',
   'Analytics',
   'Healthcare',
   'Fintech',
@@ -31,7 +34,7 @@ type WorkClientProps = {
  * text with counts — no pills.
  */
 export default function WorkClient({ projects }: WorkClientProps) {
-  const [active, setActive] = useState<FilterOption>('All')
+  const [active, setActive] = useState<FilterOption>('Selected')
   const [previewSrc, setPreviewSrc] = useState<string | null>(null)
   const listRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
@@ -39,13 +42,21 @@ export default function WorkClient({ projects }: WorkClientProps) {
   const moveY = useRef<((v: number) => void) | null>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
 
-  const filtered =
-    active === 'All' ? projects : projects.filter((p) => p.category === active)
+  const filtered = projects.filter((project) => {
+    if (active === 'Selected') return project.portfolioGroup !== 'Exploration'
+    if (active === 'Explorations') return project.portfolioGroup === 'Exploration'
+    return project.category === active
+  })
 
-  const countFor = (f: FilterOption) =>
-    f === 'All'
-      ? projects.length
-      : projects.filter((p) => p.category === f).length
+  const countFor = (filter: FilterOption) => {
+    if (filter === 'Selected') {
+      return projects.filter((project) => project.portfolioGroup !== 'Exploration').length
+    }
+    if (filter === 'Explorations') {
+      return projects.filter((project) => project.portfolioGroup === 'Exploration').length
+    }
+    return projects.filter((project) => project.category === filter).length
+  }
 
   // Floating preview springs — desktop only.
   useLayoutEffect(() => {
@@ -123,10 +134,10 @@ export default function WorkClient({ projects }: WorkClientProps) {
                   {String(idx + 1).padStart(2, '0')}
                 </span>
                 <h3 className="display-tight col-span-10 text-2xl font-medium text-foreground transition-transform duration-300 group-hover:translate-x-2 sm:col-span-6 sm:text-3xl lg:text-4xl">
-                  {project.title.split(' — ')[0]}
+                  {project.title.split(' | ')[0].split(' — ')[0]}
                 </h3>
                 <span className="col-span-6 col-start-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-3 sm:col-start-8 sm:text-right">
-                  {project.domain}
+                  {project.projectType || project.domain}
                 </span>
                 <span className="col-span-3 text-right font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-1">
                   {project.isCapability ? 'CAP' : project.year || '—'}
@@ -139,18 +150,9 @@ export default function WorkClient({ projects }: WorkClientProps) {
                 </span>
 
                 {/* Touch fallback — inline thumbnail */}
-                {project.coverImage ? (
-                  <span className="col-span-12 mt-4 block overflow-hidden border border-stroke [@media(hover:hover)_and_(pointer:fine)]:hidden">
-                    <Image
-                      src={project.coverImage}
-                      alt=""
-                      width={1200}
-                      height={750}
-                      sizes="100vw"
-                      className="aspect-[16/10] w-full object-cover"
-                    />
-                  </span>
-                ) : null}
+                <div className="col-span-12 mt-4 overflow-hidden [@media(hover:hover)_and_(pointer:fine)]:hidden">
+                  <ProjectSignalCover project={project} />
+                </div>
               </Link>
             </li>
           ))}

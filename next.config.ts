@@ -1,6 +1,14 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       // Avoid intermittent ENOENT rename failures under `.next/cache/webpack`

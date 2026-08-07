@@ -15,19 +15,21 @@ import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'DevRev — Developer Tools Platform · Milos Dostanic',
+  title: 'DevRev | Developer Tools Platform',
   description:
-    'DevRev product design — multi-role IA, operational UI, component system, and AI-assisted handoff.',
+    'DevRev product design covering multi-role information architecture, operational UI, reusable patterns, and engineering collaboration.',
+  alternates: { canonical: '/work/devrev' },
 }
 
 const nav = getCaseStudyNav('devrev')
 
 const META = [
-  { label: 'Product', value: 'DevRev' },
+  { label: 'Type', value: 'Client work' },
   { label: 'Year', value: '2023' },
   { label: 'Role', value: 'Senior product designer' },
   { label: 'Domain', value: 'Developer tools · B2B SaaS' },
-  { label: 'Focus', value: 'IA · flows · UI system' },
+  { label: 'Ownership', value: 'IA · flows · UI system · handoff' },
+  { label: 'Collaboration', value: 'Product · engineering' },
 ]
 
 export default function DevRevCaseStudy() {

@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import { PROJECTS } from '@/lib/data'
+import { FLAGSHIP_PROJECTS } from '@/lib/data'
 import Reveal from './Reveal'
-import ParallaxImage from './ParallaxImage'
 import ParallaxY from './ParallaxY'
+import ProjectSignalCover from '@/components/work/ProjectSignalCover'
 
 /**
  * Selected work — full-width editorial rows. Each case is a 12-col band:
@@ -11,20 +11,20 @@ import ParallaxY from './ParallaxY'
  * row. Sharp frames, hairline separators, no cards.
  */
 export default function CaseRows() {
-  const cases = PROJECTS.filter((p) => p.featured && p.coverImage).slice(0, 4)
+  const cases = FLAGSHIP_PROJECTS
 
   return (
-    <section id="work" aria-label="Selected work" className="relative">
+    <section id="selected-work" aria-label="Selected work" className="relative">
       <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
         {/* Section head */}
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-8 pb-20 pt-24 sm:pb-28 sm:pt-32">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-                01 — Selected work
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+                01 · Selected work
               </p>
               <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl lg:text-6xl">
-                Case <span className="accent-gradient-text">studies.</span>
+                Evidence, not just screens.
               </h2>
             </div>
             <Link
@@ -79,12 +79,7 @@ export default function CaseRows() {
                       aria-hidden="true"
                       className="block"
                     >
-                      <ParallaxImage
-                        src={project.coverImage as string}
-                        alt={`${project.title} — cover`}
-                        aspectClassName="aspect-[16/10]"
-                        className="transition-colors duration-500 group-hover:border-foreground/30"
-                      />
+                      <ProjectSignalCover project={project} />
                     </Link>
                   </div>
 
@@ -97,20 +92,25 @@ export default function CaseRows() {
                         : 'lg:col-start-9',
                     ].join(' ')}
                   >
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-                      {num} / {project.domain} · {project.year || '—'}
+                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+                      {num} / {project.projectType || project.domain} · {project.year || 'Current'}
                     </p>
                     <h3 className="display-tight mt-5 text-2xl font-medium text-foreground sm:text-3xl">
                       <Link
                         href={`/work/${project.slug}`}
                         className="transition-colors duration-300 hover:text-accent focus-visible:outline-none"
                       >
-                        {project.title}
+                      {project.title.split(' | ')[0]}
                       </Link>
                     </h3>
                     <p className="mt-5 line-clamp-4 max-w-md text-sm leading-[1.75] text-muted">
                       {project.description}
                     </p>
+                    {project.delivery ? (
+                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                        {project.delivery}
+                      </p>
+                    ) : null}
                     <Link
                       href={`/work/${project.slug}`}
                       className="group/link mt-8 inline-flex w-fit items-center gap-3 border-b border-stroke pb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-accent hover:text-accent"

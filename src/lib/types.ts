@@ -1,10 +1,20 @@
 export type ProjectCategory =
   | 'Product Design'
+  | 'Product Builder'
   | 'Analytics'
   | 'Healthcare'
   | 'Fintech'
   | 'Design Systems'
   | 'Web'
+
+export type ProjectType =
+  | 'Client work'
+  | 'Internal product'
+  | 'Personal product'
+  | 'Concept'
+  | 'Capability'
+
+export type PortfolioGroup = 'Selected' | 'Exploration'
 
 export type Project = {
   title: string
@@ -15,12 +25,20 @@ export type Project = {
   year: string
   featured: boolean
   category: ProjectCategory
+  /** Clear public classification so concept and production work never blur together. */
+  projectType?: ProjectType
+  /** Short delivery status shown in project indexes and case-study metadata. */
+  delivery?: string
+  /** Keeps speculative explorations out of the default senior-work index. */
+  portfolioGroup?: PortfolioGroup
   /** Optional path to cover image — e.g. /work/devrev/cover.jpg */
   coverImage?: string
   /** Link to Behance project if public */
   behanceUrl?: string
   /** True for the AI Workflow capability page — shows "Capability" badge instead of year */
   isCapability?: boolean
+  repositoryUrl?: string
+  liveUrl?: string
 }
 
 export type ExpertiseTile = {
@@ -49,4 +67,12 @@ export type StudioEmployment = {
   company: string
   period: string
   note: string
+}
+
+export type ResumeExperience = {
+  company: string
+  role: string
+  period: string
+  location?: string
+  summary: string
 }

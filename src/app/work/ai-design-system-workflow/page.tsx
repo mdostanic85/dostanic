@@ -14,7 +14,7 @@ import { sectionStatementClassName } from '@/lib/headings'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'AI-Connected Design System Workflow — Milos Dostanic',
+  title: 'AI-Connected Design System Workflow',
   description:
     'Documented workflow — Figma tokens, component APIs, AI-assisted prototyping, and engineering parity gates.',
 }

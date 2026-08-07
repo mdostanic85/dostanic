@@ -28,7 +28,7 @@ export default function Nav() {
 
   return (
     <>
-      <header className="pointer-events-none fixed top-0 left-0 right-0 z-50 h-16 mix-blend-difference">
+      <header className="site-header pointer-events-none fixed top-0 left-0 right-0 z-50 h-16 mix-blend-difference">
         <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[1fr_auto] items-center gap-3 px-5 text-white sm:px-8 md:grid-cols-[1fr_auto_1fr] lg:px-12">
           <Link
             href="/"
@@ -44,9 +44,9 @@ export default function Nav() {
 
           <p
             aria-hidden="true"
-            className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-white/60 md:block"
+            className="hidden font-mono text-[11px] uppercase tracking-[0.28em] text-white/60 md:block"
           >
-            Senior Product Designer
+            Senior Product Designer & Product Builder
           </p>
 
           <div className="flex items-center justify-self-end">

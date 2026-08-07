@@ -5,7 +5,9 @@
  * When a new page is added under src/app/work/[slug]/page.tsx, append the slug.
  */
 export const CASE_STUDY_SLUGS = [
+  'spaceinch',
   'devrev',
+  'worklight',
   'originchains',
   'spotify-admin-enterprise',
   'soundscope',
@@ -20,7 +22,9 @@ export const CASE_STUDY_SLUGS = [
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number]
 
 export const CASE_STUDY_LABELS: Record<CaseStudySlug, string> = {
+  spaceinch: 'Space Inch',
   devrev: 'DevRev',
+  worklight: 'WorkLight',
   originchains: 'OriginChains',
   'spotify-admin-enterprise': 'Spotify Admin',
   soundscope: 'SoundScope',

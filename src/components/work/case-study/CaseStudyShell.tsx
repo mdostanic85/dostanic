@@ -12,6 +12,9 @@ export type MetaField = { label: string; value: string }
 
 type NavLink = { href: string; label: string }
 
+/** External proof link — live site, repository, or Behance gallery. */
+export type CaseStudyLink = { href: string; label: string }
+
 type Props = {
   meta: MetaField[]
   eyebrow: string
@@ -21,6 +24,8 @@ type Props = {
   children: ReactNode
   previous?: NavLink
   next?: NavLink
+  /** Live site / repository / Behance links — rendered top-right, next to "Back to work". */
+  links?: CaseStudyLink[]
 }
 
 /** Shared case study page shell — header, meta, sections, footer nav. */
@@ -33,14 +38,30 @@ export default function CaseStudyShell({
   children,
   previous,
   next,
+  links,
 }: Props) {
   return (
     <main>
       <div className="pt-16">
         <Container size="wide">
-          <Link href="/work" className={navBackLinkClassName}>
-            <span aria-hidden="true">←</span> Back to work
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
+            <Link href="/work" className={navBackLinkClassName}>
+              <span aria-hidden="true">←</span> Back to work
+            </Link>
+            {links && links.length > 0 ? (
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                {links.map((link) => (
+                  <ArrowLink
+                    key={link.href}
+                    href={link.href}
+                    className="text-foreground hover:text-accent"
+                  >
+                    {link.label}
+                  </ArrowLink>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </Container>
       </div>
 

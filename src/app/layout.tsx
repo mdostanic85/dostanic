@@ -6,23 +6,28 @@ import RouteTransitions from '@/components/layout/RouteTransitions'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import CursorDot from '@/components/v3/CursorDot'
 import ScrollProgress from '@/components/v3/ScrollProgress'
+import PortfolioAnalytics from '@/components/analytics/PortfolioAnalytics'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Milos Dostanic — Senior Product Designer',
+  metadataBase: new URL('https://dostanic.net'),
+  title: {
+    default: 'Milos Dostanic | Senior Product Designer & Product Builder',
+    template: '%s | Milos Dostanic',
+  },
   description:
-    'Senior Product Designer focused on complex software UX — B2B SaaS, internal tools, and data-heavy products. Backed by design systems, Figma-to-code workflows, and AI-assisted prototyping.',
+    'Senior Product Designer and Product Builder for complex B2B products, design systems, data-heavy UX, and implementation-ready delivery.',
   openGraph: {
-    title: 'Milos Dostanic — Senior Product Designer',
+    title: 'Milos Dostanic | Senior Product Designer & Product Builder',
     description:
-      'Product design for complex software. Backed by design systems, Figma-to-code workflows, and AI-assisted prototyping.',
+      'Complex B2B product design, scalable systems, data-heavy UX, and implementation-ready delivery.',
     url: 'https://dostanic.net',
     siteName: 'Milos Dostanic',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Milos Dostanic — Senior Product Designer',
+    title: 'Milos Dostanic | Senior Product Designer & Product Builder',
     description:
       'Product design for complex software. Backed by design systems, Figma-to-code, and AI-assisted prototyping.',
   },
@@ -39,19 +44,39 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>
+      <body id="top">
         <a
-          href="#top"
+          href="#main-content"
           className="skip-to-content fixed left-4 top-4 z-[100] -translate-y-[200%] bg-foreground px-4 py-2 text-sm font-medium text-inverse-foreground transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>
         <SmoothScroll />
         <RouteTransitions />
+        <PortfolioAnalytics />
         <ScrollProgress />
         <CursorDot />
         <Nav />
-        {children}
+        <div id="main-content" tabIndex={-1}>{children}</div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Milos Dostanic',
+              url: 'https://dostanic.net',
+              email: 'mailto:milos@dostanic.net',
+              jobTitle: 'Senior Product Designer & Product Builder',
+              homeLocation: { '@type': 'Country', name: 'Serbia' },
+              sameAs: [
+                'https://www.linkedin.com/in/milos-dostanic/',
+                'https://github.com/mdostanic85',
+                'https://www.behance.net/milosdostanic',
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   )

@@ -119,8 +119,12 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       </div>
 
       {/* Links */}
-      <nav className="mx-auto flex w-full max-w-[1500px] flex-1 flex-col justify-center px-5 sm:px-8 lg:px-12">
-        <ul className="flex flex-col">
+      {/* `my-auto` on the list rather than `justify-center` on the nav: a
+          centered flex container clips overflow beyond the top edge and cannot
+          scroll back to it. Auto margins centre and still allow scrolling once
+          the link stack outgrows a short viewport. */}
+      <nav className="mx-auto flex w-full max-w-[1500px] flex-1 flex-col overflow-y-auto px-5 sm:px-8 lg:px-12">
+        <ul className="my-auto flex flex-col py-4">
           {NAV_LINKS.map((link, i) => {
             const active = isNavActive(pathname, link.href)
             return (
@@ -133,14 +137,18 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                   href={link.href}
                   aria-current={active ? 'page' : undefined}
                   className={[
-                    'group flex items-baseline gap-6 py-5 transition-colors sm:gap-10 sm:py-7',
+                    'group flex items-baseline gap-6 py-4 transition-colors sm:gap-10 sm:py-5',
                     active ? 'text-foreground' : 'text-muted hover:text-foreground',
                   ].join(' ')}
                 >
                   <span className="w-10 shrink-0 font-mono text-[11px] uppercase tracking-[0.25em] text-accent sm:text-xs">
                     0{i + 1}
                   </span>
-                  <span className="display-tight text-5xl font-medium sm:text-7xl lg:text-8xl">
+                  {/* Sized against viewport height, not width: five links must
+                      all fit a 720px-tall laptop without the overlay
+                      scrolling, while still reading as a poster on a large
+                      display. */}
+                  <span className="display-tight text-[clamp(1.6rem,6.4vh,5rem)] font-medium">
                     {link.label}
                   </span>
                   <span
@@ -168,7 +176,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           milos@dostanic.net
         </a>
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-          Serbia · remote worldwide
+          Serbia / CET · remote worldwide
         </p>
       </div>
     </div>

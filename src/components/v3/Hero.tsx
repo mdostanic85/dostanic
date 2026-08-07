@@ -83,81 +83,77 @@ export default function Hero() {
         <div className="flex items-start justify-between gap-6 pt-8 sm:pt-12">
           <p
             data-hero-fade
-            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted"
           >
-            Portfolio — 2026
+            Senior Product Designer & Product Builder
           </p>
           <p
             data-hero-fade
-            className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:flex"
+            className="hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted sm:flex"
           >
             <span className="pulse-host h-1.5 w-1.5" aria-hidden="true">
               <span className="pulse-ring" />
               <span className="pulse-core block h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            Now booking — Q3 2026
+            Open to senior remote product roles
           </p>
         </div>
 
         {/* Poster lockup */}
-        <div className="flex flex-1 flex-col justify-center py-14">
-          <h1 className="display-mega text-[clamp(56px,11.5vw,184px)] font-semibold uppercase text-foreground">
+        <div className="flex flex-1 flex-col justify-center py-8 sm:py-10">
+          <h1 className="display-mega text-[clamp(42px,7.3vw,118px)] font-semibold uppercase !leading-[0.92] text-foreground">
             <span className="line-mask">
               <span data-hero-line className="block">
-                Complex,
+                I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="block sm:ml-[16vw]">
-                made
+              <span data-hero-line className="block sm:ml-[10vw]">
+                complex B2B
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block">
-                simple.
+              <span data-hero-line className="text-outline block sm:ml-[4vw]">
+                products teams
+              </span>
+            </span>
+            <span className="line-mask">
+              <span data-hero-line className="block sm:ml-[22vw]">
+                can build.
               </span>
             </span>
           </h1>
 
-          <div className="mt-12 flex flex-col gap-10 sm:mt-16 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mt-8 flex flex-col gap-7 sm:mt-10 lg:flex-row lg:items-end lg:justify-between">
             <p
               data-hero-fade
               className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              I&apos;m Milos Dostanic — a senior product designer for B2B SaaS,
-              design systems, and data-heavy software. I work from product
-              thinking to production code, so what ships matches what was
-              designed.
+              Complex workflows, design systems, data-heavy interfaces, and
+              AI-powered products. I work from early product thinking to
+              implementation-ready delivery.
             </p>
 
-            <div data-hero-fade className="flex flex-wrap items-center gap-5">
+            <div data-hero-fade className="flex flex-wrap items-center gap-4">
               <Magnetic>
                 <Link
-                  href="/work"
+                  href="#selected-work"
+                  data-analytics-event="selected_work_action"
                   className="group inline-flex h-12 items-center gap-3 border border-foreground bg-foreground px-7 font-mono text-[11px] uppercase tracking-[0.2em] text-inverse-foreground transition-colors hover:bg-transparent hover:text-foreground"
                 >
-                  Selected work
-                  <span
-                    aria-hidden="true"
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
+                  View selected work
+                  <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               </Magnetic>
               <Magnetic>
-                <a
-                  href="mailto:milos@dostanic.net"
+                <Link
+                  href="/contact"
+                  data-analytics-event="contact_action"
                   className="group inline-flex h-12 items-center gap-3 border border-stroke px-7 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:border-foreground hover:text-foreground"
                 >
-                  Contact
-                  <span
-                    aria-hidden="true"
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  >
-                    ↗
-                  </span>
-                </a>
+                  Contact me
+                  <span aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+                </Link>
               </Magnetic>
             </div>
           </div>
@@ -168,15 +164,15 @@ export default function Hero() {
           data-hero-fade
           className="flex items-center justify-between gap-6 border-t border-stroke py-6"
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-            Serbia — working worldwide
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+            12+ years across design · 10+ years digital products
           </p>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted md:block">
-            B2B SaaS · Design systems · Figma → Code
+          <p className="hidden font-mono text-[11px] uppercase tracking-[0.28em] text-muted md:block">
+            Serbia / CET · Remote worldwide
           </p>
           <p
             aria-hidden="true"
-            className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted"
+            className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted"
           >
             Scroll
             <span className="inline-block animate-bounce">↓</span>

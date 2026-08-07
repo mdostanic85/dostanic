@@ -3,30 +3,27 @@ import CaseStudyContext from '@/components/work/case-study/CaseStudyContext'
 import ProblemSolution from '@/components/work/case-study/ProblemSolution'
 import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
 import CaseStudyScreens from '@/components/work/case-study/CaseStudyScreens'
-import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
 import CaseStudyShell, {
   CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
 import TokenizationShowcase from '@/components/work/healthcare-crm/TokenizationShowcase'
 import UserFlowSection from '@/components/work/healthcare-crm/UserFlowSection'
-import { sectionEyebrowAccentClassName } from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
-import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { buildConceptSteps } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'HealthCare CRM — Patient Management Platform · Milos Dostanic',
+  title: 'HealthCare CRM: Patient Management Platform',
   description:
-    'Healthcare CRM — problem framing, UX process, key screens, user flow, design tokens, and AI-assisted handoff.',
+    'A self-directed healthcare CRM concept covering product structure, patient context, responsive UI, and design tokens.',
 }
 
 const nav = getCaseStudyNav('healthcare-crm')
 
 const META = [
-  { label: 'Product', value: 'HealthCare CRM' },
+  { label: 'Type', value: 'Concept · UX case study' },
   { label: 'Year', value: '2024' },
-  { label: 'Role', value: 'Senior product designer (UX/UI)' },
+  { label: 'Role', value: 'Self-directed product design' },
   { label: 'Domain', value: 'Healthcare · SaaS' },
   { label: 'Focus', value: 'UX · UI system · Handoff' },
 ]
@@ -35,18 +32,18 @@ export default function HealthcareCRMCaseStudy() {
   return (
     <CaseStudyShell
       meta={META}
-      eyebrow="Case Study / Healthcare"
+      eyebrow="Exploration / Healthcare"
       title={
         <>
-          HealthCare CRM —
+          HealthCare CRM
           <br />
           <span className="accent-gradient-text">practice management.</span>
         </>
       }
       intro={
         <>
-          Product UX for a healthcare CRM — problem framing, process, key screens,
-          interactive flow map, tokenized UI, and AI-assisted developer handoff.
+          A self-directed healthcare CRM concept covering product structure, key screens,
+          an interactive flow map, responsive behavior, and a tokenized UI.
         </>
       }
       topRightLabel="2024"
@@ -55,21 +52,21 @@ export default function HealthcareCRMCaseStudy() {
     >
       <CaseStudySection alt>
         <CaseStudyContext
-          lead="Clinical and admin staff move between scheduling, communication, records, and reporting — often in tools that do not share navigation or visual language."
-          body="I owned UX/UI for the product shell, dashboard hierarchy, core modules, and design system foundations. The case study follows a familiar arc: clarify the problem, show how the work ran, prove it with meaningful screens, then document flow, tokens, and handoff."
+          lead="The concept asks how one product shell could connect scheduling, communication, patient context, records, and reporting."
+          body="I designed the dashboard hierarchy, core modules, flow map, and system foundations as a portfolio exercise. The workflow assumptions and sample data have not been validated with clinical or administrative users."
         />
       </CaseStudySection>
 
       <CaseStudySection>
         <ProblemSolution
-          intro="Based on product context and early screens — not claimed production outcomes."
+          intro="Based on product assumptions and illustrative screens. No production outcome is claimed."
           challengeTitle="Fragmented tools, heavy cognitive load"
           responseTitle="Unified platform, clearer hierarchy"
           problems={[
             'Disconnected tools creating data silos between scheduling, messaging, and records',
-            'Weak hierarchy — status, actions, and metadata competing at the same visual weight',
-            'Unclear entry paths — guest, login, and recovery not converging on one home model',
-            'Design drift — similar screens built as one-offs instead of shared components',
+            'Weak hierarchy, with status, actions, and metadata competing at the same visual weight',
+            'Unclear entry paths, with guest, login, and recovery not converging on one home model',
+            'Design drift, with similar screens built as one-offs instead of shared components',
           ]}
           solutions={[
             'One CRM shell with persistent nav across patients, appointments, engagement, analytics, records',
@@ -82,12 +79,12 @@ export default function HealthcareCRMCaseStudy() {
 
       <CaseStudySection alt>
         <UXProcessFlow
-          steps={buildProcessSteps([
-            'Healthcare workflows, role boundaries, and what must stay visible vs. progressive disclosure.',
-            'Auth paths, home hub, and multi-step tasks mapped before high-fidelity UI.',
-            'Dashboard, Patient 360, and modules — scan order and density for clinical use.',
-            'Color roles, spacing scale, typography for UI, display, and monospace clinical data.',
-            'Component refs, states, AI-assisted notes, and consistency pass across modules.',
+          steps={buildConceptSteps([
+            'Defined assumed roles, workflow boundaries, privacy constraints, and the information that should stay visible.',
+            'Mapped authentication, home, patient, appointment, and communication paths before high-fidelity UI.',
+            'Explored dashboard, Patient 360, and module layouts with illustrative clinical data.',
+            'Defined color roles, spacing, typography, and component states across the proposed system.',
+            'A next phase would require clinical research, privacy review, and usability testing with representative tasks.',
           ])}
         />
       </CaseStudySection>
@@ -101,7 +98,7 @@ export default function HealthcareCRMCaseStudy() {
               alt: 'HealthCare CRM practice dashboard',
               caption: 'Practice dashboard',
               decision:
-                'KPIs, clinician tasks, and patient context on one surface — primary actions before deep navigation.',
+                'KPIs, clinician tasks, and patient context share one surface, with primary actions before deep navigation.',
             },
             {
               src: '/work/healthcare-crm/modules-overview.jpg',
@@ -114,7 +111,7 @@ export default function HealthcareCRMCaseStudy() {
               src: '/work/healthcare-crm/mobile-responsive.jpg',
               alt: 'Mobile dashboard',
               caption: 'Responsive parity',
-              decision: 'Mobile keeps the same scan order — not a separate visual system.',
+              decision: 'Mobile keeps the same scan order instead of introducing a separate visual system.',
             },
           ]}
         />
@@ -129,19 +126,9 @@ export default function HealthcareCRMCaseStudy() {
       </CaseStudySection>
 
       <CaseStudySection alt>
-        <div className="mb-10 max-w-2xl">
-          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
-            {titleWithAccentGradient('Design → dev, less ambiguity')}
-          </h2>
-        </div>
-        <CaseStudyAIWorkflow steps={DEFAULT_AI_STEPS} />
-      </CaseStudySection>
-
-      <CaseStudySection>
         <CaseStudyOutcome>
-          Clearer dashboard hierarchy, a single module model, documented tokens, and handoff
-          notes engineering could implement from — without reinventing layout per feature.
+          The result is a documented CRM concept with one module model, a responsive screen set,
+          and reusable tokens. It does not claim clinical validation, engineering delivery, or a live product.
         </CaseStudyOutcome>
       </CaseStudySection>
     </CaseStudyShell>

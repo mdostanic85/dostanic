@@ -5,9 +5,10 @@ import WorkClient from './WorkClient'
 import { PROJECTS } from '@/lib/data'
 
 export const metadata: Metadata = {
-  title: 'Work — Milos Dostanic',
+  title: 'Work',
   description:
-    'Selected product design and systems work — enterprise SaaS, healthcare, analytics, fintech, and agency engagements — from a senior designer who ships.',
+    'Flagship case studies, supporting product work, and clearly labelled concepts across enterprise SaaS, AI products, analytics, healthcare, and design systems.',
+  alternates: { canonical: '/work' },
 }
 
 /**
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
  * cursor-trailing previews.
  */
 export default function WorkPage() {
-  const total = PROJECTS.length
+  const selectedTotal = PROJECTS.filter(
+    (project) => project.portfolioGroup !== 'Exploration',
+  ).length
+  const explorationTotal = PROJECTS.length - selectedTotal
   const years = '2021 — 2026'
 
   return (
@@ -32,7 +36,7 @@ export default function WorkPage() {
                     className="line-rise block"
                     style={{ animationDelay: '80ms' }}
                   >
-                    Ind<span className="text-outline">ex.</span>
+                    W<span className="text-outline">ork.</span>
                   </span>
                 </span>
               </h1>
@@ -40,7 +44,7 @@ export default function WorkPage() {
                 className="mb-4 font-mono text-[12px] uppercase tracking-[0.25em] text-accent animate-fade-in-up sm:mb-8"
                 style={{ animationDelay: '300ms' }}
               >
-                ({String(total).padStart(2, '0')})
+                ({String(selectedTotal).padStart(2, '0')})
               </p>
             </div>
             <div
@@ -48,10 +52,10 @@ export default function WorkPage() {
               style={{ animationDelay: '400ms' }}
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-                Selected work — {years}
+                {selectedTotal} selected · {explorationTotal} explorations · {years}
               </p>
               <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:block">
-                NDA-covered enterprise work available on request
+                Every item labelled by type and delivery status
               </p>
             </div>
           </div>

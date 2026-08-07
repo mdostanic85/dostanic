@@ -1,7 +1,7 @@
 import type { AIWorkflowStep } from '@/components/work/case-study/CaseStudyAIWorkflow'
 import type { ProcessStep } from '@/components/work/case-study/UXProcessFlow'
 
-/** Reusable 5-step UX process skeleton — tailor `body` copy per project in each page. */
+/** Reusable five-step UX process skeleton. Tailor `body` copy for each project. */
 export function buildProcessSteps(
   bodies: [string, string, string, string, string],
 ): ProcessStep[] {
@@ -19,11 +19,29 @@ export function buildProcessSteps(
   }))
 }
 
+/** Five-step structure for self-directed work with no implied client research or delivery. */
+export function buildConceptSteps(
+  bodies: [string, string, string, string, string],
+): ProcessStep[] {
+  const titles = [
+    'Brief & assumptions',
+    'Information architecture',
+    'Interaction & hierarchy',
+    'System rules',
+    'Validation plan',
+  ] as const
+  return titles.map((title, index) => ({
+    number: String(index + 1).padStart(2, '0'),
+    title,
+    body: bodies[index],
+  }))
+}
+
 export const DEFAULT_AI_STEPS: AIWorkflowStep[] = [
   {
     number: '01',
     title: 'Manual review first',
-    body: 'Requirements, flows, and screens reviewed before any AI output — AI never started the design.',
+    body: 'Requirements, flows, and screens reviewed before any AI output. AI never started the design.',
   },
   {
     number: '02',
@@ -38,6 +56,6 @@ export const DEFAULT_AI_STEPS: AIWorkflowStep[] = [
   {
     number: '04',
     title: 'Design ↔ code parity',
-    body: 'Compared design intent against component behaviour — spacing, states, and variants before build.',
+    body: 'Compared design intent against component behaviour, including spacing, states, and variants before build.',
   },
 ]

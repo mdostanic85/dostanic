@@ -4,28 +4,25 @@ import ProblemSolution from '@/components/work/case-study/ProblemSolution'
 import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
 import CaseStudyScreens from '@/components/work/case-study/CaseStudyScreens'
 import CaseStudySystemNote from '@/components/work/case-study/CaseStudySystemNote'
-import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
 import CaseStudyShell, {
   CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
-import { sectionEyebrowAccentClassName } from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
-import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { buildConceptSteps } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'SoundScope — Music Analytics Dashboard · Milos Dostanic',
+  title: 'SoundScope: Music Analytics Dashboard',
   description:
-    'SoundScope dashboard redesign — metric hierarchy, dark analyst UI, design system, and AI-assisted implementation collaboration.',
+    'A self-directed music analytics concept exploring metric hierarchy, dark analyst UI, and a reusable component system.',
 }
 
 const nav = getCaseStudyNav('soundscope')
 
 const META = [
-  { label: 'Product', value: 'SoundScope' },
+  { label: 'Type', value: 'Concept · Portfolio case study' },
   { label: 'Year', value: '2025' },
-  { label: 'Role', value: 'Lead product designer' },
+  { label: 'Role', value: 'Self-directed product design' },
   { label: 'Domain', value: 'Music analytics' },
   { label: 'Focus', value: 'Dashboard · system · handoff' },
 ]
@@ -34,29 +31,32 @@ export default function SoundScopeCaseStudy() {
   return (
     <CaseStudyShell
       meta={META}
-      eyebrow="Case Study / Analytics"
+      eyebrow="Exploration / Analytics"
       title={
         <>
-          SoundScope —
+          SoundScope
           <br />
           <span className="accent-gradient-text">music analytics.</span>
         </>
       }
       intro={
         <>
-          Redesign of a music analytics platform for labels and publishers — decision
-          metrics, analyst-first UI, and a tokenized component system built with
-          implementation in mind.
+          A self-directed product concept for labels and publishers. The work explores
+          metric hierarchy, analyst-focused UI, and a tokenized component system.
         </>
       }
       topRightLabel="2025"
       previous={nav.previous}
       next={nav.next}
+      links={[{
+        label: 'View on Behance',
+        href: 'https://www.behance.net/gallery/235878795/SoundScope-Music-Analytics-Dashboard-Redesign',
+      }]}
     >
       <CaseStudySection alt>
         <CaseStudyContext
-          lead="Teams were overwhelmed by fragmented reporting — slow decisions and low confidence in shared metrics."
-          body="The goal was a system that answers: what is moving, why, and what’s next — not another chart wall. I led dashboard architecture, semantic tokens, and collaboration with engineering using Figma and code-side iteration."
+          lead="The design question was how one dashboard could serve quick executive reviews and detailed catalog analysis without becoming a chart wall."
+          body="I treated fragmented music data, mixed reading speeds, and long analysis sessions as assumptions for the exercise. The concept has not been validated with users or shipped in production."
         />
       </CaseStudySection>
 
@@ -65,10 +65,10 @@ export default function SoundScopeCaseStudy() {
           challengeTitle="Fragmented data, mixed audiences"
           responseTitle="Decision-first dashboard"
           problems={[
-            'Data scattered across DSPs, ad platforms, and royalty systems',
-            'Analysts need depth; executives need clarity — one product, two reading speeds',
-            'High-density information risking cognitive overload',
-            'Long reporting cycles delaying campaign adjustments',
+            'The concept assumes data arrives from DSPs, ad platforms, and royalty systems',
+            'Analysts need depth while executives need a faster reading path',
+            'Dense charts and tables can compete for attention',
+            'Filters must preserve context between overview and drill-down views',
           ]}
           solutions={[
             'Small set of decision metrics at the top; exploration in drill-down contexts',
@@ -81,12 +81,12 @@ export default function SoundScopeCaseStudy() {
 
       <CaseStudySection alt>
         <UXProcessFlow
-          steps={buildProcessSteps([
-            'Mapped analyst and executive jobs-to-be-done across catalog, campaigns, and revenue views.',
-            'Defined hierarchy: what ships on the overview vs what lives in drill-down only.',
-            'High-fidelity dark UI — contrast, type rhythm, and table behaviour for analysts.',
-            'Semantic tokens and component variants documented for engineering.',
-            'Cursor-assisted iteration on layout behaviour with real data volume in mind.',
+          steps={buildConceptSteps([
+            'Defined a hypothetical audience, likely data sources, and the questions an overview should answer.',
+            'Separated portfolio, artist, release, campaign, and revenue views while preserving filter context.',
+            'Explored dark UI contrast, table density, and two reading speeds with realistic sample data.',
+            'Created semantic color, spacing, chart, table, and filter patterns for the concept.',
+            'A next phase would test comprehension with label teams and pressure-test the layout in a working prototype.',
           ])}
         />
       </CaseStudySection>
@@ -100,7 +100,7 @@ export default function SoundScopeCaseStudy() {
               alt: 'SoundScope dashboard overview',
               caption: 'Dashboard overview',
               decision:
-                'Decision metrics up front — deeper charts only in context, reducing noise for executive reviews.',
+                'Decision metrics up front, with deeper charts only in context to reduce noise during executive reviews.',
             },
           ]}
         />
@@ -110,37 +110,17 @@ export default function SoundScopeCaseStudy() {
         <CaseStudySystemNote
           title="Tokens & modular UI"
           paragraphs={[
-            'Semantic tokens for surfaces, text, and status kept charts, tables, and filters aligned as features shipped.',
-            'Component structure prioritised repeatable patterns over one-off chart compositions.',
+            'Semantic tokens keep surfaces, text, status, charts, tables, and filters consistent across the proposed product.',
+            'The component structure favors repeatable patterns over one-off chart compositions.',
           ]}
         />
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="mb-10 max-w-2xl">
-          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
-            {titleWithAccentGradient('Figma + code iteration')}
-          </h2>
-        </div>
-        <CaseStudyAIWorkflow
-          intro={
-            <>
-              Used <span className="text-foreground">Cursor</span> alongside Figma to
-              pressure-test dense layouts and handoff notes — AI accelerated exploration;
-              design decisions stayed manual.
-            </>
-          }
-          steps={DEFAULT_AI_STEPS}
-          tools={['Figma', 'Cursor', 'Claude', 'GitHub']}
-        />
-      </CaseStudySection>
-
-      <CaseStudySection alt>
         <CaseStudyOutcome>
-          Clearer reporting hierarchy, faster path from data review to action, and a reusable
-          component system for future modules — qualitative improvements aimed at clarity and
-          maintainability, not claimed percentage uplifts.
+          The result is a portfolio concept with a clear reporting hierarchy and a reusable
+          component direction. It demonstrates the proposed product model, but it does not claim
+          user research, engineering delivery, or production outcomes.
         </CaseStudyOutcome>
       </CaseStudySection>
     </CaseStudyShell>

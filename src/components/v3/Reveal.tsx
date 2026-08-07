@@ -15,10 +15,9 @@ type RevealProps = {
 }
 
 /**
- * GSAP scroll-triggered entrance. The from-state (opacity 0, 28px down)
- * is painted by the `.gsap-reveal` CSS class so SSR output never flashes;
- * GSAP animates to rest when the wrapper enters the viewport, then clears
- * inline props.
+ * GSAP scroll-triggered entrance. Content remains fully visible at every
+ * point; motion only adds a short vertical settle. If animation setup fails,
+ * the page still reads normally.
  *
  * Reduced motion: the class is removed and no tween runs — content at rest.
  */
@@ -36,10 +35,6 @@ export default function Reveal({
     if (!node) return
 
     if (prefersReducedMotion) {
-      node.classList.remove('gsap-reveal')
-      node
-        .querySelectorAll('.gsap-reveal')
-        .forEach((el) => el.classList.remove('gsap-reveal'))
       return
     }
 
@@ -48,26 +43,17 @@ export default function Reveal({
         ? Array.from(node.querySelectorAll(staggerSelector))
         : [node]
 
-      if (staggerSelector) {
-        // Wrapper itself should not stay hidden when staggering children.
-        node.classList.remove('gsap-reveal')
-        targets.forEach((el) => el.classList.add('gsap-reveal'))
-      }
-
-      gsap.to(targets, {
-        opacity: 1,
+      gsap.fromTo(targets, {
+        y: 18,
+      }, {
         y: 0,
-        duration: 1,
+        duration: 0.8,
         delay,
         ease: 'expo.out',
         stagger: staggerSelector ? 0.08 : 0,
-        // The from-state lives in the `.gsap-reveal` class — drop the class
-        // BEFORE clearing inline props, otherwise the element snaps back to
-        // opacity:0 the moment clearProps removes the inline override.
         onComplete() {
           targets.forEach((el) => {
-            ;(el as HTMLElement).classList.remove('gsap-reveal')
-            gsap.set(el, { clearProps: 'opacity,transform' })
+            gsap.set(el, { clearProps: 'transform' })
           })
         },
         scrollTrigger: {
@@ -82,7 +68,7 @@ export default function Reveal({
   }, [prefersReducedMotion, delay, staggerSelector])
 
   return (
-    <div ref={ref} className={`gsap-reveal ${className}`}>
+    <div ref={ref} className={className}>
       {children}
     </div>
   )

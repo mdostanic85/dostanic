@@ -15,13 +15,13 @@ import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
-  title: 'Spotify — Admin Enterprise Panel · Milos Dostanic',
+  title: 'Spotify — Admin Enterprise Panel',
   description:
     'Enterprise admin UX for internal Spotify tooling — dense tables, RBAC, bulk operations, and keyboard-first patterns.',
 }
 
 const META = [
-  { label: 'Client', value: 'Spotify (internal)' },
+  { label: 'Type', value: 'Internal product work' },
   { label: 'Year', value: '2022' },
   { label: 'Role', value: 'Product designer' },
   { label: 'Domain', value: 'Enterprise admin' },

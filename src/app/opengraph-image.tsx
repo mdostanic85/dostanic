@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Milos Dostanic, Senior Product Designer and Product Builder'
+export const alt = 'Milos Dostanic, Senior Product Designer for complex B2B products and design systems'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -29,7 +29,7 @@ export default function OpenGraphImage() {
             I design complex B2B products teams can build.
           </div>
           <div style={{ marginTop: 32, fontSize: 25, color: '#aeb5c2' }}>
-            Senior Product Designer & Product Builder · Serbia / CET · Remote worldwide
+            Senior Product Designer · Design systems & complex B2B · Serbia / CET
           </div>
         </div>
       </div>

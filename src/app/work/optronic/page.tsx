@@ -4,14 +4,11 @@ import ProblemSolution from '@/components/work/case-study/ProblemSolution'
 import UXProcessFlow from '@/components/work/case-study/UXProcessFlow'
 import CaseStudyScreens from '@/components/work/case-study/CaseStudyScreens'
 import CaseStudySystemNote from '@/components/work/case-study/CaseStudySystemNote'
-import CaseStudyAIWorkflow from '@/components/work/case-study/CaseStudyAIWorkflow'
 import CaseStudyShell, {
   CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
-import { sectionEyebrowAccentClassName } from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
-import { buildProcessSteps, DEFAULT_AI_STEPS } from '@/lib/caseStudyDefaults'
+import { buildProcessSteps } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 export const metadata: Metadata = {
@@ -34,18 +31,19 @@ export default function OptronicCaseStudy() {
   return (
     <CaseStudyShell
       meta={META}
-      eyebrow="Case Study / Web & Digital"
+      eyebrow="Case study / Designed and built"
       title={
         <>
-          Optronic —
+          Optronic
           <br />
           <span className="accent-gradient-text">website redesign.</span>
         </>
       }
       intro={
         <>
-          Full redesign and rebuild with React and static delivery, including multilingual structure, nine product families, SEO-aware
-          content hierarchy, and live preview delivery on Vercel.
+          The delivery proof in this portfolio: I designed this and I built it.
+          Multilingual structure, nine product families, a reusable React
+          component set, and a live site the client team can extend.
         </>
       }
       topRightLabel="2024"
@@ -139,29 +137,11 @@ export default function OptronicCaseStudy() {
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="mb-10 max-w-2xl">
-          <p className={sectionEyebrowAccentClassName}>AI workflow</p>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
-            {titleWithAccentGradient('Design and build in one loop')}
-          </h2>
-        </div>
-        <CaseStudyAIWorkflow
-          intro={
-            <>
-              AI assisted copy structure, component scaffolding, and implementation notes —
-              I remained responsible for IA, visual design, and production quality.
-            </>
-          }
-          steps={DEFAULT_AI_STEPS}
-          tools={['Figma', 'Cursor', 'React', 'Vite', 'Vercel']}
-        />
-      </CaseStudySection>
-
-      <CaseStudySection>
         <CaseStudyOutcome>
-          Shipped with full EN/DE structure and nine product pages, content-managed updates for
-          routine changes, and a maintainable component architecture — faster sign-off via live
-          preview than static PDF cycles.
+          Shipped and live, with full EN/DE structure across nine product families, downloads
+          integrated into the product pages that need them, and a component architecture the
+          client team can extend without a developer for routine content. Stakeholders reviewed
+          working previews instead of static PDFs, which shortened each sign-off round.
         </CaseStudyOutcome>
       </CaseStudySection>
     </CaseStudyShell>

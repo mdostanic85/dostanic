@@ -1,24 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import Container from '@/components/layout/Container'
-import Section from '@/components/layout/Section'
-import PageHeader from '@/components/layout/PageHeader'
-import ArrowLink from '@/components/ui/ArrowLink'
-import CaseStudyMeta from '@/components/work/CaseStudyMeta'
-import FooterCTA from '@/components/home/FooterCTA'
-import { cn } from '@/lib/utils'
-import {
-  monoIndexAccentClassName,
-  monoIndexGridClassName,
-  navBackLinkClassName,
-  navRelatedLinkClassName,
-  sectionEyebrowAccentClassName,
-  sectionHeadingClassName,
-  sectionLeadClassName,
-  sectionSubheadingClassName,
-} from '@/lib/headings'
-import { titleWithAccentGradient } from '@/lib/titleWithAccentGradient'
+import CaseStudyContext from '@/components/work/case-study/CaseStudyContext'
+import CaseStudyShell, {
+  CaseStudyOutcome,
+  CaseStudySection,
+} from '@/components/work/case-study/CaseStudyShell'
+import { sectionEyebrowAccentClassName } from '@/lib/headings'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 const nav = getCaseStudyNav('originchains')
@@ -26,333 +13,235 @@ const nav = getCaseStudyNav('originchains')
 export const metadata: Metadata = {
   title: 'OriginChains — Climate Company Discovery',
   description:
-    'Senior product design for OriginChains — discovery UX, trust-heavy company data, social feed, and a Figma design system aligned to engineering delivery.',
+    'Senior product design for OriginChains — discovery UX, trust-heavy company data, activity feed, and a component system aligned to engineering delivery.',
+  alternates: { canonical: '/work/originchains' },
 }
 
-const META_FIELDS = [
+const META = [
   { label: 'Type', value: 'Client work' },
   { label: 'Year', value: '2025' },
   { label: 'Role', value: 'Senior product designer' },
   { label: 'Domain', value: 'Climate · B2B SaaS' },
-  { label: 'Stack', value: 'Figma · variables · components' },
-  { label: 'Output', value: 'Flows · UI · system · handoff' },
+  { label: 'Scope', value: 'IA · flows · UI · design system' },
+  { label: 'Output', value: 'Design delivery · engineering handoff' },
 ]
 
 const ROLE_POINTS = [
-  'Framed the problem with product and stakeholders — who we help, what “trust” means in UI, and which journeys had to ship first.',
-  'Owned information architecture and navigation across marketing and signed-in app shells so growth and product surfaces did not fork into two products.',
-  'Designed primary flows end-to-end in Figma: search, company onboarding, profile and admin settings, public vs private profile modes, and feed interactions — including empty, loading, and error states.',
-  'Built a practical design system (inputs, buttons, navigation, feedback) so engineers could implement from consistent patterns instead of one-off specs.',
-  'Prepared handoff with component naming, spacing, and interaction notes; aligned with dev on breakpoints and data-heavy layouts before visual polish locked.',
+  'Framed the problem with product and stakeholders — who we help, what "trust" means in the interface, and which journeys had to ship first.',
+  'Owned information architecture and navigation across the marketing and signed-in shells, so growth and product surfaces did not fork into two products.',
+  'Designed the primary flows end to end: search, company onboarding, profile and admin settings, public versus private profile modes, and feed interactions, including empty, loading, and error states.',
+  'Built the component system — inputs, buttons, navigation, feedback — so engineers implemented from consistent patterns instead of one-off specs.',
+  'Prepared handoff with component naming, spacing, and interaction notes, and agreed breakpoints and data-heavy layouts with engineering before visual polish locked.',
 ]
 
 const CHALLENGES = [
-  'Earn trust quickly — climate and ESG topics invite scepticism; the product had to read as credible, not promotional.',
+  'Earn trust quickly. Climate and ESG topics invite scepticism, so the product had to read as credible rather than promotional.',
   'One product with two rhythms: a simple marketing story on the landing page, and a dense signed-in experience for search, profiles, and activity.',
-  'Company profiles that mix narrative, scores, charts, and methodology without burying the answer a user came for.',
-  'Social feed patterns (post, comment, edit, delete) that feel familiar while staying on-brand with the rest of the system.',
-  'Growing role surface (auth, admin, privacy) that still feels like one coherent IA.',
+  'Company profiles that mix narrative, scores, charts, and methodology without burying the answer the user came for.',
+  'Social feed patterns — post, comment, edit, delete — that feel familiar while staying coherent with the rest of the system.',
+  'A growing role surface across auth, admin, and privacy that still had to read as one information architecture.',
 ]
 
 const DECISIONS = [
   {
     title: 'Search-first story on the landing page',
-    body: 'The hero leads with a single search field and plain-language proof points (free scores, real data, no fluff) so first-time visitors understand the action before they understand the taxonomy.',
+    body: 'The hero leads with a single search field and plain proof points, so a first-time visitor understands the action before they understand the taxonomy.',
   },
   {
-    title: 'IA grouped by “people” vs “organisations”',
-    body: 'Navigation separates personal profile, company spaces, and administration — reducing duplicate entry points as the product added admin and visibility modes.',
+    title: 'Navigation split by people and organisations',
+    body: 'Personal profile, company spaces, and administration are separated, which removed duplicate entry points as the product added admin and visibility modes.',
   },
   {
-    title: 'Repeatable modules for company “data” pages',
-    body: 'Profile sections share a common skeleton — title, status, short explanation, chart or checklist, then methodology/source affordances — so dense climate metrics stay scannable.',
+    title: 'One repeatable module for company data',
+    body: 'Every profile section shares a skeleton: title, status, short explanation, chart or checklist, then methodology and sources. Dense climate metrics stay scannable because the reading order never changes.',
   },
   {
-    title: 'System canvas before screen one-offs',
-    body: 'Foundations (controls, top bar, toasts) live in a dedicated file area so marketing and app frames pull from the same components, which keeps QA and dev implementation predictable.',
+    title: 'System foundations before screen one-offs',
+    body: 'Controls, top bar, and toasts live in a dedicated file area that marketing and app frames both consume, which kept QA and implementation predictable as the surface grew.',
   },
 ]
 
 const OUTCOMES = [
-  'Figma coverage for desktop journeys: landing, auth, feed, search, company profile variants, admin, and public/private profile modes — plus a parallel mobile set for parity review.',
-  'A shared component vocabulary reused across acquisition and product surfaces, reducing drift between “marketing” and “app” quality.',
-  'Clearer handoff for engineering: fewer ambiguous layouts on data-heavy pages because charts, modules, and states were designed as a system rather than as isolated artboards.',
+  'Engineering could build the hardest pages from patterns rather than interpretation, because charts, modules, and states were designed as a system rather than as isolated artboards.',
+  'Marketing and product surfaces stopped drifting apart — both pull from the same component vocabulary, so acquisition pages hold the same quality bar as the signed-in app.',
+  'The team could add admin, privacy, and visibility modes without re-opening navigation, because the IA had already separated personal, company, and administrative space.',
+  'Desktop journeys were covered end to end — landing, auth, feed, search, company profile variants, admin, and public/private modes — with a parallel mobile set for parity review.',
 ]
 
 export default function OriginChainsCaseStudy() {
   return (
-    <main>
-      <div className="pt-16">
-        <Container size="wide">
-          <Link
-            href="/work"
-            className={navBackLinkClassName}
-          >
-            <span aria-hidden="true">←</span> Back to work
-          </Link>
-        </Container>
-      </div>
+    <CaseStudyShell
+      meta={META}
+      eyebrow="Case study / Product & system"
+      title={
+        <>
+          OriginChains
+          <br />
+          <span className="accent-gradient-text">climate company discovery.</span>
+        </>
+      }
+      intro={
+        <>
+          A B2B product for finding climate-credible companies, from the public
+          landing and search entry points through signed-in profiles, activity,
+          and governance flows.
+        </>
+      }
+      topRightLabel="2025"
+      previous={nav.previous}
+      next={nav.next}
+    >
+      <CaseStudySection alt>
+        <CaseStudyContext
+          lead="Users want to act on climate, but only if they can trust the signal behind each company."
+          body="OriginChains sits in a crowded green-tech narrative, so the design work was product clarity rather than visual polish: make discovery legible, make scores and methodology feel grounded, and keep a growing web app navigable while the team iterated toward launch."
+        />
+      </CaseStudySection>
 
-      <PageHeader
-        eyebrow="Case Study / Product & system"
-        title={
-          <>
-            OriginChains —
-            <br />
-            Climate company
-            <br />
-            <span className="accent-gradient-text">discovery.</span>
-          </>
-        }
-        intro={
-          <>
-            B2B web product for discovering climate-friendly companies — from the public
-            landing and search entry points through signed-in profiles, activity, and
-            governance flows. Each screen below is a{' '}
-            <strong className="font-medium text-foreground">single Figma frame export</strong>{' '}
-            (no stitched artboards).
-          </>
-        }
-        topRightLabel="2025"
-      />
-
-      <Section padding="sm">
-        <Container size="wide">
-          <CaseStudyMeta fields={META_FIELDS} className="mb-12" />
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-surface">
-            <Image
-              src="/work/originchains/cover.png"
-              alt="OriginChains — landing page (single frame)"
-              fill
-              sizes="(min-width: 1280px) 1200px, 100vw"
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-          <p className="mt-4 font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
-            Source file —{' '}
-            <a
-              href="https://www.figma.com/design/6IPIMKih4iNN63d9lmOIcF/OriginChains-Web-App?node-id=2807-2666"
-              className="text-accent underline-offset-2 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              OriginChains Web App (Figma)
-            </a>
-          </p>
-        </Container>
-      </Section>
-
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4">
-              <p className={sectionEyebrowAccentClassName}>
-                What I owned
-              </p>
-              <h2 className={cn(sectionHeadingClassName, 'mt-4')}>
-                {titleWithAccentGradient('Senior product designer scope')}
-              </h2>
-            </div>
-            <div className="lg:col-span-8">
-              <p className="text-base leading-[1.75] text-muted lg:text-lg">
-                OriginChains sits in a crowded “green tech” narrative — the design job was
-                not only visual polish but{' '}
-                <span className="text-foreground">product clarity</span>: make discovery
-                legible, make scores and methodology feel grounded, and keep a growing web
-                app navigable while the team iterated toward launch.
-              </p>
-              <ul className="mt-8 space-y-4 pt-8">
-                {ROLE_POINTS.map((item) => (
-                  <li key={item} className="flex gap-4">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    <span className="text-base leading-[1.65] text-muted lg:text-lg">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="mb-10 max-w-3xl">
-            <p className={sectionEyebrowAccentClassName}>
-              Selected screens
-            </p>
-            <h2 className={sectionHeadingClassName}>
-              {titleWithAccentGradient('Activity feed')}
+      <CaseStudySection>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <p className={sectionEyebrowAccentClassName}>What I owned</p>
+            <h2 className="display-tight mt-5 max-w-[14ch] text-3xl font-medium sm:text-4xl">
+              Senior product designer scope.
             </h2>
-            <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
-              Social and activity patterns had to feel familiar while staying coherent
-              with the denser signed-in product — post, comment, and status surfaces
-              that still read as part of the same system.
-            </p>
           </div>
-
-          <figure className="mx-auto max-w-4xl space-y-3">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-surface">
-              <Image
-                src="/work/originchains/screen-feed.png"
-                alt="OriginChains — activity feed"
-                fill
-                sizes="(min-width: 1024px) 64rem, 100vw"
-                className="object-cover object-top"
-              />
-            </div>
-            <figcaption className="font-mono text-[13px] uppercase tracking-[0.16em] text-muted">
-              Activity feed — signed-in product surface
-            </figcaption>
-          </figure>
-        </Container>
-      </Section>
-
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4">
-              <p className={sectionEyebrowAccentClassName}>
-                Project context
-              </p>
-            </div>
-            <div className="lg:col-span-8">
-              <p className={sectionLeadClassName}>
-                Users want to act on climate, but only if they can trust the signal behind
-                each company.
-              </p>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                The Figma file maps the whole web app: marketing landing, authentication,
-                global search, company creation, deep company profiles (including
-                performance and data-heavy modules), personal and organisation areas,
-                public vs private profile states, and admin settings — with a design system
-                for inputs, navigation, and feedback that both marketing and product frames
-                consume.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="mb-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                The challenge
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Trust,
-                <br />
-                <span className="text-accent">at a glance.</span>
-              </h2>
-            </div>
-            <ul className="lg:col-span-7 lg:col-start-6 lg:pt-2">
-              {CHALLENGES.map((item, idx) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-5 py-5"
-                >
-                  <span className={monoIndexAccentClassName}>
-                    /{String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-base leading-[1.65] text-muted lg:text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
-
-      <Section padding="lg" className="bg-surface/40">
-        <Container size="wide">
-          <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                Decisions
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Systemic,
-                <br />
-                <span className="text-accent block w-fit">not decorative.</span>
-              </h2>
-            </div>
-          </div>
-          <ul>
-            {DECISIONS.map((d, idx) => (
-              <li
-                key={d.title}
-                className="group grid grid-cols-12 gap-4 py-10 lg:gap-12 lg:py-14"
-              >
-                <span className={monoIndexGridClassName}>
-                  /{String(idx + 1).padStart(2, '0')}
+          <ul className="space-y-5 lg:col-span-7 lg:col-start-6">
+            {ROLE_POINTS.map((item) => (
+              <li key={item} className="flex gap-4">
+                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span className="text-base leading-[1.7] text-muted lg:text-lg">
+                  {item}
                 </span>
-                <h3 className={cn(sectionSubheadingClassName, 'col-span-10 sm:col-span-5')}>
-                  {titleWithAccentGradient(d.title)}
-                </h3>
-                <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-6 lg:text-lg">
-                  {d.body}
-                </p>
               </li>
             ))}
           </ul>
-        </Container>
-      </Section>
+        </div>
+      </CaseStudySection>
 
-      <Section padding="lg">
-        <Container size="wide">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className={sectionEyebrowAccentClassName}>
-                Outcome
-              </p>
-              <h2 className={sectionHeadingClassName}>
-                Ready for
-                <br />
-                <span className="text-accent">build &amp; iteration.</span>
-              </h2>
-              <p className="mt-8 text-base leading-[1.7] text-muted lg:text-lg">
-                The file is structured so design and engineering can iterate in lockstep —
-                fewer ambiguous one-offs on the hardest pages, and a shared language for
-                everything else.
-              </p>
+      <CaseStudySection alt>
+        <div className="mb-10 max-w-2xl">
+          <p className={sectionEyebrowAccentClassName}>Selected screens</p>
+          <h2 className="display-tight mt-4 text-2xl font-medium sm:text-3xl">
+            Landing and activity feed.
+          </h2>
+          <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
+            Social and activity patterns had to feel familiar while staying
+            coherent with the denser signed-in product.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <figure className="space-y-3">
+            <div className="relative aspect-[16/10] overflow-hidden border border-stroke bg-surface">
+              <Image
+                src="/work/originchains/cover.png"
+                alt="OriginChains landing page with search-first hero"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-top"
+                priority
+              />
             </div>
-            <ul className="space-y-5 lg:col-span-6 lg:col-start-7 lg:pt-2">
-              {OUTCOMES.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-4 pb-5"
-                >
-                  <span className="mt-[6px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <p className="text-base leading-[1.6] text-foreground lg:text-lg">{item}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
+            <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+              Landing — search before taxonomy
+            </figcaption>
+          </figure>
 
-      <Section padding="sm" className="bg-surface/40">
-        <Container size="wide">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <Link
-              href="/work"
-              className={navRelatedLinkClassName}
-            >
-              <span aria-hidden="true">←</span> All work
-            </Link>
-            {nav.next ? (
-              <ArrowLink href={nav.next.href} className="text-foreground hover:text-accent">
-                Next: {nav.next.label}
-              </ArrowLink>
-            ) : null}
-          </div>
-        </Container>
-      </Section>
+          <figure className="space-y-3">
+            <div className="relative aspect-[16/10] overflow-hidden border border-stroke bg-surface">
+              <Image
+                src="/work/originchains/screen-feed.png"
+                alt="OriginChains activity feed on the signed-in product surface"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+              Activity feed — signed-in surface
+            </figcaption>
+          </figure>
+        </div>
+      </CaseStudySection>
 
-      <FooterCTA />
-    </main>
+      <CaseStudySection>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <p className={sectionEyebrowAccentClassName}>The challenge</p>
+            <h2 className="display-tight mt-5 text-3xl font-medium sm:text-4xl">
+              Trust,
+              <br />
+              <span className="text-accent">at a glance.</span>
+            </h2>
+          </div>
+          <ul className="lg:col-span-7 lg:col-start-6">
+            {CHALLENGES.map((item, idx) => (
+              <li key={item} className="flex items-start gap-5 border-b border-stroke py-5 last:border-b-0">
+                <span className="mt-1 font-mono text-[12px] tracking-[0.22em] text-accent">
+                  /{String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className="text-base leading-[1.65] text-muted lg:text-lg">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </CaseStudySection>
+
+      <CaseStudySection alt>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className={sectionEyebrowAccentClassName}>Decisions</p>
+            <h2 className="display-tight mt-5 max-w-[12ch] text-3xl font-medium sm:text-4xl">
+              Systemic, not decorative.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-8">
+            {DECISIONS.map((decision, index) => (
+              <article key={decision.title} className="border-t border-stroke pt-5">
+                <p className="font-mono text-[11px] tracking-[0.22em] text-accent">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h3 className="display-tight mt-4 text-xl font-medium">
+                  {decision.title}
+                </h3>
+                <p className="mt-4 text-sm leading-[1.75] text-muted">
+                  {decision.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </CaseStudySection>
+
+      <CaseStudySection>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <CaseStudyOutcome>
+              <ul className="space-y-5">
+                {OUTCOMES.map((item) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <span className="mt-[10px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </CaseStudyOutcome>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
+              Scope of this case
+            </p>
+            <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
+              My engagement covered product design and system delivery through
+              engineering handoff. Commercial results after launch sit with the
+              client and are not claimed here.
+            </p>
+          </div>
+        </div>
+      </CaseStudySection>
+    </CaseStudyShell>
   )
 }

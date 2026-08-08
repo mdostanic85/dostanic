@@ -107,11 +107,11 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-7 sm:mt-10 lg:flex-row lg:items-end lg:justify-between">
             <p
               data-hero-fade
-              className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
+              className="max-w-[48ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              Workflows, data, roles, and edge cases — structured so engineering
-              can implement them. Design systems and delivery through production,
-              not just polished screens.
+              I lead design on enterprise products under NDA. What stays behind
+              is the system underneath: atomic component structure, semantic
+              tokens, and Figma that matches production.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">
@@ -145,11 +145,10 @@ export default function Hero() {
           className="flex items-center border-t border-stroke py-6"
         >
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
-            Space Inch ·{' '}
-            <span className="font-semibold text-foreground">12+</span> years
-            digital ·{' '}
-            <span className="font-semibold text-foreground">20</span> years
-            design
+            <span className="font-semibold text-foreground">Milos Dostanic</span>{' '}
+            · Senior Product Designer ·{' '}
+            <span className="font-semibold text-foreground">12</span> years in
+            digital products
           </p>
         </div>
       </div>

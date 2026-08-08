@@ -1,4 +1,3 @@
-import type { AIWorkflowStep } from '@/components/work/case-study/CaseStudyAIWorkflow'
 import type { ProcessStep } from '@/components/work/case-study/UXProcessFlow'
 
 /** Reusable five-step UX process skeleton. Tailor `body` copy for each project. */
@@ -37,25 +36,3 @@ export function buildConceptSteps(
   }))
 }
 
-export const DEFAULT_AI_STEPS: AIWorkflowStep[] = [
-  {
-    number: '01',
-    title: 'Manual review first',
-    body: 'Requirements, flows, and screens reviewed before any AI output. AI never started the design.',
-  },
-  {
-    number: '02',
-    title: 'Structure messy input',
-    body: 'Notes and specs structured into task lists, screen inventories, and open questions for engineering.',
-  },
-  {
-    number: '03',
-    title: 'Handoff notes & comments',
-    body: 'AI drafted implementation notes and Figma comments; every line was edited before handoff.',
-  },
-  {
-    number: '04',
-    title: 'Design ↔ code parity',
-    body: 'Compared design intent against component behaviour, including spacing, states, and variants before build.',
-  },
-]

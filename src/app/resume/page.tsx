@@ -11,20 +11,34 @@ import {
 export const metadata: Metadata = {
   title: 'Résumé',
   description:
-    'Résumé for Milos Dostanic, Senior Product Designer and Product Builder based in Serbia.',
+    'Résumé for Milos Dostanic, Senior Product Designer leading design on complex B2B products, based in Serbia.',
   alternates: { canonical: '/resume' },
 }
 
 const EXPERTISE = [
   'Complex B2B and enterprise product UX',
   'Information architecture and data-heavy interfaces',
-  'Design systems, tokens, components, and governance',
+  'Design systems: atomic composition and three-tier token architecture',
+  'Figma variables in parity with production CSS, plus system governance',
   'Functional prototypes and Figma-to-code workflows',
   'Engineering collaboration, handoff, and design QA',
-  'AI product flows and implementation-aware delivery',
+  'AI and agentic product flows, with explicit trust and failure states',
+  'Product strategy and discovery on ambiguous problems',
 ] as const
 
 const SELECTED_PROOF = [
+  {
+    title: 'OriginChains',
+    label: 'Client work · Climate SaaS',
+    body: 'Senior product design for company discovery, trust-heavy data presentation, activity feeds, and a component system tuned for engineering handoff.',
+    href: '/work/originchains',
+  },
+  {
+    title: 'Optronic',
+    label: 'Client work · Designed and built',
+    body: 'Multilingual EN/DE information architecture across nine product families, built as a reusable React component set and shipped live.',
+    href: '/work/optronic',
+  },
   {
     title: 'WorkLight',
     label: 'Personal product · Active development',
@@ -32,16 +46,10 @@ const SELECTED_PROOF = [
     href: 'https://github.com/mdostanic85/morning',
   },
   {
-    title: 'OriginChains',
-    label: 'Client work · Climate SaaS',
-    body: 'Lead product design for company discovery, trust-heavy data presentation, activity feeds, and a Figma system tuned for engineering handoff.',
-    href: '/work/originchains',
-  },
-  {
-    title: 'AI-connected design systems',
+    title: 'Design system architecture',
     label: 'Working method',
-    body: 'A documented workflow connecting Figma variables, component APIs, functional prototypes, code review, and design QA.',
-    href: '/work/ai-design-system-workflow',
+    body: 'Atoms to organisms, primitive to semantic to component tokens, Figma variables versioned against CSS custom properties, and governance designed with the library.',
+    href: '/work/design-systems',
   },
 ] as const
 
@@ -62,8 +70,9 @@ export default function ResumePage() {
             </h1>
             <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-[#111318]/70">
               Senior Product Designer with 20 years across design and 12 years in digital products.
-              I work on complex B2B UX, design systems, functional prototypes, AI workflows, and
-              implementation review.
+              I lead end-to-end design on complex B2B products under NDA — healthcare, fintech, and
+              enterprise SaaS — covering product strategy, UX, design systems and token
+              architecture, AI workflows, and implementation review.
             </p>
           </div>
           <address className="not-italic sm:col-span-4 sm:text-right">

@@ -8,7 +8,7 @@ import ExpertiseAccordion, {
 export const metadata: Metadata = {
   title: 'Expertise',
   description:
-    'Focused expertise across complex product UX, design systems, product delivery, and Product Builder work with AI.',
+    'Focused expertise across complex product UX, design systems and token architecture, product delivery, and Product Builder work with AI.',
   alternates: { canonical: '/expertise' },
 }
 
@@ -33,14 +33,16 @@ const EXPERTISE_AREAS: ExpertiseArea[] = [
     number: '02',
     title: 'Design Systems',
     description:
-      'Practical design systems that connect tokens, components, and documentation across Figma and code.',
+      'Atomic composition — atoms, molecules, organisms — bound to a three-tier token architecture, with Figma variables kept in parity with the CSS that ships.',
     usefulWhen: [
       'Design and code are drifting and teams keep rebuilding similar patterns',
-      'The product is scaling but consistency and speed are dropping',
+      'A theme, rebrand, or dark mode would currently mean editing every component',
+      'The library has no contribution rule, so nobody knows what belongs in it',
     ],
     outputs: [
-      'Token architecture, variable setup, and component library structure',
-      'System documentation and governance rules teams can actually use',
+      'Primitive, semantic, and component token tiers, with Figma variables mapped name for name to CSS custom properties',
+      'Component contracts: variants, states, and responsive rules an engineer can implement without asking',
+      'Contribution, versioning, and deprecation rules written before the library needs them',
     ],
   },
   {

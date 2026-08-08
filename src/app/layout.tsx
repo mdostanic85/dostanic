@@ -13,24 +13,24 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Milos Dostanic | Senior Product Designer & Product Builder',
+    default: 'Milos Dostanic | Senior Product Designer, Complex B2B & Design Systems',
     template: '%s | Milos Dostanic',
   },
   description:
-    'Senior Product Designer and Product Builder for complex B2B products, design systems, data-heavy UX, and implementation-ready delivery.',
+    'Senior Product Designer leading end-to-end design on complex B2B products — design systems and token architecture, data-heavy UX, and delivery through implementation.',
   openGraph: {
-    title: 'Milos Dostanic | Senior Product Designer & Product Builder',
+    title: 'Milos Dostanic | Senior Product Designer, Complex B2B & Design Systems',
     description:
-      'Complex B2B product design, scalable systems, data-heavy UX, and implementation-ready delivery.',
+      'Complex B2B product design, atomic design systems and token architecture, data-heavy UX, and delivery through implementation.',
     url: SITE_URL,
     siteName: 'Milos Dostanic',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Milos Dostanic | Senior Product Designer & Product Builder',
+    title: 'Milos Dostanic | Senior Product Designer, Complex B2B & Design Systems',
     description:
-      'Product design for complex software. Backed by design systems, Figma-to-code, and AI-assisted prototyping.',
+      'Product design for complex software, backed by atomic design systems, token architecture, and Figma-to-code delivery.',
   },
   robots: {
     index: true,

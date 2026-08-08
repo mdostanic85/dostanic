@@ -8,32 +8,17 @@ import type {
 export const PROJECTS: Project[] = [
   // ─── Selected (senior portfolio) ─────────────────────────────────────────
   {
-    title: 'WorkLight | Daily Work Operator',
-    domain: 'AI Product',
-    discipline: 'Product Designer & Builder',
-    description:
-      'Local-first product that turns work-tool signals into an evidence-linked daily plan — ranking, trust model, and implementation owned end to end.',
-    slug: 'worklight',
-    year: '2026',
-    featured: true,
-    category: 'Product Builder',
-    projectType: 'Personal product',
-    delivery: 'Working product · Active development',
-    portfolioGroup: 'Selected',
-    repositoryUrl: 'https://github.com/mdostanic85/morning',
-  },
-  {
     title: 'OriginChains | Climate Company Discovery',
     domain: 'SaaS',
     discipline: 'Product Design',
     description:
-      'B2B climate intelligence — discovery UX, trust-heavy company data, and a Figma system built for engineering handoff.',
+      'B2B climate intelligence — discovery UX, trust-heavy company data, and a component system built so engineering could implement from patterns instead of one-off specs.',
     slug: 'originchains',
     year: '2025',
     featured: true,
     category: 'Product Design',
     projectType: 'Client work',
-    delivery: 'Product design · Figma system',
+    delivery: 'Product design · Design system',
     portfolioGroup: 'Selected',
     coverImage: '/work/originchains/cover.png',
   },
@@ -42,7 +27,7 @@ export const PROJECTS: Project[] = [
     domain: 'Web',
     discipline: 'UX & Frontend',
     description:
-      'Industrial sensor manufacturer site — EN/DE IA, nine product families, React components, live on Vercel.',
+      'Industrial sensor manufacturer — EN/DE information architecture, nine product families, and a React component set I designed and built myself.',
     slug: 'optronic',
     year: '2024',
     featured: true,
@@ -53,15 +38,30 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://optronic-v2.vercel.app',
     coverImage: '/work/optronic/cover.webp',
   },
+  {
+    title: 'WorkLight | Daily Work Operator',
+    domain: 'AI Product',
+    discipline: 'Product Designer & Builder',
+    description:
+      'Local-first AI product that turns work-tool signals into an evidence-linked daily plan. Ranking, trust model, data model, and implementation owned end to end.',
+    slug: 'worklight',
+    year: '2026',
+    featured: true,
+    category: 'Product Builder',
+    projectType: 'Personal product',
+    delivery: 'Working product · Active development',
+    portfolioGroup: 'Selected',
+    repositoryUrl: 'https://github.com/mdostanic85/morning',
+  },
 
   // ─── Capability (not Selected flagship) ──────────────────────────────────
   {
-    title: 'AI-Connected Design System Workflow',
+    title: 'Design System Architecture',
     domain: 'Design Systems',
     discipline: 'Capability',
     description:
-      'How I keep design-system work aligned across tokens, Figma architecture, AI tooling, and code — a delivery method, not a client case.',
-    slug: 'ai-design-system-workflow',
+      'Atoms to organisms, primitives to semantic tokens, Figma variables in parity with production CSS — the system layer I build under every product.',
+    slug: 'design-systems',
     year: '',
     featured: false,
     category: 'Design Systems',
@@ -72,6 +72,21 @@ export const PROJECTS: Project[] = [
   },
 
   // ─── Explorations ────────────────────────────────────────────────────────
+  {
+    title: 'HealthCare CRM',
+    domain: 'Healthcare',
+    discipline: 'Product UX',
+    description:
+      'Healthcare CRM concept — patient context, scheduling, role-based workflows, and a fully tokenised UI system.',
+    slug: 'healthcare-crm',
+    year: '2024',
+    featured: false,
+    category: 'Healthcare',
+    projectType: 'Concept',
+    delivery: 'UX case study',
+    portfolioGroup: 'Exploration',
+    coverImage: '/work/healthcare-crm/cover.jpg',
+  },
   {
     title: 'SoundScope | Music Analytics Dashboard',
     domain: 'Analytics',
@@ -88,73 +103,18 @@ export const PROJECTS: Project[] = [
     behanceUrl: 'https://www.behance.net/gallery/235878795/SoundScope-Music-Analytics-Dashboard-Redesign',
     coverImage: '/work/soundscope/cover.png',
   },
-  {
-    title: 'MatchLink | Real-Time Matchday Insights',
-    domain: 'Sports Tech',
-    discipline: 'Product Design',
-    description:
-      'Matchday concept — real-time streams, event timelines, and high-density ops views.',
-    slug: 'matchlink',
-    year: '2025',
-    featured: false,
-    category: 'Analytics',
-    projectType: 'Concept',
-    delivery: 'Visual exploration',
-    portfolioGroup: 'Exploration',
-    behanceUrl: 'https://www.behance.net/gallery/225610623/MatchLink-Real-Time-Matchday-Insights',
-    coverImage: '/work/matchlink/cover.jpg',
-  },
-  {
-    title: 'HealthCare CRM',
-    domain: 'Healthcare',
-    discipline: 'Product UX',
-    description:
-      'Healthcare CRM concept — patient context, scheduling, role-based workflows, responsive system.',
-    slug: 'healthcare-crm',
-    year: '2024',
-    featured: false,
-    category: 'Healthcare',
-    projectType: 'Concept',
-    delivery: 'UX case study',
-    portfolioGroup: 'Exploration',
-    coverImage: '/work/healthcare-crm/cover.jpg',
-  },
-  {
-    title: 'Galaxy Cash | Fintech Mobile App',
-    domain: 'Fintech',
-    discipline: 'Product Design',
-    description:
-      'Consumer fintech concept — onboarding, transfers, step-up auth, error recovery.',
-    slug: 'galaxy-cash',
-    year: '2025',
-    featured: false,
-    category: 'Fintech',
-    projectType: 'Concept',
-    delivery: 'Visual exploration',
-    portfolioGroup: 'Exploration',
-    behanceUrl: 'https://www.behance.net/gallery/225609903/Galaxy-Cash-Mobile-App-Design',
-    coverImage: '/work/galaxy-cash/cover.png',
-  },
-  {
-    title: "Cecconi's Restaurant",
-    domain: 'Hospitality',
-    discipline: 'Web & Brand',
-    description:
-      'Hospitality site concept — menu hierarchy, reservation paths, editorial type and photo.',
-    slug: 'cecconis',
-    year: '2021',
-    featured: false,
-    category: 'Web',
-    projectType: 'Concept',
-    delivery: 'Visual exploration',
-    portfolioGroup: 'Exploration',
-    coverImage: '/work/cecconis/cover.png',
-  },
 ]
 
 /** Public profile — titles, timelines, recommendations, and client context under NDA. */
 export const LINKEDIN_PROFILE_URL =
   'https://www.linkedin.com/in/milos-dostanic/' as const
+
+/**
+ * One line, used wherever the portfolio has to account for the client work that
+ * cannot be shown. Kept in one place so home, work, about, and résumé agree.
+ */
+export const NDA_PRACTICE_NOTE =
+  'Most of my current work is enterprise product design under NDA — healthcare, fintech, and B2B SaaS.' as const
 
 /**
  * Full employment timeline — companies only. Used on About and Résumé context.
@@ -165,43 +125,48 @@ export const COMPANIES = [
     company: 'Space Inch',
     role: 'Senior Product Designer',
     period: '2024 — Present',
-    note: 'Product & engineering studio. Senior product design across healthcare, fintech, and enterprise SaaS client engagements (NDA) — IA, high-density operational UI, accessibility, and implementation-grade specs.',
+    /** One-clause scope for the homepage strip; `note` is the About-page version. */
+    scope: 'Lead design on NDA B2B products — healthcare, fintech, enterprise SaaS',
+    note: 'Lead end-to-end product design on complex B2B engagements under NDA — healthcare, fintech, and enterprise SaaS. Product strategy, information architecture, high-density operational UI, design systems, AI and agentic workflows, and development-ready delivery.',
   },
   {
     company: 'TheBrendz',
     role: 'Senior Product Designer',
     period: '2016 — Present',
-    note: 'Ongoing product design work across UX/UI, design systems, functional prototypes, and implementation-ready delivery.',
+    note: 'Design and build digital products end to end — discovery, UX, design systems, functional prototypes, and implementation. Increasingly AI products: use cases, agentic workflows, tool and data integrations, and human-in-the-loop experiences.',
   },
   {
     company: 'Freelance',
     role: 'Product Designer',
     period: '2008 — Present',
-    note: 'Independent product design work running alongside studio and client engagements — visual design, prototypes, and digital delivery.',
+    note: 'Independent product design running alongside studio and client engagements — product and UX work, web and mobile, prototypes, and visual design.',
   },
   {
     company: 'Polyrific',
     role: 'Product Designer',
     period: '2023 — 2024',
-    note: 'AI platform work — flows, UI, prototyping, and system thinking with product and engineering leads.',
+    scope: 'Led end-to-end design for an AI platform, including its design system',
+    note: 'Led end-to-end design for an AI platform — research, flows, high-fidelity UI, prototypes, and the design system. Focused on making complex AI functionality legible and on transparent, trustworthy AI experiences.',
   },
   {
     company: 'KOD WORKS',
     role: 'Senior UI/UX Designer',
     period: '2023',
-    note: 'Interfaces and flows for games, apps, and websites — interaction maps and Lottie-based product motion.',
+    note: 'Interfaces and flows for games, apps, and websites — user-flow maps, game interaction and usability, and Lottie-based product motion.',
   },
   {
     company: 'Quantox Technology',
     role: 'Medior → Senior UI/UX Designer',
     period: '2019 — 2023',
-    note: 'Complex product UX/UI across long-form engagements and multiple client accounts — from discovery patterns through shipped UI, in tight collaboration with PMs and engineers.',
+    scope: 'Product UX across multiple client accounts; promoted to Senior in 2022',
+    note: 'Product UX/UI across long-form engagements and multiple client accounts — discovery, wireframes, flows, prototypes, and shipped interfaces, in close collaboration with PMs, engineers, and stakeholders. Promoted to Senior in 2022.',
   },
   {
     company: 'Fantastic Machines · Promo · HEINEKEN',
-    role: 'Graphic & Campaign Design',
+    role: 'UI & Graphic Design',
     period: '2013 — 2017',
-    note: 'Early UI, graphic, and campaign work, including the HEINEKEN Belgrade 2013 Limited Edition can.',
+    scope: 'Web interfaces, the Paxxon application, and packaging design',
+    note: 'Early UI and campaign work — web interfaces and UI/UX improvements on the Paxxon application, advertising production, and the HEINEKEN Belgrade 2013 Limited Edition can.',
   },
 ] as const
 
@@ -217,6 +182,16 @@ export const HOME_COMPANIES = [
   COMPANIES[6], // Early career / HEINEKEN
 ] as const
 
+/** Title progression, shown on About. Each step is a role actually held. */
+export const CAREER_PATH = [
+  'Graphic Designer',
+  'UI Designer',
+  'UI/UX Designer',
+  'Senior UI/UX Designer',
+  'Product Designer',
+  'Senior Product Designer',
+] as const
+
 /** Complete public résumé timeline, kept separate from the shorter About list. */
 export const RESUME_EXPERIENCE: ResumeExperience[] = [
   {
@@ -225,7 +200,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Mar 2024 - Present',
     location: 'United States / Remote',
     summary:
-      'Lead product design across complex B2B engagements, covering product strategy, UX, prototypes, design systems, AI workflows, and development-ready delivery.',
+      'Lead end-to-end product design for complex B2B products under NDA, covering product strategy, UX, prototyping, design systems, and development-ready delivery. Design AI-powered and agentic workflows, using AI and code-based tools to connect data and tighten design-to-development collaboration.',
   },
   {
     company: 'TheBrendz',
@@ -233,7 +208,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Jan 2016 - Present',
     location: 'Serbia',
     summary:
-      'Design digital products across product strategy, UX/UI, system design, functional prototypes, and implementation-ready solutions.',
+      'Design and build digital products end to end — product strategy, UX/UI, design systems, functional prototypes, and implementation-ready solutions. Recent work focuses on AI products: defining use cases, designing agentic workflows, connecting tools and data sources, and shaping human-in-the-loop experiences.',
   },
   {
     company: 'Freelance',
@@ -241,7 +216,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Jun 2008 - Present',
     location: 'Independent',
     summary:
-      'Independent design work spanning early product thinking, user flows, visual design, prototypes, and digital delivery.',
+      'Independent product and design work for clients across web and mobile — early product thinking, user flows, visual design, prototypes, and delivery.',
   },
   {
     company: 'Polyrific',
@@ -249,7 +224,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Mar 2023 - Mar 2024',
     location: 'United States / Remote',
     summary:
-      'Designed an AI platform for organizing, analyzing, and interacting with personal data. Work covered research, flows, high-fidelity UI, prototypes, and the product design system.',
+      'Led end-to-end design for an AI-driven platform with complex user workflows. Research, interaction flows, high-fidelity UI, prototyping, and a maintained design system. Simplified complex AI functionality into understandable journeys and designed for transparency and trust, working closely with engineers and product managers on accurate, scalable implementation.',
   },
   {
     company: 'KOD WORKS',
@@ -257,7 +232,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Jun 2023 - Nov 2023',
     location: 'Serbia',
     summary:
-      'Designed interfaces and flows for games, apps, and websites, including interaction maps and Lottie-based product motion.',
+      'Designed UI and UX for games, apps, and websites — user-centred interfaces, user-flow maps, game interaction and usability, and Lottie animation implementation.',
   },
   {
     company: 'Quantox Technology',
@@ -265,7 +240,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Mar 2019 - Jun 2023',
     location: 'Serbia',
     summary:
-      'Worked with product managers, engineers, and stakeholders on product UX, prototypes, interface design, and supporting visual communication across client engagements.',
+      'Product UX/UI across multiple client accounts — user research, product discovery, wireframes, flows, prototypes, and interface design, validated with project managers, engineers, and stakeholders. Promoted from Medior to Senior in September 2022.',
   },
   {
     company: 'Fantastic Machines GmbH',
@@ -280,7 +255,8 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     role: 'Graphic Designer',
     period: 'Sep 2013 - Jun 2014',
     location: 'Serbia',
-    summary: 'Created graphic design for advertising and campaign materials.',
+    summary:
+      'Advertising and campaign design — promotional materials, print, and production-ready artwork.',
   },
   {
     company: 'The HEINEKEN Company',
@@ -308,33 +284,33 @@ export const EXPERTISE_TILES: ExpertiseTile[] = [
     number: '01',
     title: 'Complex Product UX',
     description:
-      'B2B workflows, information architecture, dense tables, multi-role products, permissions, complex forms, and the edge cases that shape real software.',
+      'Products where several roles see different things, the tables are dense, and the edge cases are the actual work. I structure that before anyone designs a screen.',
   },
   {
     number: '02',
     title: 'Design Systems',
     description:
-      'Tokens, components, variants, accessibility, documentation, and governance that keep a growing product coherent in Figma and code.',
+      'Atoms, molecules, organisms, and the token layer that binds them. Primitives map to semantic roles, roles map to components, and Figma variables stay in parity with production CSS. Governance gets designed with the library, not after.',
   },
   {
     number: '03',
     title: 'Product Delivery',
     description:
-      'Functional prototypes, developer handoff, implementation review, and close collaboration with engineering until the shipped interface matches the intent.',
+      'Prototypes engineers can read, handoff with states and responsive rules written down, and review against the deployed build until production matches the intent.',
   },
   {
     number: '04',
     title: 'Product Builder & AI',
     description:
-      'Figma-to-code workflows, functional prototypes, AI product flows, LLM features, and product architecture decisions tested in working software.',
+      'I build working software when a prototype cannot answer the question. WorkLight is where I test AI product decisions: what to rank, what to show as evidence, and what the interface does when the model is not sure.',
   },
 ]
 
 /** Homepage Selected Work — curated senior cases only (no capability pages). */
 export const FLAGSHIP_PROJECT_SLUGS = [
-  'worklight',
   'originchains',
   'optronic',
+  'worklight',
 ] as const
 
 export const FLAGSHIP_PROJECTS = FLAGSHIP_PROJECT_SLUGS.map((slug) => {

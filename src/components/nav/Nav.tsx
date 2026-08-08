@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Magnetic from '@/components/v3/Magnetic'
 import { useScrolled } from '@/hooks/useScrolled'
+import { NAV_LINKS, isNavActive } from '@/lib/nav'
 import { cn } from '@/lib/utils'
 import MobileMenu from './MobileMenu'
 
@@ -76,7 +77,7 @@ export default function Nav() {
           lightGlass && 'bg-[#eef1f6]/75 text-[#0a0c12] backdrop-blur-xl',
         )}
       >
-        <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[1fr_auto] items-center gap-3 px-5 sm:px-8 md:grid-cols-[1fr_auto_1fr] lg:px-12">
+        <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[1fr_auto] items-center gap-3 px-5 sm:px-8 lg:px-12">
           <Link
             href="/"
             className="link-roll pointer-events-auto justify-self-start font-mono text-[13px] uppercase tracking-[0.25em]"
@@ -89,24 +90,38 @@ export default function Nav() {
             </span>
           </Link>
 
-          <p
-            aria-hidden="true"
-            className={cn(
-              'hidden font-mono text-[12px] uppercase tracking-[0.28em] md:block',
-              lightGlass ? 'text-[#0a0c12]/55' : 'text-white/60',
-            )}
-          >
-            Senior Product Designer & Product Builder
-          </p>
-
           <div className="flex items-center justify-self-end">
+            {/* Desktop: the sections are the navigation. Below lg the same
+                links live in the full-screen overlay behind Menu. */}
+            <nav
+              aria-label="Primary"
+              className="pointer-events-auto hidden items-center gap-8 lg:flex"
+            >
+              {NAV_LINKS.map((link) => {
+                const active = isNavActive(pathname, link.href)
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={active ? 'page' : undefined}
+                    className={cn(
+                      'font-mono text-[12px] uppercase tracking-[0.22em] transition-opacity hover:opacity-70',
+                      active ? 'opacity-100' : 'opacity-60',
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
+            </nav>
+
             <Magnetic strength={8}>
               <button
                 onClick={() => setMenuOpen(true)}
                 aria-label="Open menu"
                 aria-expanded={menuOpen}
                 aria-controls="site-navigation-overlay"
-                className="group pointer-events-auto inline-flex items-center gap-3 py-2 pl-2 font-mono text-[12px] uppercase tracking-[0.25em] transition-opacity hover:opacity-70"
+                className="group pointer-events-auto inline-flex items-center gap-3 py-2 pl-2 font-mono text-[12px] uppercase tracking-[0.25em] transition-opacity hover:opacity-70 lg:hidden"
               >
                 Menu
                 <span aria-hidden="true" className="flex flex-col gap-[5px]">

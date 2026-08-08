@@ -15,10 +15,9 @@ const FILTERS: FilterOption[] = [
   'Explorations',
   'Product Design',
   'Product Builder',
+  'Design Systems',
   'Analytics',
   'Healthcare',
-  'Fintech',
-  'Design Systems',
   'Web',
 ]
 

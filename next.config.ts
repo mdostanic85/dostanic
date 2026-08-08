@@ -26,6 +26,29 @@ const nextConfig: NextConfig = {
         destination: '/about',
         permanent: true,
       },
+      // Design system capability page — renamed away from the AI-led slug so the
+      // URL matches how the work is now positioned.
+      {
+        source: '/work/ai-design-system-workflow',
+        destination: '/work/design-systems',
+        permanent: true,
+      },
+      // Retired explorations — off-positioning for complex B2B product work.
+      {
+        source: '/work/cecconis',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/work/galaxy-cash',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/work/matchlink',
+        destination: '/work',
+        permanent: true,
+      },
     ]
   },
   webpack: (config, { dev }) => {

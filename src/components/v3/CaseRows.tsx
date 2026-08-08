@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FLAGSHIP_PROJECTS } from '@/lib/data'
+import { FLAGSHIP_PROJECTS, NDA_PRACTICE_NOTE } from '@/lib/data'
 import Reveal from './Reveal'
 import ParallaxY from './ParallaxY'
 import ProjectSignalCover from '@/components/work/ProjectSignalCover'
@@ -23,8 +23,13 @@ export default function CaseRows() {
               01 · Selected work
             </p>
             <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl lg:text-6xl">
-              Evidence, not just screens.
+              Three products, and what I decided in each.
             </h2>
+            {/* Accounts for the client work that cannot appear here — the
+                question a senior reader asks at exactly this point. */}
+            <p className="mt-8 max-w-[54ch] text-[15px] leading-[1.75] text-muted sm:text-base">
+              These are the cases I can show. {NDA_PRACTICE_NOTE}
+            </p>
           </div>
         </Reveal>
 

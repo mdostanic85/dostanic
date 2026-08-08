@@ -5,12 +5,12 @@ import FooterCTA from '@/components/home/FooterCTA'
 import Reveal from '@/components/v3/Reveal'
 import ParallaxY from '@/components/v3/ParallaxY'
 import ArrowLink from '@/components/ui/ArrowLink'
-import { COMPANIES, LINKEDIN_PROFILE_URL } from '@/lib/data'
+import { CAREER_PATH, COMPANIES, LINKEDIN_PROFILE_URL } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Milos Dostanic is a Senior Product Designer and Product Builder with 20 years across design and 12 years in digital products.',
+    'Milos Dostanic is a Senior Product Designer leading end-to-end design on complex B2B products, with 20 years across design and 12 years in digital products.',
   alternates: { canonical: '/about' },
 }
 
@@ -90,9 +90,10 @@ export default function AboutPage() {
                 20 years across design · 12 years in digital products
               </p>
               <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
-                I help teams turn complex product requirements into clear UX,
-                scalable systems, and implementation-ready products. I work
-                remotely from Serbia in CET.
+                I turn complex product requirements into structure engineering
+                can build: information architecture, design systems, and
+                implementation that keeps the intent. I work remotely from
+                Serbia, in CET.
               </p>
             </div>
           </div>
@@ -112,24 +113,50 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 gap-10 lg:col-span-9 lg:grid-cols-9">
                 <div className="lg:col-span-6">
                 <p className="display-tight max-w-4xl text-2xl font-medium leading-[1.25] text-foreground sm:text-3xl lg:text-4xl">
-                  From communication design to complex product systems,
+                  I started in communication design and kept moving toward
                   <span className="text-muted">
                     {' '}
-                    the progression has always moved closer to how products work.
+                    the part of a product that decides whether it works.
                   </span>
                 </p>
                 <div className="mt-10 grid max-w-4xl grid-cols-1 gap-8 text-[15px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-base">
                   <p>
-                    I began in graphic and communication design, then moved into
-                    web and digital products. Work on enterprise systems made
-                    information architecture, states, and team collaboration as
-                    important as visual craft.
+                    Graphic and communication design first, then web, then
+                    digital products. Enterprise work is where information
+                    architecture, states, and collaboration with engineering
+                    became as important as visual craft.
                   </p>
                   <p>
-                    Today I work across product strategy, UX, interface systems,
-                    functional prototypes, and implementation review. I am also
-                    building WorkLight to test Product Builder and AI decisions
-                    in working software.
+                    Today I lead end-to-end design on complex B2B products under
+                    NDA, and build the system underneath them. Alongside that I
+                    build WorkLight, where I test AI product decisions in
+                    working software instead of in a prototype.
+                  </p>
+                </div>
+
+                <div className="mt-10 border-t border-stroke pt-6">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-muted">
+                    Title progression
+                  </p>
+                  <p className="mt-4 max-w-3xl font-mono text-[12px] uppercase leading-[2] tracking-[0.14em] text-muted">
+                    {CAREER_PATH.map((step, index) => (
+                      <span key={step}>
+                        {index > 0 ? (
+                          <span aria-hidden="true" className="text-accent">
+                            {' → '}
+                          </span>
+                        ) : null}
+                        <span
+                          className={
+                            index === CAREER_PATH.length - 1
+                              ? 'font-semibold text-foreground'
+                              : undefined
+                          }
+                        >
+                          {step}
+                        </span>
+                      </span>
+                    ))}
                   </p>
                 </div>
                 </div>
@@ -162,8 +189,9 @@ export default function AboutPage() {
                     02 · Experience
                   </p>
                   <p className="mt-6 max-w-xs text-sm leading-[1.75] text-muted">
-                    Companies and roles. Client projects from these chapters
-                    live under Work.
+                    Companies and roles. Client work I can publish lives under
+                    Work; current engagements are under NDA and described by
+                    scope rather than by name.
                   </p>
                   <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4 lg:flex-col lg:items-start">
                     <Link

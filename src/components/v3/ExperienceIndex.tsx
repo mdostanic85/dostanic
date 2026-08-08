@@ -47,9 +47,14 @@ export default function ExperienceIndex() {
                 <span className="col-span-4 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-2">
                   {row.period}
                 </span>
-                <h3 className="display-tight col-span-8 text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:col-span-5 sm:text-xl lg:text-2xl">
-                  {row.company}
-                </h3>
+                <div className="col-span-8 sm:col-span-5">
+                  <h3 className="display-tight text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:text-xl lg:text-2xl">
+                    {row.company}
+                  </h3>
+                  <p className="mt-2 max-w-[44ch] text-sm leading-[1.6] text-muted">
+                    {row.scope}
+                  </p>
+                </div>
                 <span className="col-span-12 col-start-5 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-5 sm:col-start-8 sm:text-right">
                   {row.role}
                 </span>

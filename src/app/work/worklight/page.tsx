@@ -169,10 +169,10 @@ export default function WorkLightCaseStudy() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <CaseStudyOutcome>
-              WorkLight is a working application with a PostgreSQL data model, background sync pipeline,
-              read-only connectors, evidence-backed task logic, report workflows, and a product UI for daily
-              decisions. It remains an actively developed personal product, so this case study describes the
-              current implementation rather than a finished market outcome.
+              WorkLight ingests from ten read-only sources, ranks the work before an LLM writes
+              anything, and shows why every task is on the list. It is an active personal product,
+              not a commercial one. The code is public, and this case study describes what exists
+              today rather than a finished market outcome.
             </CaseStudyOutcome>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">

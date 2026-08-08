@@ -23,7 +23,7 @@ export default function Capabilities() {
                 02 · Core expertise
               </p>
               <h2 className="display-tight mt-6 max-w-[16ch] text-4xl font-medium sm:text-5xl lg:text-6xl">
-                Four areas I can own.
+                What teams bring me in for.
               </h2>
             </div>
             <Link

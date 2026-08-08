@@ -16,13 +16,13 @@ type SignalCard = {
  * the project record — never from another project's story.
  */
 const SIGNAL_CARDS: Record<string, SignalCard> = {
-  'ai-design-system-workflow': {
+  'design-systems': {
     label:
-      'Abstract map of the AI-connected design system workflow — tokens, component APIs, and review loops kept in sync across Figma and code',
+      'Abstract map of a design system architecture — atoms, molecules, and organisms bound to primitive, semantic, and component token tiers',
     eyebrow: 'Capability · Systems',
     status: 'Working method',
-    headline: 'Tokens, components, and code kept in one loop.',
-    rail: ['Variables', 'Component APIs', 'Review loops'],
+    headline: 'Atoms to organisms, primitives to components.',
+    rail: ['Atomic layers', 'Token tiers', 'Figma ↔ CSS'],
   },
 }
 

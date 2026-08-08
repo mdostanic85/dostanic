@@ -7,7 +7,7 @@ import CaseStudyShell, {
   CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
-import TokenizationShowcase from '@/components/work/healthcare-crm/TokenizationShowcase'
+import TokenizationShowcase from '@/components/work/case-study/TokenizationShowcase'
 import UserFlowSection from '@/components/work/healthcare-crm/UserFlowSection'
 import { buildConceptSteps } from '@/lib/caseStudyDefaults'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'

@@ -5,29 +5,23 @@
  * Selected cases first, then capability, then explorations.
  */
 export const CASE_STUDY_SLUGS = [
-  'worklight',
   'originchains',
   'optronic',
-  'ai-design-system-workflow',
-  'soundscope',
+  'worklight',
+  'design-systems',
   'healthcare-crm',
-  'matchlink',
-  'galaxy-cash',
-  'cecconis',
+  'soundscope',
 ] as const
 
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number]
 
 export const CASE_STUDY_LABELS: Record<CaseStudySlug, string> = {
-  worklight: 'WorkLight',
   originchains: 'OriginChains',
   optronic: 'Optronic',
-  'ai-design-system-workflow': 'AI workflow',
-  soundscope: 'SoundScope',
+  worklight: 'WorkLight',
+  'design-systems': 'Design systems',
   'healthcare-crm': 'HealthCare CRM',
-  matchlink: 'MatchLink',
-  'galaxy-cash': 'Galaxy Cash',
-  cecconis: "Cecconi's",
+  soundscope: 'SoundScope',
 }
 
 export type CaseStudyNavLink = { href: string; label: string }

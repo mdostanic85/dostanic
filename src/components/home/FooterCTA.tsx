@@ -63,15 +63,15 @@ export default function FooterCTA({ compact = false }: FooterCTAProps) {
             </p>
 
             <h2 className="display-mega max-w-[14ch] text-[clamp(44px,8.5vw,128px)] font-semibold uppercase text-foreground">
-              Have something{' '}
-              <span className="text-outline block w-fit">complex?</span>
+              What are you{' '}
+              <span className="text-outline block w-fit">building?</span>
             </h2>
 
             <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-              <p className="max-w-[44ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]">
-                I&apos;m interested in senior remote product roles and selected
-                collaborations involving complex B2B software, systems, and
-                product delivery.
+              <p className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]">
+                I&apos;m looking for a senior product design role, remote, on
+                complex B2B software. I also take a small number of client
+                engagements. Email is the fastest way to reach me.
               </p>
 
               <Magnetic strength={12}>

@@ -4,12 +4,12 @@ import CaseRows from '@/components/v3/CaseRows'
 import Capabilities from '@/components/v3/Capabilities'
 import ExperienceIndex from '@/components/v3/ExperienceIndex'
 import FooterCTA from '@/components/home/FooterCTA'
-import HowIWork from '@/components/home/HowIWork'
+import Differentiators from '@/components/home/Differentiators'
 
 export const metadata: Metadata = {
-  title: 'Senior Product Designer & Product Builder',
+  title: 'Senior Product Designer, Complex B2B & Design Systems',
   description:
-    'I design complex B2B products that teams can build, from product structure and design systems to functional prototypes and implementation review.',
+    'Senior Product Designer leading design on complex B2B products under NDA — product structure, design systems and token architecture, functional prototypes, and implementation review.',
   alternates: { canonical: '/' },
 }
 
@@ -24,7 +24,7 @@ export default function HomePage() {
       <Hero />
       <CaseRows />
       <Capabilities />
-      <HowIWork />
+      <Differentiators />
       <ExperienceIndex />
       <FooterCTA />
     </main>

@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import FooterCTA from '@/components/home/FooterCTA'
 import Reveal from '@/components/v3/Reveal'
 import WorkClient from './WorkClient'
-import { PROJECTS } from '@/lib/data'
+import { NDA_PRACTICE_NOTE, PROJECTS } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Flagship case studies, supporting product work, and clearly labelled concepts across enterprise SaaS, AI products, analytics, healthcare, and design systems.',
+    'Selected client and product work, a design system capability page, and clearly labelled concepts across enterprise SaaS, AI products, analytics, and healthcare.',
   alternates: { canonical: '/work' },
 }
 
@@ -23,7 +23,7 @@ export default function WorkPage() {
   const explorationTotal = PROJECTS.filter(
     (project) => project.portfolioGroup === 'Exploration',
   ).length
-  const years = '2021 — 2026'
+  const years = '2024 — 2026'
 
   return (
     <main>
@@ -60,6 +60,13 @@ export default function WorkPage() {
                 Every item labelled by type and delivery status
               </p>
             </div>
+            <p
+              className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-muted animate-fade-in-up sm:text-base"
+              style={{ animationDelay: '460ms' }}
+            >
+              {NDA_PRACTICE_NOTE} What is published here is the work I can show
+              in full.
+            </p>
           </div>
         </div>
       </header>

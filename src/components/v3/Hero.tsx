@@ -8,13 +8,13 @@ import ParticleField from './ParticleField'
 import Magnetic from './Magnetic'
 
 /**
- * V3 hero — full-viewport poster lockup. Mono eyebrow, four uppercase mega
+ * V3 hero — full-viewport poster lockup. Mono eyebrow, three uppercase mega
  * lines with the object line in outline stroke, copy + magnetic CTAs below,
  * hairline base rail. Particle constellation behind.
  *
- * The headline breaks on its own phrases — verb / object / the two ends of
- * the range. Below `sm` the longest line wraps inside its own mask rather
- * than shrinking the whole lockup to fit a phone.
+ * The headline breaks on its own phrases — subject, object, outcome — and
+ * steps right on each line. The clamp floor is set by the longest phrase at
+ * the narrowest supported width, so no line ever wraps inside its mask.
  *
  * Motion: GSAP timeline — eyebrow fades first, masked lines rise with a
  * slight skew that settles, the rest fades, field eases in. Reduced motion
@@ -99,25 +99,20 @@ export default function Hero() {
             Senior Product Designer / Product Builder
           </p>
 
-          <h1 className="display-mega mt-6 text-[clamp(30px,6vw,92px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
+          <h1 className="display-mega mt-6 text-[clamp(30px,7.6vw,115px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
             <span className="line-mask">
               <span data-hero-line className="block">
                 I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block sm:ml-[12vw]">
+              <span data-hero-line className="text-outline block sm:ml-[10vw]">
                 complex software
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="block sm:ml-[2vw]">
-                from messy requirements
-              </span>
-            </span>
-            <span className="line-mask">
-              <span data-hero-line className="block sm:ml-[9vw]">
-                to shipped product.
+              <span data-hero-line className="block sm:ml-[18vw]">
+                that ships.
               </span>
             </span>
           </h1>

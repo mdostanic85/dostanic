@@ -12,17 +12,12 @@ export const metadata: Metadata = {
 }
 
 /**
- * Work — V3.1. A raw index, not a gallery: giant INDEX masthead with a
- * project counter, filters as a mono rail, then the hairline table with
- * cursor-trailing previews.
+ * Work — V3.1. A raw index, not a gallery: giant INDEX masthead, then the
+ * hairline table with cursor-trailing previews. Everything is on the page at
+ * once, banded by portfolio group and ordered newest first — no filters, and
+ * no ordinal but the year each case actually carries.
  */
 export default function WorkPage() {
-  const selectedTotal = PROJECTS.filter(
-    (project) => project.portfolioGroup === 'Selected',
-  ).length
-  const explorationTotal = PROJECTS.filter(
-    (project) => project.portfolioGroup === 'Exploration',
-  ).length
   const years = '2024 — 2026'
 
   return (
@@ -46,7 +41,7 @@ export default function WorkPage() {
                 className="mb-4 font-mono text-[13px] uppercase tracking-[0.25em] text-accent animate-fade-in-up sm:mb-8"
                 style={{ animationDelay: '300ms' }}
               >
-                ({String(selectedTotal).padStart(2, '0')})
+                Index
               </p>
             </div>
             <div
@@ -54,7 +49,7 @@ export default function WorkPage() {
               style={{ animationDelay: '400ms' }}
             >
               <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-muted">
-                {selectedTotal} selected · {explorationTotal} explorations · {years}
+                Newest first · {years}
               </p>
               <p className="hidden font-mono text-[12px] uppercase tracking-[0.3em] text-muted sm:block">
                 Every item labelled by type and delivery status

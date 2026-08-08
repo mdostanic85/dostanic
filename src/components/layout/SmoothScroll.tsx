@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 
@@ -29,13 +28,10 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
  * root layout.
  */
 export default function SmoothScroll() {
-  const pathname = usePathname()
   const prefersReducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     if (prefersReducedMotion) return
-    /* Lenis fights Sanity Studio’s own scroll/portals — skip on /studio. */
-    if (pathname?.startsWith('/studio')) return
 
     const lenis = new Lenis({
       // Easing curve — a softened ease-out-expo. Lenis defaults to a
@@ -69,7 +65,7 @@ export default function SmoothScroll() {
       cancelAnimationFrame(raf)
       lenis.destroy()
     }
-  }, [prefersReducedMotion, pathname])
+  }, [prefersReducedMotion])
 
   return null
 }

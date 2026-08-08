@@ -99,19 +99,19 @@ export default function Hero() {
             Senior Product Designer / Product Builder
           </p>
 
-          <h1 className="display-mega mt-6 text-[clamp(30px,7.6vw,115px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
+          <h1 className="display-mega mt-6 text-[clamp(26px,7.8vw,120px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
             <span className="line-mask">
               <span data-hero-line className="block">
                 I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block sm:ml-[10vw]">
+              <span data-hero-line className="text-outline block sm:ml-[min(10vw,150px)]">
                 complex software
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="block sm:ml-[18vw]">
+              <span data-hero-line className="block sm:ml-[min(18vw,270px)]">
                 that ships.
               </span>
             </span>

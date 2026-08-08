@@ -35,6 +35,12 @@ const LINK_DIST = 130
 const CURSOR_RADIUS = 180
 const CURSOR_FORCE = 0.6
 const DRIFT_SPEED = 0.16
+/* Field opacity — raised 15% over the original 0.13 / 0.25 / 0.20 so the
+   constellation reads against the ink chapter without turning into
+   spectacle. Still atmosphere; just no longer nearly invisible. */
+const LINK_ALPHA = 0.15
+const DOT_ALPHA = 0.29
+const DOT_TWINKLE = 0.23
 
 export default function ParticleField({ className = '' }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -107,7 +113,7 @@ export default function ParticleField({ className = '' }: { className?: string }
           const dy = a.y - b.y
           const dist2 = dx * dx + dy * dy
           if (dist2 > LINK_DIST * LINK_DIST) continue
-          const alpha = (1 - Math.sqrt(dist2) / LINK_DIST) * 0.13
+          const alpha = (1 - Math.sqrt(dist2) / LINK_DIST) * LINK_ALPHA
           ctx.strokeStyle = color
           ctx.globalAlpha = alpha
           ctx.lineWidth = 1
@@ -120,7 +126,7 @@ export default function ParticleField({ className = '' }: { className?: string }
 
       ctx.globalAlpha = 1
       for (const p of particles) {
-        const tw = 0.25 + 0.2 * Math.sin(t * 0.0011 + p.seed * 7)
+        const tw = DOT_ALPHA + DOT_TWINKLE * Math.sin(t * 0.0011 + p.seed * 7)
         ctx.fillStyle = color
         ctx.globalAlpha = tw
         ctx.beginPath()

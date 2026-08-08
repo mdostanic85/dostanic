@@ -13,8 +13,8 @@ having to be steered by hand.
 
 | # | Module | Status | Harness Artifact |
 |---|---|---|---|
-| 0 | Intake | 🔄 in progress | — (feeds every module below) |
-| 1 | Context Engineering | ⬜ open | `harness/AGENTS.md` |
+| 0 | Intake | ✅ done | — (feeds every module below) |
+| 1 | Context Engineering | 🔄 draft written, confirm scope | `harness/AGENTS.md` |
 | 2 | Rule Files & Skills | ⬜ open | `harness/skills/` |
 | 3 | Tools & MCP | ⬜ open | `harness/tools/` |
 | 4 | Multi-Agent Design | ⬜ open | `harness/agents/` |
@@ -62,6 +62,20 @@ entries add a second failure mode: rhetorical claims with invented precision.
 
 **Language.** Harness artifacts and site copy in English; workshop
 conversation in Serbian.
+
+**Never list.** No invented metrics/quotes/research/validation data; no
+Space Inch client detail without NDA review; no blurring `projectType`
+(Concept ≠ Client work); no claiming AI made a design decision; no number
+(years, awards) inconsistent across site/résumé/LinkedIn/Behance; no
+shipping the `[Type] — noun, noun, noun.` pattern — that last one is the
+defect this harness exists to kill, not a style nitpick.
+
+**Manual pipeline (confirmed).** Extract → Draft → Review. Extract pulls
+facts only from provided material and flags gaps instead of filling them.
+Draft turns facts into prose per the rule file's case-study structure and
+style section; the `ux-writing` skill applies here. Review is an adversarial
+pass that rejects Hard Rule violations and, specifically, noun-listing
+template collapse.
 
 ---
 

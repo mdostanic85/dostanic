@@ -14,8 +14,8 @@ having to be steered by hand.
 | # | Module | Status | Harness Artifact |
 |---|---|---|---|
 | 0 | Intake | ✅ done | — (feeds every module below) |
-| 1 | Context Engineering | 🔄 draft written, confirm scope | `harness/AGENTS.md` |
-| 2 | Rule Files & Skills | ⬜ open | `harness/skills/` |
+| 1 | Context Engineering | ✅ done | `harness/AGENTS.md` |
+| 2 | Rule Files & Skills | 🔄 draft written, confirm roles | `harness/skills/` |
 | 3 | Tools & MCP | ⬜ open | `harness/tools/` |
 | 4 | Multi-Agent Design | ⬜ open | `harness/agents/` |
 | 5 | Hooks & Guards | ⬜ open | `harness/hooks/` |
@@ -76,6 +76,16 @@ Draft turns facts into prose per the rule file's case-study structure and
 style section; the `ux-writing` skill applies here. Review is an adversarial
 pass that rejects Hard Rule violations and, specifically, noun-listing
 template collapse.
+
+**Role boundaries (Module 2 overlap check).** Each role touches a different
+input, which is what keeps them from overlapping: Extractor is the only role
+that touches raw source material. Drafter only ever sees Extractor's
+fact-sheet — never the raw material directly, so it can't quietly source a
+detail Extract didn't verify. Reviewer sees the draft, the fact-sheet, and
+`AGENTS.md`, but never rewrites — a FAIL goes back to Drafter, not to a
+Reviewer-authored fix. Gaps stay gaps end to end: Extractor logs them,
+Drafter writes around them and reports which ones it hit, Reviewer never
+fills one in on its own.
 
 ---
 

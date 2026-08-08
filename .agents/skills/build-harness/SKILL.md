@@ -1,6 +1,6 @@
 ---
 name: build-harness
-description: Guides a person interactively through building their own multi-agent harness for their field, covering Context Engineering, Skill Files, Tools/MCP, Multi-Agent Pipeline, Hooks, Evals, and Observability. Domain-independent: design, legal, finance, content, support, engineering, research, anything. Use when someone wants to build an agent harness, set up a multi-agent system, or develop an agentic production line for their field, or calls /build-harness.
+description: "Guides a person interactively through building their own multi-agent harness for their field, covering Context Engineering, Skill Files, Tools/MCP, Multi-Agent Pipeline, Hooks, Evals, and Observability. Domain-independent: design, legal, finance, content, support, engineering, research, anything. Use when someone wants to build an agent harness, set up a multi-agent system, or develop an agentic production line for their field, or calls /build-harness."
 ---
 
 # Build Harness: Workshop Skill

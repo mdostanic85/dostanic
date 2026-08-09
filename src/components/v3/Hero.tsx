@@ -13,8 +13,13 @@ import Magnetic from './Magnetic'
  * hairline base rail. Particle constellation behind.
  *
  * The headline breaks on its own phrases — subject, object, outcome — and
- * steps right on each line. The clamp floor is set by the longest phrase at
- * the narrowest supported width, so no line ever wraps inside its mask.
+ * steps right on each line from `sm` up, sized so none of the three lines
+ * wraps at any supported width. Below `sm` there's no room for that on one
+ * row at a size worth calling a headline, so the middle line is allowed its
+ * one natural break — "complex" / "software" on the phrase's only space —
+ * which reads as a clean two-word stack rather than a wrap; the other two
+ * lines stay single-row. That trade buys a mobile size roughly double what
+ * a strict no-wrap-anywhere rule would allow.
  *
  * Motion: GSAP timeline — eyebrow fades first, masked lines rise with a
  * slight skew that settles, the rest fades, field eases in. Reduced motion
@@ -99,7 +104,7 @@ export default function Hero() {
             Senior Product Designer / Product Builder
           </p>
 
-          <h1 className="display-mega mt-6 text-[clamp(26px,7.8vw,120px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
+          <h1 className="display-mega mt-6 text-[clamp(40px,14vw,56px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8 sm:text-[clamp(26px,7.8vw,120px)]">
             <span className="line-mask">
               <span data-hero-line className="block">
                 I design

@@ -28,7 +28,7 @@ export default function ProcessSpine() {
             >
               Most of the work is deciding.
             </h2>
-            <p className="mt-8 text-[15px] leading-[1.75] text-muted sm:text-base">
+            <p className="mt-8 text-[17px] leading-[1.75] text-muted sm:text-[18px]">
               Screens are the easy part. I spend most of my effort finding the
               structure of a product and naming the few decisions it actually
               depends on — the rest follows from those.
@@ -87,7 +87,7 @@ export default function ProcessSpine() {
                     >
                       {step.title}
                     </h3>
-                    <p className="mt-3 max-w-[34ch] text-sm leading-[1.7] text-muted">
+                    <p className="mt-3 max-w-[34ch] text-base leading-[1.7] text-muted">
                       {step.description}
                     </p>
                   </li>
@@ -99,7 +99,7 @@ export default function ProcessSpine() {
 
         {/* The claim the diagram is making, said once. */}
         <Reveal>
-          <p className="mt-16 max-w-[62ch] border-t border-stroke pt-8 text-[15px] leading-[1.75] text-muted sm:text-base lg:mt-20">
+          <p className="mt-16 max-w-[62ch] border-t border-stroke pt-8 text-[17px] leading-[1.75] text-muted sm:text-[18px] lg:mt-20">
             The two marked steps are where I spend most of my time. A product
             with the right structure and four well-argued decisions is
             straightforward to design. One without them stays expensive no matter

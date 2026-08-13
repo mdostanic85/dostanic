@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Azeret_Mono, Bricolage_Grotesque } from 'next/font/google'
+import { Archivo, Azeret_Mono } from 'next/font/google'
 import Nav from '@/components/nav/Nav'
 import RouteTransitions from '@/components/layout/RouteTransitions'
 import SmoothScroll from '@/components/layout/SmoothScroll'
@@ -9,9 +9,9 @@ import PortfolioAnalytics from '@/components/analytics/PortfolioAnalytics'
 import { SITE_URL } from '@/lib/site'
 import './globals.css'
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const archivo = Archivo({
   subsets: ['latin'],
-  variable: '--font-bricolage',
+  variable: '--font-archivo',
   display: 'swap',
 })
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${bricolageGrotesque.variable} ${azeretMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${azeretMono.variable}`}>
       <body id="top">
         <a
           href="#main-content"

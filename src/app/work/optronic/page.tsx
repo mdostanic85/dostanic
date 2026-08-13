@@ -308,7 +308,7 @@ export default function OptronicCaseStudy() {
               <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
                 Verifiable
               </p>
-              <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
+              <p className="mt-4 text-base leading-[1.75] text-muted sm:text-[18px]">
                 The site is public, so this case study can be checked directly
                 rather than taken on trust. Traffic and commercial results sit
                 with the client and are not claimed here.

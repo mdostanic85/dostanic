@@ -27,7 +27,7 @@ export default function CaseRows() {
             </h2>
             {/* Accounts for the client work that cannot appear here — the
                 question a senior reader asks at exactly this point. */}
-            <p className="mt-8 text-[15px] leading-[1.75] text-muted sm:text-base">
+            <p className="mt-8 text-[17px] leading-[1.75] text-muted sm:text-[18px]">
               Three difficult products, and what I decided in each.{' '}
               {NDA_PRACTICE_NOTE}
             </p>
@@ -108,7 +108,7 @@ export default function CaseRows() {
 
                     {/* Problem → ownership → the one decision. Three beats, in
                         that order, so the card argues instead of describing. */}
-                    <p className="mt-5 max-w-md text-[15px] leading-[1.7] text-foreground/85">
+                    <p className="mt-5 max-w-md text-[17px] leading-[1.7] text-foreground/85">
                       {project.problem ?? project.description}
                     </p>
 
@@ -117,7 +117,7 @@ export default function CaseRows() {
                         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
                           I owned
                         </p>
-                        <p className="mt-2 text-sm leading-[1.7] text-muted">
+                        <p className="mt-2 text-base leading-[1.7] text-muted">
                           {project.owned}
                         </p>
                       </div>
@@ -128,7 +128,7 @@ export default function CaseRows() {
                         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
                           Key decision
                         </p>
-                        <p className="mt-2 text-sm leading-[1.7] text-muted">
+                        <p className="mt-2 text-base leading-[1.7] text-muted">
                           {project.decision}
                         </p>
                       </div>

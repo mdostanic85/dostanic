@@ -73,7 +73,7 @@ export default function ExpertiseAccordion({
               <div className="overflow-hidden">
                 <div className="grid grid-cols-12 gap-3 pb-12 lg:gap-8">
                   <div className="col-span-12 sm:col-start-2 sm:col-span-10 lg:col-span-4">
-                    <p className="text-sm leading-[1.75] text-muted lg:text-base">
+                    <p className="text-base leading-[1.75] text-muted lg:text-[18px]">
                       {area.description}
                     </p>
                   </div>

@@ -38,14 +38,14 @@ export function CaseRole({
           {points.map((point) => (
             <li
               key={point}
-              className="border-b border-stroke py-4 text-[15px] leading-[1.7] text-muted sm:text-base"
+              className="border-b border-stroke py-4 text-[17px] leading-[1.7] text-muted sm:text-[18px]"
             >
               {point}
             </li>
           ))}
         </ul>
         {collaborators ? (
-          <p className="mt-6 max-w-[60ch] text-sm leading-[1.7] text-muted/80">
+          <p className="mt-6 max-w-[60ch] text-base leading-[1.7] text-muted/80">
             {collaborators}
           </p>
         ) : null}
@@ -82,7 +82,7 @@ export function CaseProblem({
             <span className="mt-1 font-mono text-[12px] tracking-[0.22em] text-accent">
               /{String(idx + 1).padStart(2, '0')}
             </span>
-            <span className="text-[15px] leading-[1.7] text-muted sm:text-base">
+            <span className="text-[17px] leading-[1.7] text-muted sm:text-[18px]">
               {point}
             </span>
           </li>
@@ -111,7 +111,7 @@ export function CaseComplication({
       <p className="display-tight mt-6 text-2xl font-medium leading-[1.3] text-foreground sm:text-3xl lg:text-[38px]">
         {statement}
       </p>
-      <p className="mt-8 max-w-[64ch] text-[15px] leading-[1.75] text-muted sm:text-base lg:text-lg">
+      <p className="mt-8 max-w-[64ch] text-[17px] leading-[1.75] text-muted sm:text-[18px] lg:text-xl">
         {body}
       </p>
     </div>
@@ -139,7 +139,7 @@ export function CaseOutcome({
                 aria-hidden="true"
                 className="mt-[9px] h-1.5 w-1.5 shrink-0 bg-accent"
               />
-              <span className="text-[15px] leading-[1.7] text-muted sm:text-base">
+              <span className="text-[17px] leading-[1.7] text-muted sm:text-[18px]">
                 {point}
               </span>
             </li>
@@ -173,7 +173,7 @@ export function CaseReflection({
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               {item.label}
             </p>
-            <p className="mt-3 text-sm leading-[1.7] text-muted">{item.body}</p>
+            <p className="mt-3 text-base leading-[1.7] text-muted">{item.body}</p>
           </div>
         ))}
       </div>

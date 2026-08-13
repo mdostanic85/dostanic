@@ -96,7 +96,7 @@ export default function TokenizationShowcase() {
     <div className="space-y-10">
       <div>
         <p className={sectionEyebrowAccentClassName}>Tokenization example</p>
-        <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">
+        <p className="mt-4 max-w-2xl text-[18px] leading-[1.7] text-muted lg:text-xl">
           Semantic tokens first — primitives map to roles, roles map to components.
           Engineering receives names and values, not one-off hex per screen.
         </p>
@@ -122,7 +122,7 @@ export default function TokenizationShowcase() {
             </div>
           ))}
         </div>
-        <div className="mt-8 grid grid-cols-3 gap-4 border-t border-stroke pt-8">
+        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-stroke pt-8 sm:grid-cols-3">
           {NEUTRAL_TOKENS.map((t) => (
             <div key={t.name} className="flex items-center gap-3">
               <div

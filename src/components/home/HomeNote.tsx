@@ -30,7 +30,7 @@ export default function HomeNote() {
                 {HOME_NOTE.lead}
               </h2>
 
-              <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 text-[15px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-base">
+              <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 text-[17px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-[18px]">
                 {HOME_NOTE.body.map((paragraph) => (
                   <p key={paragraph.slice(0, 24)}>{paragraph}</p>
                 ))}

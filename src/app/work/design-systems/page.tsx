@@ -106,7 +106,7 @@ export default function DesignSystemsPage() {
             <h2 className="display-tight mt-5 max-w-[14ch] text-3xl font-medium sm:text-4xl">
               A library without rules is a file people stop opening.
             </h2>
-            <p className="mt-6 max-w-[46ch] text-sm leading-[1.75] text-muted sm:text-base">
+            <p className="mt-6 max-w-[46ch] text-base leading-[1.75] text-muted sm:text-[18px]">
               Governance is the part most systems skip, and it is the reason
               most systems are dead within a year. I design it with the
               components, not after them.
@@ -121,7 +121,7 @@ export default function DesignSystemsPage() {
                 <h3 className="display-tight mt-4 text-xl font-medium">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-sm leading-[1.75] text-muted">
+                <p className="mt-4 text-base leading-[1.75] text-muted">
                   {item.body}
                 </p>
               </article>
@@ -136,7 +136,7 @@ export default function DesignSystemsPage() {
           <h2 className="display-tight mt-4 text-2xl font-medium sm:text-3xl">
             The same architecture, applied.
           </h2>
-          <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
+          <p className="mt-6 text-[18px] leading-[1.7] text-muted lg:text-xl">
             Token set from the{' '}
             <Link
               href="/work/healthcare-crm"
@@ -160,14 +160,14 @@ export default function DesignSystemsPage() {
             </h2>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            <p className="text-base leading-[1.7] text-muted lg:text-lg">
+            <p className="text-[18px] leading-[1.7] text-muted lg:text-xl">
               AI compresses the cost of exploration and the cost of writing
               things down. It generates variant sets and documentation drafts
               faster than I can, and it is genuinely useful for building a code
               prototype when Figma cannot answer a question about real data or
               real viewports.
             </p>
-            <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
+            <p className="mt-6 text-[18px] leading-[1.7] text-muted lg:text-xl">
               It does not decide the token structure, the component contract, or
               what ships. Those are the decisions the system is made of, and
               they stay mine.

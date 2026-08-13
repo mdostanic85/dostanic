@@ -29,7 +29,7 @@ export default function ContactPage() {
             </h1>
           </div>
           <div className="flex flex-col justify-end lg:col-span-4">
-            <p className="max-w-[44ch] text-base leading-[1.75] text-muted">
+            <p className="max-w-[44ch] text-[18px] leading-[1.75] text-muted">
               I am based in Serbia, work in CET, and collaborate remotely with teams worldwide.
               Email is the clearest way to start.
             </p>
@@ -65,7 +65,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-20 flex flex-col gap-5 border-t border-stroke pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-[50ch] text-sm leading-[1.7] text-muted">
+              <p className="max-w-[50ch] text-base leading-[1.7] text-muted">
                 Include a short description of the product, team, problem, and timing. I will reply by email.
               </p>
               <div className="flex flex-wrap gap-5 font-mono text-[12px] uppercase tracking-[0.22em]">

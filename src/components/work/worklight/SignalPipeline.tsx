@@ -97,7 +97,7 @@ export default function SignalPipeline() {
         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
           The boundary
         </p>
-        <p className="mt-2 max-w-[74ch] text-sm leading-[1.7] text-foreground/85">
+        <p className="mt-2 max-w-[74ch] text-base leading-[1.7] text-foreground/85">
           No model runs before stage 03. The priority order is produced by code
           that can be tested and replayed, so the same day&apos;s data always
           yields the same order — and the model&apos;s job is to explain a

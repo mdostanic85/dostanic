@@ -47,7 +47,7 @@ export const pageHeaderMetaClassName =
 
 /** Intro paragraph directly under page `h1`. */
 export const pageIntroClassName =
-  'mt-8 max-w-2xl text-base leading-[1.75] text-muted lg:text-lg'
+  'mt-8 max-w-2xl text-[18px] leading-[1.75] text-muted lg:text-xl'
 
 /** `h1` — home hero stack (V3 hero builds its own lockup; kept for compat). */
 export const heroHeadingClassName =
@@ -55,7 +55,7 @@ export const heroHeadingClassName =
 
 /** Hero supporting paragraph under `h1`. */
 export const heroIntroClassName =
-  'mt-8 max-w-[48ch] text-balance text-[15px] font-normal leading-[1.7] text-muted sm:text-base lg:text-[17px]'
+  'mt-8 max-w-[48ch] text-balance text-[17px] font-normal leading-[1.7] text-muted sm:text-[18px] lg:text-[19px]'
 
 /** `h2` — closing CTA masthead. */
 export const footerCtaHeadingClassName =

@@ -208,7 +208,7 @@ export default function WorkLightCaseStudy() {
           <h2 className="display-tight mt-5 text-3xl font-medium sm:text-4xl">
             Ten sources, one view, no soup.
           </h2>
-          <p className="mt-6 text-[15px] leading-[1.75] text-muted sm:text-base">
+          <p className="mt-6 text-[17px] leading-[1.75] text-muted sm:text-[18px]">
             The structural question behind the product: how do meeting notes,
             tickets, mail, calendar, and project knowledge become one useful
             daily view without becoming an inbox with extra steps?
@@ -270,7 +270,7 @@ export default function WorkLightCaseStudy() {
               <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
                 Public proof
               </p>
-              <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
+              <p className="mt-4 text-base leading-[1.75] text-muted sm:text-[18px]">
                 This is an active personal product, not a commercial one, and the
                 case study describes what exists today rather than a finished
                 market outcome. The repository documents the architecture, task

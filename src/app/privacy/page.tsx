@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <p className="mt-16 font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">Privacy</p>
       <h1 className="display-tight mt-6 text-5xl font-medium sm:text-7xl">A simple portfolio with minimal data collection.</h1>
 
-      <div className="mt-16 space-y-12 border-t border-stroke pt-10 text-base leading-[1.75] text-muted">
+      <div className="mt-16 space-y-12 border-t border-stroke pt-10 text-[18px] leading-[1.75] text-muted">
         <section>
           <h2 className="text-xl font-medium text-foreground">Contact</h2>
           <p className="mt-4">This site does not submit contact forms or create user accounts. Email links open your email application. Any information you send by email is handled through the email services used by you and by milos@dostanic.net.</p>

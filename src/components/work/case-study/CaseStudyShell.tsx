@@ -125,7 +125,7 @@ export function CaseStudyOutcome({ children }: { children: ReactNode }) {
   return (
     <div className="max-w-3xl">
       <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">Outcome</p>
-      <div className="mt-4 text-base leading-[1.7] text-muted lg:text-lg">{children}</div>
+      <div className="mt-4 text-[18px] leading-[1.7] text-muted lg:text-xl">{children}</div>
     </div>
   )
 }

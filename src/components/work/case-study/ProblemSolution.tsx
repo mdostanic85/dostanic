@@ -19,7 +19,7 @@ export default function ProblemSolution({
   return (
     <div className="space-y-10">
       {intro ? (
-        <p className="max-w-2xl text-base leading-[1.7] text-muted lg:text-lg">{intro}</p>
+        <p className="max-w-2xl text-[18px] leading-[1.7] text-muted lg:text-xl">{intro}</p>
       ) : null}
 
       <p className={sectionEyebrowAccentClassName}>Problem → solution</p>

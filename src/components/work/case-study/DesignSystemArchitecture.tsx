@@ -61,7 +61,7 @@ export default function DesignSystemArchitecture() {
         <h2 className="display-tight mt-4 max-w-[20ch] text-2xl font-medium sm:text-3xl">
           Atoms, molecules, organisms.
         </h2>
-        <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-muted lg:text-lg">
+        <p className="mt-6 max-w-[62ch] text-[18px] leading-[1.7] text-muted lg:text-xl">
           The hierarchy is not a naming convention. It decides where a change is
           allowed to happen, which is what keeps a system from drifting once
           several people are contributing to it.
@@ -76,7 +76,7 @@ export default function DesignSystemArchitecture() {
               <h3 className="display-tight text-xl font-medium text-foreground">
                 {item.layer}
               </h3>
-              <p className="mt-3 text-sm leading-[1.7] text-muted">
+              <p className="mt-3 text-base leading-[1.7] text-muted">
                 {item.definition}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -103,7 +103,7 @@ export default function DesignSystemArchitecture() {
         <h2 className="display-tight mt-4 max-w-[24ch] text-2xl font-medium sm:text-3xl">
           Three tiers, so a rebrand is one file and not a sweep.
         </h2>
-        <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-muted lg:text-lg">
+        <p className="mt-6 max-w-[62ch] text-[18px] leading-[1.7] text-muted lg:text-xl">
           Components never reference a primitive. That single rule is what makes
           theming, white-labelling, and dark mode a token change instead of a
           component rewrite.
@@ -121,7 +121,7 @@ export default function DesignSystemArchitecture() {
               <h3 className="display-tight col-span-10 text-lg font-medium sm:col-span-3">
                 {tier.tier}
               </h3>
-              <p className="col-span-12 text-sm leading-[1.7] text-muted sm:col-span-4">
+              <p className="col-span-12 text-base leading-[1.7] text-muted sm:col-span-4">
                 {tier.role}
               </p>
               <code className="col-span-12 overflow-x-auto whitespace-nowrap border border-stroke bg-background px-3 py-2 font-mono text-[12px] text-muted sm:col-span-4">
@@ -138,7 +138,7 @@ export default function DesignSystemArchitecture() {
         <h2 className="display-tight mt-4 max-w-[24ch] text-2xl font-medium sm:text-3xl">
           One name in Figma, the same name in code.
         </h2>
-        <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-muted lg:text-lg">
+        <p className="mt-6 max-w-[62ch] text-[18px] leading-[1.7] text-muted lg:text-xl">
           Figma variables and CSS custom properties are versioned against each
           other. When an engineer reads a spec, the name in the file is the name
           they type — there is nothing to translate and nothing to guess.

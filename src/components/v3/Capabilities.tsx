@@ -55,7 +55,7 @@ export default function Capabilities() {
                 <h3 className="display-tight mt-6 text-xl font-medium sm:text-2xl">
                   {tile.title}
                 </h3>
-                <p className="mt-4 text-sm leading-[1.75] text-muted">
+                <p className="mt-4 text-base leading-[1.75] text-muted">
                   {tile.description}
                 </p>
               </li>

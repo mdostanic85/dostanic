@@ -101,12 +101,12 @@ export default function Hero() {
 
           <h1 className="display-mega mt-6 text-[clamp(30px,7.6vw,115px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
             <span className="line-mask">
-              <span data-hero-line className="block">
+              <span data-hero-line className="block text-[clamp(34px,8.8vw,132px)]">
                 I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block sm:ml-[10vw]">
+              <span data-hero-line className="text-outline block text-[clamp(34px,8.8vw,132px)] sm:ml-[10vw]">
                 complex software
               </span>
             </span>

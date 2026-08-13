@@ -122,9 +122,9 @@ export default function Hero() {
               data-hero-fade
               className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              I work across product design, UX architecture, and enough
-              engineering to stay useful — usually on software that is difficult
-              before it is beautiful.
+              I take on the products other designers pass on — too many roles,
+              too many edge cases, too much at stake to fake with a mockup —
+              and turn them into structure engineering can actually build.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">

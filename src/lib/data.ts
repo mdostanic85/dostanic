@@ -1,7 +1,7 @@
 import type {
   Project,
   ExpertiseTile,
-  Differentiator,
+  ProcessStep,
   ResumeExperience,
 } from './types'
 
@@ -13,6 +13,12 @@ export const PROJECTS: Project[] = [
     discipline: 'Product Design',
     description:
       'B2B climate intelligence — discovery UX, trust-heavy company data, and a component system built so engineering could implement from patterns instead of one-off specs.',
+    problem:
+      'A B2B product where three different contexts — your own identity, a company workspace, and administration — kept colliding in the same navigation.',
+    owned:
+      'Information architecture, navigation, the primary flows and their states, and the component system engineering built from.',
+    decision:
+      'Separated personal, company, and administrative space before designing screens — which is why admin and visibility modes could be added later without reopening navigation.',
     slug: 'originchains',
     year: '2025',
     featured: true,
@@ -28,6 +34,12 @@ export const PROJECTS: Project[] = [
     discipline: 'UX & Frontend',
     description:
       'Industrial sensor manufacturer — EN/DE information architecture, nine product families, and a React component set I designed and built myself.',
+    problem:
+      'A Swiss industrial manufacturer whose catalogue had to serve two incompatible readers: engineers who know the part number, and buyers who only know their application.',
+    owned:
+      'The information architecture, the page templates, the component set — and the implementation. I designed this and I built it.',
+    decision:
+      'Treated manuals and firmware as product data rather than a downloads dump, so technical documents live on the product that needs them.',
     slug: 'optronic',
     year: '2024',
     featured: true,
@@ -44,6 +56,12 @@ export const PROJECTS: Project[] = [
     discipline: 'Product Designer & Builder',
     description:
       'Local-first AI product that turns work-tool signals into an evidence-linked daily plan. Ranking, trust model, data model, and implementation owned end to end.',
+    problem:
+      'Ten tools each hold part of your work and none of them agree. The hard question is not summarising them — it is deciding what actually deserves attention today.',
+    owned:
+      'The product definition, the ranking and trust model, the data model, the interface, and the code. End to end.',
+    decision:
+      'Ranked the work deterministically before any model writes a word, so the language layer explains the priority order instead of inventing it.',
     slug: 'worklight',
     year: '2026',
     featured: true,
@@ -112,13 +130,20 @@ export const LINKEDIN_PROFILE_URL =
 /**
  * One line, used wherever the portfolio has to account for the client work that
  * cannot be shown. Kept in one place so home, work, about, and résumé agree.
+ *
+ * Confidentiality: this line must never name a client, product, industry, or
+ * internal workflow. Current commercial work is confidential — that is the
+ * whole of what gets said publicly.
  */
 export const NDA_PRACTICE_NOTE =
-  'Most of my current work is enterprise product design under NDA — healthcare, fintech, and B2B SaaS.' as const
+  'My current commercial work is confidential, so it is not shown here.' as const
 
 /**
  * Full employment timeline — companies only. Used on About and Résumé context.
  * Client product names stay under /work; employer client work may be NDA.
+ *
+ * Confidentiality: the current-employer entry stays at employer + title only.
+ * No industries, no client names, no product names, no internal workflows.
  */
 export const COMPANIES = [
   {
@@ -126,8 +151,8 @@ export const COMPANIES = [
     role: 'Senior Product Designer',
     period: '2024 — Present',
     /** One-clause scope for the homepage strip; `note` is the About-page version. */
-    scope: 'Lead design on NDA B2B products — healthcare, fintech, enterprise SaaS',
-    note: 'Lead end-to-end product design on complex B2B engagements under NDA — healthcare, fintech, and enterprise SaaS. Product strategy, information architecture, high-density operational UI, design systems, AI and agentic workflows, and development-ready delivery.',
+    scope: 'Current commercial work is confidential',
+    note: 'Senior Product Designer. Current commercial work is confidential and is not described here.',
   },
   {
     company: 'TheBrendz',
@@ -200,7 +225,7 @@ export const RESUME_EXPERIENCE: ResumeExperience[] = [
     period: 'Mar 2024 - Present',
     location: 'United States / Remote',
     summary:
-      'Lead end-to-end product design for complex B2B products under NDA, covering product strategy, UX, prototyping, design systems, and development-ready delivery. Design AI-powered and agentic workflows, using AI and code-based tools to connect data and tighten design-to-development collaboration.',
+      'Senior Product Designer. Current commercial work is confidential and is not described here.',
   },
   {
     company: 'TheBrendz',
@@ -279,30 +304,72 @@ export const RESUME_LANGUAGES = [
   { language: 'German', level: 'Limited working proficiency' },
 ] as const
 
+/**
+ * Homepage capabilities — four, deliberately differentiated, one short line each.
+ * Ordered as the work actually happens: structure, then the hard surfaces, then
+ * the system underneath, then getting it built.
+ */
 export const EXPERTISE_TILES: ExpertiseTile[] = [
   {
     number: '01',
-    title: 'Complex Product UX',
+    title: 'Product architecture',
     description:
-      'Products where several roles see different things, the tables are dense, and the edge cases are the actual work. I structure that before anyone designs a screen.',
+      'Turning ambiguous requirements into flows, states, hierarchy, and a product structure a team can actually build against.',
   },
   {
     number: '02',
-    title: 'Design Systems',
+    title: 'Complex UX',
     description:
-      'Atoms, molecules, organisms, and the token layer that binds them. Primitives map to semantic roles, roles map to components, and Figma variables stay in parity with production CSS. Governance gets designed with the library, not after.',
+      'Data-heavy, workflow-heavy software. Several roles seeing different things, dense tables, and edge cases that are the real work.',
   },
   {
     number: '03',
-    title: 'Product Delivery',
+    title: 'Systems',
     description:
-      'Prototypes engineers can read, handoff with states and responsive rules written down, and review against the deployed build until production matches the intent.',
+      'Reusable foundations instead of one-off screens — tokens, components, and the rules that keep design and code from drifting apart.',
   },
   {
     number: '04',
-    title: 'Product Builder & AI',
+    title: 'Prototype to implementation',
     description:
-      'I build working software when a prototype cannot answer the question. WorkLight is where I test AI product decisions: what to rank, what to show as evidence, and what the interface does when the model is not sure.',
+      'Prototypes, enough code to be useful, and close work with engineering — so the shipped product still matches the decision.',
+  },
+]
+
+/**
+ * Homepage process spine. Deliberately not a design-thinking diagram: the
+ * weight sits on Structure and Decide, which is where the work actually is.
+ */
+export const PROCESS_STEPS: ProcessStep[] = [
+  {
+    number: '01',
+    title: 'Understand',
+    description:
+      'Read the system before proposing anything. Who it serves, what already exists, what the constraints really are.',
+  },
+  {
+    number: '02',
+    title: 'Structure',
+    description:
+      'Find the shape of the product. Flows, states, hierarchy, and the boundaries between things that should not share a space.',
+  },
+  {
+    number: '03',
+    title: 'Decide',
+    description:
+      'Name the handful of decisions the product depends on, choose between real options, and accept the trade-off out loud.',
+  },
+  {
+    number: '04',
+    title: 'Prototype',
+    description:
+      'Make it concrete — in Figma when that answers the question, in code when it does not.',
+  },
+  {
+    number: '05',
+    title: 'Ship',
+    description:
+      'Stay with it through implementation and review the built product against the intent, not against the mockup.',
   },
 ]
 
@@ -319,42 +386,14 @@ export const FLAGSHIP_PROJECTS = FLAGSHIP_PROJECT_SLUGS.map((slug) => {
   return project
 })
 
-export const DIFFERENTIATORS: Differentiator[] = [
-  {
-    number: '01',
-    title: 'Token architecture before screens',
-    description:
-      "Before I open a frame, I map the token layer — spacing, colour, typography, elevation. Components built on shaky foundations don't survive a design system review. I start from the system, not the screen.",
-  },
-  {
-    number: '02',
-    title: "I prototype in code when Figma isn't enough",
-    description:
-      "When an interaction or data-heavy pattern can't be accurately represented in Figma, I build it in Cursor. Stakeholders and engineers see something real — not an approximation. This closes interpretation gaps before they become rework.",
-  },
-  {
-    number: '03',
-    title: 'Implementation review on every project',
-    description:
-      "I compare deployed product against design intent in Vercel preview and in production. Typography rendering, spacing, responsive behaviour, state handling — I annotate discrepancies and close them. Most designers stop at handoff. I don't.",
-  },
-  {
-    number: '04',
-    title: 'Design systems need governance, not just components',
-    description:
-      'A component library without a contribution process, versioning model, and deprecation policy is a Figma file that will be ignored within a year. I design the governance alongside the components.',
-  },
-]
-
-export const TOOLS = [
-  'Figma',
-  'GitHub',
-  'Vercel',
-  'Cursor',
-  'Claude',
-  'ChatGPT',
-  'Figma Make',
-  'Linear',
-  'Notion',
-  'Storybook',
-]
+/**
+ * Short personal note for the homepage — the evolution, not the CV. The full
+ * story stays on About.
+ */
+export const HOME_NOTE = {
+  lead: 'I did not start in product.',
+  body: [
+    'I started in communication design, moved to web, then to digital products, and kept moving toward the part of a product that decides whether it works at all — its structure.',
+    'Complex software is where that turned into a practice: enterprise workflows, several roles, states nobody documented, and requirements that contradict each other. These days I build as well as design, because some product questions only answer themselves in working software.',
+  ],
+} as const

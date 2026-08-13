@@ -17,8 +17,7 @@ export default function ExperienceIndex() {
                 04 · Experience
               </p>
               <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl">
-                Where I&apos;ve{' '}
-                <span className="accent-gradient-text">worked.</span>
+                Where I&apos;ve worked.
               </h2>
             </div>
             <Link

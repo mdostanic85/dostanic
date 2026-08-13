@@ -21,6 +21,12 @@ export type Project = {
   domain: string
   discipline: string
   description: string
+  /** Selected-work card: the product problem, in one plain sentence. */
+  problem?: string
+  /** Selected-work card: what this person owned, first person, no "we". */
+  owned?: string
+  /** Selected-work card: the single decision worth opening the case for. */
+  decision?: string
   slug: string
   year: string
   featured: boolean
@@ -47,7 +53,8 @@ export type ExpertiseTile = {
   description: string
 }
 
-export type Differentiator = {
+/** One step on the homepage process spine (Understand → … → Ship). */
+export type ProcessStep = {
   number: string
   title: string
   description: string

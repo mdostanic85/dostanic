@@ -68,10 +68,13 @@ export default function ProjectSignalCover({ project }: { project: Project }) {
           <span className="text-[#6c83ff]">Evidence linked</span>
         </div>
         <div className="grid h-[calc(100%-2.5rem)] grid-cols-12 gap-3 pt-4 sm:gap-5">
-          <div className="col-span-4 flex flex-col justify-between border border-white/10 p-3 sm:p-4">
+          {/* Label then list, top-aligned — `justify-between` left a void in the
+              middle of the column once the list was only a few items long. */}
+          <div className="col-span-4 flex flex-col gap-4 border border-white/10 p-3 sm:p-4">
             <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/45">Read-only signals</span>
             <div className="space-y-2 font-mono text-[12px] uppercase tracking-[0.14em] text-white/70 sm:text-[12px]">
               <p>Calendar</p><p>Jira</p><p>Figma</p><p>GitHub</p>
+              <p className="text-white/40">+ 6 more</p>
             </div>
           </div>
           <div className="col-span-8 flex flex-col justify-between bg-white/[0.055] p-4 sm:p-6">

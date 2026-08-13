@@ -3,14 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FooterCTA from '@/components/home/FooterCTA'
 import Reveal from '@/components/v3/Reveal'
-import ParallaxY from '@/components/v3/ParallaxY'
 import ArrowLink from '@/components/ui/ArrowLink'
 import { CAREER_PATH, COMPANIES, LINKEDIN_PROFILE_URL } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Milos Dostanic is a Senior Product Designer leading end-to-end design on complex B2B products, with 20 years across design and 12 years in digital products.',
+    'Milos Dostanic is a Senior Product Designer and product builder. Communication design, then web, then digital products, then the complex software where structure decides whether a product works.',
   alternates: { canonical: '/about' },
 }
 
@@ -46,22 +45,11 @@ const PRINCIPLES = [
 export default function AboutPage() {
   return (
     <main>
-      {/* Masthead — statement + bio */}
+      {/* Masthead — statement + bio.
+          No ghost "20" numeral: length of experience is supporting credibility,
+          not the headline. The years appear once, in the meta rail below. */}
       <header className="relative overflow-hidden pt-16">
         <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
-          {/* Ghost numeral */}
-          <ParallaxY
-            drift={120}
-            className="pointer-events-none absolute right-0 top-10 select-none sm:top-0"
-          >
-            <span
-              aria-hidden="true"
-              className="font-mono text-[34vw] font-light leading-none tracking-tighter text-foreground/[0.05] sm:text-[26vw]"
-            >
-              20
-            </span>
-          </ParallaxY>
-
           <div className="relative flex flex-col justify-end pb-10 pt-20 sm:pt-28 lg:pb-14">
             <h1 className="display-mega max-w-[12ch] text-[clamp(44px,8.5vw,136px)] font-semibold uppercase">
               <span className="line-mask">
@@ -87,7 +75,7 @@ export default function AboutPage() {
               style={{ animationDelay: '420ms' }}
             >
               <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
-                20 years across design · 12 years in digital products
+                12 years in digital products · 20 in design
               </p>
               <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
                 I turn complex product requirements into structure engineering
@@ -127,10 +115,10 @@ export default function AboutPage() {
                     became as important as visual craft.
                   </p>
                   <p>
-                    Today I lead end-to-end design on complex B2B products under
-                    NDA, and build the system underneath them. Alongside that I
-                    build WorkLight, where I test AI product decisions in
-                    working software instead of in a prototype.
+                    My current commercial work is confidential, so the published
+                    work here is what I can show in full. Alongside it I build
+                    WorkLight, where product questions get answered in working
+                    software instead of in a prototype.
                   </p>
                 </div>
 
@@ -189,9 +177,9 @@ export default function AboutPage() {
                     02 · Experience
                   </p>
                   <p className="mt-6 max-w-xs text-sm leading-[1.75] text-muted">
-                    Companies and roles. Client work I can publish lives under
-                    Work; current engagements are under NDA and described by
-                    scope rather than by name.
+                    Companies and roles. The client work I can publish lives
+                    under Work; current commercial work is confidential and is
+                    not described here.
                   </p>
                   <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4 lg:flex-col lg:items-start">
                     <Link

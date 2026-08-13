@@ -120,12 +120,11 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-7 sm:mt-10 lg:flex-row lg:items-end lg:justify-between">
             <p
               data-hero-fade
-              className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
+              className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              I work across product, UX, and engineering — untangling difficult
-              workflows, building the system behind the screens, prototyping in
-              code when it helps, and staying close until the real product works
-              as intended.
+              I work across product design, UX architecture, and enough
+              engineering to stay useful — usually on software that is difficult
+              before it is beautiful.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">
@@ -153,16 +152,13 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Base rail — where the work is happening right now */}
-        <div
-          data-hero-fade
-          className="flex items-center border-t border-stroke py-6"
-        >
+        {/* Scroll affordance only — the hero deliberately carries no second
+            message. Employer and current product live further down the page,
+            where they read as evidence instead of as a badge. */}
+        <div data-hero-fade className="flex items-center border-t border-stroke py-6">
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
-            Currently at{' '}
-            <span className="font-semibold text-foreground">Space Inch</span> ·
-            Building{' '}
-            <span className="font-semibold text-foreground">WorkLight</span>
+            <span aria-hidden="true" className="mr-3 inline-block">↓</span>
+            Selected work
           </p>
         </div>
       </div>

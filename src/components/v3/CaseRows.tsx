@@ -18,17 +18,18 @@ export default function CaseRows() {
       <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
         {/* Section head */}
         <Reveal>
-          <div className="pb-20 pt-24 sm:pb-28 sm:pt-32">
+          <div className="max-w-[34ch] pb-20 pt-24 sm:pb-28 sm:pt-32">
             <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
               01 · Selected work
             </p>
             <h2 className="display-tight mt-6 text-4xl font-medium text-foreground sm:text-5xl lg:text-6xl">
-              Three products, and what I decided in each.
+              Complex problems, important decisions, shipped outcomes.
             </h2>
             {/* Accounts for the client work that cannot appear here — the
                 question a senior reader asks at exactly this point. */}
-            <p className="mt-8 max-w-[54ch] text-[15px] leading-[1.75] text-muted sm:text-base">
-              These are the cases I can show. {NDA_PRACTICE_NOTE}
+            <p className="mt-8 text-[15px] leading-[1.75] text-muted sm:text-base">
+              Three difficult products, and what I decided in each.{' '}
+              {NDA_PRACTICE_NOTE}
             </p>
           </div>
         </Reveal>
@@ -83,8 +84,18 @@ export default function CaseRows() {
                         : 'lg:col-start-9',
                     ].join(' ')}
                   >
+                    {/* Level 3 — metadata stays quiet. Delivery status is
+                        evidence, so it is kept, but never in accent. */}
                     <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
                       {num} / {project.projectType || project.domain} · {project.year || 'Current'}
+                      {project.delivery ? (
+                        <>
+                          <span aria-hidden="true" className="mx-2 text-muted/50">·</span>
+                          <span className="normal-case tracking-[0.12em]">
+                            {project.delivery}
+                          </span>
+                        </>
+                      ) : null}
                     </p>
                     <h3 className="display-tight mt-5 text-2xl font-medium text-foreground sm:text-3xl">
                       <Link
@@ -94,14 +105,35 @@ export default function CaseRows() {
                       {project.title.split(' | ')[0]}
                       </Link>
                     </h3>
-                    <p className="mt-5 max-w-md text-sm leading-[1.75] text-muted">
-                      {project.description}
+
+                    {/* Problem → ownership → the one decision. Three beats, in
+                        that order, so the card argues instead of describing. */}
+                    <p className="mt-5 max-w-md text-[15px] leading-[1.7] text-foreground/85">
+                      {project.problem ?? project.description}
                     </p>
-                    {project.delivery ? (
-                      <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.18em] text-accent">
-                        {project.delivery}
-                      </p>
+
+                    {project.owned ? (
+                      <div className="mt-6 max-w-md">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
+                          I owned
+                        </p>
+                        <p className="mt-2 text-sm leading-[1.7] text-muted">
+                          {project.owned}
+                        </p>
+                      </div>
                     ) : null}
+
+                    {project.decision ? (
+                      <div className="mt-6 max-w-md border-l border-accent/40 pl-5">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
+                          Key decision
+                        </p>
+                        <p className="mt-2 text-sm leading-[1.7] text-muted">
+                          {project.decision}
+                        </p>
+                      </div>
+                    ) : null}
+
                     <Link
                       href={`/work/${project.slug}`}
                       className="group/link mt-8 inline-flex w-fit items-center gap-3 border-b border-stroke pb-2 font-mono text-[12px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-accent hover:text-accent"

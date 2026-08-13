@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
+import { Bricolage_Grotesque } from 'next/font/google'
 import { GeistMono } from 'geist/font/mono'
 import Nav from '@/components/nav/Nav'
 import RouteTransitions from '@/components/layout/RouteTransitions'
@@ -9,6 +9,12 @@ import ScrollProgress from '@/components/v3/ScrollProgress'
 import PortfolioAnalytics from '@/components/analytics/PortfolioAnalytics'
 import { SITE_URL } from '@/lib/site'
 import './globals.css'
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${bricolageGrotesque.variable} ${GeistMono.variable}`}>
       <body id="top">
         <a
           href="#main-content"

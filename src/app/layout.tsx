@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Bricolage_Grotesque } from 'next/font/google'
-import { GeistMono } from 'geist/font/mono'
+import { Azeret_Mono, Bricolage_Grotesque } from 'next/font/google'
 import Nav from '@/components/nav/Nav'
 import RouteTransitions from '@/components/layout/RouteTransitions'
 import SmoothScroll from '@/components/layout/SmoothScroll'
@@ -13,6 +12,12 @@ import './globals.css'
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-bricolage',
+  display: 'swap',
+})
+
+const azeretMono = Azeret_Mono({
+  subsets: ['latin'],
+  variable: '--font-azeret-mono',
   display: 'swap',
 })
 
@@ -50,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${bricolageGrotesque.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${bricolageGrotesque.variable} ${azeretMono.variable}`}>
       <body id="top">
         <a
           href="#main-content"

@@ -57,7 +57,7 @@ export default function ResumePage() {
   return (
     <main className="resume-page bg-white text-[#111318]">
       <div className="resume-actions mx-auto flex w-full max-w-[1100px] items-center justify-between gap-4 px-5 pb-6 pt-24 sm:px-8">
-        <Link href="/" className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#111318]/60 hover:text-[#2742ff]">← Portfolio</Link>
+        <Link href="/" className="whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.2em] text-[#111318]/60 hover:text-[#2742ff]">← Portfolio</Link>
         <ResumeActions />
       </div>
 

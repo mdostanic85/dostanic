@@ -61,18 +61,20 @@ const EXPERTISE_AREAS: ExpertiseArea[] = [
     ],
   },
   {
-    id: 'product-builder-ai',
+    id: 'prototype-to-implementation',
     number: '04',
-    title: 'Product Builder & AI',
+    title: 'Prototype to implementation',
     description:
-      'Functional products, Figma-to-code workflows, AI interaction models, LLM features, and architecture-aware product decisions.',
+      'Working product slices instead of click-throughs, architecture-aware product decisions, and enough code to close the gap between a design and what ships.',
     usefulWhen: [
-      'A product idea needs working behaviour, not only a click-through prototype',
-      'AI features need evidence, confidence, failure, privacy, and trust decisions in the UX',
+      'A product idea needs working behaviour before it can be judged',
+      'The team needs a decision tested against real data and real states, not a mockup',
+      'A feature depends on evidence, confidence, and failure states being designed rather than assumed',
     ],
     outputs: [
       'Working prototypes or product slices built with the existing stack',
-      'AI interaction flows with explicit trust and failure-state decisions',
+      'Interaction flows with explicit trust and failure-state decisions',
+      'Implementation review against the deployed build, not against the mockup',
     ],
   },
 ]

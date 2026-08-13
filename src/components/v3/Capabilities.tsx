@@ -20,10 +20,10 @@ export default function Capabilities() {
           <div className="flex flex-wrap items-end justify-between gap-8 pb-16 lg:pb-24">
             <div>
               <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
-                02 · Core expertise
+                02 · What I&apos;m good at
               </p>
               <h2 className="display-tight mt-6 max-w-[16ch] text-4xl font-medium sm:text-5xl lg:text-6xl">
-                What teams bring me in for.
+                Four things, done properly.
               </h2>
             </div>
             <Link

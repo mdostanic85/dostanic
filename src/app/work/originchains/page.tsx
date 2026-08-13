@@ -2,10 +2,20 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import CaseStudyContext from '@/components/work/case-study/CaseStudyContext'
 import CaseStudyShell, {
-  CaseStudyOutcome,
   CaseStudySection,
 } from '@/components/work/case-study/CaseStudyShell'
-import { sectionEyebrowAccentClassName } from '@/lib/headings'
+import DecisionBlock, {
+  DecisionSection,
+  type Decision,
+} from '@/components/work/case-study/DecisionBlock'
+import StructureCompare from '@/components/work/case-study/StructureCompare'
+import {
+  CaseComplication,
+  CaseOutcome,
+  CaseProblem,
+  CaseReflection,
+  CaseRole,
+} from '@/components/work/case-study/CaseNarrative'
 import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 
 const nav = getCaseStudyNav('originchains')
@@ -13,7 +23,7 @@ const nav = getCaseStudyNav('originchains')
 export const metadata: Metadata = {
   title: 'OriginChains — Climate Company Discovery',
   description:
-    'Senior product design for OriginChains — discovery UX, trust-heavy company data, activity feed, and a component system aligned to engineering delivery.',
+    'How I separated three competing contexts in a B2B climate product, built one repeatable module for company data, and made the architecture absorb admin and visibility modes later.',
   alternates: { canonical: '/work/originchains' },
 }
 
@@ -26,53 +36,187 @@ const META = [
   { label: 'Output', value: 'Design delivery · engineering handoff' },
 ]
 
-const ROLE_POINTS = [
-  'Framed the problem with product and stakeholders — who we help, what "trust" means in the interface, and which journeys had to ship first.',
-  'Owned information architecture and navigation across the marketing and signed-in shells, so growth and product surfaces did not fork into two products.',
-  'Designed the primary flows end to end: search, company onboarding, profile and admin settings, public versus private profile modes, and feed interactions, including empty, loading, and error states.',
-  'Built the component system — inputs, buttons, navigation, feedback — so engineers implemented from consistent patterns instead of one-off specs.',
-  'Prepared handoff with component naming, spacing, and interaction notes, and agreed breakpoints and data-heavy layouts with engineering before visual polish locked.',
-]
+/** Figure frame shared by the two real screens in this case. */
+function Screen({
+  src,
+  alt,
+  caption,
+  priority = false,
+}: {
+  src: string
+  alt: string
+  caption: string
+  priority?: boolean
+}) {
+  return (
+    <figure>
+      <div className="relative aspect-[16/10] overflow-hidden border border-stroke bg-surface">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 62vw, 100vw"
+          className="object-cover object-top"
+          priority={priority}
+        />
+      </div>
+      <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+        {caption}
+      </figcaption>
+    </figure>
+  )
+}
 
-const CHALLENGES = [
-  'Earn trust quickly. Climate and ESG topics invite scepticism, so the product had to read as credible rather than promotional.',
-  'One product with two rhythms: a simple marketing story on the landing page, and a dense signed-in experience for search, profiles, and activity.',
-  'Company profiles that mix narrative, scores, charts, and methodology without burying the answer the user came for.',
-  'Social feed patterns — post, comment, edit, delete — that feel familiar while staying coherent with the rest of the system.',
-  'A growing role surface across auth, admin, and privacy that still had to read as one information architecture.',
-]
-
-const DECISIONS = [
+const DECISIONS: Decision[] = [
   {
-    title: 'Search-first story on the landing page',
-    body: 'The hero leads with a single search field and plain proof points, so a first-time visitor understands the action before they understand the taxonomy.',
+    title: 'Separate personal, company, and administrative space',
+    tension:
+      'Three contexts were competing for the same navigation. A person has their own identity and activity. A company is a shared workspace several people act inside. Administration governs both. While they lived together, “Profile” could mean your account or a company page, and “Settings” could mean your preferences or a company’s visibility — so the same word did different work depending on where you had come from.',
+    options: [
+      {
+        label: 'Keep one navigation and switch meaning by context',
+        note: 'Every label then needs a qualifier to be correct, and the ambiguity moves into the copy instead of being resolved.',
+      },
+      {
+        label: 'Drive navigation from the user’s role',
+        note: 'The same person is often a member and an administrator. The navigation would reorganise itself under them mid-session.',
+      },
+      {
+        label: 'Three explicit spaces — you, the company, administration',
+        chosen: true,
+      },
+    ],
+    reasoning:
+      'The ambiguity was structural, not a labelling problem, so renaming things would only have hidden it. Once the three contexts are separate spaces, each label only has to be correct inside its own space.',
+    tradeoff:
+      'A deliberate switch between spaces. Moving from your own activity into a company workspace costs a step it did not cost before, and that step had to be designed rather than assumed.',
+    enabled:
+      'Administration, privacy controls, and public versus private profile modes were all added afterwards without reopening navigation, because each one had an obvious place to land.',
+    visual: (
+      <StructureCompare
+        before={{
+          label: 'Before',
+          caption:
+            'One flat surface. Two entries mean different things depending on where the user arrived from.',
+          nodes: [
+            { label: 'Profile', problem: true },
+            { label: 'Settings', problem: true },
+            { label: 'Companies' },
+            { label: 'Search' },
+            { label: 'Admin' },
+          ],
+        }}
+        after={{
+          label: 'After',
+          caption:
+            'Three spaces. A label only has to be unambiguous inside its own space.',
+          nodes: [
+            { label: 'You', children: ['Profile', 'Activity', 'Preferences'] },
+            {
+              label: 'Company',
+              children: ['Company profile', 'Members', 'Visibility'],
+            },
+            { label: 'Administration', children: ['Roles', 'Access'] },
+          ],
+        }}
+        consequence="Because visibility belonged to the company space rather than to a shared settings page, public and private profile modes could be introduced as a property of a company instead of as a new top-level concept."
+      />
+    ),
   },
   {
-    title: 'Navigation split by people and organisations',
-    body: 'Personal profile, company spaces, and administration are separated, which removed duplicate entry points as the product added admin and visibility modes.',
+    title: 'One repeatable module for every company section',
+    tension:
+      'A company profile mixes narrative, scores, charts, and methodology. Each section arrived with a different shape of data, and the instinct is to design each one to suit what it holds. Done that way, the reading order changes every few hundred pixels — and in a product whose entire job is credibility, a reader who has to relearn the layout stops trusting what it says.',
+    options: [
+      {
+        label: 'Design each section around its own data',
+        note: 'No two sections scan the same way, so the page has no rhythm and the sceptical reader has to work.',
+      },
+      {
+        label: 'Show less per company to keep the page simple',
+        note: 'Methodology and sources are what earn trust here. Removing them makes the page calmer and the product weaker.',
+      },
+      {
+        label: 'One skeleton every section fills, in a fixed order',
+        chosen: true,
+      },
+    ],
+    reasoning:
+      'Every section resolves the same way: title, status, a short explanation, a chart or checklist, then methodology and sources underneath. The answer is always in the same place and the evidence is always one step below it, so scepticism costs the reader less each time.',
+    tradeoff:
+      'Some sections carry a slightly heavier frame than their data strictly needs. A one-number section still gets the full skeleton.',
+    enabled:
+      'New profile sections could be added without new design work, and dense climate metrics stayed scannable because the reading order never moved.',
   },
   {
-    title: 'One repeatable module for company data',
-    body: 'Every profile section shares a skeleton: title, status, short explanation, chart or checklist, then methodology and sources. Dense climate metrics stay scannable because the reading order never changes.',
+    title: 'Search before taxonomy on the landing page',
+    tension:
+      'The landing page had to introduce a category most visitors have no vocabulary for. Explaining the taxonomy first is the intuitive move — and it means a visitor has to learn the model before they are allowed to do anything with it.',
+    options: [
+      {
+        label: 'Explain the category first, then offer search',
+        note: 'Teaches before it lets anyone act, and most visitors leave during the lesson.',
+      },
+      {
+        label: 'Lead with a browsable directory',
+        note: 'Implies the taxonomy is the product, which is the thing we were trying not to say.',
+      },
+      { label: 'Lead with one search field and plain proof points', chosen: true },
+    ],
+    reasoning:
+      'Understanding the action is cheaper than understanding the taxonomy. One search teaches the model faster than a paragraph about it, and the result page can carry the explanation to someone who has already shown intent.',
+    tradeoff:
+      'Visitors who genuinely need the category explained have to scroll for it. The page is confident that acting beats being taught.',
+    enabled:
+      'One entry point serves both the sceptic and someone who arrived with a company name in mind, and marketing and product share the same search component rather than maintaining two.',
+    visual: (
+      <Screen
+        src="/work/originchains/cover.png"
+        alt="OriginChains landing page leading with a single search field"
+        caption="Landing — search before taxonomy"
+        priority
+      />
+    ),
   },
   {
-    title: 'System foundations before screen one-offs',
-    body: 'Controls, top bar, and toasts live in a dedicated file area that marketing and app frames both consume, which kept QA and implementation predictable as the surface grew.',
+    title: 'Build the shared layer before the screens that needed it',
+    tension:
+      'The product had two rhythms: a simple marketing story on the public side and a dense signed-in application behind it. The normal sequence is to design the marketing site, then the app, then reconcile them — and reconciliation is usually where the quality of one of them goes.',
+    options: [
+      {
+        label: 'Design each surface, then reconcile',
+        note: 'Either the app inherits decisions made for a landing page, or the two quietly drift into different products.',
+      },
+      {
+        label: 'Apply one visual theme across both',
+        note: 'A paint layer. It matches colours without making the two surfaces agree on behaviour.',
+      },
+      {
+        label: 'Shared controls, navigation, and feedback both surfaces consume',
+        chosen: true,
+      },
+    ],
+    reasoning:
+      'The two surfaces disagree about density, not about what a button, a field, or a toast is. Sharing the behaviour layer and letting density differ keeps them recognisably one product.',
+    tradeoff:
+      'A slower visible start. Foundations produce no screenshots, which is uncomfortable in the first weeks of an engagement.',
+    enabled:
+      'Engineering implemented the hardest pages from existing patterns instead of from interpretation, and acquisition pages hold the same quality bar as the signed-in product.',
+    visual: (
+      <Screen
+        src="/work/originchains/screen-feed.png"
+        alt="OriginChains activity feed on the signed-in product surface"
+        caption="Activity feed — the signed-in surface, same component vocabulary"
+      />
+    ),
   },
-]
-
-const OUTCOMES = [
-  'Engineering could build the hardest pages from patterns rather than interpretation, because charts, modules, and states were designed as a system rather than as isolated artboards.',
-  'Marketing and product surfaces stopped drifting apart — both pull from the same component vocabulary, so acquisition pages hold the same quality bar as the signed-in app.',
-  'The team could add admin, privacy, and visibility modes without re-opening navigation, because the IA had already separated personal, company, and administrative space.',
-  'Desktop journeys were covered end to end — landing, auth, feed, search, company profile variants, admin, and public/private modes — with a parallel mobile set for parity review.',
 ]
 
 export default function OriginChainsCaseStudy() {
   return (
     <CaseStudyShell
       meta={META}
-      eyebrow="Case study / Product & system"
+      eyebrow="Case study / Product architecture"
       title={
         <>
           OriginChains
@@ -82,9 +226,9 @@ export default function OriginChainsCaseStudy() {
       }
       intro={
         <>
-          A B2B product for finding climate-credible companies, from the public
-          landing and search entry points through signed-in profiles, activity,
-          and governance flows.
+          A B2B product for finding climate-credible companies — where the hard
+          part was not the interface, but deciding which concepts were allowed to
+          share a space.
         </>
       }
       topRightLabel="2025"
@@ -93,154 +237,94 @@ export default function OriginChainsCaseStudy() {
     >
       <CaseStudySection alt>
         <CaseStudyContext
-          lead="Users want to act on climate, but only if they can trust the signal behind each company."
-          body="OriginChains sits in a crowded green-tech narrative, so the design work was product clarity rather than visual polish: make discovery legible, make scores and methodology feel grounded, and keep a growing web app navigable while the team iterated toward launch."
+          lead="People will act on climate data, but only if they can see what is behind each claim."
+          body="OriginChains sits in a crowded green-tech narrative, so the work was product clarity rather than visual polish: make discovery legible, keep scores and methodology grounded in visible evidence, and keep a fast-growing web app navigable while the team iterated toward launch."
         />
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-4">
-            <p className={sectionEyebrowAccentClassName}>What I owned</p>
-            <h2 className="display-tight mt-5 max-w-[14ch] text-3xl font-medium sm:text-4xl">
-              Senior product designer scope.
-            </h2>
-          </div>
-          <ul className="space-y-5 lg:col-span-7 lg:col-start-6">
-            {ROLE_POINTS.map((item) => (
-              <li key={item} className="flex gap-4">
-                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                <span className="text-base leading-[1.7] text-muted lg:text-lg">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <CaseRole
+          summary="I owned the product structure and the system underneath it."
+          points={[
+            'Owned information architecture and navigation across both the public and signed-in shells, so growth and product surfaces did not fork into two products.',
+            'Designed the primary flows end to end: search, company onboarding, profile and administration settings, public versus private profile modes, and feed interactions — including empty, loading, and error states.',
+            'Built the component system — inputs, buttons, navigation, feedback — so engineering implemented from consistent patterns instead of one-off specs.',
+            'Set the handoff contract: component naming, spacing, interaction notes, and agreed breakpoints for the data-heavy layouts before visual polish locked.',
+          ]}
+          collaborators="Product direction and the underlying climate methodology came from the client team. The structural and interface decisions described below were mine."
+        />
       </CaseStudySection>
 
       <CaseStudySection alt>
-        <div className="mb-10 max-w-2xl">
-          <p className={sectionEyebrowAccentClassName}>Selected screens</p>
-          <h2 className="display-tight mt-4 text-2xl font-medium sm:text-3xl">
-            Landing and activity feed.
-          </h2>
-          <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">
-            Social and activity patterns had to feel familiar while staying
-            coherent with the denser signed-in product.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <figure className="space-y-3">
-            <div className="relative aspect-[16/10] overflow-hidden border border-stroke bg-surface">
-              <Image
-                src="/work/originchains/cover.png"
-                alt="OriginChains landing page with search-first hero"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover object-top"
-                priority
-              />
-            </div>
-            <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
-              Landing — search before taxonomy
-            </figcaption>
-          </figure>
-
-          <figure className="space-y-3">
-            <div className="relative aspect-[16/10] overflow-hidden border border-stroke bg-surface">
-              <Image
-                src="/work/originchains/screen-feed.png"
-                alt="OriginChains activity feed on the signed-in product surface"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover object-top"
-              />
-            </div>
-            <figcaption className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
-              Activity feed — signed-in surface
-            </figcaption>
-          </figure>
-        </div>
+        <CaseProblem
+          lead="Credibility had to survive a sceptical reader and a growing product at the same time."
+          points={[
+            'Climate and ESG claims invite scepticism, so the product had to read as evidence rather than as marketing.',
+            'One product carried two rhythms: a simple public story, and a dense signed-in experience for search, profiles, and activity.',
+            'Company profiles mix narrative, scores, charts, and methodology — and still have to answer the question the visitor arrived with.',
+            'Familiar social patterns — post, comment, edit, delete — had to coexist with dense data surfaces without either one feeling borrowed.',
+          ]}
+        />
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <p className={sectionEyebrowAccentClassName}>The challenge</p>
-            <h2 className="display-tight mt-5 text-3xl font-medium sm:text-4xl">
-              Trust,
-              <br />
-              <span className="text-accent">at a glance.</span>
-            </h2>
-          </div>
-          <ul className="lg:col-span-7 lg:col-start-6">
-            {CHALLENGES.map((item, idx) => (
-              <li key={item} className="flex items-start gap-5 border-b border-stroke py-5 last:border-b-0">
-                <span className="mt-1 font-mono text-[12px] tracking-[0.22em] text-accent">
-                  /{String(idx + 1).padStart(2, '0')}
-                </span>
-                <span className="text-base leading-[1.65] text-muted lg:text-lg">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <CaseComplication
+          statement="Halfway through, the product stopped being about one person looking up a company."
+          body="The role surface kept growing. The same person might be a private individual, a member of a company workspace, and an administrator of that workspace — sometimes within one session. Auth, administration, and privacy each arrived with their own settings, and every one of them wanted a place in a navigation that was already ambiguous. Renaming things would not have fixed it, because the problem was that unrelated concepts were sharing a space."
+        />
       </CaseStudySection>
 
       <CaseStudySection alt>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <p className={sectionEyebrowAccentClassName}>Decisions</p>
-            <h2 className="display-tight mt-5 max-w-[12ch] text-3xl font-medium sm:text-4xl">
-              Systemic, not decorative.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-8">
-            {DECISIONS.map((decision, index) => (
-              <article key={decision.title} className="border-t border-stroke pt-5">
-                <p className="font-mono text-[11px] tracking-[0.22em] text-accent">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <h3 className="display-tight mt-4 text-xl font-medium">
-                  {decision.title}
-                </h3>
-                <p className="mt-4 text-sm leading-[1.75] text-muted">
-                  {decision.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
+        <DecisionSection
+          title="Four decisions the product depended on."
+          intro="Each one had a real alternative, and each one cost something. The rejected options are shown because they are the reason the chosen direction was worth the trade-off."
+        >
+          {DECISIONS.map((decision, index) => (
+            <DecisionBlock key={decision.title} decision={decision} index={index} />
+          ))}
+        </DecisionSection>
       </CaseStudySection>
 
       <CaseStudySection>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <CaseStudyOutcome>
-              <ul className="space-y-5">
-                {OUTCOMES.map((item) => (
-                  <li key={item} className="flex items-start gap-4">
-                    <span className="mt-[10px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CaseStudyOutcome>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
-              Scope of this case
-            </p>
-            <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
-              My engagement covered product design and system delivery through
-              engineering handoff. Commercial results after launch sit with the
-              client and are not claimed here.
-            </p>
-          </div>
-        </div>
+        <CaseOutcome
+          points={[
+            'Engineering built the hardest pages from patterns rather than interpretation, because charts, modules, and states were designed as a system instead of as isolated artboards.',
+            'Public and signed-in surfaces stopped drifting apart — both draw on the same component vocabulary.',
+            'Administration, privacy, and visibility modes were added without reopening navigation, because the architecture had already separated personal, company, and administrative space.',
+            'Desktop journeys were covered end to end — landing, auth, feed, search, company profile variants, administration, and public/private modes — with a parallel mobile set for parity review.',
+          ]}
+          aside={
+            <>
+              <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
+                Scope of this case
+              </p>
+              <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
+                My engagement covered product design and system delivery through
+                engineering handoff. Commercial results after launch sit with the
+                client and are not claimed here.
+              </p>
+            </>
+          }
+        />
+      </CaseStudySection>
+
+      <CaseStudySection alt>
+        <CaseReflection
+          items={[
+            {
+              label: 'What I would improve',
+              body: 'The profile skeleton earns its keep on data-rich companies and feels heavy on thin ones. It needs a genuine compact state, not just fewer sections.',
+            },
+            {
+              label: 'What it taught me',
+              body: 'In a trust product, a reading order that never moves does more for credibility than any amount of visual polish.',
+            },
+            {
+              label: 'What I would test next',
+              body: 'Whether people actually move between personal and company space, or settle into one and forget the other exists.',
+            },
+          ]}
+        />
       </CaseStudySection>
     </CaseStudyShell>
   )

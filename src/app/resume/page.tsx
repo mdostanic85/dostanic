@@ -69,10 +69,10 @@ export default function ResumePage() {
               Senior Product Designer & Product Builder
             </h1>
             <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-[#111318]/70">
-              Senior Product Designer with 20 years across design and 12 years in digital products.
-              I lead end-to-end design on complex B2B products under NDA — healthcare, fintech, and
-              enterprise SaaS — covering product strategy, UX, design systems and token
-              architecture, AI workflows, and implementation review.
+              I take complex software from ambiguity to a clear, buildable product — product
+              architecture, data-heavy and workflow-heavy UX, design systems, and enough
+              implementation work to keep the shipped result faithful to the decision.
+              12 years in digital products, 20 in design. Current commercial work is confidential.
             </p>
           </div>
           <address className="not-italic sm:col-span-4 sm:text-right">

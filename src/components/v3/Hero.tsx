@@ -101,12 +101,12 @@ export default function Hero() {
 
           <h1 className="display-mega mt-6 text-[clamp(30px,7.6vw,115px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
             <span className="line-mask">
-              <span data-hero-line className="block">
+              <span data-hero-line className="block text-[clamp(34px,8.8vw,132px)]">
                 I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block sm:ml-[10vw]">
+              <span data-hero-line className="text-outline block text-[clamp(34px,8.8vw,132px)] sm:ml-[10vw]">
                 complex software
               </span>
             </span>
@@ -122,9 +122,9 @@ export default function Hero() {
               data-hero-fade
               className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
             >
-              I work across product design, UX architecture, and enough
-              engineering to stay useful — usually on software that is difficult
-              before it is beautiful.
+              I take on the products other designers pass on — too many roles,
+              too many edge cases, too much at stake to fake with a mockup —
+              and turn them into structure engineering can actually build.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">

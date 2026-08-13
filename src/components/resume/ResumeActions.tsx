@@ -7,7 +7,7 @@ export default function ResumeActions() {
         href="/Milos-Dostanic-Resume.pdf"
         download
         data-analytics-event="resume_action"
-        className="inline-flex h-11 items-center bg-foreground px-5 font-mono text-[12px] uppercase tracking-[0.2em] text-inverse-foreground transition-colors hover:bg-accent hover:text-white"
+        className="inline-flex h-11 items-center whitespace-nowrap bg-foreground px-5 font-mono text-[12px] uppercase tracking-[0.2em] text-inverse-foreground transition-colors hover:bg-accent hover:text-white"
       >
         Download PDF
       </a>

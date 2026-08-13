@@ -14,7 +14,7 @@ import { getCaseStudyNav } from '@/lib/caseStudyRoutes'
 export const metadata: Metadata = {
   title: 'SoundScope: Music Analytics Dashboard',
   description:
-    'A self-directed music analytics concept exploring metric hierarchy, dark analyst UI, and a reusable component system.',
+    'A self-directed concept asking whether one dashboard can serve a ten-second executive check and a two-hour catalog session without becoming a wall of charts.',
 }
 
 const nav = getCaseStudyNav('soundscope')
@@ -41,8 +41,9 @@ export default function SoundScopeCaseStudy() {
       }
       intro={
         <>
-          A self-directed product concept for labels and publishers. The work explores
-          metric hierarchy, analyst-focused UI, and a tokenized component system.
+          A self-directed concept for labels and publishers: the same dashboard has
+          to survive a ten-second executive check and a two-hour catalog session
+          without collapsing into a wall of charts.
         </>
       }
       topRightLabel="2025"

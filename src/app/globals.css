@@ -2,8 +2,8 @@
 
 @theme {
   /* Typography */
-  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
-  --font-mono: var(--font-geist-mono, ui-monospace, "Cascadia Code", monospace);
+  --font-sans: var(--font-bricolage, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-azeret-mono, ui-monospace, "Cascadia Code", monospace);
 
   /* V3.1 — "ICE & INK" system.
      Icy light base for the body of the site; near-black ink reserved for

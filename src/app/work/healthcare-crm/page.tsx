@@ -60,8 +60,8 @@ export default function HealthcareCRMCaseStudy() {
       <CaseStudySection>
         <ProblemSolution
           intro="Based on product assumptions and illustrative screens. No production outcome is claimed."
-          challengeTitle="Fragmented tools, heavy cognitive load"
-          responseTitle="Unified platform, clearer hierarchy"
+          challengeTitle="Disconnected tools, a hierarchy that never resolves"
+          responseTitle="One shell, a hierarchy built to scan"
           problems={[
             'Disconnected tools creating data silos between scheduling, messaging, and records',
             'Weak hierarchy, with status, actions, and metadata competing at the same visual weight',

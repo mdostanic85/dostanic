@@ -176,3 +176,52 @@ intended perception:
   decision each, four capabilities, a visible process, quiet seniority.
 - **3 minutes** — one full case study. Must land: he found the real problem, chose
   between real options, accepted a trade-off, and knows what it enabled.
+
+---
+
+## Part 6 — Post-implementation review
+
+Reviewed against the built pages (production build, 1440px and 390px, reduced
+motion), not against the source.
+
+### 10 seconds — hero only
+**Passes.** Eyebrow, one headline, one sentence, two CTAs, one motion element.
+The competing base rail is gone; nothing else is on screen. Positioning reads as
+senior without arguing for it.
+
+### 60 seconds — skim to contact
+**Passes.** Every beat carries one message and the process spine gives the page a
+visual centre it did not have. Three fixes made during review:
+
+| Found | Fix |
+|---|---|
+| Rejected options in `DecisionBlock` were struck through at `decoration-stroke` (12% opacity) — invisible, so the argument read as a plain list | Raised to `decoration-foreground/35` |
+| `StructureCompare` hardcoded the flag word “ambiguous”, mislabelling Optronic (duplication) and WorkLight (fragmentation) | Flag word is now per-node: “means two things”, “duplicated”, “siloed”, “the actual problem” |
+| WorkLight cover left a large void mid-column (`justify-between` with only four items) | Top-aligned the column, added the `+ 6 more` source count |
+
+### 3 minutes — one full case study
+**Passes for reasoning.** Each case now runs context → role → real problem →
+complication → 3–4 argued decisions → outcome → reflection, and each decision
+shows what it cost. Ownership is first-person throughout; OriginChains keeps one
+explicit note about what the client team owned rather than blurring it into “we”.
+
+### Remaining gaps — content, not code
+
+1. **Visual evidence is the weakest link.** WorkLight has no product
+   screenshots at all, and OriginChains has two. The diagrams carry the thinking
+   honestly, but a hiring manager assessing *visual craft* at the three-minute
+   mark sees mostly type and hairlines on two of three flagships. This is the
+   highest-value thing to add, and it needs real assets — inventing product UI
+   was not an option. Optronic is currently doing the visual-craft work alone.
+2. **Concept pages diverge from the flagships.** `/work/healthcare-crm` and
+   `/work/soundscope` still use the older `ProblemSolution` / `UXProcessFlow`
+   structure. Left deliberately: they are labelled explorations, the brief
+   prioritised the three flagships, and their evidence is worth keeping. Worth
+   aligning later, or leaving as a visible tier distinction.
+3. **`public/Milos-Dostanic-Resume.pdf` is stale** — it links to
+   `dostanic.net/work/spaceinch`, a route that now redirects to `/about`. The PDF
+   is a binary and needs regenerating via `scripts/generate-resume-pdf.py`, which
+   also carries the old NDA industry copy.
+4. **Sanity is unused at runtime.** Every page reads from `src/lib/data.ts`; the
+   schemas and `queries.ts` are dead weight until wired up. Not touched here, but
+   it means the CMS is not a second place copy can drift from.

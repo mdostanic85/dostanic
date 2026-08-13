@@ -193,9 +193,10 @@ const DECISIONS: Decision[] = [
           caption:
             'The route not taken. Each language owns its own pages, so parity depends on somebody remembering.',
           nodes: [
-            { label: '/en/*  — pages, nav, metadata', problem: true },
-            { label: '/de/*  — duplicated pages, nav, metadata', problem: true },
-            { label: 'Documents maintained per language', problem: true },
+            { label: '/en/*  — pages, nav, metadata' },
+            { label: '/de/*  — the same pages again', problem: 'duplicated' },
+            { label: 'Documents maintained per language', problem: 'duplicated' },
+            { label: 'Parity depends on memory', problem: 'drifts' },
           ],
         }}
         after={{

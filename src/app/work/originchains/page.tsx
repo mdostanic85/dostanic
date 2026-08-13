@@ -99,8 +99,8 @@ const DECISIONS: Decision[] = [
           caption:
             'One flat surface. Two entries mean different things depending on where the user arrived from.',
           nodes: [
-            { label: 'Profile', problem: true },
-            { label: 'Settings', problem: true },
+            { label: 'Profile', problem: 'means two things' },
+            { label: 'Settings', problem: 'means two things' },
             { label: 'Companies' },
             { label: 'Search' },
             { label: 'Admin' },

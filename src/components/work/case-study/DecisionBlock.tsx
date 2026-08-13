@@ -82,11 +82,14 @@ export default function DecisionBlock({
                     ].join(' ')}
                   />
                   <span className="text-sm leading-[1.65]">
+                    {/* The strikethrough is the signal that an option was
+                        rejected, so it needs enough contrast to be read as
+                        deliberate rather than as a rendering artefact. */}
                     <span
                       className={
                         option.chosen
                           ? 'font-medium text-foreground'
-                          : 'text-muted line-through decoration-stroke'
+                          : 'text-muted line-through decoration-foreground/35'
                       }
                     >
                       {option.label}

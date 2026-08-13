@@ -59,8 +59,7 @@ export default function WorkPage() {
               className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-muted animate-fade-in-up sm:text-base"
               style={{ animationDelay: '460ms' }}
             >
-              {NDA_PRACTICE_NOTE} What is published here is the work I can show
-              in full.
+              Everything here is work I can show in full. {NDA_PRACTICE_NOTE}
             </p>
           </div>
         </div>

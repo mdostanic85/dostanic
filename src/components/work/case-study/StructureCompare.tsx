@@ -4,8 +4,12 @@ export type StructureNode = {
   label: string
   /** One level of nesting is enough to show a hierarchy; deeper reads as noise. */
   children?: string[]
-  /** Marks a node as the problem — duplicated, ambiguous, or in the wrong place. */
-  problem?: boolean
+  /**
+   * Names what is wrong with this node and marks it as the problem. The word is
+   * per-node on purpose — "ambiguous", "duplicated", and "siloed" are different
+   * failures, and a single generic label would mislabel two of the three.
+   */
+  problem?: string
 }
 
 type Panel = {
@@ -86,11 +90,8 @@ export default function StructureCompare({
                         {node.label}
                       </span>
                       {node.problem ? (
-                        <span
-                          className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted/70"
-                          title="Ambiguous or duplicated in this structure"
-                        >
-                          ambiguous
+                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted/70">
+                          {node.problem}
                         </span>
                       ) : null}
                     </div>

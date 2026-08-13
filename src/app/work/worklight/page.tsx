@@ -221,10 +221,11 @@ export default function WorkLightCaseStudy() {
             caption:
               'The route not taken. Everything is present and the person still has to do the merging themselves.',
             nodes: [
-              { label: 'Meetings', problem: true },
-              { label: 'Mail and calendar', problem: true },
-              { label: 'Tickets and documents', problem: true },
-              { label: 'Designs and repositories', problem: true },
+              { label: 'Meetings', problem: 'siloed' },
+              { label: 'Mail and calendar', problem: 'siloed' },
+              { label: 'Tickets and documents', problem: 'siloed' },
+              { label: 'Designs and repositories', problem: 'siloed' },
+              { label: 'You, doing the merge', problem: 'the actual problem' },
             ],
           }}
           after={{

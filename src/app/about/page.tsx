@@ -77,7 +77,7 @@ export default function AboutPage() {
               <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
                 12 years in digital products · 20 in design
               </p>
-              <p className="max-w-[52ch] text-[15px] leading-[1.7] text-muted sm:text-base">
+              <p className="max-w-[52ch] text-[17px] leading-[1.7] text-muted sm:text-[18px]">
                 I turn complex product requirements into structure engineering
                 can build: information architecture, design systems, and
                 implementation that keeps the intent. I work remotely from
@@ -107,7 +107,7 @@ export default function AboutPage() {
                     the part of a product that decides whether it works.
                   </span>
                 </p>
-                <div className="mt-10 grid max-w-4xl grid-cols-1 gap-8 text-[15px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-base">
+                <div className="mt-10 grid max-w-4xl grid-cols-1 gap-8 text-[17px] leading-[1.75] text-muted sm:grid-cols-2 lg:text-[18px]">
                   <p>
                     Graphic and communication design first, then web, then
                     digital products. Enterprise work is where information
@@ -176,7 +176,7 @@ export default function AboutPage() {
                   <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.28em] text-accent">
                     02 · Experience
                   </p>
-                  <p className="mt-6 max-w-xs text-sm leading-[1.75] text-muted">
+                  <p className="mt-6 max-w-xs text-base leading-[1.75] text-muted">
                     Companies and roles. The client work I can publish lives
                     under Work; current commercial work is confidential and is
                     not described here.
@@ -221,7 +221,7 @@ export default function AboutPage() {
                       <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.23em] text-accent">
                         {row.role}
                       </p>
-                      <p className="mt-4 max-w-2xl text-sm leading-[1.75] text-muted lg:text-base">
+                      <p className="mt-4 max-w-2xl text-base leading-[1.75] text-muted lg:text-[18px]">
                         {row.note}
                       </p>
                     </div>
@@ -252,7 +252,7 @@ export default function AboutPage() {
                     <h3 className="display-tight mt-5 text-xl font-medium text-foreground sm:text-2xl">
                       {p.title}
                     </h3>
-                    <p className="mt-4 max-w-md text-sm leading-[1.75] text-muted">
+                    <p className="mt-4 max-w-md text-base leading-[1.75] text-muted">
                       {p.body}
                     </p>
                   </div>

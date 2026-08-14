@@ -10,7 +10,7 @@ export default function CaseStudyContext({ lead, body }: Props) {
     <div className="max-w-3xl">
       <p className={sectionEyebrowAccentClassName}>Context</p>
       <p className={sectionLeadClassName}>{lead}</p>
-      <p className="mt-6 text-base leading-[1.7] text-muted lg:text-lg">{body}</p>
+      <p className="mt-6 text-[18px] leading-[1.7] text-muted lg:text-xl">{body}</p>
     </div>
   )
 }

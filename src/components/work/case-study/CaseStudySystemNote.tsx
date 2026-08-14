@@ -17,7 +17,7 @@ export default function CaseStudySystemNote({
         {titleWithAccentGradient(title)}
       </h2>
       {paragraphs.map((p) => (
-        <p key={p.slice(0, 40)} className="text-base leading-[1.7] text-muted lg:text-lg">
+        <p key={p.slice(0, 40)} className="text-[18px] leading-[1.7] text-muted lg:text-xl">
           {p}
         </p>
       ))}

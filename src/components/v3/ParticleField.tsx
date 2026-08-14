@@ -35,12 +35,12 @@ const LINK_DIST = 130
 const CURSOR_RADIUS = 180
 const CURSOR_FORCE = 0.6
 const DRIFT_SPEED = 0.16
-/* Field opacity — raised 15% over the original 0.13 / 0.25 / 0.20 so the
-   constellation reads against the ink chapter without turning into
-   spectacle. Still atmosphere; just no longer nearly invisible. */
-const LINK_ALPHA = 0.15
-const DOT_ALPHA = 0.29
-const DOT_TWINKLE = 0.23
+/* Field opacity — pulled well back so the constellation sits behind the
+   headline as texture rather than pattern. It should register only once the
+   eye has finished with the type. */
+const LINK_ALPHA = 0.07
+const DOT_ALPHA = 0.15
+const DOT_TWINKLE = 0.11
 
 export default function ParticleField({ className = '' }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)

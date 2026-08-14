@@ -91,22 +91,25 @@ export default function Hero() {
 
       <div className="relative mx-auto flex w-full max-w-[1500px] flex-1 flex-col px-5 pt-16 sm:px-8 lg:px-12">
         {/* Poster lockup */}
-        <div className="flex flex-1 flex-col justify-center py-8 sm:py-10">
+        <div className="flex flex-1 flex-col justify-center py-12 sm:py-16">
           <p
             data-hero-eyebrow
-            className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-accent sm:text-[13px] sm:tracking-[0.28em]"
+            className="font-mono text-[13px] font-normal uppercase tracking-[0.2em] text-accent sm:text-[15px] sm:tracking-[0.28em]"
           >
             Senior Product Designer / Product Builder
           </p>
 
-          <h1 className="display-mega mt-6 text-[clamp(40px,7.6vw,115px)] font-semibold uppercase !leading-[0.92] text-foreground sm:mt-8">
+          <h1 className="display-mega mt-10 text-[clamp(46px,8.2vw,132px)] font-semibold uppercase !leading-[0.96] text-foreground sm:mt-14">
             <span className="line-mask">
               <span data-hero-line className="block">
                 I design
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block text-[clamp(34px,8.4vw,132px)] sm:ml-[10vw]">
+              {/* The longest phrase. Below `sm` it takes its own smaller ramp so
+                  it never wraps inside the mask; from `sm` up it matches the
+                  other two lines exactly. */}
+              <span data-hero-line className="block text-[clamp(34px,10vw,44px)] sm:ml-[10vw] sm:text-[clamp(46px,8.2vw,132px)]">
                 complex software
               </span>
             </span>
@@ -117,14 +120,13 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className="mt-8 flex flex-col gap-7 sm:mt-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mt-12 flex flex-col gap-8 sm:mt-16 lg:flex-row lg:items-end lg:justify-between">
             <p
               data-hero-fade
-              className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]"
+              className="max-w-[46ch] text-[17px] leading-[1.7] text-muted sm:text-[18px] lg:text-[19px]"
             >
-              I take on the products other designers pass on — too many roles,
-              too many edge cases, too much at stake to fake with a mockup —
-              and turn them into structure engineering can actually build.
+              I take on the products other designers pass on, and turn them
+              into structure engineering can actually build.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">
@@ -155,7 +157,7 @@ export default function Hero() {
         {/* Scroll affordance only — the hero deliberately carries no second
             message. Employer and current product live further down the page,
             where they read as evidence instead of as a badge. */}
-        <div data-hero-fade className="flex items-center border-t border-stroke py-6">
+        <div data-hero-fade className="flex items-center border-t border-stroke py-8">
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted">
             <span aria-hidden="true" className="mr-3 inline-block">↓</span>
             Selected work

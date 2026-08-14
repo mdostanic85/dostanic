@@ -45,7 +45,7 @@ export default function UXProcessFlow({
               </h3>
             </div>
             <div className="col-span-12 sm:col-span-6">
-              <p className="text-base leading-[1.7] text-muted lg:text-lg">{step.body}</p>
+              <p className="text-[18px] leading-[1.7] text-muted lg:text-xl">{step.body}</p>
               {step.tools && step.tools.length > 0 ? (
                 <div className="mt-5 flex flex-wrap gap-2">
                   {step.tools.map((t) => (

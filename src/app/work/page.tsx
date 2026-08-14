@@ -56,7 +56,7 @@ export default function WorkPage() {
               </p>
             </div>
             <p
-              className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-muted animate-fade-in-up sm:text-base"
+              className="mt-6 max-w-[62ch] text-[17px] leading-[1.75] text-muted animate-fade-in-up sm:text-[18px]"
               style={{ animationDelay: '460ms' }}
             >
               Everything here is work I can show in full. {NDA_PRACTICE_NOTE}

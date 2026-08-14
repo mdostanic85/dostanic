@@ -298,7 +298,7 @@ export default function OriginChainsCaseStudy() {
               <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-accent">
                 Scope of this case
               </p>
-              <p className="mt-4 text-sm leading-[1.75] text-muted sm:text-base">
+              <p className="mt-4 text-base leading-[1.75] text-muted sm:text-[18px]">
                 My engagement covered product design and system delivery through
                 engineering handoff. Commercial results after launch sit with the
                 client and are not claimed here.

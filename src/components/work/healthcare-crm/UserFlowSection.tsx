@@ -12,7 +12,7 @@ export default function UserFlowSection() {
         <h2 className={sectionHeadingClassName}>
           {titleWithAccentGradient('Mapped before UI polish')}
         </h2>
-        <p className="mt-5 text-base leading-[1.7] text-muted lg:text-lg">
+        <p className="mt-5 text-[18px] leading-[1.7] text-muted lg:text-xl">
           Auth paths converge on a single home hub; multi-step tasks (projects, submit
           idea) stay linear. Built with{' '}
           <a

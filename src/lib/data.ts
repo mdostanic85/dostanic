@@ -19,6 +19,12 @@ export const PROJECTS: Project[] = [
       'Information architecture, navigation, the primary flows and their states, and the component system engineering built from.',
     decision:
       'Separated personal, company, and administrative space before designing screens — which is why admin and visibility modes could be added later without reopening navigation.',
+    cardTagline: 'Three contexts kept colliding in one navigation.',
+    cardHighlights: [
+      'Split personal, company, and admin space before any screens',
+      'Owned the IA, the primary flows, and every state',
+      'Built the component system engineering implemented from',
+    ],
     slug: 'originchains',
     year: '2025',
     featured: true,
@@ -40,6 +46,12 @@ export const PROJECTS: Project[] = [
       'The information architecture, the page templates, the component set — and the implementation. I designed this and I built it.',
     decision:
       'Treated manuals and firmware as product data rather than a downloads dump, so technical documents live on the product that needs them.',
+    cardTagline: 'One catalogue, two readers who share no vocabulary.',
+    cardHighlights: [
+      'Two entry paths into a single product set',
+      'Manuals and firmware modelled as product data',
+      'Designed and built it — EN/DE, nine product families',
+    ],
     slug: 'optronic',
     year: '2024',
     featured: true,
@@ -62,6 +74,12 @@ export const PROJECTS: Project[] = [
       'The product definition, the ranking and trust model, the data model, the interface, and the code. End to end.',
     decision:
       'Ranked the work deterministically before any model writes a word, so the language layer explains the priority order instead of inventing it.',
+    cardTagline: 'Ten tools hold your work. None of them agree.',
+    cardHighlights: [
+      'Ranked deterministically before any model writes a word',
+      'Every priority stays linked to its source evidence',
+      'Product, data model, and code owned end to end',
+    ],
     slug: 'worklight',
     year: '2026',
     featured: true,

@@ -17,7 +17,7 @@ export default function NotFound() {
           </h1>
         </div>
         <div className="flex flex-col justify-end lg:col-span-4">
-          <p className="max-w-[40ch] text-base leading-[1.75] text-muted">
+          <p className="max-w-[40ch] text-[18px] leading-[1.75] text-muted">
             The page may have moved, or the link may be incomplete. The selected work and main portfolio are still available.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

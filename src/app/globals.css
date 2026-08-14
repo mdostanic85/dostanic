@@ -2,7 +2,7 @@
 
 @theme {
   /* Typography */
-  --font-sans: var(--font-bricolage, ui-sans-serif, system-ui, sans-serif);
+  --font-sans: var(--font-archivo, ui-sans-serif, system-ui, sans-serif);
   --font-mono: var(--font-azeret-mono, ui-monospace, "Cascadia Code", monospace);
 
   /* V3.1 — "ICE & INK" system.
@@ -196,6 +196,13 @@
        hairline rules, and the light slab sections. */
     background-color: var(--color-background);
     min-height: 100dvh;
+  }
+
+  /* The homepage is a single ink chapter. Carry its ground onto the body so
+     the overscroll gutter matches the page instead of flashing the icy base
+     the subpages use. */
+  body:has(main.chapter-dark) {
+    background-color: #06070b;
   }
 
   h1,

@@ -68,7 +68,7 @@ export default function FooterCTA({ compact = false }: FooterCTAProps) {
             </h2>
 
             <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-              <p className="max-w-[46ch] text-[15px] leading-[1.7] text-muted sm:text-base lg:text-[17px]">
+              <p className="max-w-[46ch] text-[17px] leading-[1.7] text-muted sm:text-[18px] lg:text-[19px]">
                 I&apos;m looking for a senior product design role, remote, on
                 complex B2B software. I also take a small number of client
                 engagements. Email is the fastest way to reach me.

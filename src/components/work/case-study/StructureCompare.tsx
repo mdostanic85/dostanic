@@ -121,7 +121,7 @@ export default function StructureCompare({
           <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
             Consequence
           </p>
-          <p className="mt-2 max-w-[74ch] text-sm leading-[1.7] text-foreground/85">
+          <p className="mt-2 max-w-[74ch] text-base leading-[1.7] text-foreground/85">
             {consequence}
           </p>
         </figcaption>

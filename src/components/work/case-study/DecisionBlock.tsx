@@ -57,7 +57,7 @@ export default function DecisionBlock({
           <h3 className="display-tight mt-5 max-w-[22ch] text-2xl font-medium text-foreground sm:text-3xl">
             {decision.title}
           </h3>
-          <p className="mt-6 max-w-[46ch] text-[15px] leading-[1.7] text-foreground/85 sm:text-base">
+          <p className="mt-6 max-w-[46ch] text-[17px] leading-[1.7] text-foreground/85 sm:text-[18px]">
             {decision.tension}
           </p>
         </header>
@@ -114,7 +114,7 @@ export default function DecisionBlock({
               <dt className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
                 Why this
               </dt>
-              <dd className="text-sm leading-[1.7] text-muted sm:col-span-3">
+              <dd className="text-base leading-[1.7] text-muted sm:col-span-3">
                 {decision.reasoning}
               </dd>
             </div>
@@ -122,7 +122,7 @@ export default function DecisionBlock({
               <dt className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
                 Trade-off
               </dt>
-              <dd className="text-sm leading-[1.7] text-muted sm:col-span-3">
+              <dd className="text-base leading-[1.7] text-muted sm:col-span-3">
                 {decision.tradeoff}
               </dd>
             </div>
@@ -130,7 +130,7 @@ export default function DecisionBlock({
               <dt className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
                 What it enabled
               </dt>
-              <dd className="text-sm leading-[1.7] text-foreground/85 sm:col-span-3">
+              <dd className="text-base leading-[1.7] text-foreground/85 sm:col-span-3">
                 {decision.enabled}
               </dd>
             </div>
@@ -164,7 +164,7 @@ export function DecisionSection({
           {title}
         </h2>
         {intro ? (
-          <p className="mt-6 text-[15px] leading-[1.75] text-muted sm:text-base">
+          <p className="mt-6 text-[17px] leading-[1.75] text-muted sm:text-[18px]">
             {intro}
           </p>
         ) : null}

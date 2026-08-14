@@ -37,7 +37,7 @@ export default function CaseStudyScreens({
         <h2 className={cn(sectionHeadingClassName, 'mt-4')}>
           {titleWithAccentGradient(title)}
         </h2>
-        <p className="mt-5 text-base leading-[1.7] text-muted lg:text-lg">{intro}</p>
+        <p className="mt-5 text-[18px] leading-[1.7] text-muted lg:text-xl">{intro}</p>
       </div>
 
       <ScreenFigure screen={hero} priority />

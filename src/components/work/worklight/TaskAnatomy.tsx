@@ -45,7 +45,7 @@ export default function TaskAnatomy() {
         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
           One task
         </p>
-        <p className="mt-2 max-w-[70ch] text-sm leading-[1.7] text-muted">
+        <p className="mt-2 max-w-[70ch] text-base leading-[1.7] text-muted">
           Every field carries the evidence that justifies it. Nothing in the
           right column is generated — it is a link back to a source item that
           cannot be edited after ingest.

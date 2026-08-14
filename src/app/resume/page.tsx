@@ -68,7 +68,7 @@ export default function ResumePage() {
             <h1 className="mt-4 max-w-[12ch] text-5xl font-semibold leading-[0.96] tracking-[-0.045em] sm:text-7xl">
               Senior Product Designer & Product Builder
             </h1>
-            <p className="mt-6 max-w-[62ch] text-base leading-[1.7] text-[#111318]/70">
+            <p className="mt-6 max-w-[62ch] text-[18px] leading-[1.7] text-[#111318]/70">
               I take complex software from ambiguity to a clear, buildable product — product
               architecture, data-heavy and workflow-heavy UX, design systems, and enough
               implementation work to keep the shipped result faithful to the decision.
@@ -100,7 +100,7 @@ export default function ResumePage() {
                 </div>
                 <p className="mt-1 text-sm font-medium text-[#2742ff]">{row.role}</p>
                 {row.location ? <p className="mt-1 text-xs text-[#111318]/45">{row.location}</p> : null}
-                <p className="mt-3 max-w-[72ch] text-sm leading-[1.7] text-[#111318]/70">{row.summary}</p>
+                <p className="mt-3 max-w-[72ch] text-base leading-[1.7] text-[#111318]/70">{row.summary}</p>
               </article>
             ))}
           </div>

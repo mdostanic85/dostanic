@@ -41,20 +41,20 @@ export default function ExperienceIndex() {
               <li
                 key={row.company}
                 data-reveal-item
-                className="group grid grid-cols-12 items-baseline gap-3 border-b border-stroke py-7 lg:py-8"
+                className="group grid grid-cols-12 items-baseline gap-x-4 gap-y-1 border-b border-stroke py-5 transition-colors duration-300 hover:bg-surface/40"
               >
-                <span className="col-span-4 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-2">
+                <span className="col-span-12 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-2">
                   {row.period}
                 </span>
-                <div className="col-span-8 sm:col-span-5">
-                  <h3 className="display-tight text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:text-xl lg:text-2xl">
-                    {row.company}
-                  </h3>
-                  <p className="mt-2 max-w-[44ch] text-sm leading-[1.6] text-muted">
-                    {row.scope}
-                  </p>
-                </div>
-                <span className="col-span-12 col-start-5 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-5 sm:col-start-8 sm:text-right">
+                <h3 className="col-span-12 display-tight text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-accent sm:col-span-3 sm:text-xl">
+                  {row.company}
+                </h3>
+                {/* Scope is the detail line — it stays quiet and drops out on
+                    phones, where the row has to stay scannable. */}
+                <p className="col-span-12 hidden max-w-[44ch] text-sm leading-[1.6] text-muted sm:col-span-4 sm:block">
+                  {row.scope}
+                </p>
+                <span className="col-span-12 font-mono text-[12px] uppercase tracking-[0.23em] text-muted sm:col-span-3 sm:text-right">
                   {row.role}
                 </span>
               </li>

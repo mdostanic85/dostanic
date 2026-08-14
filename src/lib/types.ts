@@ -27,6 +27,10 @@ export type Project = {
   owned?: string
   /** Selected-work card: the single decision worth opening the case for. */
   decision?: string
+  /** Homepage card: the problem compressed to one scannable line. */
+  cardTagline?: string
+  /** Homepage card: the two or three decisions worth scanning before opening. */
+  cardHighlights?: string[]
   slug: string
   year: string
   featured: boolean

@@ -42,15 +42,20 @@ export default function Capabilities() {
         </Reveal>
 
         <Reveal staggerSelector="[data-reveal-item]">
-          <ul className="grid grid-cols-1 border-t border-stroke sm:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {EXPERTISE_TILES.map((tile) => (
               <li
                 key={tile.number}
                 data-reveal-item
-                className="group border-b border-stroke px-1 py-10 sm:border-r sm:px-8 sm:py-12 sm:[&:nth-child(2n)]:border-r-0 lg:min-h-[280px] lg:px-10"
+                className="group flex flex-col border border-stroke bg-surface/40 p-7 transition-[transform,border-color,background-color] duration-500 ease-out hover:-translate-y-1 hover:border-accent/50 hover:bg-surface/70 lg:min-h-[300px] lg:p-8 motion-reduce:transform-none motion-reduce:transition-none"
               >
-                <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted transition-colors group-hover:text-accent">
-                  / {tile.number}
+                {/* The rule grows on hover — the only motion the tile needs. */}
+                <p className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.28em] text-muted transition-colors duration-300 group-hover:text-accent">
+                  {tile.number}
+                  <span
+                    aria-hidden="true"
+                    className="h-px w-5 bg-stroke transition-[width,background-color] duration-500 ease-out group-hover:w-10 group-hover:bg-accent motion-reduce:transition-none"
+                  />
                 </p>
                 <h3 className="display-tight mt-6 text-xl font-medium sm:text-2xl">
                   {tile.title}

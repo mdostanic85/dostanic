@@ -106,7 +106,10 @@ export default function Hero() {
               </span>
             </span>
             <span className="line-mask">
-              <span data-hero-line className="text-outline block text-[clamp(38px,9vw,148px)] sm:ml-[10vw]">
+              {/* The longest phrase. Below `sm` it takes its own smaller ramp so
+                  it never wraps inside the mask; from `sm` up it matches the
+                  other two lines exactly. */}
+              <span data-hero-line className="block text-[clamp(34px,10vw,44px)] sm:ml-[10vw] sm:text-[clamp(46px,8.2vw,132px)]">
                 complex software
               </span>
             </span>
@@ -122,9 +125,8 @@ export default function Hero() {
               data-hero-fade
               className="max-w-[46ch] text-[17px] leading-[1.7] text-muted sm:text-[18px] lg:text-[19px]"
             >
-              I take on the products other designers pass on — too many roles,
-              too many edge cases, too much at stake to fake with a mockup —
-              and turn them into structure engineering can actually build.
+              I take on the products other designers pass on, and turn them
+              into structure engineering can actually build.
             </p>
 
             <div data-hero-fade className="flex flex-wrap items-center gap-4">

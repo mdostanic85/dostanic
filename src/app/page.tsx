@@ -17,16 +17,17 @@ export const metadata: Metadata = {
 /**
  * Home — one narrative, six beats.
  *
- *   hero (ink) → selected work (ice) → capabilities (ink) → how I work (ice)
- *   → experience (ice) → note (ice) → contact (ink)
+ *   hero → selected work → capabilities → how I work → experience → note
+ *   → contact
  *
- * Three dark chapters, evenly spaced, so the page alternates instead of
- * strobing. Each beat carries exactly one message; the depth lives on the case
- * studies and About rather than here.
+ * The whole page is one ink chapter. `.chapter-dark` remaps the palette tokens
+ * once here, so every section below inherits the dark set without knowing about
+ * it; the subpages keep the icy light base. Each beat carries exactly one
+ * message, and the depth lives on the case studies and About rather than here.
  */
 export default function HomePage() {
   return (
-    <main>
+    <main className="chapter-dark bg-background text-foreground">
       <Hero />
       <CaseRows />
       <Capabilities />

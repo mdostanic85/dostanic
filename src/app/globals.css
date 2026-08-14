@@ -198,6 +198,13 @@
     min-height: 100dvh;
   }
 
+  /* The homepage is a single ink chapter. Carry its ground onto the body so
+     the overscroll gutter matches the page instead of flashing the icy base
+     the subpages use. */
+  body:has(main.chapter-dark) {
+    background-color: #06070b;
+  }
+
   h1,
   h2,
   h3 {
